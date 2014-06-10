@@ -1,6 +1,1 @@
-require "fog/xenserver/version"
-
-module Fog
-  module Xenserver
-  end
-end
+require "#{File.join(File.dirname(__FILE__), 'compute')}"

@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
-  spec.require_paths = %q(lib)
+  spec.require_paths = %w(lib)
 
   spec.add_dependency 'fog-core'
   spec.add_development_dependency 'rake'

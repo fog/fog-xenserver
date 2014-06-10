@@ -1,3 +1,3 @@
 module Fog
-  autoload :Xenserver, 'lib/fog/xenserver'
+  autoload :Compute, 'lib/fog/compute'
 end
