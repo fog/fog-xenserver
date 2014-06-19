@@ -1,8 +1,8 @@
-require 'fog/xenserver/core'
+require 'fog/core'
 
 module Fog
-  module Compute
-    class XenServer < Fog::Service
+  module XenServer
+    class Compute < Fog::Service
 
       require 'fog/xenserver/utilities'
       require 'fog/xenserver/parser'
@@ -13,7 +13,7 @@ module Fog
       recognizes :xenserver_defaults
       recognizes :xenserver_timeout
 
-      model_path 'fog/xenserver/models/compute'
+      model_path 'fog/xenserver/compute'
       model :blob
       collection :blobs
       model :bond
@@ -172,5 +172,3 @@ module Fog
     end
   end
 end
-
-
