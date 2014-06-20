@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.description   = %q{Module for the 'fog' gem to support XENSERVER.}
   spec.summary       = %q{This library can be used as a module for `fog` or as standalone provider
                         to use the XENSERVER in applications.}
-  spec.homepage      = 'https://github.com/zertico/fog-xenserver'
+  spec.homepage      = 'https://github.com/fog/fog-xenserver'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
