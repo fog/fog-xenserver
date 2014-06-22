@@ -1,7 +1,6 @@
 require 'fog/core'
 require 'fog/xml'
-require "#{File.join(File.dirname(__FILE__), 'compute')}"
-require "#{File.join(File.dirname(__FILE__), 'parsers')}"
+require 'fog/utilities'
 
 module Fog
   module XenServer
@@ -14,5 +13,13 @@ module Fog
     extend Fog::Provider
 
     service(:compute, 'Compute')
+  end
+
+  module Compute
+    autoload :XenServer, 'fog/compute/xen_server'
+  end
+
+  module Parsers
+    autoload :XenServer, 'fog/parsers/xen_server'
   end
 end

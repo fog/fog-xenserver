@@ -7,9 +7,6 @@ module Fog
       autoload :Real, 'fog/compute/xen_server/real'
       autoload :Mock, 'fog/compute/xen_server/mock'
 
-      require 'fog/compute/utilities'
-      require 'fog/compute/parser'
-
       requires :xenserver_username
       requires :xenserver_password
       requires :xenserver_url
