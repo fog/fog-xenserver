@@ -1,19 +1,16 @@
 module Fog
   module Parsers
     module XenServer
-      class GetVBDs < Fog::Parsers::XenServer::Base
-
+      class GetPools < Fog::Parsers::XenServer::Base
         def reset
           @response = []
         end
 
         def parse( data )
           parser = Fog::Parsers::XenServer::Base.new
-          data.each_pair {|reference, hash| @response << parser.parse( hash ).merge(:reference => reference) }
+          data.each_pair {|reference, pool_hash| @response << parser.parse( pool_hash ).merge(:reference => reference) }
         end
-
       end
-
     end
   end
 end
