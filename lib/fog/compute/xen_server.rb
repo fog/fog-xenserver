@@ -112,6 +112,10 @@ module Fog
       request :destroy_vlan
       request :snapshot_server
       request :snapshot_revert
+
+      def self.const_missing(name)
+        Models.const_get(name)
+      end
     end
   end
 end
