@@ -1,19 +1,8 @@
-require 'fog/core'
-require 'fog/xml'
+require 'xmlrpc/client'
 
 module Fog
   module XenServer
-
-    class InvalidLogin < Fog::Errors::Error; end
-    class NotFound < Fog::Errors::Error; end
-    class RequestFailed < Fog::Errors::Error; end
-
-    extend Fog::Provider
-
-    service(:compute, 'Compute')
-
     class Connection
-      require 'xmlrpc/client'
 
       def initialize(host, timeout)
         @factory = XMLRPC::Client.new(host, '/')
@@ -53,32 +42,5 @@ module Fog
         end
       end
     end
-
-    class NokogiriStreamParser < XMLRPC::XMLParser::AbstractStreamParser
-
-      def initialize
-        require 'nokogiri/xml/sax/document'
-        require 'nokogiri/xml/sax/parser'
-
-        @parser_class = Class.new(Nokogiri::XML::SAX::Document) do
-
-          include XMLRPC::XMLParser::StreamParserMixin
-
-          alias_method :start_element, :startElement
-          alias_method :end_element,   :endElement
-          alias_method :characters,    :character
-          alias_method :cdata_block,   :character
-
-          def parse(str)
-            Nokogiri::XML::SAX::Parser.new(self).parse(str)
-          end
-
-        end
-      end
-
-    end
-
   end
 end
-
-
