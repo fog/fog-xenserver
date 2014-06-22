@@ -1,1 +1,7 @@
-require "#{File.join(File.dirname(__FILE__), 'xenserver')}"
+require "fog/xenserver/version"
+
+module Fog
+  module Compute
+    autoload :XenServer, 'fog/compute/xen_server'
+  end
+end
