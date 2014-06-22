@@ -5,7 +5,7 @@ module Fog
     class XenServer
       module Models
         class Vlans < Fog::Collection
-          model Fog::Compute::XenServer::Models::VLAN
+          model Fog::Compute::XenServer::Models::Vlan
 
           # Return the list of VLANs available
           #

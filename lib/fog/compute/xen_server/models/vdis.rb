@@ -5,7 +5,7 @@ module Fog
     class XenServer
       module Models
         class Vdis < Fog::Collection
-          model Fog::Compute::XenServer::Models::VDI
+          model Fog::Compute::XenServer::Models::Vdi
 
           def all(options = {})
             data = service.get_records 'VDI'

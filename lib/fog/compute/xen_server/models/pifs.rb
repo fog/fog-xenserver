@@ -5,7 +5,7 @@ module Fog
     class XenServer
       module Models
         class Pifs < Fog::Collection
-          model Fog::Compute::XenServer::Models::PIF
+          model Fog::Compute::XenServer::Models::Pif
 
           def initialize(attributes)
             super

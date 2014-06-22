@@ -5,7 +5,7 @@ module Fog
     class XenServer
       module Models
         class Pbds < Fog::Collection
-          model Fog::Compute::XenServer::Models::PBD
+          model Fog::Compute::XenServer::Models::Pbd
 
           def all(options = {})
             data = service.get_records 'PBD'

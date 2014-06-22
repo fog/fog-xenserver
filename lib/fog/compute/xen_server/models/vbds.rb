@@ -5,7 +5,7 @@ module Fog
     class XenServer
       module Models
         class Vbds < Fog::Collection
-          model Fog::Compute::XenServer::Models::VBD
+          model Fog::Compute::XenServer::Models::Vbd
 
           def initialize(attributes)
             super

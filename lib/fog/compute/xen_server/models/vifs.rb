@@ -5,7 +5,7 @@ module Fog
     class XenServer
       module Models
         class Vifs < Fog::Collection
-          model Fog::Compute::XenServer::Models::VIF
+          model Fog::Compute::XenServer::Models::Vif
 
           def all(options = {})
             data = service.get_records 'VIF'
