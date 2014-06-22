@@ -3,6 +3,7 @@ require 'fog/core'
 module Fog
   module Compute
     class XenServer < Fog::Service
+      autoload :Models, 'fog/compute/xen_server/models'
       autoload :Real, 'fog/compute/xen_server/real'
       autoload :Mock, 'fog/compute/xen_server/mock'
 
@@ -15,7 +16,7 @@ module Fog
       recognizes :xenserver_defaults
       recognizes :xenserver_timeout
 
-      model_path 'fog/compute/xen_server'
+      model_path 'fog/compute/xen_server/models'
       model :blob
       collection :blobs
       model :bond
