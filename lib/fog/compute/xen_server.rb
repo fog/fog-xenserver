@@ -80,7 +80,7 @@ module Fog
       model  :console
       collection :consoles
 
-      request_path 'fog/compute/requests/'
+      request_path 'fog/compute/xen_server/requests'
       request :create_server
       request :create_vif
       request :create_vdi
