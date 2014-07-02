@@ -1,6 +1,7 @@
 require 'minitest/spec'
 require 'minitest/autorun'
 require 'turn'
+require 'coveralls'
 
 Turn.config do |c|
   # use one of output formats:
@@ -16,3 +17,5 @@ Turn.config do |c|
   # use humanized test names (works only with :outline format)
   c.natural = true
 end
+
+Coveralls.wear!
