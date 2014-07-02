@@ -1,5 +1,6 @@
-[![Stories in Ready](https://badge.waffle.io/fog/fog-xenserver.png?label=ready&title=Ready)](https://waffle.io/fog/fog-xenserver)
 # Fog::Xenserver
+
+[![Gem Version](https://badge.fury.io/rb/fog-xenserver.svg)](http://badge.fury.io/rb/fog-xenserver) [![Build Status](https://travis-ci.org/fog/fog-xenserver.svg)](https://travis-ci.org/fog/fog-xenserver) [![Dependency Status](https://gemnasium.com/fog/fog-xenserver.svg)](https://gemnasium.com/fog/fog-xenserver) [![Code Climate](https://codeclimate.com/github/fog/fog-xenserver.png)](https://codeclimate.com/github/fog/fog-xenserver) [![Stories in Ready](https://badge.waffle.io/fog/fog-xenserver.png?label=ready&title=Ready)](https://waffle.io/fog/fog-xenserver)
 
 TODO: Write a gem description
 
