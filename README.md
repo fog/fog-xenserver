@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/fog/fog-xenserver.png?label=ready&title=Ready)](https://waffle.io/fog/fog-xenserver)
 # Fog::Xenserver
 
 TODO: Write a gem description
