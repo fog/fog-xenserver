@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'fog/xenserver/version'
+require 'fog/xen_server/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'fog-xenserver'
-  spec.version       = Fog::Xenserver::VERSION
+  spec.version       = Fog::XenServer::VERSION
   spec.authors       = %q(Paulo Henrique Lopes Ribeiro)
   spec.email         = %q(plribeiro3000@gmail.com)
   spec.description   = %q{Module for the 'fog' gem to support XENSERVER.}
