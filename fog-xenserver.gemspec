@@ -22,5 +22,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'fog-core'
   spec.add_dependency 'fog-xml'
   spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'minitest'
+  spec.add_development_dependency 'turn'
 end
