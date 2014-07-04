@@ -14,7 +14,7 @@ module Fog
           attribute :other_config
           attribute :protocol
           attribute :uuid
-          attribute :__vm, aliases: :VM
+          attribute :__vm,          :aliases => :VM
 
           def vm
             begin
