@@ -11,8 +11,8 @@ module Fog
           identity :reference
 
           attribute :after_apply_guidance
-          attribute :__host_patches,          :aliases => :host_patches
           attribute :description,             :aliases => :name_description
+          attribute :__host_patches,          :aliases => :host_patches
           attribute :name,                    :aliases => :name_label
           attribute :other_config
           attribute :pool_applied

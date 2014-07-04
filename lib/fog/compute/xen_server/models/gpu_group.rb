@@ -10,13 +10,13 @@ module Fog
 
           identity :reference
 
-          attribute :gpu_types,           :aliases => :GPU_types
           attribute :description,         :aliases => :name_description
+          attribute :gpu_types,           :aliases => :GPU_types
           attribute :name,                :aliases => :name_label
           attribute :other_config
           attribute :__pgpus,             :aliases => :PGPUs
-          attribute :__vgpus,             :aliases => :VGPUs
           attribute :uuid
+          attribute :__vgpus,             :aliases => :VGPUs
         end
       end
     end

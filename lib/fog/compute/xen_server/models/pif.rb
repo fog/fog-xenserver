@@ -10,37 +10,37 @@ module Fog
 
           identity :reference
 
-          attribute :uuid
           attribute :__bond_master_of,            :aliases => :bond_master_of
           attribute :__bond_slave_of,             :aliases => :bond_slave_of
           attribute :disallow_unplug
-          attribute :physical
-          attribute :mac,                         :aliases => :MAC
           attribute :currently_attached
           attribute :device
           attribute :device_name
-          attribute :metrics
           attribute :dns,                         :aliases => :DNS
           attribute :gateway
+          attribute :__host,                      :aliases => :host
           attribute :ip,                          :aliases => :IP
           attribute :ip_configuration_mode
           attribute :ipv6,                        :aliases => :IPv6
           attribute :ipv6_configuration_mode
           attribute :ipv6_gateway
+          attribute :mac,                         :aliases => :MAC
+          attribute :management
+          attribute :metrics
           attribute :mtu,                         :aliases => :MTU
-          attribute :__network,                   :aliases => :network
           attribute :netmask
+          attribute :__network,                   :aliases => :network
+          attribute :other_config
+          attribute :physical
+          attribute :primary_address_type
           attribute :status_code
           attribute :status_detail
-          attribute :management
-          attribute :primary_address_type
           attribute :__tunnel_access_pif_of,      :aliases => :tunnel_access_PIF_of
           attribute :__tunnel_transport_pif_of,   :aliases => :tunnel_transport_PIF_of
           attribute :vlan,                        :aliases => :VLAN
           attribute :vlan_master_of,              :aliases => :VLAN_master_of
           attribute :vlan_slave_of,               :aliases => :VLAN_slave_of
-          attribute :other_config
-          attribute :__host,                      :aliases => :host
+          attribute :uuid
 
           def network
             service.networks.get __network

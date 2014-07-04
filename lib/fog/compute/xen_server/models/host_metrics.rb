@@ -10,12 +10,12 @@ module Fog
 
           identity :reference
 
-          attribute :uuid
+          attribute :last_updated
           attribute :live
           attribute :memory_free
           attribute :memory_total
           attribute :other_config
-          attribute :last_updated
+          attribute :uuid
 
           def initialize(attributes = {})
             super

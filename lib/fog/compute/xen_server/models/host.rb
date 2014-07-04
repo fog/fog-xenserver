@@ -10,8 +10,6 @@ module Fog
 
           identity :reference
 
-          attribute :name,                                :aliases => :name_label
-          attribute :uuid
           attribute :address
           attribute :allowed_operations
           attribute :api_version_major,                   :aliases => :API_version_major
@@ -24,9 +22,11 @@ module Fog
           attribute :chipset_info
           attribute :cpu_configuration
           attribute :cpu_info
-          attribute :__crash_dump_sr,                     :aliases => :crash_dump_sr
           attribute :__crashdumps,                        :aliases => :crashdumps
+          attribute :__crash_dump_sr,                     :aliases => :crash_dump_sr
           attribute :current_operations
+          attribute :description,                         :aliases => :name_description
+          attribute :edition
           attribute :enabled
           attribute :external_auth_configuration
           attribute :external_auth_service_name
@@ -35,13 +35,14 @@ module Fog
           attribute :ha_network_peers
           attribute :ha_statefiles
           attribute :hostname
+          attribute :__host_cpus,                         :aliases => :host_CPUs
           attribute :license_params
           attribute :license_server
           attribute :__local_cache_sr,                    :aliases => :local_cache_sr
           attribute :logging
           attribute :memory_overhead
           attribute :__metrics,                           :aliases => :metrics
-          attribute :description,                         :aliases => :name_description
+          attribute :name,                                :aliases => :name_label
           attribute :other_config
           attribute :patches
           attribute :__pbds,                              :aliases => :PBDs
@@ -52,12 +53,11 @@ module Fog
           attribute :power_on_mode
           attribute :__resident_vms,                      :aliases => :resident_VMs
           attribute :sched_policy
+          attribute :software_version
           attribute :supported_bootloaders
           attribute :suspend_image_sr
           attribute :tags
-          attribute :__host_cpus,                         :aliases => :host_CPUs
-          attribute :edition
-          attribute :software_version
+          attribute :uuid
 
           def pifs
             __pifs.collect { |pif| service.pifs.get pif }
