@@ -18,4 +18,6 @@ Turn.config do |c|
   c.natural = true
 end
 
+Dir[File.join(File.dirname(__FILE__), '../lib/**/*.rb')].sort.each { |f| require f }
+
 Coveralls.wear!
