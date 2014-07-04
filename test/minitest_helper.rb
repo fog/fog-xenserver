@@ -1,5 +1,6 @@
 require 'minitest/spec'
 require 'minitest/autorun'
+require 'simplecov'
 require 'turn'
 require 'coveralls'
 
@@ -16,6 +17,10 @@ Turn.config do |c|
   c.trace   = 20
   # use humanized test names (works only with :outline format)
   c.natural = true
+end
+
+SimpleCov.start do
+  add_filter '/test/'
 end
 
 Dir[File.join(File.dirname(__FILE__), '../lib/**/*.rb')].sort.each { |f| require f }
