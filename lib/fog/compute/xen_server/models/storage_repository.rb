@@ -10,24 +10,24 @@ module Fog
 
           identity :reference
 
-          attribute :name,                 :aliases => :name_label
-          attribute :description,          :aliases => :name_description
-          attribute :uuid
-          attribute :blobs
           attribute :allowed_operations
+          attribute :blobs
+          attribute :content_type
           attribute :current_operations
+          attribute :description,          :aliases => :name_description
           attribute :introduced_by
           attribute :local_cache_enabled
-          attribute :content_type
+          attribute :name,                 :aliases => :name_label
           attribute :other_config
           attribute :__pbds,               :aliases => :PBDs
-          attribute :shared
-          attribute :type
-          attribute :tags
-          attribute :__vdis,               :aliases => :VDIs
           attribute :physical_size
           attribute :physical_utilisation
+          attribute :shared
           attribute :sm_config
+          attribute :tags
+          attribute :type
+          attribute :uuid
+          attribute :__vdis,               :aliases => :VDIs
           attribute :virtual_allocation
 
           def vdis

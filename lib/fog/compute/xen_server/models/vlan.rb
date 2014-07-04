@@ -10,11 +10,11 @@ module Fog
 
           identity :reference
 
-          attribute :uuid
-          attribute :tag,                :type => :integer
           attribute :other_config
-          attribute :__untagged_pif,     :aliases => :untagged_PIF
+          attribute :tag,                :type => :integer
           attribute :__tagged_pif,       :aliases => :tagged_PIF
+          attribute :__untagged_pif,     :aliases => :untagged_PIF
+          attribute :uuid
 
           # @return [Fog::Compute::XenServer::PIF] interface on which traffic is tagged
           #

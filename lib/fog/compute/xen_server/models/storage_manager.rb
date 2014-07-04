@@ -13,9 +13,9 @@ module Fog
           attribute :capabilities
           attribute :configuration
           attribute :copyright
+          attribute :description,               :aliases => :name_description
           attribute :driver_filename
           attribute :features
-          attribute :description,               :aliases => :name_description
           attribute :name,                      :aliases => :name_label
           attribute :other_config
           attribute :required_api_version

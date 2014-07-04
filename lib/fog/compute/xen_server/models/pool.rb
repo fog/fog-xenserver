@@ -10,34 +10,33 @@ module Fog
 
           identity :reference
 
-          attribute :uuid
           attribute :blobs
           attribute :__crash_dump_sr,        :aliases => :crash_dump_SR
-          attribute :name,                   :aliases => :name_label
-          attribute :description,            :aliases => :name_description
           attribute :__default_sr,           :aliases => :default_SR
+          attribute :description,            :aliases => :name_description
           attribute :gui_config
           attribute :ha_allow_overcommit
           attribute :ha_configuration
-          attribute :__master,               :aliases => :master
-          attribute :tags
-          attribute :restrictions
           attribute :ha_enabled
           attribute :ha_host_failures_to_tolerate
           attribute :ha_overcommitted
           attribute :ha_plan_exists_for
           attribute :ha_statefiles
+          attribute :__master,               :aliases => :master
           attribute :__metadata_vdis,        :aliases => :metadata_VDIs
+          attribute :name,                   :aliases => :name_label
           attribute :other_config
           attribute :redo_log_enabled
           attribute :redo_log_vdi
-          attribute :vswitch_controller
+          attribute :restrictions
           attribute :__suspend_image_sr,     :aliases => :suspend_image_SR
+          attribute :tags
+          attribute :uuid
+          attribute :vswitch_controller
           attribute :wlb_enabled
           attribute :wlb_url
           attribute :wlb_username
           attribute :wlb_verify_cert
-
 
           def default_sr
             service.storage_repositories.get __default_sr

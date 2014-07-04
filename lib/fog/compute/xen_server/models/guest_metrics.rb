@@ -10,7 +10,6 @@ module Fog
 
           identity :reference
 
-          attribute :uuid
           attribute :disk
           attribute :last_updated
           attribute :live
@@ -21,6 +20,7 @@ module Fog
           attribute :other_config
           attribute :pv_drivers_up_to_date,    :aliases => :PV_drivers_up_to_date
           attribute :pv_drivers_version,       :aliases => :PV_drivers_version
+          attribute :uuid
         end
       end
     end

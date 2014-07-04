@@ -11,8 +11,8 @@ module Fog
           identity :reference
 
           attribute :applied
-          attribute :__host,              :aliases => :host
           attribute :description,         :aliases => :name_description
+          attribute :__host,              :aliases => :host
           attribute :name,                :aliases => :name_label
           attribute :other_config
           attribute :__pool_patch,        :aliases => :pool_patch

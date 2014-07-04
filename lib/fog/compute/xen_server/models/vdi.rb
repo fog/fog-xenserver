@@ -10,35 +10,35 @@ module Fog
 
           identity :reference
 
-          attribute :uuid
-          attribute :is_a_snapshot
-          attribute :name,                        :aliases => :name_label
-          attribute :description,                 :aliases => :name_description
-          attribute :__parent,                    :aliases => :parent
-          attribute :virtual_size
-          attribute :__vbds,                      :aliases => :VBDs
-          attribute :__sr,                        :aliases => :SR
-          attribute :sharable
-          attribute :read_only
-          attribute :current_operations
           attribute :allowed_operations
+          attribute :allow_caching
           attribute :__crash_dumps,               :aliases => :crash_dumps
-          attribute :type
-          attribute :other_config
-          attribute :tags
-          attribute :storage_lock
-          attribute :physical_utilisation
-          attribute :missing
+          attribute :current_operations
+          attribute :description,                 :aliases => :name_description
+          attribute :is_a_snapshot
           attribute :location
           attribute :managed
           attribute :metadata_latest
           attribute :metadata_of_pool
-          attribute :allow_caching
+          attribute :missing
+          attribute :name,                        :aliases => :name_label
           attribute :on_boot
+          attribute :other_config
+          attribute :__parent,                    :aliases => :parent
+          attribute :physical_utilisation
+          attribute :read_only
+          attribute :sharable
           attribute :sm_config
-          attribute :snapshot_time
           attribute :__snapshots,                 :aliases => :snapshots
           attribute :__snapshot_of,               :aliases => :snapshot_of
+          attribute :snapshot_time
+          attribute :__sr,                        :aliases => :SR
+          attribute :storage_lock
+          attribute :tags
+          attribute :type
+          attribute :uuid
+          attribute :__vbds,                      :aliases => :VBDs
+          attribute :virtual_size
           attribute :xenstore_data
 
           #

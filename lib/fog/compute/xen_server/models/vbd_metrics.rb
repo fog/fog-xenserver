@@ -10,11 +10,11 @@ module Fog
 
           identity :reference
 
-          attribute :uuid
-          attribute :last_updated
-          attribute :other_config
           attribute :io_read_kbs
           attribute :io_write_kbs
+          attribute :last_updated
+          attribute :other_config
+          attribute :uuid
 
           def initialize(attributes = {})
             super

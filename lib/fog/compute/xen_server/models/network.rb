@@ -10,19 +10,19 @@ module Fog
 
           identity :reference
 
-          attribute :uuid
-          attribute :__vifs,              :aliases => :VIFs
-          attribute :tags
-          attribute :mtu,                 :aliases => :MTU
+          attribute :allowed_operations
+          attribute :blobs
           attribute :bridge
+          attribute :current_operations
+          attribute :default_locking_mode
           attribute :description,         :aliases => :name_description
+          attribute :mtu,                 :aliases => :MTU
           attribute :name,                :aliases => :name_label
           attribute :other_config
           attribute :__pifs,              :aliases => :PIFs
-          attribute :allowed_operations
-          attribute :current_operations
-          attribute :default_locking_mode
-          attribute :blobs
+          attribute :tags
+          attribute :uuid
+          attribute :__vifs,              :aliases => :VIFs
 
           def refresh
             data = service.get_record( reference, 'network' )

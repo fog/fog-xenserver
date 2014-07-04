@@ -11,9 +11,9 @@ module Fog
           identity :reference
 
           attribute :other_config
+          attribute :uuid
           attribute :__vdi,           :aliases => :VDI
           attribute :__vm,            :aliases => :VM
-          attribute :uuid
         end
       end
     end

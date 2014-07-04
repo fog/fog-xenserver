@@ -10,30 +10,28 @@ module Fog
 
           identity :reference
 
-          attribute :uuid
-          attribute :currently_attached
           attribute :allowed_operations
+          attribute :bootable
+          attribute :currently_attached
           attribute :current_operations
-          attribute :__vdi,               :aliases => :VDI
-          attribute :__vm,                :aliases => :VM
           attribute :device
-          attribute :status_detail
-          attribute :status_code
-          attribute :type
-          attribute :userdevice
           attribute :empty
+          attribute :__metrics,           :aliases => :metrics
           attribute :mode
           attribute :other_config
-          attribute :storage_lock
-          attribute :runtime_properties
-          attribute :unpluggable
-          attribute :bootable
           attribute :qos_supported_algorithms
           attribute :qos_algorithm_params
           attribute :qos_algorithm_type
-          attribute :qos_supported_algorithms
-          attribute :empty
-          attribute :__metrics,           :aliases => :metrics
+          attribute :runtime_properties
+          attribute :status_code
+          attribute :status_detail
+          attribute :storage_lock
+          attribute :type
+          attribute :__vdi,               :aliases => :VDI
+          attribute :__vm,                :aliases => :VM
+          attribute :unpluggable
+          attribute :userdevice
+          attribute :uuid
 
           #
           # May return nil

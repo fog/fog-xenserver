@@ -10,7 +10,6 @@ module Fog
 
           identity :reference
 
-          attribute :uuid
           attribute :family
           attribute :features
           attribute :flags
@@ -22,6 +21,7 @@ module Fog
           attribute :speed
           attribute :stepping
           attribute :utilisation
+          attribute :uuid
           attribute :vendor
 
           def host

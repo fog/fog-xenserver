@@ -10,12 +10,12 @@ module Fog
 
           identity :reference
 
-          attribute :uuid
-          attribute :__host,             :aliases => :host
-          attribute :__sr,               :aliases => :SR
           attribute :currently_attached
           attribute :device_config
+          attribute :__host,             :aliases => :host
           attribute :other_config
+          attribute :__sr,               :aliases => :SR
+          attribute :uuid
 
           def sr
             service.storage_repositories.get __sr
