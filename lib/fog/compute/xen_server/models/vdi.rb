@@ -1,5 +1,3 @@
-require 'fog/core/model'
-
 module Fog
   module Compute
     class XenServer
@@ -12,7 +10,6 @@ module Fog
 
           attribute :allowed_operations
           attribute :allow_caching
-          attribute :__crash_dumps,               :aliases => :crash_dumps
           attribute :current_operations
           attribute :description,                 :aliases => :name_description
           attribute :is_a_snapshot
@@ -24,22 +21,26 @@ module Fog
           attribute :name,                        :aliases => :name_label
           attribute :on_boot
           attribute :other_config
-          attribute :__parent,                    :aliases => :parent
           attribute :physical_utilisation
           attribute :read_only
           attribute :sharable
           attribute :sm_config
-          attribute :__snapshots,                 :aliases => :snapshots
-          attribute :__snapshot_of,               :aliases => :snapshot_of
           attribute :snapshot_time
-          attribute :__sr,                        :aliases => :SR
           attribute :storage_lock
           attribute :tags
           attribute :type
           attribute :uuid
-          attribute :__vbds,                      :aliases => :VBDs
           attribute :virtual_size
           attribute :xenstore_data
+
+          has_many  :crash_dumps,  :crash_dumps
+          has_one   :parent,       :vdis
+          has_many  :snapshots,    :vdis
+          has_one   :snapshot_of,  :vdis
+          has_one   :sr,           :storage_repositories,      :aliases => :SR
+          has_many  :vbds,         :vbds,                      :aliases => :VBDs
+
+          alias_method :storage_repository, :sr
 
           #
           # Default VDI type is system
@@ -60,26 +61,6 @@ module Fog
             data = service.set_attribute( 'VDI', reference, name, *val )
           end
 
-          def snapshot_of
-            service.vdis.get __sr
-          end
-
-          def parent
-            service.vdis.get __parent
-          end
-
-          def snapshots
-            __snapshots.collect do |ref|
-              service.vdis.get ref
-            end
-          end
-
-          def vbds
-            __vbds.collect do |ref|
-              service.vbds.get ref
-            end
-          end
-
           def save
             requires :name, :storage_repository
             ref = service.create_vdi attributes
@@ -88,14 +69,6 @@ module Fog
 
           def destroy
             service.destroy_vdi reference
-          end
-
-          def storage_repository
-            service.storage_repositories.get __sr
-          end
-
-          def sr
-            storage_repository
           end
         end
       end

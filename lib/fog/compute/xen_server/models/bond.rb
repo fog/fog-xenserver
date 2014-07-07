@@ -1,5 +1,3 @@
-require 'fog/core/model'
-
 module Fog
   module Compute
     class XenServer
@@ -11,13 +9,14 @@ module Fog
           identity :reference
 
           attribute :links_up
-          attribute :__master,            :aliases => :master
           attribute :mode
           attribute :other_config
-          attribute :__primary_slave,     :aliases => :primary_slave
           attribute :properties
-          attribute :__slaves,            :aliases => :slaves
           attribute :uuid
+
+          has_one  :master,          :pifs
+          has_one  :primary_slave,   :pifs
+          has_many :slaves,          :pifs
         end
       end
     end

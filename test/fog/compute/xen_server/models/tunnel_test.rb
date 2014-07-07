@@ -16,15 +16,17 @@ describe Fog::Compute::XenServer::Models::Tunnel do
 
   it 'should have 6 attributes' do
     tunnel_class.attributes.must_equal([ :reference,
-                                         :access_pif,
                                          :other_config,
                                          :status,
-                                         :transport_pif,
-                                         :uuid ])
+                                         :uuid,
+                                         :__access_pif,
+                                         :__transport_pif ])
   end
 
-  it 'should have 2 aliases' do
-    tunnel_class.aliases.must_equal({ :access_PIF => :access_pif,
-                                       :transport_PIF => :transport_pif })
+  it 'should have 4 aliases' do
+    tunnel_class.aliases.must_equal({ :access_PIF => :__access_pif,
+                                      :access_pif => :__access_pif,
+                                      :transport_PIF => :__transport_pif,
+                                      :transport_pif => :__transport_pif })
   end
 end

@@ -1,5 +1,3 @@
-require 'fog/core/model'
-
 module Fog
   module Compute
     class XenServer
@@ -10,11 +8,12 @@ module Fog
 
           identity :reference
 
-          attribute :access_pif,          :aliases => :access_PIF
           attribute :other_config
           attribute :status
-          attribute :transport_pif,       :aliases => :transport_PIF
           attribute :uuid
+
+          has_one :access_pif,     :pifs,     :aliases => :access_PIF
+          has_one :transport_pif,  :pifs,     :aliases => :transport_PIF
         end
       end
     end

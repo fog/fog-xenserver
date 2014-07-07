@@ -1,5 +1,3 @@
-require 'fog/core/model'
-
 module Fog
   module Compute
     class XenServer
@@ -10,13 +8,14 @@ module Fog
 
           identity :reference
 
-          attribute :__dependencies,      :aliases => :dependencies
           attribute :device_name
-          attribute :__host,              :aliases => :host
           attribute :other_config
           attribute :pci_id
           attribute :uuid
           attribute :vendor_name
+
+          has_many  :dependencies,  :pcis
+          has_one   :host,          :hosts
         end
       end
     end

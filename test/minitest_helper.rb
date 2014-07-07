@@ -23,6 +23,6 @@ SimpleCov.start do
   add_filter '/test/'
 end
 
-Dir[File.join(File.dirname(__FILE__), '../lib/**/*.rb')].sort.each { |f| require f }
+require File.join(File.dirname(__FILE__), '../lib/fog/xenserver.rb')
 
 Coveralls.wear!

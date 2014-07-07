@@ -16,11 +16,12 @@ describe Fog::Compute::XenServer::Models::DrTask do
 
   it 'should have 3 attributes' do
     dr_task_class.attributes.must_equal([ :reference,
-                                          :__introduced_srs,
-                                          :uuid ])
+                                          :uuid,
+                                          :__introduced_srs ])
   end
 
-  it 'should have 1 alias' do
-    dr_task_class.aliases.must_equal({ :introduced_SRs => :__introduced_srs })
+  it 'should have 2 aliases' do
+    dr_task_class.aliases.must_equal({ :introduced_SRs => :__introduced_srs,
+                                       :introduced_srs => :__introduced_srs })
   end
 end

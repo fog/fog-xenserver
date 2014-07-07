@@ -16,13 +16,13 @@ describe Fog::Compute::XenServer::Models::Pci do
 
   it 'should have 8 attributes' do
     pci_class.attributes.must_equal([ :reference,
-                                      :__dependencies,
                                       :device_name,
-                                      :__host,
                                       :other_config,
                                       :pci_id,
                                       :uuid,
-                                      :vendor_name ])
+                                      :vendor_name,
+                                      :__dependencies,
+                                      :__host ])
   end
 
   it 'should have 2 aliases' do

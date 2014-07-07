@@ -25,7 +25,6 @@ describe Fog::Compute::XenServer::Models::StorageRepository do
                                                      :local_cache_enabled,
                                                      :name,
                                                      :other_config,
-                                                     :__pbds,
                                                      :physical_size,
                                                      :physical_utilisation,
                                                      :shared,
@@ -33,14 +32,17 @@ describe Fog::Compute::XenServer::Models::StorageRepository do
                                                      :tags,
                                                      :type,
                                                      :uuid,
-                                                     :__vdis,
-                                                     :virtual_allocation ])
+                                                     :virtual_allocation,
+                                                     :__pbds,
+                                                     :__vdis ])
   end
 
-  it 'should have 4 aliases' do
+  it 'should have 6 aliases' do
     storage_repository_class.aliases.must_equal({ :name_label => :name,
-                                                  :name_description => :description, 
-                                                  :PBDs => :__pbds, 
-                                                  :VDIs => :__vdis })
+                                                  :name_description => :description,
+                                                  :PBDs => :__pbds,
+                                                  :pbds => :__pbds,
+                                                  :VDIs => :__vdis,
+                                                  :vdis => :__vdis })
   end
 end

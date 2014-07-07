@@ -22,7 +22,6 @@ describe Fog::Compute::XenServer::Models::Vbd do
                                       :current_operations,
                                       :device,
                                       :empty,
-                                      :__metrics,
                                       :mode,
                                       :other_config,
                                       :qos_supported_algorithms,
@@ -33,16 +32,19 @@ describe Fog::Compute::XenServer::Models::Vbd do
                                       :status_detail,
                                       :storage_lock,
                                       :type,
-                                      :__vdi,
-                                      :__vm,
                                       :unpluggable,
                                       :userdevice,
-                                      :uuid ])
+                                      :uuid,
+                                      :__metrics,
+                                      :__vdi,
+                                      :__vm ])
   end
 
-  it 'should have 3 aliases' do
-    vbd_class.aliases.must_equal({ :VDI => :__vdi, 
-                                   :VM => :__vm, 
+  it 'should have 5 aliases' do
+    vbd_class.aliases.must_equal({ :VDI => :__vdi,
+                                   :vdi => :__vdi,
+                                   :VM => :__vm,
+                                   :vm => :__vm,
                                    :metrics => :__metrics })
   end
 end

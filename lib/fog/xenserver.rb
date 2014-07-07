@@ -1,6 +1,7 @@
 require 'fog/core'
 require 'fog/xml'
 require 'fog/utilities'
+require 'fog/model'
 
 module Fog
   module XenServer

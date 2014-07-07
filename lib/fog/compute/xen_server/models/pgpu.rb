@@ -1,5 +1,3 @@
-require 'fog/core/model'
-
 module Fog
   module Compute
     class XenServer
@@ -10,11 +8,12 @@ module Fog
 
           identity :reference
 
-          attribute :__gpu_group,         :aliases => :GPU_group
-          attribute :__host,              :aliases => :host
           attribute :other_config
-          attribute :__pci,               :aliases => :PCI
           attribute :uuid
+
+          has_one   :gpu_group,     :gpu_groups,  :aliases => :GPU_group
+          has_one   :host,          :hosts
+          has_one   :pci,           :pcis,        :aliases => :PCI
         end
       end
     end

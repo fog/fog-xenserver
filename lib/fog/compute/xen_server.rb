@@ -69,9 +69,17 @@ module Fog
       collection :pbds
       model  :pbd
       model  :guest_metrics
+      collection  :guests_metrics
+      model  :server_metrics
+      collection  :servers_metrics
       model  :vbd_metrics
+      collection :vbds_metrics
+      model  :vif_metrics
+      collection :vifs_metrics
       model  :host_metrics
+      collection :hosts_metrics
       model  :host_cpu
+      collection :host_cpus
       model  :vlan
       collection :vlans
       model  :console

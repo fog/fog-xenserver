@@ -16,16 +16,18 @@ describe Fog::Compute::XenServer::Models::Pgpu do
 
   it 'should have 6 attributes' do
     pgpu_class.attributes.must_equal([ :reference,
+                                       :other_config,
+                                       :uuid,
                                        :__gpu_group,
                                        :__host,
-                                       :other_config,
-                                       :__pci,
-                                       :uuid ])
+                                       :__pci ])
   end
 
-  it 'should have 3 aliases' do
+  it 'should have 5 aliases' do
     pgpu_class.aliases.must_equal({ :GPU_group => :__gpu_group,
+                                    :gpu_group => :__gpu_group,
                                     :host => :__host,
-                                    :PCI => :__pci })
+                                    :PCI => :__pci,
+                                    :pci => :__pci })
   end
 end

@@ -19,7 +19,6 @@ describe Fog::Compute::XenServer::Models::HostCpu do
                                            :family,
                                            :features,
                                            :flags,
-                                           :__host,
                                            :model,
                                            :model_name,
                                            :number,
@@ -28,7 +27,8 @@ describe Fog::Compute::XenServer::Models::HostCpu do
                                            :stepping,
                                            :utilisation,
                                            :uuid,
-                                           :vendor ])
+                                           :vendor,
+                                           :__host ])
   end
 
   it 'should have 2 aliases' do

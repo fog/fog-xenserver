@@ -2,18 +2,17 @@ module Fog
   module Compute
     class XenServer
       module Models
-        class HostCrashDump < Fog::Model
+        class VifMetrics < Fog::Model
           # API Reference here:
-          # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=host_crashdump
+          # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=VIF_metrics
 
           identity :reference
 
+          attribute :io_read_kbs
+          attribute :io_write_kbs
+          attribute :last_updated
           attribute :other_config
-          attribute :size
-          attribute :timestamp
           attribute :uuid
-
-          has_one   :host,       :hosts
         end
       end
     end

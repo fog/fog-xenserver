@@ -1,5 +1,3 @@
-require 'fog/core/model'
-
 module Fog
   module Compute
     class XenServer
@@ -14,9 +12,10 @@ module Fog
           attribute :gpu_types,           :aliases => :GPU_types
           attribute :name,                :aliases => :name_label
           attribute :other_config
-          attribute :__pgpus,             :aliases => :PGPUs
           attribute :uuid
-          attribute :__vgpus,             :aliases => :VGPUs
+
+          has_many :pgpus,    :pgpus,     :aliases => :PGPUs
+          has_many :vgpus,    :vgpus,     :aliases => :VGPUs
         end
       end
     end
