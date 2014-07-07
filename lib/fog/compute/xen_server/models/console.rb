@@ -1,5 +1,3 @@
-require 'fog/core/model'
-
 module Fog
   module Compute
     class XenServer
@@ -14,16 +12,8 @@ module Fog
           attribute :other_config
           attribute :protocol
           attribute :uuid
-          attribute :__vm,          :aliases => :VM
 
-          def vm
-            begin
-              vm = service.servers.get __vm
-            rescue Fog::XenServer::RequestFailed => e
-              vm = nil
-            end
-            vm
-          end
+          has_one :vm,          :servers,     :aliases => :VM
         end
       end
     end

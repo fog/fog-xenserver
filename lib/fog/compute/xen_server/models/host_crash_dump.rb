@@ -1,5 +1,3 @@
-require 'fog/core/model'
-
 module Fog
   module Compute
     class XenServer
@@ -10,11 +8,12 @@ module Fog
 
           identity :reference
 
-          attribute :__host,              :aliases => :host
           attribute :other_config
           attribute :size
           attribute :timestamp
           attribute :uuid
+
+          has_one   :host,       :hosts
         end
       end
     end

@@ -1,0 +1,40 @@
+require 'minitest_helper'
+
+describe Fog::Compute::XenServer::Models::ServerMetrics do
+  let(:server_metrics_class) do
+    class Fog::Compute::XenServer::Models::ServerMetrics
+      def self.read_identity
+        instance_variable_get('@identity')
+      end
+    end
+    Fog::Compute::XenServer::Models::ServerMetrics
+  end
+
+  it 'should return the unique id' do
+    server_metrics_class.read_identity.must_equal(:reference)
+  end
+
+  it 'should have 13 attributes' do
+    server_metrics_class.attributes.must_equal([ :reference,
+                                                 :install_time,
+                                                 :last_updated,
+                                                 :memory_actual,
+                                                 :other_config,
+                                                 :start_time,
+                                                 :state,
+                                                 :uuid,
+                                                 :vcpus_cpu,
+                                                 :vcpus_flags,
+                                                 :vcpus_number,
+                                                 :vcpus_params,
+                                                 :vcpus_utilisation ])
+  end
+
+  it 'should have 6 aliases' do
+    server_metrics_class.aliases.must_equal({ :VCPUs_CPU => :vcpus_cpu,
+                                              :VCPUs_flags => :vcpus_flags, 
+                                              :VCPUs_number => :vcpus_number, 
+                                              :VCPUs_params => :vcpus_params, 
+                                              :VCPUs_utilisation => :vcpus_utilisation })
+  end
+end

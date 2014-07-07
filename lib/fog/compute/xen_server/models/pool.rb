@@ -1,5 +1,3 @@
-require 'fog/core/model'
-
 module Fog
   module Compute
     class XenServer
@@ -11,8 +9,6 @@ module Fog
           identity :reference
 
           attribute :blobs
-          attribute :__crash_dump_sr,        :aliases => :crash_dump_SR
-          attribute :__default_sr,           :aliases => :default_SR
           attribute :description,            :aliases => :name_description
           attribute :gui_config
           attribute :ha_allow_overcommit
@@ -22,14 +18,11 @@ module Fog
           attribute :ha_overcommitted
           attribute :ha_plan_exists_for
           attribute :ha_statefiles
-          attribute :__master,               :aliases => :master
-          attribute :__metadata_vdis,        :aliases => :metadata_VDIs
           attribute :name,                   :aliases => :name_label
           attribute :other_config
           attribute :redo_log_enabled
           attribute :redo_log_vdi
           attribute :restrictions
-          attribute :__suspend_image_sr,     :aliases => :suspend_image_SR
           attribute :tags
           attribute :uuid
           attribute :vswitch_controller
@@ -38,29 +31,21 @@ module Fog
           attribute :wlb_username
           attribute :wlb_verify_cert
 
-          def default_sr
-            service.storage_repositories.get __default_sr
-          end
+          has_one  :crash_dump_sr,    :storage_repositories,   :aliases => :crash_dump_SR
+          has_one  :default_sr,       :storage_repositories,   :aliases => :default_SR
+          has_one  :master,           :hosts
+          has_many :metadata_vdis,    :vdis,                   :aliases => :metadata_VDIs
+          has_one  :suspend_image_sr, :storage_repositories,   :aliases => :suspend_image_SR
+
+          alias_method :default_storage_repository, :default_sr
 
           def default_sr=(sr)
             service.set_attribute( 'pool', reference, 'default_SR', sr.reference )
           end
           alias :default_storage_repository= :default_sr=
 
-          def default_storage_repository
-            default_sr
-          end
-
           def suspend_image_sr=(sr)
             service.set_attribute( 'pool', reference, 'suspend_image_SR', sr.reference )
-          end
-
-          def suspend_image_sr
-            service.storage_repositories.get __suspend_image_sr
-          end
-
-          def master
-            service.hosts.get __master
           end
 
           def set_attribute(name, *val)

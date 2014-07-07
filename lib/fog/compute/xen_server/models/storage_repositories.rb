@@ -14,8 +14,8 @@ module Fog
             load(data)
           end
 
-          def get( sr_ref )
-            if sr_ref && sr = service.get_record( sr_ref, 'SR' )
+          def get(sr_ref)
+            if sr_ref && sr = service.get_record(sr_ref, 'SR')
               new(sr)
             else
               nil

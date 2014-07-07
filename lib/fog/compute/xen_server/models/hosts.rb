@@ -7,12 +7,12 @@ module Fog
         class Hosts < Fog::Collection
           model Fog::Compute::XenServer::Models::Host
 
-          def all(options={})
+          def all(options = {})
             data = service.get_records 'host'
             load(data)
           end
 
-          def get( host_ref )
+          def get(host_ref)
             if host_ref && host = service.get_record( host_ref, 'host' )
               new(host)
             else

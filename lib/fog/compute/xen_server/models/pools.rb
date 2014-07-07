@@ -16,7 +16,7 @@ module Fog
             load(data)
           end
 
-          def get( pool_ref )
+          def get(pool_ref)
             if pool_ref && pool = service.get_record( pool_ref, 'pool' )
               new(pool)
             else

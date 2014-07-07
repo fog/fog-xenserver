@@ -18,14 +18,14 @@ describe Fog::Compute::XenServer::Models::HostPatch do
     host_patch_class.attributes.must_equal([ :reference,
                                              :applied,
                                              :description,
-                                             :__host,
                                              :name,
                                              :other_config,
-                                             :__pool_patch,
                                              :size,
                                              :timestamp_applied,
                                              :uuid,
-                                             :version ])
+                                             :version,
+                                             :__host,
+                                             :__pool_patch ])
   end
 
   it 'should have 4 aliases' do

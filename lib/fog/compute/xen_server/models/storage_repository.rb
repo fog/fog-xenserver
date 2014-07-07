@@ -1,5 +1,3 @@
-require 'fog/core/model'
-
 module Fog
   module Compute
     class XenServer
@@ -19,7 +17,6 @@ module Fog
           attribute :local_cache_enabled
           attribute :name,                 :aliases => :name_label
           attribute :other_config
-          attribute :__pbds,               :aliases => :PBDs
           attribute :physical_size
           attribute :physical_utilisation
           attribute :shared
@@ -27,16 +24,10 @@ module Fog
           attribute :tags
           attribute :type
           attribute :uuid
-          attribute :__vdis,               :aliases => :VDIs
           attribute :virtual_allocation
 
-          def vdis
-            __vdis.collect { |vdi| service.vdis.get vdi }
-          end
-
-          def pbds
-            __pbds.collect { |pbd| service.pbds.get pbd }
-          end
+          has_many  :pbds,  :pbds,         :aliases => :PBDs
+          has_many  :vdis,  :vdis,         :aliases => :VDIs
 
           def scan
             service.scan_sr reference

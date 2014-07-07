@@ -1,5 +1,3 @@
-require 'fog/core/model'
-
 module Fog
   module Compute
     class XenServer
@@ -10,8 +8,9 @@ module Fog
 
           identity :reference
 
-          attribute :__introduced_srs,        :aliases => :introduced_SRs
           attribute :uuid
+
+          has_many :introduced_srs,       :storage_repositories,     :aliases => :introduced_SRs
         end
       end
     end

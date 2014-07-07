@@ -22,8 +22,8 @@ module Fog
           #
           # Returns nil if not found
           #
-          def get( ref )
-            if ref && obj = service.get_record( ref, 'VLAN' )
+          def get(ref)
+            if ref && obj = service.get_record(ref, 'VLAN')
               new(obj)
             end
           rescue Fog::XenServer::NotFound

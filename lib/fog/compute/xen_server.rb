@@ -65,16 +65,24 @@ module Fog
       collection :networks
       model :network
       collection :pifs
-      model  :pif
+      model :pif
       collection :pbds
-      model  :pbd
-      model  :guest_metrics
-      model  :vbd_metrics
-      model  :host_metrics
-      model  :host_cpu
-      model  :vlan
+      model :pbd
+      model :guest_metrics
+      collection :guests_metrics
+      model :server_metrics
+      collection :servers_metrics
+      model :vbd_metrics
+      collection :vbds_metrics
+      model :vif_metrics
+      collection :vifs_metrics
+      model :host_metrics
+      collection :hosts_metrics
+      model :host_cpu
+      collection :host_cpus
+      model :vlan
       collection :vlans
-      model  :console
+      model :console
       collection :consoles
 
       request_path 'fog/compute/xen_server/requests'

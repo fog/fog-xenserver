@@ -23,7 +23,8 @@ describe Fog::Compute::XenServer::Models::Console do
                                           :__vm ])
   end
 
-  it 'should have 1 alias' do
-    console_class.aliases.must_equal({ :VM => :__vm })
+  it 'should have 2 aliases' do
+    console_class.aliases.must_equal({ :VM => :__vm,
+                                       :vm => :__vm })
   end
 end

@@ -1,5 +1,3 @@
-require 'fog/core/model'
-
 module Fog
   module Compute
     class XenServer
@@ -22,8 +20,6 @@ module Fog
           attribute :chipset_info
           attribute :cpu_configuration
           attribute :cpu_info
-          attribute :__crashdumps,                        :aliases => :crashdumps
-          attribute :__crash_dump_sr,                     :aliases => :crash_dump_sr
           attribute :current_operations
           attribute :description,                         :aliases => :name_description
           attribute :edition
@@ -35,23 +31,15 @@ module Fog
           attribute :ha_network_peers
           attribute :ha_statefiles
           attribute :hostname
-          attribute :__host_cpus,                         :aliases => :host_CPUs
           attribute :license_params
           attribute :license_server
-          attribute :__local_cache_sr,                    :aliases => :local_cache_sr
           attribute :logging
           attribute :memory_overhead
-          attribute :__metrics,                           :aliases => :metrics
           attribute :name,                                :aliases => :name_label
           attribute :other_config
           attribute :patches
-          attribute :__pbds,                              :aliases => :PBDs
-          attribute :__pcis,                              :aliases => :PCIs
-          attribute :__pgpus,                             :aliases => :PGPUs
-          attribute :__pifs,                              :aliases => :PIFs
           attribute :power_on_config
           attribute :power_on_mode
-          attribute :__resident_vms,                      :aliases => :resident_VMs
           attribute :sched_policy
           attribute :software_version
           attribute :supported_bootloaders
@@ -59,37 +47,18 @@ module Fog
           attribute :tags
           attribute :uuid
 
-          def pifs
-            __pifs.collect { |pif| service.pifs.get pif }
-          end
+          has_many :crashdumps,    :crash_dumps
+          has_one  :crash_dump_sr, :storage_repositories
+          has_many :host_cpus,     :host_cpus,            :aliases => :host_CPUs
+          has_one  :local_cache_sr,:storage_repositories
+          has_one  :metrics,       :hosts_metrics
+          has_many :pbds,          :pbds,                 :aliases => :PBDs
+          has_many :pcis,          :pcis,                 :aliases => :PCIs
+          has_many :pgpus,         :pgpus,                :aliases => :PGPUs
+          has_many :pifs,          :pifs,                 :aliases => :PIFs
+          has_many :resident_vms,  :servers,              :aliases => :resident_VMs
 
-          def pbds
-            __pbds.collect { |pbd| service.pbds.get pbd }
-          end
-
-          def resident_servers
-            __resident_vms.collect { |ref| service.servers.get ref }
-          end
-
-          def resident_vms
-            resident_servers
-          end
-
-          def host_cpus
-            cpus = []
-            (__host_cpus || []).each do |ref|
-              cpu_ref = service.get_record(ref, 'host_cpu' )
-              cpu_ref[:service] = service
-              cpus << Fog::Compute::XenServer::HostCpu.new(cpu_ref)
-            end
-            cpus
-          end
-
-          def metrics
-            return nil unless __metrics
-            rec = service.get_record(__metrics, 'host_metrics' )
-            Fog::Compute::XenServer::HostMetrics.new(rec)
-          end
+          alias_method :resident_servers, :resident_vms
 
           #
           # Reboot the host disabling it first unless auto_disable is

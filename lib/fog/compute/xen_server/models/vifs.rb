@@ -12,8 +12,8 @@ module Fog
             load(data)
           end
 
-          def get( ref )
-            if ref && obj = service.get_record( ref, 'VIF' )
+          def get(ref)
+            if ref && obj = service.get_record(ref, 'VIF')
               new(obj)
             end
           rescue Fog::XenServer::NotFound

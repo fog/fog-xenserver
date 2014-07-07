@@ -16,8 +16,8 @@ describe Fog::Compute::XenServer::Models::Vtpm do
 
   it 'should have 4 attributes' do
     vtpm_class.attributes.must_equal([ :reference,
-                                       :__backend,
                                        :uuid,
+                                       :__backend,
                                        :__vm ])
   end
 

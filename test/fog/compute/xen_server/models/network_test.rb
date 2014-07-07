@@ -25,17 +25,19 @@ describe Fog::Compute::XenServer::Models::Network do
                                           :mtu,
                                           :name,
                                           :other_config,
-                                          :__pifs,
                                           :tags,
                                           :uuid,
+                                          :__pifs,
                                           :__vifs ])
   end
 
-  it 'should have 5 aliases' do
+  it 'should have 7 aliases' do
     network_class.aliases.must_equal({ :VIFs => :__vifs,
+                                       :vifs => :__vifs,
                                        :MTU => :mtu, 
                                        :name_description => :description, 
-                                       :name_label => :name, 
-                                       :PIFs => :__pifs })
+                                       :name_label => :name,
+                                       :PIFs => :__pifs,
+                                       :pifs => :__pifs })
   end
 end

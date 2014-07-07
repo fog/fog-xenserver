@@ -18,13 +18,13 @@ describe Fog::Compute::XenServer::Models::PoolPatch do
     pool_patch_class.attributes.must_equal([ :reference,
                                              :after_apply_guidance,
                                              :description,
-                                             :__host_patches,
                                              :name,
                                              :other_config,
                                              :pool_applied,
                                              :size,
                                              :uuid,
-                                             :version ])
+                                             :version,
+                                             :__host_patches ])
   end
 
   it 'should have 3 aliases' do

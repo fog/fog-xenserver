@@ -1,5 +1,3 @@
-require 'fog/core/model'
-
 module Fog
   module Compute
     class XenServer
@@ -19,37 +17,16 @@ module Fog
           attribute :mtu,                 :aliases => :MTU
           attribute :name,                :aliases => :name_label
           attribute :other_config
-          attribute :__pifs,              :aliases => :PIFs
           attribute :tags
           attribute :uuid
-          attribute :__vifs,              :aliases => :VIFs
+
+          has_many :pifs,  :pifs,         :aliases => :PIFs
+          has_many :vifs,  :vifs,         :aliases => :VIFs
 
           def refresh
             data = service.get_record( reference, 'network' )
             merge_attributes( data )
             true
-          end
-
-          #
-          # Return the list of network related PIFs
-          #
-          def pifs
-            p = []
-            __pifs.each do |pif|
-              p << service.pifs.get(pif)
-            end
-            p
-          end
-
-          #
-          # Return the list of network related VIFs
-          #
-          def vifs
-            v = []
-            __vifs.each do |vif|
-              v << service.vifs.get(vif)
-            end
-            v
           end
 
           # Creates a new network

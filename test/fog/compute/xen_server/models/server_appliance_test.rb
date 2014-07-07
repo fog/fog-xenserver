@@ -24,9 +24,10 @@ describe Fog::Compute::XenServer::Models::ServerAppliance do
                                                    :__vms ])
   end
 
-  it 'should have 3 aliases' do
+  it 'should have 4 aliases' do
     server_appliance_class.aliases.must_equal({ :name_description => :description,
-                                                :name_label => :name, 
-                                                :VMs => :__vms })
+                                                :name_label => :name,
+                                                :VMs => :__vms,
+                                                :vms => :__vms })
   end
 end

@@ -18,14 +18,15 @@ describe Fog::Compute::XenServer::Models::Pbd do
     pbd_class.attributes.must_equal([ :reference,
                                       :currently_attached,
                                       :device_config,
-                                      :__host,
                                       :other_config,
-                                      :__sr,
-                                      :uuid ])
+                                      :uuid,
+                                      :__host,
+                                      :__sr ])
   end
 
-  it 'should have 2 aliases' do
+  it 'should have 3 aliases' do
     pbd_class.aliases.must_equal({ :host => :__host,
-                                   :SR => :__sr })
+                                   :SR => :__sr,
+                                   :sr => :__sr })
   end
 end

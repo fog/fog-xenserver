@@ -13,21 +13,15 @@ module Fog
           attribute :actions_after_crash
           attribute :actions_after_reboot
           attribute :actions_after_shutdown
-          attribute :__attached_pcis,             :aliases => :attached_PCIs
-          attribute :__affinity,                  :aliases => :affinity
           attribute :allowed_operations
           attribute :blobs
           attribute :blocked_operations
           attribute :bios_strings
-          attribute :__children,                  :aliases => :children
-          attribute :__consoles,                  :aliases => :consoles
-          attribute :__crash_dumps,               :aliases => :crash_dumps
           attribute :current_operations
           attribute :domarch
           attribute :domid
           attribute :description,                 :aliases => :name_description
           attribute :generation_id
-          attribute :__guest_metrics,             :aliases => :guest_metrics
           attribute :ha_always_run
           attribute :ha_restart_priority
           attribute :hvm_boot_params,             :aliases => :HVM_boot_params
@@ -45,15 +39,12 @@ module Fog
           attribute :memory_static_max
           attribute :memory_static_min
           attribute :memory_target
-          attribute :__metrics,                   :aliases => :metrics
           attribute :name,                        :aliases => :name_label
           attribute :order
           attribute :other_config
-          attribute :__parent,                    :aliases => :parent
           attribute :pci_bus,                     :aliases => :PCI_bus
           attribute :platform
           attribute :power_state
-          attribute :protection_policy
           attribute :pv_args,                     :aliases => :PV_args
           attribute :pv_bootloader,               :aliases => :PV_bootloader
           attribute :pv_bootloader_args,          :aliases => :PV_bootloader_args
@@ -61,42 +52,41 @@ module Fog
           attribute :pv_legacy_args,              :aliases => :PV_legacy_args
           attribute :pv_ramdisk,                  :aliases => :PV_ramdisk
           attribute :recommendations
-          attribute :__resident_on,               :aliases => :resident_on
           attribute :shutdown_delay
-          attribute :snapshots
           attribute :snapshot_info
           attribute :snapshot_metadata
-          attribute :__snapshot_of,               :aliases => :snapshot_of
           attribute :snapshot_time
           attribute :start_delay
-          attribute :__suspend_sr,                :aliases => :suspend_sr
-          attribute :__suspend_vdi,               :aliases => :suspend_VDI
           attribute :tags
           attribute :template_name
           attribute :transportable_snapshot_id
           attribute :user_version
           attribute :uuid
-          attribute :__vbds,                      :aliases => :VBDs
           attribute :vcpus_at_startup,            :aliases => :VCPUs_at_startup
           attribute :vcpus_max,                   :aliases => :VCPUs_max
           attribute :vcpus_params,                :aliases => :VCPUs_params
           attribute :version
-          attribute :__vifs,                      :aliases => :VIFs
-          attribute :__vgpus,                     :aliases => :VGPUs
-          attribute :__vtpms,                     :aliases => :VTPMs
           attribute :xenstore_data
 
-          def vbds
-            __vbds.collect {|vbd| service.vbds.get vbd }
-          end
-
-          def affinity
-            service.hosts.get __affinity
-          end
-
-          def consoles
-            __consoles.collect {|console| service.consoles.get console }
-          end
+          has_one   :affinity,          :hosts
+          has_one   :appliance,         :server_appliances
+          has_many  :attached_pcis,     :pcis,                    :aliases => :attached_PCIs
+          has_many  :children,          :servers
+          has_many  :consoles,          :consoles
+          has_many  :crash_dumps,       :crash_dumps
+          has_one   :guest_metrics,     :guests_metrics
+          has_one   :metrics,           :servers_metrics
+          has_one   :parent,            :servers
+          has_one   :protection_policy, :vmpps
+          has_one   :resident_on,       :hosts
+          has_many  :snapshots,         :servers
+          has_one   :snapshot_of,       :servers
+          has_one   :suspend_sr,        :storage_repositories,    :aliases => :suspend_SR
+          has_one   :suspend_vdi,       :vdis,                    :aliases => :suspend_VDI
+          has_many  :vbds,              :vbds,                    :aliases => :VBDs
+          has_many  :vgpus,             :vgpus,                   :aliases => :VGPUs
+          has_many  :vifs,              :vifs,                    :aliases => :VIFs
+          has_many  :vtpms,             :vtpms,                   :aliases => :VTPMs
 
           def destroy
             # Make sure it's halted
@@ -125,28 +115,6 @@ module Fog
             data = service.get_record( reference, 'VM' )
             merge_attributes( data )
             true
-          end
-
-          def vifs
-            __vifs.collect { |vif| service.vifs.get vif }
-          end
-
-          # associations
-          def networks
-            vifs.collect { |v| v.network }
-          end
-
-          def resident_on
-            service.hosts.get __resident_on
-          end
-
-          #
-          # This is not always present in XenServer VMs
-          # Guest needs XenTools installed to report this AFAIK
-          def guest_metrics
-            return nil unless __guest_metrics
-            rec = service.get_record( __guest_metrics, 'VM_guest_metrics' )
-            Fog::Compute::XenServer::GuestMetrics.new(rec)
           end
 
           def tools_installed?

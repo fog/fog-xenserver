@@ -16,11 +16,11 @@ describe Fog::Compute::XenServer::Models::HostCrashDump do
 
   it 'should have 6 attributes' do
     host_crash_dump_class.attributes.must_equal([ :reference,
-                                                  :__host,
                                                   :other_config,
                                                   :size,
                                                   :timestamp,
-                                                  :uuid ])
+                                                  :uuid,
+                                                  :__host ])
   end
 
   it 'should have 1 alias' do

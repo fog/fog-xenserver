@@ -1,5 +1,3 @@
-require 'fog/core/model'
-
 module Fog
   module Compute
     class XenServer
@@ -13,7 +11,6 @@ module Fog
           attribute :family
           attribute :features
           attribute :flags
-          attribute :__host,          :aliases => :host
           attribute :model
           attribute :model_name,      :aliases => :modelname
           attribute :number
@@ -24,9 +21,7 @@ module Fog
           attribute :uuid
           attribute :vendor
 
-          def host
-            service.hosts.get __host
-          end
+          has_one   :host,       :hosts
         end
       end
     end

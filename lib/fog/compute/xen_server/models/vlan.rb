@@ -1,5 +1,3 @@
-require 'fog/core/model'
-
 module Fog
   module Compute
     class XenServer
@@ -12,25 +10,10 @@ module Fog
 
           attribute :other_config
           attribute :tag,                :type => :integer
-          attribute :__tagged_pif,       :aliases => :tagged_PIF
-          attribute :__untagged_pif,     :aliases => :untagged_PIF
           attribute :uuid
 
-          # @return [Fog::Compute::XenServer::PIF] interface on which traffic is tagged
-          #
-          # @see http://docs.vmd.citrix.com/XenServer/6.1.0/1.0/en_gb/api/?c=VLAN
-          #
-          def untagged_pif
-            service.pifs.get __untagged_pif
-          end
-
-          # @return [Fog::Compute::XenServer::PIF] interface on which traffic is untagged
-          #
-          # @see http://docs.vmd.citrix.com/XenServer/6.1.0/1.0/en_gb/api/?c=VLAN
-          #
-          def tagged_pif
-            service.pifs.get __tagged_pif
-          end
+          has_one   :tagged_pif,   :pifs,   :aliases => :tagged_PIF
+          has_one   :untagged_pif, :pifs,   :aliases => :untagged_PIF
 
           # Creates a new VLAN.
           #

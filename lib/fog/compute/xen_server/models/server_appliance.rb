@@ -1,5 +1,3 @@
-require 'fog/core/model'
-
 module Fog
   module Compute
     class XenServer
@@ -15,7 +13,8 @@ module Fog
           attribute :description,             :aliases => :name_description
           attribute :name,                    :aliases => :name_label
           attribute :uuid
-          attribute :__vms,                   :aliases => :VMs
+
+          has_many  :vms,   :servers,         :aliases => :VMs
         end
       end
     end

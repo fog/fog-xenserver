@@ -18,8 +18,8 @@ describe Fog::Compute::XenServer::Models::Role do
     role_class.attributes.must_equal([ :reference,
                                        :description,
                                        :name,
-                                       :__subroles,
-                                       :uuid ])
+                                       :uuid,
+                                       :__subroles ])
   end
 
   it 'should have 3 aliases' do

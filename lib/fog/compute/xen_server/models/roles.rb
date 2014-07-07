@@ -12,7 +12,7 @@ module Fog
             load(data)
           end
 
-          def get( role_ref )
+          def get(role_ref)
             if role_ref && role = service.get_record( role_ref, 'role' )
               new(role)
             else

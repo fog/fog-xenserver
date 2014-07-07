@@ -1,5 +1,3 @@
-require 'fog/core/model'
-
 module Fog
   module Compute
     class XenServer
@@ -12,22 +10,13 @@ module Fog
 
           attribute :currently_attached
           attribute :device_config
-          attribute :__host,             :aliases => :host
           attribute :other_config
-          attribute :__sr,               :aliases => :SR
           attribute :uuid
 
-          def sr
-            service.storage_repositories.get __sr
-          end
+          has_one :host,  :hosts
+          has_one :sr,    :storage_repositories,    :aliases => :SR
 
-          def storage_repository
-            sr
-          end
-
-          def host
-            service.hosts.get __host
-          end
+          alias_method :storage_repository, :sr
 
           def unplug
             service.unplug_pbd reference
