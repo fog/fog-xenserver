@@ -12,7 +12,7 @@ module Fog
             load(data)
           end
 
-          def get( ref )
+          def get(ref)
             if ref && obj = service.get_record( ref, 'network' )
               new(obj)
             end

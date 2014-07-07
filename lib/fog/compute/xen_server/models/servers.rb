@@ -41,18 +41,18 @@ module Fog
             load(data)
           end
 
-          def get_by_name( name )
-            ref = service.get_vm_by_name( name )
+          def get_by_name(name)
+            ref = service.get_vm_by_name(name)
             get ref
           end
 
-          def get_by_uuid( uuid )
-            ref = service.get_vm_by_uuid( uuid )
+          def get_by_uuid(uuid)
+            ref = service.get_vm_by_uuid(uuid)
             get ref
           end
 
-          def get( vm_ref )
-            if vm_ref && vm = service.get_record( vm_ref, 'VM' )
+          def get(vm_ref)
+            if vm_ref && vm = service.get_record(vm_ref, 'VM')
               new(vm)
             end
           rescue Fog::XenServer::NotFound

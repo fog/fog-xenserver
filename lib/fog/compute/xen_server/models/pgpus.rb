@@ -7,12 +7,12 @@ module Fog
         class Pgpus < Fog::Collection
           model Fog::Compute::XenServer::Models::Pgpu
 
-          def all(options={})
+          def all(options = {})
             data = service.get_records 'PGPU'
             load(data)
           end
 
-          def get( pgpu_ref )
+          def get(pgpu_ref)
             if pgpu_ref && pgpu = service.get_record( pgpu_ref, 'PGPU' )
               new(pgpu)
             else

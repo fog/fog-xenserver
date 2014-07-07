@@ -12,8 +12,8 @@ module Fog
             load(data)
           end
 
-          def get( vdi_ref )
-            if vdi_ref && vdi = service.get_record( vdi_ref, 'VDI' )
+          def get(vdi_ref)
+            if vdi_ref && vdi = service.get_record(vdi_ref, 'VDI')
               new(vdi)
             end
           rescue Fog::XenServer::NotFound

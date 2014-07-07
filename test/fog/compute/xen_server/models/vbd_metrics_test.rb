@@ -1,21 +1,21 @@
 require 'minitest_helper'
 
-describe Fog::Compute::XenServer::Models::VifMetrics do
-  let(:vif_metrics_class) do
-    class Fog::Compute::XenServer::Models::VifMetrics
+describe Fog::Compute::XenServer::Models::VbdMetrics do
+  let(:vbd_metrics_class) do
+    class Fog::Compute::XenServer::Models::VbdMetrics
       def self.read_identity
         instance_variable_get('@identity')
       end
     end
-    Fog::Compute::XenServer::Models::VifMetrics
+    Fog::Compute::XenServer::Models::VbdMetrics
   end
 
   it 'should return the unique id' do
-    vif_metrics_class.read_identity.must_equal(:reference)
+    vbd_metrics_class.read_identity.must_equal(:reference)
   end
 
   it 'should have 6 attributes' do
-    vif_metrics_class.attributes.must_equal([ :reference,
+    vbd_metrics_class.attributes.must_equal([ :reference,
                                               :io_read_kbs,
                                               :io_write_kbs,
                                               :last_updated,
@@ -24,6 +24,6 @@ describe Fog::Compute::XenServer::Models::VifMetrics do
   end
 
   it "should't have aliases" do
-    vif_metrics_class.aliases.must_equal({})
+    vbd_metrics_class.aliases.must_equal({})
   end
 end

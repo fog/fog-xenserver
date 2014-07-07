@@ -16,8 +16,8 @@ module Fog
             load(data)
           end
 
-          def get( vbd_ref )
-            if vbd_ref && vbd = service.get_record( vbd_ref, 'VBD' )
+          def get(vbd_ref)
+            if vbd_ref && vbd = service.get_record(vbd_ref, 'VBD')
               new(vbd)
             end
           rescue Fog::XenServer::NotFound

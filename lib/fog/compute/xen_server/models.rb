@@ -47,6 +47,8 @@ module Fog
         autoload :Server, 'fog/compute/xen_server/models/server'
         autoload :ServerAppliance, 'fog/compute/xen_server/models/server_appliance'
         autoload :ServerAppliances, 'fog/compute/xen_server/models/server_appliances'
+        autoload :ServerMetrics, 'fog/compute/xen_server/models/server_metrics'
+        autoload :ServersMetrics, 'fog/compute/xen_server/models/servers_metrics'
         autoload :Servers, 'fog/compute/xen_server/models/servers'
         autoload :StorageManager, 'fog/compute/xen_server/models/storage_manager'
         autoload :StorageManagers, 'fog/compute/xen_server/models/storage_managers'

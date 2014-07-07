@@ -7,12 +7,12 @@ module Fog
         class Consoles < Fog::Collection
           model Fog::Compute::XenServer::Models::Console
 
-          def all(options={})
+          def all(options = {})
             data = service.get_records 'console'
             load(data)
           end
 
-          def get( console_ref )
+          def get(console_ref)
             if console_ref && console = service.get_record( console_ref, 'console' )
               new(console)
             else

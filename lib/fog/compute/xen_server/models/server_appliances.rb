@@ -7,12 +7,12 @@ module Fog
         class ServerAppliances < Fog::Collection
           model Fog::Compute::XenServer::Models::ServerAppliance
 
-          def all(options={})
+          def all(options = {})
             data = service.get_records 'VM_appliance'
             load(data)
           end
 
-          def get( server_appliance_ref )
+          def get(server_appliance_ref)
             if server_appliance_ref && server_appliance = service.get_record( server_appliance_ref, 'VM_appliance' )
               new(server_appliance)
             else

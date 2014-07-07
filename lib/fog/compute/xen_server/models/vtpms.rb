@@ -7,13 +7,13 @@ module Fog
         class Vtpms < Fog::Collection
           model Fog::Compute::XenServer::Models::Vtpm
 
-          def all(options={})
+          def all(options = {})
             data = service.get_records 'VTPM'
             load(data)
           end
 
-          def get( vtpm_ref )
-            if vtpm_ref && vtpm = service.get_record( vtpm_ref, 'VTPM' )
+          def get(vtpm_ref)
+            if vtpm_ref && vtpm = service.get_record(vtpm_ref, 'VTPM')
               new(vtpm)
             else
               nil
