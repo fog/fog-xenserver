@@ -6,6 +6,8 @@ module Fog
           # API Reference here:
           # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=host
 
+          provider_class :host
+
           identity :reference
 
           attribute :address
@@ -111,14 +113,6 @@ module Fog
           def shutdown(auto_disable = true)
             disable if auto_disable
             service.shutdown_host(reference)
-          end
-
-          def set_attribute(name, *val)
-            data = service.set_attribute( 'host', reference, name, *val )
-            # Do not reload automatically for performance reasons
-            # We can set multiple attributes at the same time and
-            # then reload manually
-            #reload
           end
         end
       end

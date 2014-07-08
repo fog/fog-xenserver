@@ -6,6 +6,8 @@ module Fog
           # API Reference here:
           # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=network
 
+          provider_class :network
+
           identity :reference
 
           attribute :allowed_operations
@@ -22,12 +24,6 @@ module Fog
 
           has_many :pifs,  :pifs,         :aliases => :PIFs
           has_many :vifs,  :vifs,         :aliases => :VIFs
-
-          def refresh
-            data = service.get_record( reference, 'network' )
-            merge_attributes( data )
-            true
-          end
 
           # Creates a new network
           #
