@@ -40,15 +40,6 @@ module Fog
           has_one  :suspend_image_sr, :storage_repositories,   :aliases => :suspend_image_SR
 
           alias_method :default_storage_repository, :default_sr
-
-          def default_sr=(sr)
-            service.set_attribute( 'pool', reference, 'default_SR', sr.reference )
-          end
-          alias :default_storage_repository= :default_sr=
-
-          def suspend_image_sr=(sr)
-            service.set_attribute( 'pool', reference, 'suspend_image_SR', sr.reference )
-          end
         end
       end
     end
