@@ -6,6 +6,8 @@ module Fog
           # API Reference here:
           # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=VM_appliance
 
+          provider_class :VM_appliance
+
           identity :reference
 
           attribute :allowed_operations

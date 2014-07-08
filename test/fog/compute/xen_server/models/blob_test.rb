@@ -6,11 +6,19 @@ describe Fog::Compute::XenServer::Models::Blob do
       def self.read_identity
         instance_variable_get('@identity')
       end
+
+      def self.read_provider_class
+        instance_variable_get('@provider_class')
+      end
     end
     Fog::Compute::XenServer::Models::Blob
   end
 
-  it 'should return the unique id' do
+  it 'should associate to a provider class' do
+    blob_class.read_provider_class.must_equal('blob')
+  end
+
+  it 'should have an unique id' do
     blob_class.read_identity.must_equal(:reference)
   end
 

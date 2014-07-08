@@ -8,6 +8,8 @@ module Fog
           # API Reference here:
           # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=VM
 
+          provider_class :VM
+
           identity :reference
 
           attribute :actions_after_crash
@@ -100,20 +102,6 @@ module Fog
               end
             end
             service.destroy_server( reference )
-            true
-          end
-
-          def set_attribute(name, *val)
-            data = service.set_attribute( 'VM', reference, name, *val )
-            # Do not reload automatically for performance reasons
-            # We can set multiple attributes at the same time and
-            # then reload manually
-            #reload
-          end
-
-          def refresh
-            data = service.get_record( reference, 'VM' )
-            merge_attributes( data )
             true
           end
 

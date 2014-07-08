@@ -6,6 +6,8 @@ module Fog
           # API Reference here:
           # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=pool
 
+          provider_class :pool
+
           identity :reference
 
           attribute :blobs
@@ -46,14 +48,6 @@ module Fog
 
           def suspend_image_sr=(sr)
             service.set_attribute( 'pool', reference, 'suspend_image_SR', sr.reference )
-          end
-
-          def set_attribute(name, *val)
-            data = service.set_attribute( 'pool', reference, name, *val )
-            # Do not reload automatically for performance reasons
-            # We can set multiple attributes at the same time and
-            # then reload manually
-            #reload
           end
         end
       end

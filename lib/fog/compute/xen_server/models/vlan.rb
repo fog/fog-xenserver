@@ -6,6 +6,8 @@ module Fog
           # API Reference here:
           # @see http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=VLAN
 
+          provider_class :VLAN
+
           identity :reference
 
           attribute :other_config

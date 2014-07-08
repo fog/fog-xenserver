@@ -6,6 +6,8 @@ module Fog
           # API Reference here:
           # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=SR
 
+          provider_class :SR
+
           identity :reference
 
           attribute :allowed_operations
@@ -67,14 +69,6 @@ module Fog
             )
             merge_attributes attr
             true
-          end
-
-          def set_attribute(name, *val)
-            data = service.set_attribute( 'SR', reference, name, *val )
-            # Do not reload automatically for performance reasons
-            # We can set multiple attributes at the same time and
-            # then reload manually
-            #reload
           end
         end
       end

@@ -6,6 +6,8 @@ module Fog
           # API Reference here:
           # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=GPU_group
 
+          provider_class :GPU_group
+
           identity :reference
 
           attribute :description,         :aliases => :name_description

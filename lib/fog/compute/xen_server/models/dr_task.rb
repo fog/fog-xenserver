@@ -6,6 +6,8 @@ module Fog
           # API Reference here:
           # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=DR_task
 
+          provider_class :DR_task
+
           identity :reference
 
           attribute :uuid

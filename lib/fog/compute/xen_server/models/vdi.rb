@@ -6,6 +6,8 @@ module Fog
           # API Reference here:
           # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=VDI
 
+          provider_class :VDI
+
           identity :reference
 
           attribute :allowed_operations
@@ -55,10 +57,6 @@ module Fog
             self.sharable ||= false unless attributes[:sharable]
             self.other_config ||= {} unless attributes[:other_config]
             super
-          end
-
-          def set_attribute(name, *val)
-            data = service.set_attribute( 'VDI', reference, name, *val )
           end
 
           def save

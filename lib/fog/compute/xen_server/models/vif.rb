@@ -6,6 +6,8 @@ module Fog
           # API Reference here:
           # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=VIF
 
+          provider_class :VIF
+
           identity :reference
 
           attribute :allowed_operations

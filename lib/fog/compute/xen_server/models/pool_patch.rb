@@ -6,6 +6,8 @@ module Fog
           # API Reference here:
           # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=pool_patch
 
+          provider_class :pool_patch
+
           identity :reference
 
           attribute :after_apply_guidance
