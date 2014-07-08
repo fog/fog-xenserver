@@ -41,5 +41,7 @@ module Fog
       merge_attributes(data)
       true
     end
+
+    alias_method :reload, :refresh
   end
 end
