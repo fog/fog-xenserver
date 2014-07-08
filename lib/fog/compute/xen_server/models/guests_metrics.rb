@@ -4,7 +4,7 @@ module Fog
   module Compute
     class XenServer
       module Models
-        class GuestMetrics < Fog::Collection
+        class GuestsMetrics < Fog::Collection
           model Fog::Compute::XenServer::Models::GuestMetrics
 
           def all(options = {})

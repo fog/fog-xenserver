@@ -3,7 +3,7 @@ require 'fog/core/collection'
 module Fog
   module Compute
     class XenServer
-      module Model
+      module Models
         class ServersMetrics < Fog::Collection
           model Fog::Compute::XenServer::Models::ServerMetrics
 
@@ -12,7 +12,7 @@ module Fog
             load(data)
           end
 
-          def get(vm_metrics)
+          def get(vm_metrics_ref)
             if vm_metrics_ref && vm_metrics = service.get_record( vm_metrics_ref, 'VM_metrics' )
               new(vm_metrics)
             else
