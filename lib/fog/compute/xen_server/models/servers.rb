@@ -50,14 +50,6 @@ module Fog
             ref = service.get_vm_by_uuid(uuid)
             get ref
           end
-
-          def get(vm_ref)
-            if vm_ref && vm = service.get_record(vm_ref, 'VM')
-              new(vm)
-            end
-          rescue Fog::XenServer::NotFound
-            nil
-          end
         end
       end
     end
