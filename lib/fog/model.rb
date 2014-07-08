@@ -2,12 +2,13 @@ require 'fog/core/model'
 
 module Fog
   class Model
-    def self.provider_class(provider_class)
+    def self.provider_class(provider_class = nil)
+      return @provider_class if provider_class.nil?
       @provider_class = provider_class.to_s
     end
 
     def provider_class
-      self.class.instance_variable_get('@provider_class')
+      self.class.provider_class
     end
 
     def self.has_one(association, collection_name, options = {})
