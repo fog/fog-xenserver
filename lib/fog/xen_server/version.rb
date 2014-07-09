@@ -1,5 +1,5 @@
 module Fog
   module XenServer
-    VERSION = "0.0.1.alpha2"
+    VERSION = "0.0.1.beta1"
   end
 end
