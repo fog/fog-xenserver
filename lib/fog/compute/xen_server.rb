@@ -86,13 +86,16 @@ module Fog
       collection :consoles
 
       request_path 'fog/compute/xen_server/requests'
+      request :builtin_templates
       request :create_server
       request :create_vif
       request :create_vdi
       request :create_vbd
+      request :custom_templates
       request :destroy_vif
       request :clone_server
       request :destroy_server
+      request :templates
       request :unplug_vbd
       request :eject_vbd
       request :insert_vbd

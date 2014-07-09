@@ -8,27 +8,18 @@ module Fog
           model Fog::Compute::XenServer::Models::Server
 
           def templates
-            data = service.get_records 'VM'
-            data.delete_if do |vm|
-              !vm[:is_a_template]
-            end
-            load(data)
+            warn 'This method is DEPRECATED. Call #templates directly on the connection instead.'
+            service.templates
           end
 
           def custom_templates
-            data = service.get_records 'VM'
-            data.delete_if do |vm|
-              !vm[:is_a_template] or !vm[:other_config]['default_template'].nil?
-            end
-            load(data)
+            warn 'This method is DEPRECATED. Call #custom_templates directly on the connection instead.'
+            service.custom_templates
           end
 
           def builtin_templates
-            data = service.get_records 'VM'
-            data.delete_if do |vm|
-              !vm[:is_a_template] or vm[:other_config]['default_template'].nil?
-            end
-            load(data)
+            warn 'This method is DEPRECATED. Call #builtin_templates directly on the connection instead.'
+            service.builtin_templates
           end
 
           def all(options = {})
@@ -39,16 +30,6 @@ module Fog
             data.delete_if { |vm| options[:name_matches] and (vm[:name_label] !~ /#{Regexp.escape(options[:name_matches])}/i ) }
             data.delete_if { |vm| options[:name_equals] and (vm[:name_label] != options[:name_equals] ) }
             load(data)
-          end
-
-          def get_by_name(name)
-            ref = service.get_vm_by_name(name)
-            get ref
-          end
-
-          def get_by_uuid(uuid)
-            ref = service.get_vm_by_uuid(uuid)
-            get ref
           end
         end
       end
