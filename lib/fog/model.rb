@@ -37,14 +37,6 @@ module Fog
       service.set_attribute(provider_class, reference, name, *val)
     end
 
-    def refresh
-      data = service.get_record(identity, provider_class)
-      merge_attributes(data)
-      true
-    end
-
-    alias_method :reload, :refresh
-
     def method_missing(method_name, *args)
       service.send("#{method_name}_#{provider_class.downcase}", identity, *args)
     end
