@@ -42,22 +42,6 @@ module Fog
             merge_attributes data
             true
           end
-
-          # Destroys a network
-          #
-          #     service = Fog::Compute[:xenserver]
-          #
-          #     # find network 'foonet' and destroy it
-          #     net = service.networks.find { |net| net.name == 'foonet' }
-          #     net.destroy
-          #
-          # @return [Boolean]
-          #
-          def destroy
-            requires :reference
-            service.destroy_network reference
-            true
-          end
         end
       end
     end

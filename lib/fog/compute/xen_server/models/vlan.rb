@@ -45,19 +45,6 @@ module Fog
             merge_attributes data
             true
           end
-
-          # Destroys a VLAN.
-          #
-          #     service = Fog::Compute[:xenserver]
-          #
-          #     # Find VLAN 123 and destroy it
-          #     (service.vlans.find { |v| v.tag == 123 }).destroy
-          #
-          def destroy
-            requires :reference
-            service.destroy_vlan reference
-            true
-          end
         end
       end
     end

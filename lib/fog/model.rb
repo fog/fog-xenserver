@@ -37,8 +37,14 @@ module Fog
       service.set_attribute(provider_class, reference, name, *val)
     end
 
+    def destroy
+      requires :reference
+      service.send("destroy_#{provider_class.downcase}", reference, *args)
+      true
+    end
+
     def method_missing(method_name, *args)
-      service.send("#{method_name}_#{provider_class.downcase}", identity, *args)
+      service.send("#{method_name}_#{provider_class.downcase}", reference, *args)
     end
 
     def respond_to_missing?(method_name, include_private = false)
