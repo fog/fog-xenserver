@@ -31,11 +31,6 @@ module Fog
           has_many  :pbds,  :pbds,         :aliases => :PBDs
           has_many  :vdis,  :vdis,         :aliases => :VDIs
 
-          def scan
-            service.scan_sr reference
-            reload
-          end
-
           def save
             requires :name
             requires :type

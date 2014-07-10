@@ -44,7 +44,9 @@ module Fog
     end
 
     def method_missing(method_name, *args)
-      service.send("#{method_name}_#{provider_class.downcase}", reference, *args)
+      result = service.send("#{method_name}_#{provider_class.downcase}", reference, *args)
+      reload
+      result
     end
 
     def respond_to_missing?(method_name, include_private = false)
