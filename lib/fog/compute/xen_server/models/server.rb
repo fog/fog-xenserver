@@ -99,7 +99,7 @@ module Fog
           end
 
           def mac_address
-            networks.first.MAC
+            vifs.first.mac
           end
 
           def running?
