@@ -44,5 +44,14 @@ module Fog
     end
 
     alias_method :reload, :refresh
+
+    def method_missing(method_name, *args)
+      service.send("#{method_name}_#{provider_class.downcase}", identity, *args)
+    end
+
+    def respond_to_missing?(method_name, include_private = false)
+      return true if service.respond_to?("#{method_name}_#{provider_class.downcase}")
+      super
+    end
   end
 end

@@ -2,8 +2,8 @@ module Fog
   module Compute
     class XenServer
       class Real
-        def start_server( vm_ref )
-          start_vm( vm_ref )
+        def start_server(ref)
+          start_vm(ref)
         end
       end
 

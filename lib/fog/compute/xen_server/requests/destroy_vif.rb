@@ -2,7 +2,7 @@ module Fog
   module Compute
     class XenServer
       class Real
-        def destroy_vif( ref, extra_args = {})
+        def destroy_vif(ref, extra_args = {})
           @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => 'VIF.destroy'}, ref)
         end
       end
