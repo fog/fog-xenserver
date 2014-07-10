@@ -4,24 +4,23 @@ StringLiterals:
 Style/InlineComment:
   Enabled: true
 
-Style/MethodCalledOnDoEndBlock:
+MethodCalledOnDoEndBlock:
   Enabled: true
 
-Style/HashSyntax:
-  EnforcedStyle: hash_rockets
-
-Style/LineLength:
-  Max: 120
-  AllowURI: true
-
-Style/SingleSpaceBeforeFirstArg:
+HashSyntax:
   Enabled: false
 
-Style/SymbolArray:
+LineLength:
+  Enabled: false
+
+SingleSpaceBeforeFirstArg:
+  Enabled: false
+
+SymbolArray:
   Enabled: true
 
-Style/TrailingBlankLines:
+TrailingBlankLines:
   Enabled: false
 
-Style/TrailingWhitespace:
+TrailingWhitespace:
   Enabled: false
