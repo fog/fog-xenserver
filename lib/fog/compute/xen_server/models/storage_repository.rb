@@ -36,10 +36,6 @@ module Fog
             reload
           end
 
-          def destroy
-            service.destroy_sr reference
-          end
-
           def save
             requires :name
             requires :type

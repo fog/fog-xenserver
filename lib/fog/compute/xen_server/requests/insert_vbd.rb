@@ -3,6 +3,7 @@ module Fog
     class XenServer
       class Real
         def insert_vbd(ref, vdi_ref, extra_args = {})
+          vdi_ref = vdi_ref.reference if vdi.respond_to?(:reference)
           @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => 'VBD.insert'}, ref, vdi_ref)
         end
       end

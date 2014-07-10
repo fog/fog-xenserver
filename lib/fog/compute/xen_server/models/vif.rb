@@ -35,10 +35,6 @@ module Fog
 
           alias_method :server, :vm
 
-          def destroy
-            service.destroy_vif reference
-          end
-
           def save
             requires :server
             raise ArgumentError.new('network is required for this operation') \

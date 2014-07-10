@@ -64,10 +64,6 @@ module Fog
             ref = service.create_vdi attributes
             merge_attributes service.vdis.get(ref).attributes
           end
-
-          def destroy
-            service.destroy_vdi reference
-          end
         end
       end
     end

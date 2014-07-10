@@ -90,21 +90,6 @@ module Fog
           has_many  :vifs,              :vifs,                    :aliases => :VIFs
           has_many  :vtpms,             :vtpms,                   :aliases => :VTPMs
 
-          def destroy
-            # Make sure it's halted
-            stop('hard')
-            vbds.each do |vbd|
-              if vbd.type == "Disk"
-                vbd.unplug \
-                if vbd.allowed_operations.include?("unplug")
-                vbd.vdi.destroy \
-                if vbd.vdi.allowed_operations.include?("destroy")
-              end
-            end
-            service.destroy_server( reference )
-            true
-          end
-
           def tools_installed?
             !guest_metrics.nil?
           end
@@ -125,13 +110,6 @@ module Fog
           def halted?
             reload
             power_state == "Halted"
-          end
-
-          # operations
-          def start
-            return false if running?
-            service.start_server( reference )
-            true
           end
 
           def save(params = {})
@@ -157,44 +135,9 @@ module Fog
             true
           end
 
-          def reboot(stype = 'clean')
-            service.reboot_server(reference, stype)
-            true
-          end
-
-          def hard_reboot
-            reboot 'hard'
-          end
-
-          def clean_reboot
-            reboot 'clean'
-          end
-
-          def stop(stype = 'clean')
-            return false if !running?
-            service.shutdown_server( reference, stype )
-            wait_for { power_state == 'Halted' }
-            true
-          end
-
-          def hard_shutdown
-            stop 'hard'
-          end
-
-          def clean_shutdown
-            stop 'clean'
-          end
-
-          def provision
-            service.provision_server reference
-          end
-
-          def snapshot(name)
-            service.snapshot_server(reference, name)
-          end
-
           def revert(snapshot_ref)
-            service.snapshot_revert(snapshot_ref)
+            warn 'This method is DEPRECATED. Use #snapshot_revert instead.'
+            snapshot_revert(snapshot_ref)
           end
         end
       end

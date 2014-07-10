@@ -41,22 +41,6 @@ module Fog
             ref = service.create_vbd attributes[:server], attributes[:vdi], attributes
             merge_attributes service.vbds.get(ref).attributes
           end
-
-          def unplug
-            service.unplug_vbd reference
-          end
-
-          def unplug_force
-            service.unplug_force_vbd reference
-          end
-
-          def eject
-            service.eject_vbd reference
-          end
-
-          def insert(vdi)
-            service.insert_vbd reference, vdi.reference
-          end
         end
       end
     end

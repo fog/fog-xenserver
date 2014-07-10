@@ -61,59 +61,6 @@ module Fog
           has_many :resident_vms,  :servers,              :aliases => :resident_VMs
 
           alias_method :resident_servers, :resident_vms
-
-          #
-          # Reboot the host disabling it first unless auto_disable is
-          # set to false
-          #
-          # This function can only be called if there are no currently running
-          # VMs on the host and it is disabled. If there are running VMs, it will
-          # raise an exception.
-          #
-          # @param [Boolean] auto_disable disable the host first
-          #
-          # @see http://docs.vmd.citrix.com/XenServer/6.0.0/1.0/en_gb/api/?c=host
-          #
-          def reboot(auto_disable = true)
-            disable if auto_disable
-            service.reboot_host(reference)
-          end
-
-          #
-          # Puts the host into a state in which no new VMs can be started.
-          # Currently active VMs on the host continue to execute.
-          #
-          # @see http://docs.vmd.citrix.com/XenServer/6.0.0/1.0/en_gb/api/?c=host
-          #
-          def disable
-            service.disable_host(reference)
-          end
-
-          #
-          # Puts the host into a state in which new VMs can be started.
-          #
-          # @see http://docs.vmd.citrix.com/XenServer/6.0.0/1.0/en_gb/api/?c=host
-          #
-          def enable
-            service.enable_host(reference)
-          end
-
-          #
-          # Shutdown the host disabling it first unless auto_disable is
-          # set to false.
-          #
-          # This function can only be called if there are no currently running
-          # VMs on the host and it is disabled. If there are running VMs, it will
-          # raise an exception.
-          #
-          # @param [Boolean] auto_disable disable the host first
-          #
-          # @see http://docs.vmd.citrix.com/XenServer/6.0.0/1.0/en_gb/api/?c=host
-          #
-          def shutdown(auto_disable = true)
-            disable if auto_disable
-            service.shutdown_host(reference)
-          end
         end
       end
     end

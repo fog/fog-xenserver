@@ -19,10 +19,6 @@ module Fog
           has_one :sr,    :storage_repositories,    :aliases => :SR
 
           alias_method :storage_repository, :sr
-
-          def unplug
-            service.unplug_pbd reference
-          end
         end
       end
     end
