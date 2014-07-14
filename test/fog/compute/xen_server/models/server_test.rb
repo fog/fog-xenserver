@@ -14,6 +14,10 @@ describe Fog::Compute::XenServer::Models::Server do
     Fog::Compute::XenServer::Models::Server
   end
 
+  let(:server) { Fog::Compute::XenServer::Models::Server.new }
+  let(:service) { Object.new }
+  let(:vif) { Fog::Compute::XenServer::Models::Vif.new }
+
   it 'should associate to a provider class' do
     server_class.read_provider_class.must_equal('VM')
   end
@@ -104,25 +108,25 @@ describe Fog::Compute::XenServer::Models::Server do
 
   it 'should have 42 aliases' do
     server_class.aliases.must_equal({ :name_label => :name,
-                                      :name_description => :description, 
+                                      :name_description => :description,
                                       :affinity => :__affinity,
                                       :appliance => :__appliance,
                                       :consoles => :__consoles,
                                       :attached_PCIs => :__attached_pcis,
                                       :attached_pcis => :__attached_pcis,
-                                      :children => :__children, 
-                                      :crash_dumps => :__crash_dumps, 
+                                      :children => :__children,
+                                      :crash_dumps => :__crash_dumps,
                                       :guest_metrics => :__guest_metrics,
-                                      :last_boot_CPU_flags => :last_boot_cpu_flags, 
+                                      :last_boot_CPU_flags => :last_boot_cpu_flags,
                                       :metrics => :__metrics,
-                                      :parent => :__parent, 
-                                      :PV_args => :pv_args, 
-                                      :PV_bootloader => :pv_bootloader, 
-                                      :PV_bootloader_args => :pv_bootloader_args, 
-                                      :PV_kernel => :pv_kernel, 
-                                      :PV_ramdisk => :pv_ramdisk, 
-                                      :PV_legacy_args => :pv_legacy_args, 
-                                      :resident_on => :__resident_on, 
+                                      :parent => :__parent,
+                                      :PV_args => :pv_args,
+                                      :PV_bootloader => :pv_bootloader,
+                                      :PV_bootloader_args => :pv_bootloader_args,
+                                      :PV_kernel => :pv_kernel,
+                                      :PV_ramdisk => :pv_ramdisk,
+                                      :PV_legacy_args => :pv_legacy_args,
+                                      :resident_on => :__resident_on,
                                       :snapshot_of => :__snapshot_of,
                                       :suspend_SR => :__suspend_sr,
                                       :suspend_sr => :__suspend_sr,
@@ -136,14 +140,110 @@ describe Fog::Compute::XenServer::Models::Server do
                                       :VBDs => :__vbds,
                                       :vbds => :__vbds,
                                       :protection_policy => :__protection_policy,
-                                      :VCPUs_at_startup => :vcpus_at_startup, 
-                                      :VCPUs_max => :vcpus_max, 
+                                      :VCPUs_at_startup => :vcpus_at_startup,
+                                      :VCPUs_max => :vcpus_max,
                                       :VCPUs_params => :vcpus_params,
                                       :VIFs => :__vifs,
                                       :vifs => :__vifs,
-                                      :HVM_boot_policy => :hvm_boot_policy, 
-                                      :HVM_boot_params => :hvm_boot_params, 
-                                      :HVM_shadow_multiplier => :hvm_shadow_multiplier, 
+                                      :HVM_boot_policy => :hvm_boot_policy,
+                                      :HVM_boot_params => :hvm_boot_params,
+                                      :HVM_shadow_multiplier => :hvm_shadow_multiplier,
                                       :PCI_bus => :pci_bus })
+  end
+
+  describe '#tools_installed?' do
+    describe 'when guest_metrics is nil' do
+      it 'should return false' do
+        server.stub(:guest_metrics, nil) do
+          server.tools_installed?.must_equal false
+        end
+      end
+    end
+
+    describe 'when guest_metrics is not nil' do
+      it 'should return true' do
+        server.stub(:guest_metrics, Object.new) do
+          server.tools_installed?.must_equal true
+        end
+      end
+    end
+  end
+
+  describe '#home_hypervisor' do
+    before :each do
+      def service.hosts
+        [ 1, 2 ]
+      end
+    end
+
+    it 'should return the first host' do
+      server.stub(:service, service) do
+        server.home_hypervisor.must_equal 1
+      end
+    end
+  end
+
+  describe '#mac_address' do
+    before :each do
+      vif.mac = 'mac'
+    end
+
+    it 'should return the mac address of the first virtual interface' do
+      server.stub(:vifs, [ vif ]) do
+        server.mac_address.must_equal 'mac'
+      end
+    end
+  end
+
+  describe '#running?' do
+    describe 'when it is running' do
+      before :each do
+        server.power_state = 'Running'
+      end
+
+      it 'should return true' do
+        server.stub(:reload, true) do
+          server.running?.must_equal true
+        end
+      end
+    end
+
+    describe 'when it is not running' do
+      before :each do
+        server.power_state = 'Anything'
+      end
+
+      it 'should return false' do
+        server.stub(:reload, true) do
+          server.running?.must_equal false
+        end
+      end
+    end
+  end
+
+  describe '#halted?' do
+    describe 'when it is halted' do
+      before :each do
+        server.power_state = 'Halted'
+      end
+
+      it 'should return true' do
+        server.stub(:reload, true) do
+          server.halted?.must_equal true
+        end
+      end
+    end
+
+    describe 'when it is not halted' do
+      before :each do
+        server.power_state = 'Anything'
+      end
+
+      it 'should return false' do
+        server.stub(:reload, true) do
+          server.halted?.must_equal false
+        end
+      end
+    end
   end
 end
