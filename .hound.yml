@@ -1,9 +1,3 @@
-StringLiterals:
-  EnforcedStyle: single_quotes
-
-Style/InlineComment:
-  Enabled: true
-
 MethodCalledOnDoEndBlock:
   Enabled: true
 
@@ -14,6 +8,9 @@ LineLength:
   Enabled: false
 
 SingleSpaceBeforeFirstArg:
+  Enabled: false
+
+SpaceInsideBrackets:
   Enabled: false
 
 SymbolArray:
