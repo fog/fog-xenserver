@@ -19,10 +19,10 @@ Turn.config do |c|
   c.natural = true
 end
 
+require File.join(File.dirname(__FILE__), '../lib/fog/xenserver.rb')
+
 SimpleCov.start do
   add_filter '/test/'
 end
-
-require File.join(File.dirname(__FILE__), '../lib/fog/xenserver.rb')
 
 Coveralls.wear!
