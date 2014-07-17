@@ -18,22 +18,40 @@ module Fog
       collection :blobs
       model :bond
       collection :bonds
+      model :console
+      collection :consoles
       model :crash_dump
       collection :crash_dumps
       model :dr_task
       collection :dr_tasks
       model :gpu_group
       collection :gpu_groups
+      model :guest_metrics
+      collection :guests_metrics
+      model :host
+      collection :hosts
+      model :host_cpu
+      collection :host_cpus
       model :host_crash_dump
       collection :host_crash_dumps
+      model :host_metrics
+      collection :hosts_metrics
       model :host_patch
       collection :host_patchs
+      model :network
+      collection :networks
+      model :pbd
+      collection :pbds
       model :pci
       collection :pcis
       model :pgpu
       collection :pgpus
+      model :pif
+      collection :pifs
       model :pif_metrics
       collection :pifs_metrics
+      model :pool
+      collection :pools
       model :pool_patch
       collection :pool_patchs
       model :role
@@ -42,48 +60,30 @@ module Fog
       collection :servers
       model :server_appliance
       collection :server_appliances
+      model :server_metrics
+      collection :servers_metrics
       model :storage_manager
       collection :storage_managers
+      model :storage_repository
+      collection :storage_repositories
       model :tunnel
       collection :tunnels
+      model :vbd
+      collection :vbds
+      model :vbd_metrics
+      collection :vbds_metrics
+      model :vdi
+      collection :vdis
+      model :vif
+      collection :vifs
+      model :vif_metrics
+      collection :vifs_metrics
+      model :vlan
+      collection :vlans
       model :vmpp
       collection :vmpps
       model :vtpm
       collection :vtpms
-      model :host
-      collection :hosts
-      collection :vifs
-      model :vif
-      collection :storage_repositories
-      model :storage_repository
-      collection :pools
-      model :pool
-      collection :vbds
-      model :vbd
-      collection :vdis
-      model :vdi
-      collection :networks
-      model :network
-      collection :pifs
-      model :pif
-      collection :pbds
-      model :pbd
-      model :guest_metrics
-      collection :guests_metrics
-      model :server_metrics
-      collection :servers_metrics
-      model :vbd_metrics
-      collection :vbds_metrics
-      model :vif_metrics
-      collection :vifs_metrics
-      model :host_metrics
-      collection :hosts_metrics
-      model :host_cpu
-      collection :host_cpus
-      model :vlan
-      collection :vlans
-      model :console
-      collection :consoles
 
       request_path 'fog/compute/xen_server/requests'
       request :builtin_templates

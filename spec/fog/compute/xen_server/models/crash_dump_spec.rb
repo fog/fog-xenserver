@@ -6,16 +6,12 @@ describe Fog::Compute::XenServer::Models::CrashDump do
       def self.read_identity
         instance_variable_get('@identity')
       end
-
-      def self.read_provider_class
-        instance_variable_get('@provider_class')
-      end
     end
     Fog::Compute::XenServer::Models::CrashDump
   end
 
   it 'should associate to a provider class' do
-    crash_dump_class.read_provider_class.must_equal('crashdump')
+    crash_dump_class.provider_class.must_equal('crashdump')
   end
 
   it 'should have an unique id' do

@@ -1,7 +1,7 @@
 module Fog
   module Compute
     class XenServer
-      module Model
+      module Models
         class Roles < Fog::Collection
           model Fog::Compute::XenServer::Models::Role
         end

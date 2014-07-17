@@ -6,16 +6,12 @@ describe Fog::Compute::XenServer::Models::Vtpm do
       def self.read_identity
         instance_variable_get('@identity')
       end
-
-      def self.read_provider_class
-        instance_variable_get('@provider_class')
-      end
     end
     Fog::Compute::XenServer::Models::Vtpm
   end
 
   it 'should associate to a provider class' do
-    vtpm_class.read_provider_class.must_equal('VTPM')
+    vtpm_class.provider_class.must_equal('VTPM')
   end
 
   it 'should have an unique id' do
