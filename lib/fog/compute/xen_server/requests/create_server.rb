@@ -47,7 +47,7 @@ module Fog
             :actions_after_shutdown =>  'Destroy',
             :actions_after_reboot =>    'Restart',
             :actions_after_crash =>     'Restart',
-            :platform =>                { :'nx' => 'true', :'acpi' => 'true', :'apic' => 'true', :'pae' => 'true', :'viridian' => 'true'},
+            :platform =>                { :'nx' => 'true', :'acpi' => 'true', :'apic' => 'true', :'pae' => 'true', :'viridian' => 'true' },
             :other_config =>            {},
             :pool_name =>               '',
             :PV_bootloader =>           'pygrub', #pvgrub, eliloader
