@@ -13,6 +13,9 @@ SingleSpaceBeforeFirstArg:
 SpaceInsideBrackets:
   Enabled: false
 
+StringLiterals:
+  Enabled: false
+
 SymbolArray:
   Enabled: true
 
