@@ -10,17 +10,12 @@ module Fog
 
           identity :reference
 
-          attribute :last_updated
+          attribute :last_updated,  :type => :time
           attribute :live
           attribute :memory_free
           attribute :memory_total
           attribute :other_config
           attribute :uuid
-
-          def initialize(attributes = {})
-            super
-            self.last_updated = attributes[:last_updated].to_time
-          end
         end
       end
     end

@@ -1,8 +1,6 @@
 require 'minitest/spec'
 require 'minitest/autorun'
-require 'simplecov'
 require 'turn'
-require 'coveralls'
 
 Turn.config do |c|
   # use one of output formats:
@@ -19,10 +17,17 @@ Turn.config do |c|
   c.natural = true
 end
 
-SimpleCov.start do
-  add_filter '/spec/'
+if ENV['COVERAGE']
+  require 'coveralls'
+  require 'simplecov'
+
+  SimpleCov.start do
+    add_filter '/spec/'
+  end
 end
 
 require File.join(File.dirname(__FILE__), '../lib/fog/xenserver.rb')
 
-Coveralls.wear!
+if ENV['COVERAGE']
+  Coveralls.wear!
+end

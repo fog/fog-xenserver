@@ -1,4 +1,5 @@
 require 'minitest_helper'
+require 'xmlrpc/datetime'
 
 describe Fog::Compute::XenServer::Models::VbdMetrics do
   let(:vbd_metrics_class) do
@@ -9,6 +10,7 @@ describe Fog::Compute::XenServer::Models::VbdMetrics do
     end
     Fog::Compute::XenServer::Models::VbdMetrics
   end
+  let(:vbd_metrics) { Fog::Compute::XenServer::Models::VbdMetrics.new }
 
   it 'should associate to a provider class' do
     vbd_metrics_class.provider_class.must_equal('VBD_metrics')
@@ -29,5 +31,15 @@ describe Fog::Compute::XenServer::Models::VbdMetrics do
 
   it "should't have aliases" do
     vbd_metrics_class.aliases.must_equal({})
+  end
+
+  describe '#last_updated' do
+    before :each do
+      vbd_metrics.last_updated = XMLRPC::DateTime.new(2000, 7, 8, 10, 20, 34)
+    end
+
+    it  'should be an instance of Time' do
+      vbd_metrics.last_updated.must_be_instance_of(Time)
+    end
   end
 end

@@ -22,17 +22,17 @@ module Fog
           attribute :missing
           attribute :name,                        :aliases => :name_label
           attribute :on_boot
-          attribute :other_config
+          attribute :other_config,                :default => {}
           attribute :physical_utilisation
-          attribute :read_only
-          attribute :sharable
+          attribute :read_only,                   :default => false
+          attribute :sharable,                    :default => false
           attribute :sm_config
           attribute :snapshot_time
           attribute :storage_lock
-          attribute :tags
+          attribute :tags,                        :default => 'system'
           attribute :type
           attribute :uuid
-          attribute :virtual_size
+          attribute :virtual_size,                :default => '8589934592'
           attribute :xenstore_data
 
           has_many  :crash_dumps,  :crash_dumps
@@ -45,17 +45,14 @@ module Fog
           alias_method :storage_repository, :sr
 
           #
-          # Default VDI type is system
-          # Default size 8GB
           # Sharable is false by default
           # read_only is false by default
+          # There is a bug on fog-core that need to be solved before
+          # default_values work with false value
           #
           def initialize(attributes = {})
-            self.virtual_size ||= '8589934592' unless attributes[:virtual_size]
-            self.type ||= 'system' unless attributes[:type]
             self.read_only ||= false unless attributes[:read_only]
             self.sharable ||= false unless attributes[:sharable]
-            self.other_config ||= {} unless attributes[:other_config]
             super
           end
 

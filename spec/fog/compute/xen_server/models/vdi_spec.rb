@@ -53,15 +53,21 @@ describe Fog::Compute::XenServer::Models::Vdi do
   end
 
   it 'should have 10 aliases' do
-    vdi_class.aliases.must_equal({ :name_label => :name,
-                                   :name_description => :description, 
-                                   :parent => :__parent,
-                                   :VBDs => :__vbds,
-                                   :vbds => :__vbds,
-                                   :SR => :__sr,
-                                   :sr => :__sr,
-                                   :crash_dumps => :__crash_dumps, 
-                                   :snapshots => :__snapshots, 
-                                   :snapshot_of => :__snapshot_of })
+    vdi_class.aliases.must_equal(:name_label => :name,
+                                 :name_description => :description,
+                                 :parent => :__parent,
+                                 :VBDs => :__vbds,
+                                 :vbds => :__vbds,
+                                 :SR => :__sr,
+                                 :sr => :__sr,
+                                 :crash_dumps => :__crash_dumps,
+                                 :snapshots => :__snapshots,
+                                 :snapshot_of => :__snapshot_of)
+  end
+
+  it 'should have 3 default values' do
+    vdi_class.default_values.must_equal(:other_config => {},
+                                        :tags => 'system',
+                                        :virtual_size => '8589934592')
   end
 end
