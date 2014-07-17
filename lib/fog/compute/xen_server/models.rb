@@ -15,6 +15,7 @@ module Fog
         autoload :GpuGroup, 'fog/compute/xen_server/models/gpu_group'
         autoload :GpuGroups, 'fog/compute/xen_server/models/gpu_groups'
         autoload :GuestMetrics, 'fog/compute/xen_server/models/guest_metrics'
+        autoload :GuestsMetrics, 'fog/compute/xen_server/models/guests_metrics'
         autoload :Host, 'fog/compute/xen_server/models/host'
         autoload :HostCpu, 'fog/compute/xen_server/models/host_cpu'
         autoload :HostCpus, 'fog/compute/xen_server/models/host_cpus'

@@ -6,16 +6,12 @@ describe Fog::Compute::XenServer::Models::Tunnel do
       def self.read_identity
         instance_variable_get('@identity')
       end
-
-      def self.read_provider_class
-        instance_variable_get('@provider_class')
-      end
     end
     Fog::Compute::XenServer::Models::Tunnel
   end
 
   it 'should associate to a provider class' do
-    tunnel_class.read_provider_class.must_equal('tunnel')
+    tunnel_class.provider_class.must_equal('tunnel')
   end
 
   it 'should have an unique id' do

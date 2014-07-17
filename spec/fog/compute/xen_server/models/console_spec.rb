@@ -6,16 +6,12 @@ describe Fog::Compute::XenServer::Models::Console do
       def self.read_identity
         instance_variable_get('@identity')
       end
-
-      def self.read_provider_class
-        instance_variable_get('@provider_class')
-      end
     end
     Fog::Compute::XenServer::Models::Console
   end
 
   it 'should associate to a provider class' do
-    console_class.read_provider_class.must_equal('console')
+    console_class.provider_class.must_equal('console')
   end
 
   it 'should have an unique id' do
