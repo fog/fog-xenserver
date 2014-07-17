@@ -1,4 +1,5 @@
 require 'minitest_helper'
+require 'xmlrpc/datetime'
 
 describe Fog::Compute::XenServer::Models::HostMetrics do
   let(:host_metrics_class) do
@@ -9,6 +10,7 @@ describe Fog::Compute::XenServer::Models::HostMetrics do
     end
     Fog::Compute::XenServer::Models::HostMetrics
   end
+  let(:host_metrics) { Fog::Compute::XenServer::Models::HostMetrics.new }
 
   it 'should associate to a provider class' do
     host_metrics_class.provider_class.must_equal('host_metrics')
@@ -30,5 +32,15 @@ describe Fog::Compute::XenServer::Models::HostMetrics do
 
   it "shouldn't have aliases" do
     host_metrics_class.aliases.must_equal({})
+  end
+
+  describe '#last_updated' do
+    before :each do
+      host_metrics.last_updated = XMLRPC::DateTime.new(2000, 7, 8, 10, 20, 34)
+    end
+
+    it  'should be an instance of Time' do
+      host_metrics.last_updated.must_be_instance_of(Time)
+    end
   end
 end
