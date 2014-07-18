@@ -33,6 +33,10 @@ describe Fog::Compute::XenServer::Models::VbdMetrics do
     vbd_metrics_class.aliases.must_equal({})
   end
 
+  it "shouldn't have default values" do
+    vbd_metrics_class.default_values.must_equal({})
+  end
+
   describe '#last_updated' do
     before :each do
       vbd_metrics.last_updated = XMLRPC::DateTime.new(2000, 7, 8, 10, 20, 34)

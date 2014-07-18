@@ -29,4 +29,8 @@ describe Fog::Compute::XenServer::Models::Vtpm do
     vtpm_class.aliases.must_equal({ :backend => :__backend,
                                     :vm => :__vm })
   end
+
+  it "shouldn't have default values" do
+    vtpm_class.default_values.must_equal({})
+  end
 end

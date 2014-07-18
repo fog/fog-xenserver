@@ -11,23 +11,23 @@ module Fog
           identity :reference
 
           attribute :allowed_operations
-          attribute :bootable
+          attribute :bootable,                  :default => true
           attribute :currently_attached
           attribute :current_operations
           attribute :device
-          attribute :empty
-          attribute :mode
-          attribute :other_config
-          attribute :qos_supported_algorithms
-          attribute :qos_algorithm_params
-          attribute :qos_algorithm_type
+          attribute :empty,                     :default => false
+          attribute :mode,                      :default => 'RW'
+          attribute :other_config,              :default => { 'owner' => '' }
+          attribute :qos_supported_algorithms,  :default => []
+          attribute :qos_algorithm_params,      :default => {}
+          attribute :qos_algorithm_type,        :default => ''
           attribute :runtime_properties
           attribute :status_code
           attribute :status_detail
           attribute :storage_lock
-          attribute :type
+          attribute :type,                      :default => 'Disk'
           attribute :unpluggable
-          attribute :userdevice
+          attribute :userdevice,                :default => '0'
           attribute :uuid
 
           has_one   :metrics,   :vbds_metrics
@@ -38,8 +38,9 @@ module Fog
 
           def save
             requires :vdi, :server
-            ref = service.create_vbd attributes[:server], attributes[:vdi], attributes
-            merge_attributes service.vbds.get(ref).attributes
+            ref = service.create_vbd(server, vdi, attributes)
+            merge_attributes(service.vbds.get(ref).attributes)
+            true
           end
         end
       end

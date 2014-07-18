@@ -48,4 +48,8 @@ describe Fog::Compute::XenServer::Models::Vmpp do
                                     :VMs => :__vms,
                                     :vms => :__vms })
   end
+
+  it "shouldn't have default values" do
+    vmpp_class.default_values.must_equal({})
+  end
 end

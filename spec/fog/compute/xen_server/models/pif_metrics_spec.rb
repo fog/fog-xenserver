@@ -38,4 +38,8 @@ describe Fog::Compute::XenServer::Models::PifMetrics do
   it "shouldn't have aliases" do
     pif_metrics_class.aliases.must_equal({})
   end
+
+  it "shouldn't have default values" do
+    pif_metrics_class.default_values.must_equal({})
+  end
 end

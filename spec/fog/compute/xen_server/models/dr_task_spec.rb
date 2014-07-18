@@ -28,4 +28,8 @@ describe Fog::Compute::XenServer::Models::DrTask do
     dr_task_class.aliases.must_equal({ :introduced_SRs => :__introduced_srs,
                                        :introduced_srs => :__introduced_srs })
   end
+
+  it "shouldn't have default values" do
+    dr_task_class.default_values.must_equal({})
+  end
 end

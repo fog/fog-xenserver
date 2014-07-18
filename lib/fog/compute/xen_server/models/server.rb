@@ -12,9 +12,9 @@ module Fog
 
           identity :reference
 
-          attribute :actions_after_crash
-          attribute :actions_after_reboot
-          attribute :actions_after_shutdown
+          attribute :actions_after_crash,                                             :default => 'Restart'
+          attribute :actions_after_reboot,                                            :default => 'Restart'
+          attribute :actions_after_shutdown,                                          :default => 'Destroy'
           attribute :allowed_operations
           attribute :blobs
           attribute :blocked_operations
@@ -22,38 +22,42 @@ module Fog
           attribute :current_operations
           attribute :domarch
           attribute :domid
-          attribute :description,                 :aliases => :name_description
+          attribute :description,                 :aliases => :name_description,      :default => ''
           attribute :generation_id
           attribute :ha_always_run
           attribute :ha_restart_priority
-          attribute :hvm_boot_params,             :aliases => :HVM_boot_params
-          attribute :hvm_boot_policy,             :aliases => :HVM_boot_policy
+          attribute :hvm_boot_params,             :aliases => :HVM_boot_params,       :default => {}
+          attribute :hvm_boot_policy,             :aliases => :HVM_boot_policy,       :default => ''
           attribute :hvm_shadow_multiplier,       :aliases => :HVM_shadow_multiplier
           attribute :is_a_snapshot
-          attribute :is_a_template
+          attribute :is_a_template,                                                   :default => true
           attribute :is_control_domain
           attribute :is_snapshot_from_vmpp
           attribute :last_booted_record
           attribute :last_boot_cpu_flags,         :aliases => :last_boot_CPU_flags
-          attribute :memory_dynamic_max
-          attribute :memory_dynamic_min
+          attribute :memory_dynamic_max,                                              :default => '536870912'
+          attribute :memory_dynamic_min,                                              :default => '536870912'
           attribute :memory_overhead
-          attribute :memory_static_max
-          attribute :memory_static_min
+          attribute :memory_static_max,                                               :default => '536870912'
+          attribute :memory_static_min,                                               :default => '536870912'
           attribute :memory_target
-          attribute :name,                        :aliases => :name_label
+          attribute :name,                        :aliases => :name_label,            :default => ''
           attribute :order
-          attribute :other_config
-          attribute :pci_bus,                     :aliases => :PCI_bus
-          attribute :platform
+          attribute :other_config,                                                    :default => {}
+          attribute :pci_bus,                     :aliases => :PCI_bus,               :default => ''
+          attribute :platform,                                                        :default => { 'nx' => 'true',
+                                                                                                    'acpi' => 'true',
+                                                                                                    'apic' => 'true',
+                                                                                                    'pae' => 'true',
+                                                                                                    'viridian' => 'true' }
           attribute :power_state
-          attribute :pv_args,                     :aliases => :PV_args
-          attribute :pv_bootloader,               :aliases => :PV_bootloader
-          attribute :pv_bootloader_args,          :aliases => :PV_bootloader_args
-          attribute :pv_kernel,                   :aliases => :PV_kernel
-          attribute :pv_legacy_args,              :aliases => :PV_legacy_args
-          attribute :pv_ramdisk,                  :aliases => :PV_ramdisk
-          attribute :recommendations
+          attribute :pv_args,                     :aliases => :PV_args,               :default => '-- quiet console=hvc0'
+          attribute :pv_bootloader,               :aliases => :PV_bootloader,         :default => 'pygrub' # pvgrub, eliloader
+          attribute :pv_bootloader_args,          :aliases => :PV_bootloader_args,    :default => ''
+          attribute :pv_kernel,                   :aliases => :PV_kernel,             :default => ''
+          attribute :pv_legacy_args,              :aliases => :PV_legacy_args,        :default => ''
+          attribute :pv_ramdisk,                  :aliases => :PV_ramdisk,            :default => ''
+          attribute :recommendations,                                                 :default => ''
           attribute :shutdown_delay
           attribute :snapshot_info
           attribute :snapshot_metadata
@@ -62,11 +66,11 @@ module Fog
           attribute :tags
           attribute :template_name
           attribute :transportable_snapshot_id
-          attribute :user_version
+          attribute :user_version,                                                    :default => '0'
           attribute :uuid
-          attribute :vcpus_at_startup,            :aliases => :VCPUs_at_startup
-          attribute :vcpus_max,                   :aliases => :VCPUs_max
-          attribute :vcpus_params,                :aliases => :VCPUs_params
+          attribute :vcpus_at_startup,            :aliases => :VCPUs_at_startup,      :default => '1'
+          attribute :vcpus_max,                   :aliases => :VCPUs_max,             :default => '1'
+          attribute :vcpus_params,                :aliases => :VCPUs_params,          :default => {}
           attribute :version
           attribute :xenstore_data
 
@@ -114,24 +118,14 @@ module Fog
 
           def save(params = {})
             requires :name
-            nets = attributes[:networks] || []
-            if params[:auto_start].nil?
-              auto_start = true
-            else
-              auto_start = params[:auto_start]
-            end
+            nets = params.fetch(:networks, [])
+            auto_start = params.fetch(:auto_start, true)
             if template_name
-              attr = service.get_record(
-                  service.create_server( name, template_name, nets, :auto_start => auto_start),
-                  'VM'
-              )
+              ref = service.create_server(name, template_name, nets, :auto_start => auto_start)
             else
-              attr = service.get_record(
-                  service.create_server_raw(attributes),
-                  'VM'
-              )
+              ref = service.create_server_raw(attributes)
             end
-            merge_attributes attr
+            merge_attributes service.servers.get(ref).attributes
             true
           end
 

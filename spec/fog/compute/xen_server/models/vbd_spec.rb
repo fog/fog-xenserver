@@ -51,4 +51,15 @@ describe Fog::Compute::XenServer::Models::Vbd do
                                    :vm => :__vm,
                                    :metrics => :__metrics })
   end
+
+  it 'should have 8 default values' do
+    vbd_class.default_values.must_equal(:bootable => true, 
+                                        :mode => 'RW', 
+                                        :other_config => { 'owner' => '' },
+                                        :qos_supported_algorithms => [], 
+                                        :qos_algorithm_params => {}, 
+                                        :qos_algorithm_type => '', 
+                                        :type => 'Disk', 
+                                        :userdevice => '0')
+  end
 end

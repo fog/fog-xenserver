@@ -33,4 +33,8 @@ describe Fog::Compute::XenServer::Models::Pbd do
                                    :SR => :__sr,
                                    :sr => :__sr })
   end
+
+  it "shouldn't have default values" do
+    pbd_class.default_values.must_equal({})
+  end
 end

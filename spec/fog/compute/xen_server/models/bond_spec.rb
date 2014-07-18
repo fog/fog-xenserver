@@ -35,4 +35,8 @@ describe Fog::Compute::XenServer::Models::Bond do
                                     :primary_slave => :__primary_slave,
                                     :slaves => :__slaves })
   end
+
+  it "shouldn't have default values" do
+    bond_class.default_values.must_equal({})
+  end
 end

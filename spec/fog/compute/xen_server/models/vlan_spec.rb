@@ -33,4 +33,8 @@ describe Fog::Compute::XenServer::Models::Vlan do
                                     :tagged_PIF => :__tagged_pif,
                                     :tagged_pif => :__tagged_pif })
   end
+
+  it "shouldn't have default values" do
+    vlan_class.default_values.must_equal({})
+  end
 end

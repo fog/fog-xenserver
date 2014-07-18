@@ -38,4 +38,8 @@ describe Fog::Compute::XenServer::Models::GpuGroup do
                                          :VGPUs => :__vgpus,
                                          :vgpus => :__vgpus })
   end
+
+  it "shouldn't have default values" do
+    gpu_group_class.default_values.must_equal({})
+  end
 end

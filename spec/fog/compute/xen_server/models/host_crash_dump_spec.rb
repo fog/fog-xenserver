@@ -30,4 +30,8 @@ describe Fog::Compute::XenServer::Models::HostCrashDump do
   it 'should have 1 alias' do
     host_crash_dump_class.aliases.must_equal({ :host => :__host })
   end
+
+  it "shouldn't have default values" do
+    host_crash_dump_class.default_values.must_equal({})
+  end
 end

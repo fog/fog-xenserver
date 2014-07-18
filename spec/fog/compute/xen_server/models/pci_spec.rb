@@ -33,4 +33,8 @@ describe Fog::Compute::XenServer::Models::Pci do
     pci_class.aliases.must_equal({ :dependencies => :__dependencies,
                                    :host => :__host })
   end
+
+  it "shouldn't have default values" do
+    pci_class.default_values.must_equal({})
+  end
 end

@@ -15,31 +15,20 @@ module Fog
           attribute :bridge
           attribute :current_operations
           attribute :default_locking_mode
-          attribute :description,         :aliases => :name_description
+          attribute :description,         :aliases => :name_description,  :default => ''
           attribute :mtu,                 :aliases => :MTU
-          attribute :name,                :aliases => :name_label
-          attribute :other_config
+          attribute :name,                :aliases => :name_label,        :default => ''
+          attribute :other_config,                                        :default => {}
           attribute :tags
           attribute :uuid
 
           has_many :pifs,  :pifs,         :aliases => :PIFs
           has_many :vifs,  :vifs,         :aliases => :VIFs
 
-          # Creates a new network
-          #
-          #     service = Fog::Compute[:xenserver]
-          #
-          #     # create network 'foonet'
-          #     net = service.networks.create :name => 'foonet',
-          #                                   :description => 'test network'
-          #
-          # @return [Boolean]
-          #
           def save
             requires :name
             ref = service.create_network name, attributes
-            data = service.get_record ref, 'network'
-            merge_attributes data
+            merge_attributes service.networks.get(ref).attributes
             true
           end
         end

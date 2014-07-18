@@ -62,4 +62,8 @@ describe Fog::Compute::XenServer::Models::Pool do
                                     :suspend_image_SR => :__suspend_image_sr,
                                     :suspend_image_sr => :__suspend_image_sr })
   end
+
+  it "shouldn't have default values" do
+    pool_class.default_values.must_equal({})
+  end
 end

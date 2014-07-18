@@ -31,4 +31,8 @@ describe Fog::Compute::XenServer::Models::Console do
     console_class.aliases.must_equal({ :VM => :__vm,
                                        :vm => :__vm })
   end
+
+  it "shouldn't have default values" do
+    console_class.default_values.must_equal({})
+  end
 end

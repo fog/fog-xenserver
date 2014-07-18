@@ -7,15 +7,15 @@ module Fog
         #
         # @see http://docs.vmd.citrix.com/XenServer/6.0.0/1.0/en_gb/api/?c=VLAN
         #
-        def create_vlan( pif_ref, vlan_id, network_ref )
+        def create_vlan(pif_ref, vlan_id, network_ref)
+          pif_ref = pif_ref.reference if pif_ref.kind_of? Fog::Compute::XenServer::Pif
+          network_ref = network_ref.reference if network_ref.kind_of? Fog::Compute::XenServer::Network
           @connection.request(
             {
               :parser => Fog::Parsers::XenServer::Base.new,
               :method => 'VLAN.create'
             },
-            pif_ref,
-            vlan_id.to_s,
-            network_ref
+            pif_ref, vlan_id.to_s, network_ref
           )
         end
       end

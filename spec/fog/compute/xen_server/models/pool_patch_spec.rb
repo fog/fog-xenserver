@@ -36,4 +36,8 @@ describe Fog::Compute::XenServer::Models::PoolPatch do
                                           :name_description => :description,
                                           :name_label => :name })
   end
+
+  it "shouldn't have default values" do
+    pool_patch_class.default_values.must_equal({})
+  end
 end

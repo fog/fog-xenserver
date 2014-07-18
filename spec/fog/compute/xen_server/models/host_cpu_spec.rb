@@ -39,4 +39,8 @@ describe Fog::Compute::XenServer::Models::HostCpu do
     host_cpu_class.aliases.must_equal({ :host => :__host,
                                         :modelname => :model_name })
   end
+
+  it "shouldn't have default values" do
+    host_cpu_class.default_values.must_equal({})
+  end
 end
