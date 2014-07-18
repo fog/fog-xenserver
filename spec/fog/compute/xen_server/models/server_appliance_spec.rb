@@ -34,4 +34,8 @@ describe Fog::Compute::XenServer::Models::ServerAppliance do
                                                 :VMs => :__vms,
                                                 :vms => :__vms })
   end
+
+  it "shouldn't have default values" do
+    server_appliance_class.default_values.must_equal({})
+  end
 end

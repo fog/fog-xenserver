@@ -38,10 +38,16 @@ describe Fog::Compute::XenServer::Models::Network do
   it 'should have 7 aliases' do
     network_class.aliases.must_equal({ :VIFs => :__vifs,
                                        :vifs => :__vifs,
-                                       :MTU => :mtu, 
-                                       :name_description => :description, 
+                                       :MTU => :mtu,
+                                       :name_description => :description,
                                        :name_label => :name,
                                        :PIFs => :__pifs,
                                        :pifs => :__pifs })
+  end
+
+  it 'should have 3 default values' do
+    network_class.default_values.must_equal(:description => '',
+                                            :name => '',
+                                            :other_config => {})
   end
 end

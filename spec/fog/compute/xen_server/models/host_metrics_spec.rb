@@ -34,6 +34,10 @@ describe Fog::Compute::XenServer::Models::HostMetrics do
     host_metrics_class.aliases.must_equal({})
   end
 
+  it "shouldn't have default values" do
+    host_metrics_class.default_values.must_equal({})
+  end
+
   describe '#last_updated' do
     before :each do
       host_metrics.last_updated = XMLRPC::DateTime.new(2000, 7, 8, 10, 20, 34)

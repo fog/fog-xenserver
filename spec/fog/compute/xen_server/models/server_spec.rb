@@ -147,6 +147,39 @@ describe Fog::Compute::XenServer::Models::Server do
                                       :PCI_bus => :pci_bus })
   end
 
+  it 'should have 26 default values' do
+    server_class.default_values.must_equal(:actions_after_crash => 'Restart',
+                                           :actions_after_reboot => 'Restart',
+                                           :actions_after_shutdown => 'Destroy',
+                                           :description => '',
+                                           :hvm_boot_params => {},
+                                           :hvm_boot_policy => '',
+                                           :is_a_template => true,
+                                           :memory_dynamic_max => '536870912',
+                                           :memory_dynamic_min => '536870912',
+                                           :memory_static_max => '536870912',
+                                           :memory_static_min => '536870912',
+                                           :name => '',
+                                           :other_config => {},
+                                           :pci_bus => '',
+                                           :platform => { 'nx' => 'true',
+                                                          'acpi' => 'true',
+                                                          'apic' => 'true',
+                                                          'pae' => 'true',
+                                                          'viridian' => 'true' },
+                                           :pv_args => '-- quiet console=hvc0',
+                                           :pv_bootloader => 'pygrub',
+                                           :pv_bootloader_args => '',
+                                           :pv_kernel => '',
+                                           :pv_legacy_args => '',
+                                           :pv_ramdisk => '',
+                                           :recommendations => '',
+                                           :user_version => '0',
+                                           :vcpus_at_startup => '1',
+                                           :vcpus_max => '1',
+                                           :vcpus_params => {})
+  end
+
   describe '#tools_installed?' do
     describe 'when guest_metrics is nil' do
       it 'should return false' do
@@ -180,13 +213,11 @@ describe Fog::Compute::XenServer::Models::Server do
   end
 
   describe '#mac_address' do
-    before :each do
-      vif.mac = 'mac'
-    end
-
     it 'should return the mac address of the first virtual interface' do
       server.stub(:vifs, [ vif ]) do
-        server.mac_address.must_equal 'mac'
+        vif.stub(:mac, 'mac') do
+          server.mac_address.must_equal 'mac'
+        end
       end
     end
   end

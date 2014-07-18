@@ -37,4 +37,8 @@ describe Fog::Compute::XenServer::Models::GuestMetrics do
     guest_metrics_class.aliases.must_equal({ :PV_drivers_up_to_date => :pv_drivers_up_to_date,
                                              :PV_drivers_version => :pv_drivers_version })
   end
+
+  it "shouldn't have default values" do
+    guest_metrics_class.default_values.must_equal({})
+  end
 end

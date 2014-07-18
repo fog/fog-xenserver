@@ -32,4 +32,8 @@ describe Fog::Compute::XenServer::Models::CrashDump do
                                           :VM => :__vm,
                                           :vm => :__vm })
   end
+
+  it "shouldn't have default values" do
+    crash_dump_class.default_values.must_equal({})
+  end
 end

@@ -32,18 +32,10 @@ module Fog
                        content_type     = 'user',
                        shared           = false,
                        sm_config        = {} )
-
+          host_ref = host_ref.reference if host_ref.kind_of? Fog::Compute::XenServer::StorageRepository
           @connection.request(
             {:parser => Fog::Parsers::XenServer::Base.new, :method => 'SR.create'},
-            host_ref,
-            device_config || {},
-            physical_size || '0',
-            name_label,
-            name_description || '',
-            type,
-            content_type,
-            shared || false,
-            sm_config || {}
+            host_ref, device_config, physical_size, name_label, name_description, type, content_type, shared, sm_config
           )
         end
       end

@@ -38,4 +38,8 @@ describe Fog::Compute::XenServer::Models::HostPatch do
                                           :name_label => :name,
                                           :pool_patch => :__pool_patch })
   end
+
+  it "shouldn't have default values" do
+    host_patch_class.default_values.must_equal({})
+  end
 end

@@ -33,4 +33,8 @@ describe Fog::Compute::XenServer::Models::Blob do
     blob_class.aliases.must_equal({ :name_description => :description,
                                     :name_label => :name })
   end
+
+  it "shouldn't have default values" do
+    blob_class.default_values.must_equal({})
+  end
 end

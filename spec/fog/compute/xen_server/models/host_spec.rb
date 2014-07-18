@@ -95,4 +95,8 @@ describe Fog::Compute::XenServer::Models::Host do
                                     :host_CPUs => :__host_cpus,
                                     :host_cpus => :__host_cpus })
   end
+
+  it "shouldn't have default values" do
+    host_class.default_values.must_equal({})
+  end
 end

@@ -58,8 +58,9 @@ module Fog
 
           def save
             requires :name, :storage_repository
-            ref = service.create_vdi attributes
+            ref = service.create_vdi(attributes)
             merge_attributes service.vdis.get(ref).attributes
+            true
           end
         end
       end

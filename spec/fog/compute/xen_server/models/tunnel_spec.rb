@@ -33,4 +33,8 @@ describe Fog::Compute::XenServer::Models::Tunnel do
                                       :transport_PIF => :__transport_pif,
                                       :transport_pif => :__transport_pif })
   end
+
+  it "shouldn't have default values" do
+    tunnel_class.default_values.must_equal({})
+  end
 end

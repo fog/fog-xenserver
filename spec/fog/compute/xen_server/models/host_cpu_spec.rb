@@ -39,4 +39,6 @@ describe Fog::Compute::XenServer::Models::HostCpu do
     host_cpu_class.aliases.must_equal({ :host => :__host,
                                         :modelname => :model_name })
   end
+
+
 end

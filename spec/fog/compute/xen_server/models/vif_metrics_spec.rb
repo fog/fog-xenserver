@@ -30,4 +30,8 @@ describe Fog::Compute::XenServer::Models::VifMetrics do
   it "should't have aliases" do
     vif_metrics_class.aliases.must_equal({})
   end
+
+  it "shouldn't have default values" do
+    vif_metrics_class.default_values.must_equal({})
+  end
 end

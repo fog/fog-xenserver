@@ -41,4 +41,8 @@ describe Fog::Compute::XenServer::Models::ServerMetrics do
                                               :VCPUs_params => :vcpus_params, 
                                               :VCPUs_utilisation => :vcpus_utilisation })
   end
+
+  it "shouldn't have default values" do
+    server_metrics_class.default_values.must_equal({})
+  end
 end

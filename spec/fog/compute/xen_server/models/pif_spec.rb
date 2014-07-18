@@ -74,4 +74,8 @@ describe Fog::Compute::XenServer::Models::Pif do
                                    :vlan_slave_of => :__vlan_slave_of,
                                    :host => :__host })
   end
+
+  it "shouldn't have default values" do
+    pif_class.default_values.must_equal({})
+  end
 end

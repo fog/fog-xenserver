@@ -34,4 +34,8 @@ describe Fog::Compute::XenServer::Models::Pgpu do
                                     :PCI => :__pci,
                                     :pci => :__pci })
   end
+
+  it "shouldn't have default values" do
+    pgpu_class.default_values.must_equal({})
+  end
 end

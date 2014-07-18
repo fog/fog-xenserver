@@ -31,4 +31,8 @@ describe Fog::Compute::XenServer::Models::Role do
                                     :name_label => :name, 
                                     :subroles => :__subroles })
   end
+
+  it "shouldn't have default values" do
+    role_class.default_values.must_equal({})
+  end
 end
