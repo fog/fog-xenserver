@@ -52,7 +52,7 @@ module Fog
                                                                                                     'viridian' => 'true' }
           attribute :power_state
           attribute :pv_args,                     :aliases => :PV_args,               :default => '-- quiet console=hvc0'
-          attribute :pv_bootloader,               :aliases => :PV_bootloader,         :default => 'pygrub' #pvgrub, eliloader
+          attribute :pv_bootloader,               :aliases => :PV_bootloader,         :default => 'pygrub' # pvgrub, eliloader
           attribute :pv_bootloader_args,          :aliases => :PV_bootloader_args,    :default => ''
           attribute :pv_kernel,                   :aliases => :PV_kernel,             :default => ''
           attribute :pv_legacy_args,              :aliases => :PV_legacy_args,        :default => ''
