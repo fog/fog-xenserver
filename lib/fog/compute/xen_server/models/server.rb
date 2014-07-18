@@ -130,7 +130,7 @@ module Fog
           end
 
           def revert(snapshot_ref)
-            warn 'This method is DEPRECATED. Use #snapshot_revert instead.'
+            Fog::Logger.deprecation 'This method is DEPRECATED. Use #snapshot_revert instead.'
             snapshot_revert(snapshot_ref)
           end
         end

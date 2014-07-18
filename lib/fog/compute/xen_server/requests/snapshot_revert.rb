@@ -9,7 +9,7 @@ module Fog
         alias_method :snapshot_revert_vm, :snapshot_revert_server
 
         def snapshot_server(snapshot_ref, extra_args = {})
-          warn 'This method is DEPRECATED. Use #snapshot_revert_server instead.'
+          Fog::Logger.deprecation 'This method is DEPRECATED. Use #snapshot_revert_server instead.'
           snapshot_revert_server(snapshot_ref, extra_args = {})
         end
       end

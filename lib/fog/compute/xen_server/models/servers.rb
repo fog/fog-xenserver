@@ -8,17 +8,17 @@ module Fog
           model Fog::Compute::XenServer::Models::Server
 
           def templates
-            warn 'This method is DEPRECATED. Call #templates directly on the connection instead.'
+            Fog::Logger.deprecation 'This method is DEPRECATED. Call #templates directly on the connection instead.'
             service.templates
           end
 
           def custom_templates
-            warn 'This method is DEPRECATED. Call #custom_templates directly on the connection instead.'
+            Fog::Logger.deprecation 'This method is DEPRECATED. Call #custom_templates directly on the connection instead.'
             service.custom_templates
           end
 
           def builtin_templates
-            warn 'This method is DEPRECATED. Call #builtin_templates directly on the connection instead.'
+            Fog::Logger.deprecation 'This method is DEPRECATED. Call #builtin_templates directly on the connection instead.'
             service.builtin_templates
           end
 
