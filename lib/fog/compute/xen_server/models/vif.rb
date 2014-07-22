@@ -14,7 +14,7 @@ module Fog
           attribute :allowed_operations
           attribute :current_operations
           attribute :currently_attached
-          attribute :device
+          attribute :device,                                                :default => -1
           attribute :ipv4_allowed
           attribute :ipv6_allowed
           attribute :locking_mode
@@ -37,13 +37,6 @@ module Fog
           require_before_save :server, :network
 
           alias_method :server, :vm
-
-          def save
-            require_creation_attributes
-            ref = service.create_vif(server, network)
-            merge_attributes collection.get(ref).attributes
-            true
-          end
         end
       end
     end

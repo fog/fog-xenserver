@@ -65,10 +65,15 @@ module Fog
           ref
         end
 
-        def create_server( name_label, template = nil, networks = [], extra_args = {})
-          if !networks.kind_of? Array
-            raise "Invalid networks argument"
-          end
+        def create_server(config = {}, extra_params = {})
+          networks = extra_params.fetch(:networks, [])
+          auto_start = extra_params.fetch(:auto_start, true)
+          name_label = config.fetch(:name, '')
+          template = config.fetch(:template_name, nil)
+
+          return create_server_raw(config) if template.nil?
+
+          raise "Invalid networks argument" unless networks.kind_of? Array
 
           if template.kind_of? String
             template_string = template
@@ -80,10 +85,6 @@ module Fog
             end
           end
 
-          if template.nil?
-            raise "Invalid template"
-          end
-
           raise "Template #{template_string} does not exist" if template.allowed_operations.nil?
           raise 'Clone Operation not Allowed' unless template.allowed_operations.include?('clone')
 
@@ -93,13 +94,15 @@ module Fog
           networks.each do |n|
             create_vif ref, n.reference
           end
-          if !extra_args[:auto_start] == false
+          if auto_start
             @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => 'VM.provision'}, ref)
             start_vm( ref )
           end
 
           ref
         end
+
+        alias_method :create_vm, :create_server
       end
 
       class Mock

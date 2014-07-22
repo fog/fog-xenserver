@@ -119,19 +119,6 @@ module Fog
             power_state == "Halted"
           end
 
-          def save(params = {})
-            require_creation_attributes
-            nets = params.fetch(:networks, [])
-            auto_start = params.fetch(:auto_start, true)
-            if template_name
-              ref = service.create_server(name, template_name, nets, :auto_start => auto_start)
-            else
-              ref = service.create_server_raw(attributes)
-            end
-            merge_attributes collection.get(ref).attributes
-            true
-          end
-
           def revert(snapshot_ref)
             Fog::Logger.deprecation 'This method is DEPRECATED. Use #snapshot_revert instead.'
             snapshot_revert(snapshot_ref)

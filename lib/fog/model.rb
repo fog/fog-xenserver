@@ -55,6 +55,13 @@ module Fog
       service.set_attribute(provider_class, reference, name, *val)
     end
 
+    def save(extra_params = {})
+      require_creation_attributes
+      ref = service.send("create_#{provider_class.downcase}", attributes, extra_params)
+      merge_attributes collection.get(ref).attributes
+      true
+    end
+
     def destroy
       requires :reference
       service.send("destroy_#{provider_class.downcase}", reference)

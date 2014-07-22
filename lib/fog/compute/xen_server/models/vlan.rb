@@ -19,13 +19,6 @@ module Fog
           has_one   :untagged_pif, :pifs,   :aliases => :untagged_PIF
 
           require_before_save :tag
-
-          def save(pif, network)
-            require_creation_attributes
-            ref = service.create_vlan(pif, tag, network)
-            merge_attributes collection.get(ref).attributes
-            true
-          end
         end
       end
     end

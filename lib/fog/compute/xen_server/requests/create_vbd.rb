@@ -2,10 +2,12 @@ module Fog
   module Compute
     class XenServer
       class Real
-        def create_vbd( vm_ref, vdi_ref, config = {} )
+        def create_vbd(config = {}, extra_params = {})
           raise ArgumentError.new('Invalid config') if config.nil?
+          vm_ref = config.delete(:__vm)
           vm_ref = vm_ref.reference if vm_ref.kind_of? Fog::Compute::XenServer::Server
-          vdi_ref = vdi_ref.reference if vdi_ref.kind_of? Fog::Compute::XenServer::VDI
+          vdi_ref = config.delete(:__vdi)
+          vdi_ref = vdi_ref.reference if vdi_ref.kind_of? Fog::Compute::XenServer::Vdi
           config.reject! { |k,v| (k == :server) or (k == :vdi) }
           default_config = {
             :VM => vm_ref,

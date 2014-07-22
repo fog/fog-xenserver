@@ -58,13 +58,6 @@ module Fog
             self.sharable ||= false unless attributes[:sharable]
             super
           end
-
-          def save
-            require_creation_attributes
-            ref = service.create_vdi(attributes)
-            merge_attributes collection.get(ref).attributes
-            true
-          end
         end
       end
     end

@@ -33,14 +33,6 @@ module Fog
           has_many  :vdis,  :vdis,         :aliases => :VDIs
 
           require_before_save :name, :type
-
-          def save(host, device_config = {})
-            require_creation_attributes
-            ref = service.create_sr(host, name, type, description, device_config, physical_size, content_type,
-                                    shared || false, sm_config)
-            merge_attributes collection.get(ref).attributes
-            true
-          end
         end
       end
     end

@@ -27,13 +27,6 @@ module Fog
           has_many :vifs,  :vifs,         :aliases => :VIFs
 
           require_before_save :name
-
-          def save
-            require_creation_attributes
-            ref = service.create_network name, attributes
-            merge_attributes collection.get(ref).attributes
-            true
-          end
         end
       end
     end

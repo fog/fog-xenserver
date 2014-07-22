@@ -23,16 +23,17 @@ module Fog
         # @param [String] shared
         #
         # @return [String] an OpaqueRef to the storage repository
-        def create_sr( host_ref,
-                       name_label,
-                       type,
-                       name_description = '',
-                       device_config    = {},
-                       physical_size    = '0',
-                       content_type     = 'user',
-                       shared           = false,
-                       sm_config        = {} )
+        def create_sr(config = {}, extra_params = {})
+          host_ref = extra_params.delete(:host_ref)
           host_ref = host_ref.reference if host_ref.kind_of? Fog::Compute::XenServer::StorageRepository
+          name_label = config[:name]
+          type = config[:type]
+          name_description = config.fetch(:description, '')
+          device_config = extra_params.fetch(:device_config, {})
+          physical_size = config.fetch(:physical_size, '0')
+          content_type = config.fetch(:content_type, 'user')
+          shared = config.fetch(:shared, false)
+          sm_config = config.fetch(:sm_config, {})
           @connection.request(
             {:parser => Fog::Parsers::XenServer::Base.new, :method => 'SR.create'},
             host_ref, device_config, physical_size, name_label, name_description, type, content_type, shared, sm_config

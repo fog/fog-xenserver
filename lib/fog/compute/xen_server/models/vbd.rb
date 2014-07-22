@@ -38,13 +38,6 @@ module Fog
           require_before_save :vdi, :server
 
           alias_method :server, :vm
-
-          def save
-            require_creation_attributes
-            ref = service.create_vbd(server, vdi, attributes)
-            merge_attributes collection.get(ref).attributes
-            true
-          end
         end
       end
     end

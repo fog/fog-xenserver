@@ -2,7 +2,7 @@ module Fog
   module Compute
     class XenServer
       class Real
-        def create_vdi( config )
+        def create_vdi(config = {}, extra_params = {})
           raise ArgumentError.new('Invalid config') if config.nil?
           raise ArgumentError.new('Missing virtual_size attribute') if config[:virtual_size].nil?
           raise ArgumentError.new('Missing read_only attribute') if config[:read_only].nil?
