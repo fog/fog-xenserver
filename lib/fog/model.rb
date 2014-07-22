@@ -48,7 +48,7 @@ module Fog
     end
 
     def require_creation_attributes
-      requires self.class.instance_variable_get(@require_before_save)
+      requires *self.class.instance_variable_get('@require_before_save')
     end
 
     def set_attribute(name, *val)
@@ -57,7 +57,7 @@ module Fog
 
     def destroy
       requires :reference
-      service.send("destroy_#{provider_class.downcase}", reference, *args)
+      service.send("destroy_#{provider_class.downcase}", reference)
       true
     end
 
