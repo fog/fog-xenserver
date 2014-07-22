@@ -14,6 +14,10 @@ describe Fog::Compute::XenServer::Models::PoolPatch do
     pool_patch_class.provider_class.must_equal('pool_patch')
   end
 
+  it 'should have a collection name' do
+    pool_patch_class.collection_name.must_equal(:pool_patchs)
+  end
+
   it 'should have an unique id' do
     pool_patch_class.read_identity.must_equal(:reference)
   end
@@ -39,5 +43,9 @@ describe Fog::Compute::XenServer::Models::PoolPatch do
 
   it "shouldn't have default values" do
     pool_patch_class.default_values.must_equal({})
+  end
+
+  it "shouldn't require attributes before save" do
+    pool_patch_class.require_before_save.must_equal([])
   end
 end

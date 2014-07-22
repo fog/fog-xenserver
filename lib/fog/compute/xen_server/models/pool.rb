@@ -7,6 +7,7 @@ module Fog
           # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=pool
 
           provider_class :pool
+          collection_name :pools
 
           identity :reference
 

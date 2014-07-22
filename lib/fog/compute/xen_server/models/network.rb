@@ -7,6 +7,7 @@ module Fog
           # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=network
 
           provider_class :network
+          collection_name :networks
 
           identity :reference
 
@@ -25,10 +26,12 @@ module Fog
           has_many :pifs,  :pifs,         :aliases => :PIFs
           has_many :vifs,  :vifs,         :aliases => :VIFs
 
+          require_before_save :name
+
           def save
-            requires :name
+            require_creation_attributes
             ref = service.create_network name, attributes
-            merge_attributes service.networks.get(ref).attributes
+            merge_attributes collection.get(ref).attributes
             true
           end
         end

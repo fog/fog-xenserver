@@ -14,6 +14,10 @@ describe Fog::Compute::XenServer::Models::Pci do
     pci_class.provider_class.must_equal('PCI')
   end
 
+  it 'should have a collection name' do
+    pci_class.collection_name.must_equal(:pcis)
+  end
+
   it 'should have an unique id' do
     pci_class.read_identity.must_equal(:reference)
   end
@@ -36,5 +40,9 @@ describe Fog::Compute::XenServer::Models::Pci do
 
   it "shouldn't have default values" do
     pci_class.default_values.must_equal({})
+  end
+
+  it "shouldn't require attributes before save" do
+    pci_class.require_before_save.must_equal([])
   end
 end

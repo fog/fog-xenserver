@@ -14,6 +14,10 @@ describe Fog::Compute::XenServer::Models::Vdi do
     vdi_class.provider_class.must_equal('VDI')
   end
 
+  it 'should have a collection name' do
+    vdi_class.collection_name.must_equal(:vdis)
+  end
+
   it 'should have an unique id' do
     vdi_class.read_identity.must_equal(:reference)
   end
@@ -69,5 +73,9 @@ describe Fog::Compute::XenServer::Models::Vdi do
     vdi_class.default_values.must_equal(:other_config => {},
                                         :tags => 'system',
                                         :virtual_size => '8589934592')
+  end
+
+  it 'should require 2 attributes before save' do
+    vdi_class.require_before_save.must_equal([ :name, :storage_repository ])
   end
 end

@@ -14,6 +14,10 @@ describe Fog::Compute::XenServer::Models::Vlan do
     vlan_class.provider_class.must_equal('VLAN')
   end
 
+  it 'should have a collection name' do
+    vlan_class.collection_name.must_equal(:vlans)
+  end
+
   it 'should have an unique id' do
     vlan_class.read_identity.must_equal(:reference)
   end
@@ -36,5 +40,9 @@ describe Fog::Compute::XenServer::Models::Vlan do
 
   it "shouldn't have default values" do
     vlan_class.default_values.must_equal({})
+  end
+
+  it 'should require 1 attribute before save' do
+    vlan_class.require_before_save.must_equal([ :tag ])
   end
 end

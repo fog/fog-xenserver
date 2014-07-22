@@ -7,6 +7,7 @@ module Fog
           # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=VBD
 
           provider_class :VBD
+          collection_name :vbds
 
           identity :reference
 
@@ -34,12 +35,14 @@ module Fog
           has_one   :vdi,       :vdis,             :aliases => :VDI
           has_one   :vm,        :servers,          :aliases => :VM
 
+          require_before_save :vdi, :server
+
           alias_method :server, :vm
 
           def save
-            requires :vdi, :server
+            require_creation_attributes
             ref = service.create_vbd(server, vdi, attributes)
-            merge_attributes(service.vbds.get(ref).attributes)
+            merge_attributes collection.get(ref).attributes
             true
           end
         end

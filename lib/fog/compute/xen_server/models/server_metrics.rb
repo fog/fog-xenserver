@@ -7,6 +7,7 @@ module Fog
           # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=VM_metrics
 
           provider_class :VM_metrics
+          collection_name :servers_metrics
 
           identity :reference
 

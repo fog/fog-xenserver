@@ -14,6 +14,10 @@ describe Fog::Compute::XenServer::Models::CrashDump do
     crash_dump_class.provider_class.must_equal('crashdump')
   end
 
+  it 'should have a collection name' do
+    crash_dump_class.collection_name.must_equal(:crash_dumps)
+  end
+
   it 'should have an unique id' do
     crash_dump_class.read_identity.must_equal(:reference)
   end
@@ -35,5 +39,9 @@ describe Fog::Compute::XenServer::Models::CrashDump do
 
   it "shouldn't have default values" do
     crash_dump_class.default_values.must_equal({})
+  end
+
+  it "shouldn't require attributes before save" do
+    crash_dump_class.require_before_save.must_equal([])
   end
 end

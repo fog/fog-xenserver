@@ -14,6 +14,10 @@ describe Fog::Compute::XenServer::Models::Vmpp do
     vmpp_class.provider_class.must_equal('VMPP')
   end
 
+  it 'should have a collection name' do
+    vmpp_class.collection_name.must_equal(:vmpps)
+  end
+
   it 'should have an unique id' do
     vmpp_class.read_identity.must_equal(:reference)
   end
@@ -51,5 +55,9 @@ describe Fog::Compute::XenServer::Models::Vmpp do
 
   it "shouldn't have default values" do
     vmpp_class.default_values.must_equal({})
+  end
+
+  it "shouldn't require attributes before save" do
+    vmpp_class.require_before_save.must_equal([])
   end
 end

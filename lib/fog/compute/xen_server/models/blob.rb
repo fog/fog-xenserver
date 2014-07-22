@@ -7,6 +7,7 @@ module Fog
           # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=blob
 
           provider_class :blob
+          collection_name :blobs
 
           identity :reference
 
