@@ -16,6 +16,10 @@ describe Fog::Compute::XenServer::Models::HostMetrics do
     host_metrics_class.provider_class.must_equal('host_metrics')
   end
 
+  it 'should have a collection name' do
+    host_metrics_class.collection_name.must_equal(:hosts_metrics)
+  end
+
   it 'should have an unique id' do
     host_metrics_class.read_identity.must_equal(:reference)
   end
@@ -36,6 +40,10 @@ describe Fog::Compute::XenServer::Models::HostMetrics do
 
   it "shouldn't have default values" do
     host_metrics_class.default_values.must_equal({})
+  end
+
+  it "shouldn't require attributes before save" do
+    host_metrics_class.require_before_save.must_equal([])
   end
 
   describe '#last_updated' do

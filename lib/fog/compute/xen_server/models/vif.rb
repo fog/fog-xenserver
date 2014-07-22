@@ -7,6 +7,7 @@ module Fog
           # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=VIF
 
           provider_class :VIF
+          collection_name :vifs
 
           identity :reference
 
@@ -33,12 +34,14 @@ module Fog
           has_one   :network,   :networks
           has_one   :vm,        :servers,          :aliases => :VM
 
+          require_before_save :server, :network
+
           alias_method :server, :vm
 
           def save
-            requires :server, :network
+            require_creation_attributes
             ref = service.create_vif(server, network)
-            merge_attributes service.vifs.get(ref).attributes
+            merge_attributes collection.get(ref).attributes
             true
           end
         end

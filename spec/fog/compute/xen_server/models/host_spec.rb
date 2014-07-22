@@ -14,6 +14,10 @@ describe Fog::Compute::XenServer::Models::Host do
     host_class.provider_class.must_equal('host')
   end
 
+  it 'should have a collection name' do
+    host_class.collection_name.must_equal(:hosts)
+  end
+
   it 'should have an unique id' do
     host_class.read_identity.must_equal(:reference)
   end
@@ -98,5 +102,9 @@ describe Fog::Compute::XenServer::Models::Host do
 
   it "shouldn't have default values" do
     host_class.default_values.must_equal({})
+  end
+
+  it "shouldn't require attributes before save" do
+    host_class.require_before_save.must_equal([])
   end
 end

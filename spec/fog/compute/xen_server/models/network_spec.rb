@@ -14,6 +14,10 @@ describe Fog::Compute::XenServer::Models::Network do
     network_class.provider_class.must_equal('network')
   end
 
+  it 'should have a collection name' do
+    network_class.collection_name.must_equal(:networks)
+  end
+
   it 'should have an unique id' do
     network_class.read_identity.must_equal(:reference)
   end
@@ -49,5 +53,9 @@ describe Fog::Compute::XenServer::Models::Network do
     network_class.default_values.must_equal(:description => '',
                                             :name => '',
                                             :other_config => {})
+  end
+
+  it 'should require 1 attribute before save' do
+    network_class.require_before_save.must_equal([ :name ])
   end
 end

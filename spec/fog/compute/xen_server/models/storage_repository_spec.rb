@@ -14,6 +14,10 @@ describe Fog::Compute::XenServer::Models::StorageRepository do
     storage_repository_class.provider_class.must_equal('SR')
   end
 
+  it 'should have a collection name' do
+    storage_repository_class.collection_name.must_equal(:storage_repositories)
+  end
+
   it 'should have an unique id' do
     storage_repository_class.read_identity.must_equal(:reference)
   end
@@ -55,5 +59,9 @@ describe Fog::Compute::XenServer::Models::StorageRepository do
                                                        :description => '', 
                                                        :physical_size => '0', 
                                                        :sm_config => {})
+  end
+
+  it 'should require 2 attributes before save' do
+    storage_repository_class.require_before_save.must_equal([ :name, :type ])
   end
 end

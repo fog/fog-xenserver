@@ -14,6 +14,10 @@ describe Fog::Compute::XenServer::Models::Vif do
     vif_class.provider_class.must_equal('VIF')
   end
 
+  it 'should have a collection name' do
+    vif_class.collection_name.must_equal(:vifs)
+  end
+
   it 'should have an unique id' do
     vif_class.read_identity.must_equal(:reference)
   end
@@ -60,5 +64,9 @@ describe Fog::Compute::XenServer::Models::Vif do
                                         :other_config => {}, 
                                         :qos_algorithm_params => {}, 
                                         :qos_algorithm_type => 'ratelimit')
+  end
+
+  it 'should require 2 attributes before save' do
+    vif_class.require_before_save.must_equal([ :server, :network ])
   end
 end

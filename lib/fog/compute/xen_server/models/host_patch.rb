@@ -7,6 +7,7 @@ module Fog
           # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=host_patch
 
           provider_class :host_patch
+          collection_name :host_patchs
 
           identity :reference
 

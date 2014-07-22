@@ -14,6 +14,10 @@ describe Fog::Compute::XenServer::Models::Blob do
     blob_class.provider_class.must_equal('blob')
   end
 
+  it 'should have a collection name' do
+    blob_class.collection_name.must_equal(:blobs)
+  end
+
   it 'should have an unique id' do
     blob_class.read_identity.must_equal(:reference)
   end
@@ -36,5 +40,9 @@ describe Fog::Compute::XenServer::Models::Blob do
 
   it "shouldn't have default values" do
     blob_class.default_values.must_equal({})
+  end
+
+  it "shouldn't require attributes before save" do
+    blob_class.require_before_save.must_equal([])
   end
 end

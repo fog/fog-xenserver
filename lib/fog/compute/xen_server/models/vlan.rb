@@ -7,6 +7,7 @@ module Fog
           # @see http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=VLAN
 
           provider_class :VLAN
+          collection_name :vlans
 
           identity :reference
 
@@ -17,10 +18,12 @@ module Fog
           has_one   :tagged_pif,   :pifs,   :aliases => :tagged_PIF
           has_one   :untagged_pif, :pifs,   :aliases => :untagged_PIF
 
+          require_before_save :tag
+
           def save(pif, network)
-            requires :tag
+            require_creation_attributes
             ref = service.create_vlan(pif, tag, network)
-            merge_attributes service.vlans.get(ref).attributes
+            merge_attributes collection.get(ref).attributes
             true
           end
         end

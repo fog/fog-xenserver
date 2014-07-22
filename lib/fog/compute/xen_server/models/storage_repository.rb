@@ -7,6 +7,7 @@ module Fog
           # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=SR
 
           provider_class :SR
+          collection_name :storage_repositories
 
           identity :reference
 
@@ -31,11 +32,13 @@ module Fog
           has_many  :pbds,  :pbds,         :aliases => :PBDs
           has_many  :vdis,  :vdis,         :aliases => :VDIs
 
+          require_before_save :name, :type
+
           def save(host, device_config = {})
-            requires :name, :type
+            require_creation_attributes
             ref = service.create_sr(host, name, type, description, device_config, physical_size, content_type,
                                     shared || false, sm_config)
-            merge_attributes service.storage_repositories.get(ref).attributes
+            merge_attributes collection.get(ref).attributes
             true
           end
         end

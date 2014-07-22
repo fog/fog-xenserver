@@ -14,6 +14,10 @@ describe Fog::Compute::XenServer::Models::Vbd do
     vbd_class.provider_class.must_equal('VBD')
   end
 
+  it 'should have a collection name' do
+    vbd_class.collection_name.must_equal(:vbds)
+  end
+
   it 'should have an unique id' do
     vbd_class.read_identity.must_equal(:reference)
   end
@@ -61,5 +65,9 @@ describe Fog::Compute::XenServer::Models::Vbd do
                                         :qos_algorithm_type => '', 
                                         :type => 'Disk', 
                                         :userdevice => '0')
+  end
+
+  it 'should require 2 attributes before save' do
+    vbd_class.require_before_save.must_equal([ :vdi, :server ])
   end
 end

@@ -7,6 +7,7 @@ module Fog
           # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=VDI
 
           provider_class :VDI
+          collection_name :vdis
 
           identity :reference
 
@@ -42,6 +43,8 @@ module Fog
           has_one   :sr,           :storage_repositories,      :aliases => :SR
           has_many  :vbds,         :vbds,                      :aliases => :VBDs
 
+          require_before_save :name, :storage_repository
+
           alias_method :storage_repository, :sr
 
           #
@@ -57,9 +60,9 @@ module Fog
           end
 
           def save
-            requires :name, :storage_repository
+            require_creation_attributes
             ref = service.create_vdi(attributes)
-            merge_attributes service.vdis.get(ref).attributes
+            merge_attributes collection.get(ref).attributes
             true
           end
         end

@@ -7,6 +7,7 @@ module Fog
           # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=crashdump
 
           provider_class :crashdump
+          collection_name :crash_dumps
 
           identity :reference
 

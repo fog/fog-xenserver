@@ -11,6 +11,15 @@ module Fog
       self.class.provider_class
     end
 
+    def self.collection_name(collection_name = nil)
+      return @collection_name if collection_name.nil?
+      @collection_name = collection_name
+    end
+
+    def collection
+      service.send(self.class.collection_name)
+    end
+
     def self.has_one(association, collection_name, options = {})
       options[:aliases] = Array(options[:aliases])
       options[:aliases] << association.to_sym
@@ -31,6 +40,15 @@ module Fog
       define_method(associations) do
         send("__#{associations}").collect { |association| service.send(collection_name).get(association) }
       end
+    end
+
+    def self.require_before_save(*args)
+      return @require_before_save || [] if args.empty?
+      @require_before_save = args
+    end
+
+    def require_creation_attributes
+      requires self.class.instance_variable_get(@require_before_save)
     end
 
     def set_attribute(name, *val)

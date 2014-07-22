@@ -9,6 +9,7 @@ module Fog
           # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=VM
 
           provider_class :VM
+          collection_name :servers
 
           identity :reference
 
@@ -94,6 +95,8 @@ module Fog
           has_many  :vifs,              :vifs,                    :aliases => :VIFs
           has_many  :vtpms,             :vtpms,                   :aliases => :VTPMs
 
+          require_before_save :name
+
           def tools_installed?
             !guest_metrics.nil?
           end
@@ -117,7 +120,7 @@ module Fog
           end
 
           def save(params = {})
-            requires :name
+            require_creation_attributes
             nets = params.fetch(:networks, [])
             auto_start = params.fetch(:auto_start, true)
             if template_name
@@ -125,7 +128,7 @@ module Fog
             else
               ref = service.create_server_raw(attributes)
             end
-            merge_attributes service.servers.get(ref).attributes
+            merge_attributes collection.get(ref).attributes
             true
           end
 

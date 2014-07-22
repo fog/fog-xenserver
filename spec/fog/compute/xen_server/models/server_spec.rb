@@ -18,6 +18,10 @@ describe Fog::Compute::XenServer::Models::Server do
     server_class.provider_class.must_equal('VM')
   end
 
+  it 'should have a collection name' do
+    server_class.collection_name.must_equal(:servers)
+  end
+
   it 'should have an unique id' do
     server_class.read_identity.must_equal(:reference)
   end
@@ -178,6 +182,10 @@ describe Fog::Compute::XenServer::Models::Server do
                                            :vcpus_at_startup => '1',
                                            :vcpus_max => '1',
                                            :vcpus_params => {})
+  end
+
+  it 'should require 1 attribute before save' do
+    server_class.require_before_save.must_equal([ :name ])
   end
 
   describe '#tools_installed?' do
