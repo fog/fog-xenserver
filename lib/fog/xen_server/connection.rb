@@ -3,6 +3,7 @@ require 'xmlrpc/client'
 module Fog
   module XenServer
     class Connection
+      attr_reader :credentials
 
       def initialize(host, timeout)
         @factory = XMLRPC::Client.new(host, '/')

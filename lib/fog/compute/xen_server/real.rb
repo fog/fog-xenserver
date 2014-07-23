@@ -22,13 +22,17 @@ module Fog
 
         def default_template
           return nil if @defaults[:template].nil?
-          (servers.custom_templates + servers.builtin_templates).find do |s|
+          (custom_templates + builtin_templates).find do |s|
             (s.name == @defaults[:template]) or (s.uuid == @defaults[:template])
           end
         end
 
         def default_network
           networks.find { |n| n.name == (@defaults[:network] || "Pool-wide network associated with eth0") }
+        end
+
+        def credentials
+          @connection.credentials
         end
       end
     end
