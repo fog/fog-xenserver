@@ -11,12 +11,6 @@ module Fog
           true
         end
       end
-
-      class Mock
-        def start_vm( vm_ref )
-          Fog::Mock.not_implemented
-        end
-      end
     end
   end
 end

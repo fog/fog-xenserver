@@ -21,12 +21,6 @@ module Fog
 
         alias_method :clean_reboot_vm, :clean_reboot_server
       end
-
-      class Mock
-        def reboot_server( ref, stype )
-          Fog::Mock.not_implemented
-        end
-      end
     end
   end
 end

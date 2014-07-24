@@ -10,16 +10,6 @@ module Fog
           @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => 'VBD.unplug_force'}, ref)
         end
       end
-
-      class Mock
-        def unplug_vbd(ref, extra_args = {})
-          Fog::Mock.not_implemented
-        end
-
-        def unplug_force_vbd(ref, extra_args = {})
-          Fog::Mock.not_implemented
-        end
-      end
     end
   end
 end

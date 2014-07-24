@@ -8,12 +8,6 @@ module Fog
 
         alias_method :provision_vm, :provision_server
       end
-
-      class Mock
-        def provision_server( ref )
-          Fog::Mock.not_implemented
-        end
-      end
     end
   end
 end

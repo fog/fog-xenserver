@@ -18,24 +18,6 @@ module Fog
           @connection.request({ :parser => Fog::Parsers::XenServer::Base.new, :method => "#{provider_class}.get_by_uuid" }, uuid)
         end
       end
-
-      class Mock
-        def get_record
-          Fog::Mock.not_implemented
-        end
-
-        def get_record_by_ref
-          Fog::Mock.not_implemented
-        end
-
-        def get_by_name
-          Fog::Mock.not_implemented
-        end
-
-        def get_by_uuid
-          Fog::Mock.not_implemented
-        end
-      end
     end
   end
 end

@@ -17,12 +17,6 @@ module Fog
           @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => 'VDI.create'}, config )
         end
       end
-
-      class Mock
-        def create_vdi( ref )
-          Fog::Mock.not_implemented
-        end
-      end
     end
   end
 end

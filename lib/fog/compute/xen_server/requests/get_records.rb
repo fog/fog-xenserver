@@ -11,12 +11,6 @@ module Fog
           end
         end
       end
-
-      class Mock
-        def get_vms
-          Fog::Mock.not_implemented
-        end
-      end
     end
   end
 end

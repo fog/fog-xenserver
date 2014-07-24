@@ -6,12 +6,6 @@ module Fog
           @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => 'VDI.destroy'}, vdi_ref)
         end
       end
-
-      class Mock
-        def destroy_vdi()
-          Fog::Mock.not_implemented
-        end
-      end
     end
   end
 end

@@ -21,6 +21,10 @@ module Fog
           @connection  = Fog::XML::Connection.new(@host)
           @connection.authenticate(@username, @password)
         end
+
+        def method_missing(method_name, *args)
+          Fog::Mock.not_implemented
+        end
       end
     end
   end

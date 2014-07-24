@@ -24,12 +24,6 @@ module Fog
 
         alias_method :clean_shutdown_vm, :clean_shutdown_server
       end
-
-      class Mock
-        def shutdown_server( vm_ref )
-          Fog::Mock.not_implemented
-        end
-      end
     end
   end
 end

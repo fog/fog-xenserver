@@ -40,20 +40,6 @@ module Fog
           )
         end
       end
-
-      class Mock
-        def create_sr( host_ref,
-                       name_label,
-                       type,
-                       name_description = nil,
-                       device_config    = {},
-                       physical_size    = '0',
-                       content_type     = nil,
-                       shared           = false,
-                       sm_config        = {} )
-          Fog::Mock.not_implemented
-        end
-      end
     end
   end
 end

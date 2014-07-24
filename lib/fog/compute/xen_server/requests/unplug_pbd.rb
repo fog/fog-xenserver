@@ -9,12 +9,6 @@ module Fog
           )
         end
       end
-
-      class Mock
-        def unplug_pbd( ref )
-          Fog::Mock.not_implemented
-        end
-      end
     end
   end
 end

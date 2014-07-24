@@ -11,12 +11,6 @@ module Fog
           @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => "host.enable"}, ref)
         end
       end
-
-      class Mock
-        def enable_host( ref )
-          Fog::Mock.not_implemented
-        end
-      end
     end
   end
 end

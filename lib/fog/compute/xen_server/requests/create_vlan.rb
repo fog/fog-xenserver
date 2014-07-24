@@ -22,12 +22,6 @@ module Fog
           )
         end
       end
-
-      class Mock
-        def create_vlan( pif_ref, vlan_id, network_ref )
-          Fog::Mock.not_implemented
-        end
-      end
     end
   end
 end

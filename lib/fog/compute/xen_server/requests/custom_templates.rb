@@ -10,12 +10,6 @@ module Fog
           []
         end
       end
-
-      class Mock
-        def custom_templates
-          Fog::Mock.not_implemented
-        end
-      end
     end
   end
 end

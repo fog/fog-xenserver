@@ -6,12 +6,6 @@ module Fog
           @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => 'VM.snapshot'}, vm_ref, name)
         end
       end
-
-      class Mock
-        def snapshot_server()
-          Fog::Mock.not_implemented
-        end
-      end
     end
   end
 end

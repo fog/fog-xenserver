@@ -12,12 +12,6 @@ module Fog
           @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => "host.disable"}, ref)
         end
       end
-
-      class Mock
-        def disable_host( ref )
-          Fog::Mock.not_implemented
-        end
-      end
     end
   end
 end

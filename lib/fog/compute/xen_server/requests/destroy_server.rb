@@ -19,12 +19,6 @@ module Fog
 
         alias_method :destroy_vm, :destroy_server
       end
-
-      class Mock
-        def destroy_server()
-          Fog::Mock.not_implemented
-        end
-      end
     end
   end
 end

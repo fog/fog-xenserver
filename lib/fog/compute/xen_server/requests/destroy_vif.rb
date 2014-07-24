@@ -6,12 +6,6 @@ module Fog
           @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => 'VIF.destroy'}, ref)
         end
       end
-
-      class Mock
-        def destroy_vif()
-          Fog::Mock.not_implemented
-        end
-      end
     end
   end
 end

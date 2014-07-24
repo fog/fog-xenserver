@@ -13,12 +13,6 @@ module Fog
           snapshot_revert_server(snapshot_ref, extra_args = {})
         end
       end
-
-      class Mock
-        def snapshot_revert()
-          Fog::Mock.not_implemented
-        end
-      end
     end
   end
 end

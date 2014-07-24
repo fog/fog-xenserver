@@ -104,16 +104,6 @@ module Fog
 
         alias_method :create_vm, :create_server
       end
-
-      class Mock
-        def create_server( name_label, template = nil, network = nil, extra_args = {})
-          Fog::Mock.not_implemented
-        end
-
-        def create_server_raw(config = {})
-          Fog::Mock.not_implemented
-        end
-      end
     end
   end
 end

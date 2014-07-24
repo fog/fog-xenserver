@@ -11,12 +11,6 @@ module Fog
           @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => 'SR.destroy'}, sr_ref)
         end
       end
-
-      class Mock
-        def destroy_sr( sr_ref )
-          Fog::Mock.not_implemented
-        end
-      end
     end
   end
 end

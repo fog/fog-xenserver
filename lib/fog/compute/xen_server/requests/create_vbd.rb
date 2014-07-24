@@ -26,12 +26,6 @@ module Fog
           @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => 'VBD.create'}, default_config )
         end
       end
-
-      class Mock
-        def create_vbd( config )
-          Fog::Mock.not_implemented
-        end
-      end
     end
   end
 end
