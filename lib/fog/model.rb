@@ -69,7 +69,7 @@ module Fog
     end
 
     def method_missing(method_name, *args)
-      if respond_to?("#{method_name}_#{provider_class.downcase}")
+      if service.respond_to?("#{method_name}_#{provider_class.downcase}")
         result = service.send("#{method_name}_#{provider_class.downcase}", reference, *args)
         reload
         result

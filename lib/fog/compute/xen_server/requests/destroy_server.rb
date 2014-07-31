@@ -3,7 +3,7 @@ module Fog
     class XenServer
       class Real
         def destroy_server(ref , extra_args = {})
-          server = @connection.servers.get(ref)
+          server = servers.get(ref)
           server.hard_shutdown
           server.vbds.each do |vbd|
             if vbd.type == "Disk"
