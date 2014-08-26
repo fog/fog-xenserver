@@ -69,8 +69,10 @@ describe Fog::Compute::XenServer::Models::Vdi do
                                  :snapshot_of => :__snapshot_of)
   end
 
-  it 'should have 3 default values' do
+  it 'should have 5 default values' do
     vdi_class.default_values.must_equal(:other_config => {},
+                                        :read_only => false,
+                                        :sharable => false,
                                         :tags => 'system',
                                         :virtual_size => '8589934592')
   end

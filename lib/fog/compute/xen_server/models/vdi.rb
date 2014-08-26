@@ -46,18 +46,6 @@ module Fog
           require_before_save :name, :storage_repository
 
           alias_method :storage_repository, :sr
-
-          #
-          # Sharable is false by default
-          # read_only is false by default
-          # There is a bug on fog-core that need to be solved before
-          # default_values work with false value
-          #
-          def initialize(attributes = {})
-            self.read_only ||= false unless attributes[:read_only]
-            self.sharable ||= false unless attributes[:sharable]
-            super
-          end
         end
       end
     end

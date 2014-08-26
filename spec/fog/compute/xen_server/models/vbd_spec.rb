@@ -56,9 +56,10 @@ describe Fog::Compute::XenServer::Models::Vbd do
                                    :metrics => :__metrics })
   end
 
-  it 'should have 8 default values' do
+  it 'should have 9 default values' do
     vbd_class.default_values.must_equal(:bootable => true, 
-                                        :mode => 'RW', 
+                                        :mode => 'RW',
+                                        :empty => false,
                                         :other_config => { 'owner' => '' },
                                         :qos_supported_algorithms => [], 
                                         :qos_algorithm_params => {}, 

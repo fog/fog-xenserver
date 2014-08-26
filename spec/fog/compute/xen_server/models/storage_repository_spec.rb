@@ -54,8 +54,9 @@ describe Fog::Compute::XenServer::Models::StorageRepository do
                                                   :vdis => :__vdis })
   end
 
-  it 'should have 4 default values' do
+  it 'should have 5 default values' do
     storage_repository_class.default_values.must_equal(:content_type => 'user',
+                                                       :shared => false,
                                                        :description => '', 
                                                        :physical_size => '0', 
                                                        :sm_config => {})
