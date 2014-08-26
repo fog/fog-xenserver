@@ -22,19 +22,15 @@ describe Fog::Compute::XenServer::Models::CrashDump do
     crash_dump_class.read_identity.must_equal(:reference)
   end
 
-  it 'should have 5 attributes' do
+  it 'should have 3 attributes' do
     crash_dump_class.attributes.must_equal([ :reference,
                                              :other_config,
-                                             :uuid,
-                                             :__vdi,
-                                             :__vm ])
+                                             :uuid ])
   end
 
-  it 'should have 4 aliases' do
-    crash_dump_class.aliases.must_equal({ :VDI => :__vdi,
-                                          :vdi => :__vdi,
-                                          :VM => :__vm,
-                                          :vm => :__vm })
+  it 'should have 2 aliases' do
+    crash_dump_class.aliases.must_equal(:VDI => :vdi,
+                                        :VM => :vm)
   end
 
   it "shouldn't have default values" do

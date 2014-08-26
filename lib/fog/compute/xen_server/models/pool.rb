@@ -34,11 +34,11 @@ module Fog
           attribute :wlb_username
           attribute :wlb_verify_cert
 
-          has_one  :crash_dump_sr,    :storage_repositories,   :aliases => :crash_dump_SR
-          has_one  :default_sr,       :storage_repositories,   :aliases => :default_SR
-          has_one  :master,           :hosts
-          has_many :metadata_vdis,    :vdis,                   :aliases => :metadata_VDIs
-          has_one  :suspend_image_sr, :storage_repositories,   :aliases => :suspend_image_SR
+          has_one_identity    :crash_dump_sr,    :storage_repositories,   :aliases => :crash_dump_SR
+          has_one_identity    :default_sr,       :storage_repositories,   :aliases => :default_SR
+          has_one_identity    :master,           :hosts
+          has_many_identities :metadata_vdis,    :vdis,                   :aliases => :metadata_VDIs
+          has_one_identity    :suspend_image_sr, :storage_repositories,   :aliases => :suspend_image_SR
 
           alias_method :default_storage_repository, :default_sr
         end

@@ -34,8 +34,8 @@ describe Fog::Compute::XenServer::Models::Blob do
   end
 
   it 'should have 2 aliases' do
-    blob_class.aliases.must_equal({ :name_description => :description,
-                                    :name_label => :name })
+    blob_class.aliases.must_equal(:name_description => :description,
+                                  :name_label => :name)
   end
 
   it "shouldn't have default values" do

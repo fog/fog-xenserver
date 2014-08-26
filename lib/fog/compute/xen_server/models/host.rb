@@ -50,16 +50,16 @@ module Fog
           attribute :tags
           attribute :uuid
 
-          has_many :crashdumps,    :crash_dumps
-          has_one  :crash_dump_sr, :storage_repositories
-          has_many :host_cpus,     :host_cpus,            :aliases => :host_CPUs
-          has_one  :local_cache_sr,:storage_repositories
-          has_one  :metrics,       :hosts_metrics
-          has_many :pbds,          :pbds,                 :aliases => :PBDs
-          has_many :pcis,          :pcis,                 :aliases => :PCIs
-          has_many :pgpus,         :pgpus,                :aliases => :PGPUs
-          has_many :pifs,          :pifs,                 :aliases => :PIFs
-          has_many :resident_vms,  :servers,              :aliases => :resident_VMs
+          has_many_identities :crashdumps,    :crash_dumps
+          has_one_identity    :crash_dump_sr, :storage_repositories
+          has_many_identities :host_cpus,     :host_cpus,            :aliases => :host_CPUs
+          has_one_identity    :local_cache_sr,:storage_repositories
+          has_one_identity    :metrics,       :hosts_metrics
+          has_many_identities :pbds,          :pbds,                 :aliases => :PBDs
+          has_many_identities :pcis,          :pcis,                 :aliases => :PCIs
+          has_many_identities :pgpus,         :pgpus,                :aliases => :PGPUs
+          has_many_identities :pifs,          :pifs,                 :aliases => :PIFs
+          has_many_identities :resident_vms,  :servers,              :aliases => :resident_VMs
 
           alias_method :resident_servers, :resident_vms
         end

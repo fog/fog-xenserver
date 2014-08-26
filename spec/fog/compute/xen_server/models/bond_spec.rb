@@ -22,22 +22,17 @@ describe Fog::Compute::XenServer::Models::Bond do
     bond_class.read_identity.must_equal(:reference)
   end
 
-  it 'should have 9 attributes' do
+  it 'should have 6 attributes' do
     bond_class.attributes.must_equal([ :reference,
                                        :links_up,
                                        :mode,
                                        :other_config,
                                        :properties,
-                                       :uuid,
-                                       :__master,
-                                       :__primary_slave,
-                                       :__slaves ])
+                                       :uuid ])
   end
 
-  it 'should have 3 aliases' do
-    bond_class.aliases.must_equal({ :master => :__master,
-                                    :primary_slave => :__primary_slave,
-                                    :slaves => :__slaves })
+  it "shouldn't have aliases" do
+    bond_class.aliases.must_equal({})
   end
 
   it "shouldn't have default values" do

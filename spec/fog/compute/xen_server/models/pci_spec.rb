@@ -22,20 +22,17 @@ describe Fog::Compute::XenServer::Models::Pci do
     pci_class.read_identity.must_equal(:reference)
   end
 
-  it 'should have 8 attributes' do
+  it 'should have 6 attributes' do
     pci_class.attributes.must_equal([ :reference,
                                       :device_name,
                                       :other_config,
                                       :pci_id,
                                       :uuid,
-                                      :vendor_name,
-                                      :__dependencies,
-                                      :__host ])
+                                      :vendor_name ])
   end
 
-  it 'should have 2 aliases' do
-    pci_class.aliases.must_equal({ :dependencies => :__dependencies,
-                                   :host => :__host })
+  it "shouldn't have aliases" do
+    pci_class.aliases.must_equal({})
   end
 
   it "shouldn't have default values" do

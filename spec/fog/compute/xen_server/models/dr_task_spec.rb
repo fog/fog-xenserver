@@ -22,15 +22,13 @@ describe Fog::Compute::XenServer::Models::DrTask do
     dr_task_class.read_identity.must_equal(:reference)
   end
 
-  it 'should have 3 attributes' do
+  it 'should have 2 attributes' do
     dr_task_class.attributes.must_equal([ :reference,
-                                          :uuid,
-                                          :__introduced_srs ])
+                                          :uuid ])
   end
 
-  it 'should have 2 aliases' do
-    dr_task_class.aliases.must_equal({ :introduced_SRs => :__introduced_srs,
-                                       :introduced_srs => :__introduced_srs })
+  it 'should have 1 alias' do
+    dr_task_class.aliases.must_equal(:introduced_SRs => :introduced_srs)
   end
 
   it "shouldn't have default values" do

@@ -31,7 +31,7 @@ module Fog
           attribute :recent_alerts
           attribute :uuid
 
-          has_many  :vms,  :servers,      :aliases => :VMs
+          has_many_identities  :vms,  :servers,      :aliases => :VMs
         end
       end
     end

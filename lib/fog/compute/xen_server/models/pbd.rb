@@ -16,8 +16,8 @@ module Fog
           attribute :other_config
           attribute :uuid
 
-          has_one :host,  :hosts
-          has_one :sr,    :storage_repositories,    :aliases => :SR
+          has_one_identity :host,  :hosts
+          has_one_identity :sr,    :storage_repositories,    :aliases => :SR
 
           alias_method :storage_repository, :sr
         end

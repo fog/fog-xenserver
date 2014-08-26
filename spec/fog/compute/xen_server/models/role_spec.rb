@@ -22,18 +22,16 @@ describe Fog::Compute::XenServer::Models::Role do
     role_class.read_identity.must_equal(:reference)
   end
 
-  it 'should have 5 attributes' do
+  it 'should have 4 attributes' do
     role_class.attributes.must_equal([ :reference,
                                        :description,
                                        :name,
-                                       :uuid,
-                                       :__subroles ])
+                                       :uuid ])
   end
 
-  it 'should have 3 aliases' do
+  it 'should have 2 aliases' do
     role_class.aliases.must_equal({ :name_description => :description,
-                                    :name_label => :name, 
-                                    :subroles => :__subroles })
+                                    :name_label => :name })
   end
 
   it "shouldn't have default values" do

@@ -30,9 +30,9 @@ module Fog
           attribute :status_detail
           attribute :uuid
 
-          has_one   :metrics,   :vifs_metrics
-          has_one   :network,   :networks
-          has_one   :vm,        :servers,          :aliases => :VM
+          has_one_identity   :metrics,   :vifs_metrics
+          has_one_identity   :network,   :networks
+          has_one_identity   :vm,        :servers,          :aliases => :VM
 
           require_before_save :server, :network
 

@@ -22,7 +22,7 @@ describe Fog::Compute::XenServer::Models::HostCpu do
     host_cpu_class.read_identity.must_equal(:reference)
   end
 
-  it 'should have 14 attributes' do
+  it 'should have 13 attributes' do
     host_cpu_class.attributes.must_equal([ :reference,
                                            :family,
                                            :features,
@@ -35,13 +35,11 @@ describe Fog::Compute::XenServer::Models::HostCpu do
                                            :stepping,
                                            :utilisation,
                                            :uuid,
-                                           :vendor,
-                                           :__host ])
+                                           :vendor ])
   end
 
-  it 'should have 2 aliases' do
-    host_cpu_class.aliases.must_equal({ :host => :__host,
-                                        :modelname => :model_name })
+  it 'should have 1 alias' do
+    host_cpu_class.aliases.must_equal(:modelname => :model_name)
   end
 
   it "shouldn't have default values" do

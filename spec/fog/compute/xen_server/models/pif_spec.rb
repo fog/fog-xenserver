@@ -22,7 +22,7 @@ describe Fog::Compute::XenServer::Models::Pif do
     pif_class.read_identity.must_equal(:reference)
   end
 
-  it 'should have 32 attributes' do
+  it 'should have 23 attributes' do
     pif_class.attributes.must_equal([ :reference,
                                       :disallow_unplug,
                                       :currently_attached,
@@ -45,38 +45,20 @@ describe Fog::Compute::XenServer::Models::Pif do
                                       :status_code,
                                       :status_detail,
                                       :vlan,
-                                      :uuid,
-                                      :__bond_master_of,
-                                      :__bond_slave_of,
-                                      :__host,
-                                      :__metrics,
-                                      :__network,
-                                      :__tunnel_access_pif_of,
-                                      :__tunnel_transport_pif_of,
-                                      :__vlan_master_of,
-                                      :__vlan_slave_of ])
+                                      :uuid ])
   end
 
-  it 'should have 19 aliases' do
-    pif_class.aliases.must_equal({ :bond_master_of => :__bond_master_of,
-                                   :bond_slave_of => :__bond_slave_of, 
-                                   :MAC => :mac,
-                                   :DNS => :dns, 
-                                   :IP => :ip, 
-                                   :IPv6 => :ipv6, 
-                                   :MTU => :mtu, 
-                                   :network => :__network,
-                                   :metrics => :__metrics,
-                                   :tunnel_access_PIF_of => :__tunnel_access_pif_of,
-                                   :tunnel_access_pif_of => :__tunnel_access_pif_of,
-                                   :tunnel_transport_PIF_of => :__tunnel_transport_pif_of,
-                                   :tunnel_transport_pif_of => :__tunnel_transport_pif_of,
-                                   :VLAN => :vlan,
-                                   :VLAN_master_of => :__vlan_master_of,
-                                   :vlan_master_of => :__vlan_master_of,
-                                   :VLAN_slave_of => :__vlan_slave_of,
-                                   :vlan_slave_of => :__vlan_slave_of,
-                                   :host => :__host })
+  it 'should have 6 aliases' do
+    pif_class.aliases.must_equal(:MAC => :mac,
+                                 :DNS => :dns,
+                                 :IP => :ip,
+                                 :IPv6 => :ipv6,
+                                 :MTU => :mtu,
+                                 :VLAN => :vlan,
+                                 :tunnel_access_PIF_of => :tunnel_access_pif_of,
+                                 :tunnel_transport_PIF_of => :tunnel_transport_pif_of,
+                                 :VLAN_master_of => :vlan_master_of,
+                                 :VLAN_slave_of => :vlan_slave_of)
   end
 
   it "shouldn't have default values" do

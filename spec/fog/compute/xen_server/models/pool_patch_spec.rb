@@ -22,7 +22,7 @@ describe Fog::Compute::XenServer::Models::PoolPatch do
     pool_patch_class.read_identity.must_equal(:reference)
   end
 
-  it 'should have 10 attributes' do
+  it 'should have 9 attributes' do
     pool_patch_class.attributes.must_equal([ :reference,
                                              :after_apply_guidance,
                                              :description,
@@ -31,14 +31,12 @@ describe Fog::Compute::XenServer::Models::PoolPatch do
                                              :pool_applied,
                                              :size,
                                              :uuid,
-                                             :version,
-                                             :__host_patches ])
+                                             :version ])
   end
 
-  it 'should have 3 aliases' do
-    pool_patch_class.aliases.must_equal({ :host_patches => :__host_patches,
-                                          :name_description => :description,
-                                          :name_label => :name })
+  it 'should have 2 aliases' do
+    pool_patch_class.aliases.must_equal(:name_description => :description,
+                                        :name_label => :name)
   end
 
   it "shouldn't have default values" do

@@ -17,8 +17,8 @@ module Fog
           attribute :other_config
           attribute :uuid
 
-          has_many :pgpus,    :pgpus,     :aliases => :PGPUs
-          has_many :vgpus,    :vgpus,     :aliases => :VGPUs
+          has_many_identities :pgpus,    :pgpus,     :aliases => :PGPUs
+          has_many_identities :vgpus,    :vgpus,     :aliases => :VGPUs
         end
       end
     end

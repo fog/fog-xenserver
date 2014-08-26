@@ -17,9 +17,9 @@ module Fog
           attribute :properties
           attribute :uuid
 
-          has_one  :master,          :pifs
-          has_one  :primary_slave,   :pifs
-          has_many :slaves,          :pifs
+          has_one_identity    :master,          :pifs
+          has_one_identity    :primary_slave,   :pifs
+          has_many_identities :slaves,          :pifs
         end
       end
     end

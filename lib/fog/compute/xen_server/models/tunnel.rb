@@ -15,8 +15,8 @@ module Fog
           attribute :status
           attribute :uuid
 
-          has_one :access_pif,     :pifs,     :aliases => :access_PIF
-          has_one :transport_pif,  :pifs,     :aliases => :transport_PIF
+          has_one_identity :access_pif,     :pifs,     :aliases => :access_PIF
+          has_one_identity :transport_pif,  :pifs,     :aliases => :transport_PIF
         end
       end
     end

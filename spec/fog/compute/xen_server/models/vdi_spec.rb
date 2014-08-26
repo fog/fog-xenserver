@@ -22,7 +22,7 @@ describe Fog::Compute::XenServer::Models::Vdi do
     vdi_class.read_identity.must_equal(:reference)
   end
 
-  it 'should have 31 attributes' do
+  it 'should have 25 attributes' do
     vdi_class.attributes.must_equal([ :reference,
                                       :allowed_operations,
                                       :allow_caching,
@@ -47,26 +47,14 @@ describe Fog::Compute::XenServer::Models::Vdi do
                                       :type,
                                       :uuid,
                                       :virtual_size,
-                                      :xenstore_data,
-                                      :__crash_dumps,
-                                      :__parent,
-                                      :__snapshots,
-                                      :__snapshot_of,
-                                      :__sr,
-                                      :__vbds ])
+                                      :xenstore_data ])
   end
 
-  it 'should have 10 aliases' do
+  it 'should have 4 aliases' do
     vdi_class.aliases.must_equal(:name_label => :name,
                                  :name_description => :description,
-                                 :parent => :__parent,
-                                 :VBDs => :__vbds,
-                                 :vbds => :__vbds,
-                                 :SR => :__sr,
-                                 :sr => :__sr,
-                                 :crash_dumps => :__crash_dumps,
-                                 :snapshots => :__snapshots,
-                                 :snapshot_of => :__snapshot_of)
+                                 :SR => :sr,
+                                 :VBDs => :vbds)
   end
 
   it 'should have 5 default values' do

@@ -22,21 +22,19 @@ describe Fog::Compute::XenServer::Models::ServerAppliance do
     server_appliance_class.read_identity.must_equal(:reference)
   end
 
-  it 'should have 7 attributes' do
+  it 'should have 6 attributes' do
     server_appliance_class.attributes.must_equal([ :reference,
                                                    :allowed_operations,
                                                    :current_operations,
                                                    :description,
                                                    :name,
-                                                   :uuid,
-                                                   :__vms ])
+                                                   :uuid ])
   end
 
-  it 'should have 4 aliases' do
-    server_appliance_class.aliases.must_equal({ :name_description => :description,
-                                                :name_label => :name,
-                                                :VMs => :__vms,
-                                                :vms => :__vms })
+  it 'should have 3 aliases' do
+    server_appliance_class.aliases.must_equal(:name_description => :description,
+                                              :name_label => :name,
+                                              :VMs => :vms)
   end
 
   it "shouldn't have default values" do

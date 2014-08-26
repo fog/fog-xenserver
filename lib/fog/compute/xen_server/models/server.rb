@@ -75,25 +75,25 @@ module Fog
           attribute :version
           attribute :xenstore_data
 
-          has_one   :affinity,          :hosts
-          has_one   :appliance,         :server_appliances
-          has_many  :attached_pcis,     :pcis,                    :aliases => :attached_PCIs
-          has_many  :children,          :servers
-          has_many  :consoles,          :consoles
-          has_many  :crash_dumps,       :crash_dumps
-          has_one   :guest_metrics,     :guests_metrics
-          has_one   :metrics,           :servers_metrics
-          has_one   :parent,            :servers
-          has_one   :protection_policy, :vmpps
-          has_one   :resident_on,       :hosts
-          has_many  :snapshots,         :servers
-          has_one   :snapshot_of,       :servers
-          has_one   :suspend_sr,        :storage_repositories,    :aliases => :suspend_SR
-          has_one   :suspend_vdi,       :vdis,                    :aliases => :suspend_VDI
-          has_many  :vbds,              :vbds,                    :aliases => :VBDs
-          has_many  :vgpus,             :vgpus,                   :aliases => :VGPUs
-          has_many  :vifs,              :vifs,                    :aliases => :VIFs
-          has_many  :vtpms,             :vtpms,                   :aliases => :VTPMs
+          has_one_identity      :affinity,          :hosts
+          has_one_identity      :appliance,         :server_appliances
+          has_many_identities   :attached_pcis,     :pcis,                    :aliases => :attached_PCIs
+          has_many_identities   :children,          :servers
+          has_many_identities   :consoles,          :consoles
+          has_many_identities   :crash_dumps,       :crash_dumps
+          has_one_identity      :guest_metrics,     :guests_metrics
+          has_one_identity      :metrics,           :servers_metrics
+          has_one_identity      :parent,            :servers
+          has_one_identity      :protection_policy, :vmpps
+          has_one_identity      :resident_on,       :hosts
+          has_many_identities   :snapshots,         :servers
+          has_one_identity      :snapshot_of,       :servers
+          has_one_identity      :suspend_sr,        :storage_repositories,    :aliases => :suspend_SR
+          has_one_identity      :suspend_vdi,       :vdis,                    :aliases => :suspend_VDI
+          has_many_identities   :vbds,              :vbds,                    :aliases => :VBDs
+          has_many_identities   :vgpus,             :vgpus,                   :aliases => :VGPUs
+          has_many_identities   :vifs,              :vifs,                    :aliases => :VIFs
+          has_many_identities   :vtpms,             :vtpms,                   :aliases => :VTPMs
 
           require_before_save :name
 

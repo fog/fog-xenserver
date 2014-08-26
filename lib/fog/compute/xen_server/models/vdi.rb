@@ -36,12 +36,12 @@ module Fog
           attribute :virtual_size,                :default => '8589934592'
           attribute :xenstore_data
 
-          has_many  :crash_dumps,  :crash_dumps
-          has_one   :parent,       :vdis
-          has_many  :snapshots,    :vdis
-          has_one   :snapshot_of,  :vdis
-          has_one   :sr,           :storage_repositories,      :aliases => :SR
-          has_many  :vbds,         :vbds,                      :aliases => :VBDs
+          has_many_identities   :crash_dumps,  :crash_dumps
+          has_one_identity      :parent,       :vdis
+          has_many_identities   :snapshots,    :vdis
+          has_one_identity      :snapshot_of,  :vdis
+          has_one_identity      :sr,           :storage_repositories,      :aliases => :SR
+          has_many_identities   :vbds,         :vbds,                      :aliases => :VBDs
 
           require_before_save :name, :storage_repository
 

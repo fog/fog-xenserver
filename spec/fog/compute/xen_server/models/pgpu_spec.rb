@@ -22,21 +22,9 @@ describe Fog::Compute::XenServer::Models::Pgpu do
     pgpu_class.read_identity.must_equal(:reference)
   end
 
-  it 'should have 6 attributes' do
-    pgpu_class.attributes.must_equal([ :reference,
-                                       :other_config,
-                                       :uuid,
-                                       :__gpu_group,
-                                       :__host,
-                                       :__pci ])
-  end
-
-  it 'should have 5 aliases' do
-    pgpu_class.aliases.must_equal({ :GPU_group => :__gpu_group,
-                                    :gpu_group => :__gpu_group,
-                                    :host => :__host,
-                                    :PCI => :__pci,
-                                    :pci => :__pci })
+  it 'should have 2 aliases' do
+    pgpu_class.aliases.must_equal(:GPU_group => :gpu_group,
+                                  :PCI => :pci)
   end
 
   it "shouldn't have default values" do

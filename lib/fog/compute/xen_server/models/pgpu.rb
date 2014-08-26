@@ -14,9 +14,9 @@ module Fog
           attribute :other_config
           attribute :uuid
 
-          has_one   :gpu_group,     :gpu_groups,  :aliases => :GPU_group
-          has_one   :host,          :hosts
-          has_one   :pci,           :pcis,        :aliases => :PCI
+          has_one_identity   :gpu_group,     :gpu_groups,  :aliases => :GPU_group
+          has_one_identity   :host,          :hosts
+          has_one_identity   :pci,           :pcis,        :aliases => :PCI
         end
       end
     end

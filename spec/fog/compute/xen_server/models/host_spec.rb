@@ -22,7 +22,7 @@ describe Fog::Compute::XenServer::Models::Host do
     host_class.read_identity.must_equal(:reference)
   end
 
-  it 'should have 49 attributes' do
+  it 'should have 39 attributes' do
     host_class.attributes.must_equal([ :reference,
                                        :address,
                                        :allowed_operations,
@@ -61,43 +61,23 @@ describe Fog::Compute::XenServer::Models::Host do
                                        :supported_bootloaders,
                                        :suspend_image_sr,
                                        :tags,
-                                       :uuid,
-                                       :__crashdumps,
-                                       :__crash_dump_sr,
-                                       :__host_cpus,
-                                       :__local_cache_sr,
-                                       :__metrics,
-                                       :__pbds,
-                                       :__pcis,
-                                       :__pgpus,
-                                       :__pifs,
-                                       :__resident_vms ])
+                                       :uuid ])
   end
 
-  it 'should have 23 aliases' do
-    host_class.aliases.must_equal({ :name_label => :name,
-                                    :API_version_major => :api_version_major,
-                                    :API_version_minor => :api_version_minor,
-                                    :API_version_vendor => :api_version_vendor,
-                                    :API_version_vendor_implementation => :api_version_vendor_implementation,
-                                    :crash_dump_sr => :__crash_dump_sr,
-                                    :crashdumps => :__crashdumps,
-                                    :guest_VCPUs_params => :guest_vcpus_params,
-                                    :local_cache_sr => :__local_cache_sr,
-                                    :metrics => :__metrics,
-                                    :name_description => :description,
-                                    :PBDs => :__pbds,
-                                    :pbds => :__pbds,
-                                    :PCIs => :__pcis,
-                                    :pcis => :__pcis,
-                                    :PGPUs => :__pgpus,
-                                    :pgpus => :__pgpus,
-                                    :PIFs => :__pifs,
-                                    :pifs => :__pifs,
-                                    :resident_VMs => :__resident_vms,
-                                    :resident_vms => :__resident_vms,
-                                    :host_CPUs => :__host_cpus,
-                                    :host_cpus => :__host_cpus })
+  it 'should have 13 aliases' do
+    host_class.aliases.must_equal(:name_label => :name,
+                                  :API_version_major => :api_version_major,
+                                  :API_version_minor => :api_version_minor,
+                                  :API_version_vendor => :api_version_vendor,
+                                  :API_version_vendor_implementation => :api_version_vendor_implementation,
+                                  :guest_VCPUs_params => :guest_vcpus_params,
+                                  :name_description => :description,
+                                  :host_CPUs => :host_cpus,
+                                  :PBDs => :pbds,
+                                  :PCIs => :pcis,
+                                  :PGPUs => :pgpus,
+                                  :PIFs => :pifs,
+                                  :resident_VMs => :resident_vms)
   end
 
   it "shouldn't have default values" do

@@ -20,8 +20,8 @@ module Fog
           attribute :uuid
           attribute :version
 
-          has_one   :host,       :hosts
-          has_one   :pool_patch, :pool_patchs
+          has_one_identity   :host,       :hosts
+          has_one_identity   :pool_patch, :pool_patchs
         end
       end
     end

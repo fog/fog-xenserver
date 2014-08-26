@@ -22,18 +22,16 @@ describe Fog::Compute::XenServer::Models::Console do
     console_class.read_identity.must_equal(:reference)
   end
 
-  it 'should have 6 attributes' do
+  it 'should have 5 attributes' do
     console_class.attributes.must_equal([ :reference,
                                           :location,
                                           :other_config,
                                           :protocol,
-                                          :uuid,
-                                          :__vm ])
+                                          :uuid ])
   end
 
-  it 'should have 2 aliases' do
-    console_class.aliases.must_equal({ :VM => :__vm,
-                                       :vm => :__vm })
+  it 'should have 1 alias' do
+    console_class.aliases.must_equal(:VM => :vm)
   end
 
   it "shouldn't have default values" do

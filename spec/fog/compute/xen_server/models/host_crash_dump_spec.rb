@@ -22,17 +22,16 @@ describe Fog::Compute::XenServer::Models::HostCrashDump do
     host_crash_dump_class.read_identity.must_equal(:reference)
   end
 
-  it 'should have 6 attributes' do
+  it 'should have 5 attributes' do
     host_crash_dump_class.attributes.must_equal([ :reference,
                                                   :other_config,
                                                   :size,
                                                   :timestamp,
-                                                  :uuid,
-                                                  :__host ])
+                                                  :uuid ])
   end
 
-  it 'should have 1 alias' do
-    host_crash_dump_class.aliases.must_equal({ :host => :__host })
+  it "shouldn't have aliases" do
+    host_crash_dump_class.aliases.must_equal({})
   end
 
   it "shouldn't have default values" do

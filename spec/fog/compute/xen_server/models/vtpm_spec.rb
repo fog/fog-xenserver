@@ -22,16 +22,13 @@ describe Fog::Compute::XenServer::Models::Vtpm do
     vtpm_class.read_identity.must_equal(:reference)
   end
 
-  it 'should have 4 attributes' do
+  it 'should have 2 attributes' do
     vtpm_class.attributes.must_equal([ :reference,
-                                       :uuid,
-                                       :__backend,
-                                       :__vm ])
+                                       :uuid ])
   end
 
-  it 'should have 2 aliases' do
-    vtpm_class.aliases.must_equal({ :backend => :__backend,
-                                    :vm => :__vm })
+  it "shouldn't have aliases" do
+    vtpm_class.aliases.must_equal({})
   end
 
   it "shouldn't have default values" do

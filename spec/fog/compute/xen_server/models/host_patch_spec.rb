@@ -22,7 +22,7 @@ describe Fog::Compute::XenServer::Models::HostPatch do
     host_patch_class.read_identity.must_equal(:reference)
   end
 
-  it 'should have 11 attributes' do
+  it 'should have 9 attributes' do
     host_patch_class.attributes.must_equal([ :reference,
                                              :applied,
                                              :description,
@@ -31,16 +31,12 @@ describe Fog::Compute::XenServer::Models::HostPatch do
                                              :size,
                                              :timestamp_applied,
                                              :uuid,
-                                             :version,
-                                             :__host,
-                                             :__pool_patch ])
+                                             :version ])
   end
 
-  it 'should have 4 aliases' do
-    host_patch_class.aliases.must_equal({ :host => :__host,
-                                          :name_description => :description,
-                                          :name_label => :name,
-                                          :pool_patch => :__pool_patch })
+  it 'should have 2 aliases' do
+    host_patch_class.aliases.must_equal(:name_description => :description,
+                                        :name_label => :name)
   end
 
   it "shouldn't have default values" do

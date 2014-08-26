@@ -22,7 +22,7 @@ describe Fog::Compute::XenServer::Models::StorageRepository do
     storage_repository_class.read_identity.must_equal(:reference)
   end
 
-  it 'should have 20 attributes' do
+  it 'should have 18 attributes' do
     storage_repository_class.attributes.must_equal([ :reference,
                                                      :allowed_operations,
                                                      :blobs,
@@ -40,25 +40,21 @@ describe Fog::Compute::XenServer::Models::StorageRepository do
                                                      :tags,
                                                      :type,
                                                      :uuid,
-                                                     :virtual_allocation,
-                                                     :__pbds,
-                                                     :__vdis ])
+                                                     :virtual_allocation ])
   end
 
-  it 'should have 6 aliases' do
-    storage_repository_class.aliases.must_equal({ :name_label => :name,
-                                                  :name_description => :description,
-                                                  :PBDs => :__pbds,
-                                                  :pbds => :__pbds,
-                                                  :VDIs => :__vdis,
-                                                  :vdis => :__vdis })
+  it 'should have 4 aliases' do
+    storage_repository_class.aliases.must_equal(:name_label => :name,
+                                                :name_description => :description,
+                                                :PBDs => :pbds,
+                                                :VDIs => :vdis)
   end
 
   it 'should have 5 default values' do
     storage_repository_class.default_values.must_equal(:content_type => 'user',
                                                        :shared => false,
-                                                       :description => '', 
-                                                       :physical_size => '0', 
+                                                       :description => '',
+                                                       :physical_size => '0',
                                                        :sm_config => {})
   end
 

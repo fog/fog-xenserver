@@ -22,7 +22,7 @@ describe Fog::Compute::XenServer::Models::Pool do
     pool_class.read_identity.must_equal(:reference)
   end
 
-  it 'should have 28 attributes' do
+  it 'should have 23 attributes' do
     pool_class.attributes.must_equal([ :reference,
                                        :blobs,
                                        :description,
@@ -45,26 +45,16 @@ describe Fog::Compute::XenServer::Models::Pool do
                                        :wlb_enabled,
                                        :wlb_url,
                                        :wlb_username,
-                                       :wlb_verify_cert,
-                                       :__crash_dump_sr,
-                                       :__default_sr,
-                                       :__master,
-                                       :__metadata_vdis,
-                                       :__suspend_image_sr ])
+                                       :wlb_verify_cert ])
   end
 
-  it 'should have 11 aliases' do
-    pool_class.aliases.must_equal({ :crash_dump_SR => :__crash_dump_sr,
-                                    :crash_dump_sr => :__crash_dump_sr,
-                                    :name_label => :name,
-                                    :name_description => :description,
-                                    :default_SR => :__default_sr,
-                                    :default_sr => :__default_sr,
-                                    :master => :__master,
-                                    :metadata_VDIs => :__metadata_vdis,
-                                    :metadata_vdis => :__metadata_vdis,
-                                    :suspend_image_SR => :__suspend_image_sr,
-                                    :suspend_image_sr => :__suspend_image_sr })
+  it 'should have 6 aliases' do
+    pool_class.aliases.must_equal(:name_label => :name,
+                                  :name_description => :description,
+                                  :crash_dump_SR => :crash_dump_sr,
+                                  :default_SR => :default_sr,
+                                  :metadata_VDIs => :metadata_vdis,
+                                  :suspend_image_SR => :suspend_image_sr)
   end
 
   it "shouldn't have default values" do

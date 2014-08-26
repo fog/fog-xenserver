@@ -23,8 +23,8 @@ module Fog
           attribute :tags
           attribute :uuid
 
-          has_many :pifs,  :pifs,         :aliases => :PIFs
-          has_many :vifs,  :vifs,         :aliases => :VIFs
+          has_many_identities :pifs,  :pifs,         :aliases => :PIFs
+          has_many_identities :vifs,  :vifs,         :aliases => :VIFs
 
           require_before_save :name
         end

@@ -22,20 +22,16 @@ describe Fog::Compute::XenServer::Models::Pbd do
     pbd_class.read_identity.must_equal(:reference)
   end
 
-  it 'should have 7 attributes' do
+  it 'should have 1 alias' do
     pbd_class.attributes.must_equal([ :reference,
                                       :currently_attached,
                                       :device_config,
                                       :other_config,
-                                      :uuid,
-                                      :__host,
-                                      :__sr ])
+                                      :uuid ])
   end
 
-  it 'should have 3 aliases' do
-    pbd_class.aliases.must_equal({ :host => :__host,
-                                   :SR => :__sr,
-                                   :sr => :__sr })
+  it "shouldn't have aliases" do
+    pbd_class.aliases.must_equal(:SR => :sr)
   end
 
   it "shouldn't have default values" do

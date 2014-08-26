@@ -22,7 +22,7 @@ describe Fog::Compute::XenServer::Models::Vbd do
     vbd_class.read_identity.must_equal(:reference)
   end
 
-  it 'should have 23 attributes' do
+  it 'should have 20 attributes' do
     vbd_class.attributes.must_equal([ :reference,
                                       :allowed_operations,
                                       :bootable,
@@ -42,29 +42,23 @@ describe Fog::Compute::XenServer::Models::Vbd do
                                       :type,
                                       :unpluggable,
                                       :userdevice,
-                                      :uuid,
-                                      :__metrics,
-                                      :__vdi,
-                                      :__vm ])
+                                      :uuid ])
   end
 
-  it 'should have 5 aliases' do
-    vbd_class.aliases.must_equal({ :VDI => :__vdi,
-                                   :vdi => :__vdi,
-                                   :VM => :__vm,
-                                   :vm => :__vm,
-                                   :metrics => :__metrics })
+  it 'should have 2 aliases' do
+    vbd_class.aliases.must_equal(:VDI => :vdi,
+                                 :VM => :vm)
   end
 
   it 'should have 9 default values' do
-    vbd_class.default_values.must_equal(:bootable => true, 
+    vbd_class.default_values.must_equal(:bootable => true,
                                         :mode => 'RW',
                                         :empty => false,
                                         :other_config => { 'owner' => '' },
-                                        :qos_supported_algorithms => [], 
-                                        :qos_algorithm_params => {}, 
-                                        :qos_algorithm_type => '', 
-                                        :type => 'Disk', 
+                                        :qos_supported_algorithms => [],
+                                        :qos_algorithm_params => {},
+                                        :qos_algorithm_type => '',
+                                        :type => 'Disk',
                                         :userdevice => '0')
   end
 

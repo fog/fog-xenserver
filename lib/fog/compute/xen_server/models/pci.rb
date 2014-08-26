@@ -17,8 +17,8 @@ module Fog
           attribute :uuid
           attribute :vendor_name
 
-          has_many  :dependencies,  :pcis
-          has_one   :host,          :hosts
+          has_many_identities   :dependencies,  :pcis
+          has_one_identity      :host,          :hosts
         end
       end
     end

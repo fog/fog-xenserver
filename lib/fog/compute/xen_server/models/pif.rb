@@ -34,15 +34,15 @@ module Fog
           attribute :vlan,                        :aliases => :VLAN
           attribute :uuid
 
-          has_one :bond_master_of,            :bonds
-          has_one :bond_slave_of,             :bonds
-          has_one :host,                      :hosts
-          has_one :metrics,                   :pif_metrics
-          has_one :network,                   :networks
-          has_one :tunnel_access_pif_of,      :tunnels,     :aliases => :tunnel_access_PIF_of
-          has_one :tunnel_transport_pif_of,   :tunnels,     :aliases => :tunnel_transport_PIF_of
-          has_one :vlan_master_of,            :vlans,       :aliases => :VLAN_master_of
-          has_one :vlan_slave_of,             :vlans,       :aliases => :VLAN_slave_of
+          has_one_identity :bond_master_of,            :bonds
+          has_one_identity :bond_slave_of,             :bonds
+          has_one_identity :host,                      :hosts
+          has_one_identity :metrics,                   :pif_metrics
+          has_one_identity :network,                   :networks
+          has_one_identity :tunnel_access_pif_of,      :tunnels,     :aliases => :tunnel_access_PIF_of
+          has_one_identity :tunnel_transport_pif_of,   :tunnels,     :aliases => :tunnel_transport_PIF_of
+          has_one_identity :vlan_master_of,            :vlans,       :aliases => :VLAN_master_of
+          has_one_identity :vlan_slave_of,             :vlans,       :aliases => :VLAN_slave_of
         end
       end
     end

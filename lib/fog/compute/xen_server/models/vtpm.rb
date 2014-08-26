@@ -13,8 +13,8 @@ module Fog
 
           attribute :uuid
 
-          has_one  :backend,  :servers
-          has_one  :vm,       :servers
+          has_one_identity  :backend,  :servers
+          has_one_identity  :vm,       :servers
         end
       end
     end

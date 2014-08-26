@@ -22,7 +22,7 @@ describe Fog::Compute::XenServer::Models::Network do
     network_class.read_identity.must_equal(:reference)
   end
 
-  it 'should have 14 attributes' do
+  it 'should have 12 attributes' do
     network_class.attributes.must_equal([ :reference,
                                           :allowed_operations,
                                           :blobs,
@@ -34,19 +34,15 @@ describe Fog::Compute::XenServer::Models::Network do
                                           :name,
                                           :other_config,
                                           :tags,
-                                          :uuid,
-                                          :__pifs,
-                                          :__vifs ])
+                                          :uuid ])
   end
 
-  it 'should have 7 aliases' do
-    network_class.aliases.must_equal({ :VIFs => :__vifs,
-                                       :vifs => :__vifs,
-                                       :MTU => :mtu,
-                                       :name_description => :description,
-                                       :name_label => :name,
-                                       :PIFs => :__pifs,
-                                       :pifs => :__pifs })
+  it 'should have 5 aliases' do
+    network_class.aliases.must_equal(:MTU => :mtu,
+                                     :name_description => :description,
+                                     :name_label => :name,
+                                     :PIFs => :pifs,
+                                     :VIFs => :vifs)
   end
 
   it 'should have 3 default values' do

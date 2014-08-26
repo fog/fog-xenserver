@@ -29,8 +29,8 @@ module Fog
           attribute :uuid
           attribute :virtual_allocation
 
-          has_many  :pbds,  :pbds,         :aliases => :PBDs
-          has_many  :vdis,  :vdis,         :aliases => :VDIs
+          has_many_identities  :pbds,  :pbds,         :aliases => :PBDs
+          has_many_identities  :vdis,  :vdis,         :aliases => :VDIs
 
           require_before_save :name, :type
         end

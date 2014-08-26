@@ -14,8 +14,8 @@ module Fog
           attribute :other_config
           attribute :uuid
 
-          has_one :vdi,           :vdis,        :aliases => :VDI
-          has_one :vm,            :servers,     :aliases => :VM
+          has_one_identity :vdi,           :vdis,        :aliases => :VDI
+          has_one_identity :vm,            :servers,     :aliases => :VM
         end
       end
     end

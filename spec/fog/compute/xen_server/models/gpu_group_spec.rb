@@ -28,19 +28,15 @@ describe Fog::Compute::XenServer::Models::GpuGroup do
                                             :gpu_types,
                                             :name,
                                             :other_config,
-                                            :uuid,
-                                            :__pgpus,
-                                            :__vgpus ])
+                                            :uuid ])
   end
 
-  it 'should have 7 aliases' do
-    gpu_group_class.aliases.must_equal({ :GPU_types => :gpu_types,
-                                         :name_description => :description,
-                                         :name_label => :name,
-                                         :PGPUs => :__pgpus,
-                                         :pgpus => :__pgpus,
-                                         :VGPUs => :__vgpus,
-                                         :vgpus => :__vgpus })
+  it 'should have 5 aliases' do
+    gpu_group_class.aliases.must_equal(:GPU_types => :gpu_types,
+                                       :name_description => :description,
+                                       :name_label => :name,
+                                       :PGPUs => :pgpus,
+                                       :VGPUs => :vgpus)
   end
 
   it "shouldn't have default values" do

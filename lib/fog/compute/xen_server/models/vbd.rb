@@ -31,9 +31,9 @@ module Fog
           attribute :userdevice,                :default => '0'
           attribute :uuid
 
-          has_one   :metrics,   :vbds_metrics
-          has_one   :vdi,       :vdis,             :aliases => :VDI
-          has_one   :vm,        :servers,          :aliases => :VM
+          has_one_identity   :metrics,   :vbds_metrics
+          has_one_identity   :vdi,       :vdis,             :aliases => :VDI
+          has_one_identity   :vm,        :servers,          :aliases => :VM
 
           require_before_save :vdi, :server
 

@@ -22,7 +22,7 @@ describe Fog::Compute::XenServer::Models::Vmpp do
     vmpp_class.read_identity.must_equal(:reference)
   end
 
-  it 'should have 21 attributes' do
+  it 'should have 20 attributes' do
     vmpp_class.attributes.must_equal([ :reference,
                                        :alarm_config,
                                        :archive_frequency,
@@ -42,15 +42,13 @@ describe Fog::Compute::XenServer::Models::Vmpp do
                                        :is_policy_enabled,
                                        :name,
                                        :recent_alerts,
-                                       :uuid,
-                                       :__vms ])
+                                       :uuid ])
   end
 
-  it 'should have 4 aliases' do
-    vmpp_class.aliases.must_equal({ :name_description => :description,
-                                    :name_label => :name,
-                                    :VMs => :__vms,
-                                    :vms => :__vms })
+  it 'should have 2 aliases' do
+    vmpp_class.aliases.must_equal(:name_description => :description,
+                                  :name_label => :name,
+                                  :VMs => :vms)
   end
 
   it "shouldn't have default values" do
