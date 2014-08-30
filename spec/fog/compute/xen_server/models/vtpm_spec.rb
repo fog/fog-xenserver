@@ -27,6 +27,13 @@ describe Fog::Compute::XenServer::Models::Vtpm do
                                        :uuid ])
   end
 
+  it 'should has 21 masks' do
+    vtpm_class.masks.must_equal(:reference => :reference,
+                                :uuid => :uuid,
+                                :backend => :backend,
+                                :vm => :vm)
+  end
+
   it "shouldn't have aliases" do
     vtpm_class.aliases.must_equal({})
   end

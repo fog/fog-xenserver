@@ -30,6 +30,15 @@ describe Fog::Compute::XenServer::Models::HostCrashDump do
                                                   :uuid ])
   end
 
+  it 'should has 6 masks' do
+    host_crash_dump_class.masks.must_equal(:reference => :reference, 
+                                           :other_config => :other_config, 
+                                           :size => :size, 
+                                           :timestamp => :timestamp, 
+                                           :uuid => :uuid, 
+                                           :host => :host)
+  end
+
   it "shouldn't have aliases" do
     host_crash_dump_class.aliases.must_equal({})
   end

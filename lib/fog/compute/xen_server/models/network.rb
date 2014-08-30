@@ -17,14 +17,14 @@ module Fog
           attribute :current_operations
           attribute :default_locking_mode
           attribute :description,         :aliases => :name_description,  :default => ''
-          attribute :mtu,                 :aliases => :MTU
+          attribute :mtu,                 :aliases => :MTU,   :as => :MTU
           attribute :name,                :aliases => :name_label,        :default => ''
           attribute :other_config,                                        :default => {}
           attribute :tags
           attribute :uuid
 
-          has_many_identities :pifs,  :pifs,         :aliases => :PIFs
-          has_many_identities :vifs,  :vifs,         :aliases => :VIFs
+          has_many_identities :pifs,  :pifs,         :aliases => :PIFs,   :as => :PIFs
+          has_many_identities :vifs,  :vifs,         :aliases => :VIFs,   :as => :VIFs
 
           require_before_save :name
         end

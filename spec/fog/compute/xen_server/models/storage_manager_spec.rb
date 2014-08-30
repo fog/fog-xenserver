@@ -39,6 +39,23 @@ describe Fog::Compute::XenServer::Models::StorageManager do
                                                   :version ])
   end
 
+  it 'should has 14 masks' do
+    storage_manager_class.masks.must_equal(:reference => :reference, 
+                                           :capabilities => :capabilities, 
+                                           :configuration => :configuration, 
+                                           :copyright => :copyright, 
+                                           :description => :description, 
+                                           :driver_filename => :driver_filename, 
+                                           :features => :features, 
+                                           :name => :name, 
+                                           :other_config => :other_config, 
+                                           :required_api_version => :required_api_version, 
+                                           :type => :type, 
+                                           :uuid => :uuid, 
+                                           :vendor => :vendor, 
+                                           :version => :version)
+  end
+
   it 'should have 2 aliases' do
     storage_manager_class.aliases.must_equal({ :name_description => :description,
                                                :name_label => :name })

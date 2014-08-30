@@ -40,8 +40,8 @@ module Fog
           has_one_identity      :parent,       :vdis
           has_many_identities   :snapshots,    :vdis
           has_one_identity      :snapshot_of,  :vdis
-          has_one_identity      :sr,           :storage_repositories,      :aliases => :SR
-          has_many_identities   :vbds,         :vbds,                      :aliases => :VBDs
+          has_one_identity      :sr,           :storage_repositories,      :aliases => :SR,   :as => :SR
+          has_many_identities   :vbds,         :vbds,                      :aliases => :VBDs, :as => :VBDs
 
           require_before_save :name, :storage_repository
 

@@ -34,6 +34,20 @@ describe Fog::Compute::XenServer::Models::HostPatch do
                                              :version ])
   end
 
+  it 'should has 11 masks' do
+    host_patch_class.masks.must_equal(:reference => :reference, 
+                                      :applied => :applied, 
+                                      :description => :description, 
+                                      :name => :name, 
+                                      :other_config => :other_config, 
+                                      :size => :size, 
+                                      :timestamp_applied => :timestamp_applied, 
+                                      :uuid => :uuid, 
+                                      :version => :version, 
+                                      :host => :host, 
+                                      :pool_patch => :pool_patch)
+  end
+
   it 'should have 2 aliases' do
     host_patch_class.aliases.must_equal(:name_description => :description,
                                         :name_label => :name)

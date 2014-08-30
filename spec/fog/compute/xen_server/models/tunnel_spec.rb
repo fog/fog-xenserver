@@ -29,6 +29,14 @@ describe Fog::Compute::XenServer::Models::Tunnel do
                                          :uuid ])
   end
 
+  it 'should has 5 masks' do
+    tunnel_class.masks.must_equal(:reference => :reference, 
+                                  :other_config => :other_config, 
+                                  :status => :status, :uuid => :uuid, 
+                                  :access_pif => :access_PIF, 
+                                  :transport_pif => :transport_PIF)
+  end
+
   it 'should have 2 aliases' do
     tunnel_class.aliases.must_equal(:access_PIF => :access_pif,
                                     :transport_PIF => :transport_pif)

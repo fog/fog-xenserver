@@ -27,6 +27,12 @@ describe Fog::Compute::XenServer::Models::DrTask do
                                           :uuid ])
   end
 
+  it 'should has 3 masks' do
+    dr_task_class.masks.must_equal(:reference => :reference,
+                                   :uuid => :uuid,
+                                   :introduced_srs => :introduced_SRs)
+  end
+
   it 'should have 1 alias' do
     dr_task_class.aliases.must_equal(:introduced_SRs => :introduced_srs)
   end

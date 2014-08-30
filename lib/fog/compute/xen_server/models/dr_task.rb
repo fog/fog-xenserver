@@ -13,7 +13,7 @@ module Fog
 
           attribute :uuid
 
-          has_many_identities :introduced_srs,       :storage_repositories,     :aliases => :introduced_SRs
+          has_many_identities :introduced_srs,  :storage_repositories,  :aliases => :introduced_SRs, :as => :introduced_SRs
         end
       end
     end

@@ -15,7 +15,7 @@ module Fog
           attribute :features
           attribute :flags
           attribute :model
-          attribute :model_name,      :aliases => :modelname
+          attribute :model_name,      :aliases => :modelname,   :as => :modelname
           attribute :number
           attribute :other_config
           attribute :speed

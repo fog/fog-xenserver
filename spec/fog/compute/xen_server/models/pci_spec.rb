@@ -31,6 +31,17 @@ describe Fog::Compute::XenServer::Models::Pci do
                                       :vendor_name ])
   end
 
+  it 'should has 8 masks' do
+    pci_class.masks.must_equal(:reference => :reference, 
+                               :device_name => :device_name, 
+                               :other_config => :other_config, 
+                               :pci_id => :pci_id, 
+                               :uuid => :uuid, 
+                               :vendor_name => :vendor_name, 
+                               :dependencies => :dependencies, 
+                               :host => :host)
+  end
+
   it "shouldn't have aliases" do
     pci_class.aliases.must_equal({})
   end

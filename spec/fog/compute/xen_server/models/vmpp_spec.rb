@@ -45,6 +45,30 @@ describe Fog::Compute::XenServer::Models::Vmpp do
                                        :uuid ])
   end
 
+  it 'should has 21 masks' do
+    vmpp_class.masks.must_equal(:reference => :reference, 
+                                :alarm_config => :alarm_config, 
+                                :archive_frequency => :archive_frequency, 
+                                :archive_last_run_time => :archive_last_run_time, 
+                                :archive_schedule => :archive_schedule, 
+                                :archive_target_config => :archive_target_config, 
+                                :archive_target_type => :archive_target_type, 
+                                :backup_frequency => :backup_frequency, 
+                                :backup_last_run_time => :backup_last_run_time, 
+                                :backup_retention_value => :backup_retention_value, 
+                                :backup_schedule => :backup_schedule, 
+                                :backup_type => :backup_type, 
+                                :description => :description, 
+                                :is_alarm_enabled => :is_alarm_enabled, 
+                                :is_archive_running => :is_archive_running, 
+                                :is_backup_running => :is_backup_running, 
+                                :is_policy_enabled => :is_policy_enabled, 
+                                :name => :name, 
+                                :recent_alerts => :recent_alerts, 
+                                :uuid => :uuid, 
+                                :vms => :VMs)
+  end
+
   it 'should have 2 aliases' do
     vmpp_class.aliases.must_equal(:name_description => :description,
                                   :name_label => :name,

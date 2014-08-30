@@ -39,6 +39,23 @@ describe Fog::Compute::XenServer::Models::PifMetrics do
                                               :vendor_name ])
   end
 
+  it 'should has 14 masks' do
+    pif_metrics_class.masks.must_equal(:reference => :reference, 
+                                       :carrier => :carrier, 
+                                       :device_id => :device_id, 
+                                       :device_name => :device_name, 
+                                       :duplex => :duplex, 
+                                       :io_read_kbs => :io_read_kbs, 
+                                       :io_write_kbs => :io_write_kbs, 
+                                       :last_updated => :last_updated, 
+                                       :other_config => :other_config, 
+                                       :pci_bus_path => :pci_bus_path, 
+                                       :speed => :speed, 
+                                       :uuid => :uuid, 
+                                       :vendor_id => :vendor_id, 
+                                       :vendor_name => :vendor_name)
+  end
+
   it "shouldn't have aliases" do
     pif_metrics_class.aliases.must_equal({})
   end

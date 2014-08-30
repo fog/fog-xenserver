@@ -22,6 +22,24 @@ describe Fog::Compute::XenServer::Models::Pbd do
     pbd_class.read_identity.must_equal(:reference)
   end
 
+  it 'should have 5 attributes' do
+    pbd_class.attributes.must_equal([ :reference,
+                                      :currently_attached,
+                                      :device_config,
+                                      :other_config,
+                                      :uuid ])
+  end
+
+  it 'should has 7 masks' do
+    pbd_class.masks.must_equal(:reference => :reference, 
+                               :currently_attached => :currently_attached, 
+                               :device_config => :device_config, 
+                               :other_config => :other_config, 
+                               :uuid => :uuid, 
+                               :host => :host, 
+                               :sr => :SR)
+  end
+
   it 'should have 1 alias' do
     pbd_class.attributes.must_equal([ :reference,
                                       :currently_attached,

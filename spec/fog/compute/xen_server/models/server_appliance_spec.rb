@@ -31,6 +31,16 @@ describe Fog::Compute::XenServer::Models::ServerAppliance do
                                                    :uuid ])
   end
 
+  it 'should has 7 masks' do
+    server_appliance_class.masks.must_equal(:reference => :reference, 
+                                            :allowed_operations => :allowed_operations, 
+                                            :current_operations => :current_operations, 
+                                            :description => :description, 
+                                            :name => :name, 
+                                            :uuid => :uuid, 
+                                            :vms => :VMs)
+  end
+
   it 'should have 3 aliases' do
     server_appliance_class.aliases.must_equal(:name_description => :description,
                                               :name_label => :name,

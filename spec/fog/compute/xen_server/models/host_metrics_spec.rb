@@ -34,6 +34,16 @@ describe Fog::Compute::XenServer::Models::HostMetrics do
                                                :uuid ])
   end
 
+  it 'should has 7 masks' do
+    host_metrics_class.masks.must_equal(:reference => :reference, 
+                                        :last_updated => :last_updated, 
+                                        :live => :live, 
+                                        :memory_free => :memory_free, 
+                                        :memory_total => :memory_total, 
+                                        :other_config => :other_config, 
+                                        :uuid => :uuid)
+  end
+
   it "shouldn't have aliases" do
     host_metrics_class.aliases.must_equal({})
   end

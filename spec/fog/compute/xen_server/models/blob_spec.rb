@@ -33,6 +33,17 @@ describe Fog::Compute::XenServer::Models::Blob do
                                        :uuid ])
   end
 
+  it 'should has 8 masks' do
+    blob_class.masks.must_equal(:reference => :reference,
+                                :description => :description, 
+                                :last_updated => :last_updated, 
+                                :mime_type => :mime_type, 
+                                :name => :name, 
+                                :public => :public, 
+                                :size => :size, 
+                                :uuid => :uuid)
+  end
+
   it 'should have 2 aliases' do
     blob_class.aliases.must_equal(:name_description => :description,
                                   :name_label => :name)

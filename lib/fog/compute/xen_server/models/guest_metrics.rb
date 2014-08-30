@@ -19,8 +19,8 @@ module Fog
           attribute :os_version
           attribute :other
           attribute :other_config
-          attribute :pv_drivers_up_to_date,    :aliases => :PV_drivers_up_to_date
-          attribute :pv_drivers_version,       :aliases => :PV_drivers_version
+          attribute :pv_drivers_up_to_date,    :aliases => :PV_drivers_up_to_date,  :as => :PV_drivers_up_to_date
+          attribute :pv_drivers_version,       :aliases => :PV_drivers_version,     :as => :PV_drivers_version
           attribute :uuid
         end
       end

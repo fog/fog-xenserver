@@ -28,6 +28,14 @@ describe Fog::Compute::XenServer::Models::CrashDump do
                                              :uuid ])
   end
 
+  it 'should has 5 masks' do
+    crash_dump_class.masks.must_equal(:reference => :reference,
+                                      :other_config => :other_config, 
+                                      :uuid => :uuid, 
+                                      :vdi => :VDI, 
+                                      :vm => :VM)
+  end
+
   it 'should have 2 aliases' do
     crash_dump_class.aliases.must_equal(:VDI => :vdi,
                                         :VM => :vm)

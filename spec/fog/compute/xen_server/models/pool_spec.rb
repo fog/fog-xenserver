@@ -48,6 +48,37 @@ describe Fog::Compute::XenServer::Models::Pool do
                                        :wlb_verify_cert ])
   end
 
+  it 'should has 28 masks' do
+    pool_class.masks.must_equal(:reference => :reference, 
+                                :blobs => :blobs, 
+                                :description => :description, 
+                                :gui_config => :gui_config, 
+                                :ha_allow_overcommit => :ha_allow_overcommit, 
+                                :ha_configuration => :ha_configuration, 
+                                :ha_enabled => :ha_enabled, 
+                                :ha_host_failures_to_tolerate => :ha_host_failures_to_tolerate, 
+                                :ha_overcommitted => :ha_overcommitted, 
+                                :ha_plan_exists_for => :ha_plan_exists_for, 
+                                :ha_statefiles => :ha_statefiles, 
+                                :name => :name, 
+                                :other_config => :other_config, 
+                                :redo_log_enabled => :redo_log_enabled, 
+                                :redo_log_vdi => :redo_log_vdi, 
+                                :restrictions => :restrictions, 
+                                :tags => :tags, 
+                                :uuid => :uuid, 
+                                :vswitch_controller => :vswitch_controller, 
+                                :wlb_enabled => :wlb_enabled, 
+                                :wlb_url => :wlb_url, 
+                                :wlb_username => :wlb_username, 
+                                :wlb_verify_cert => :wlb_verify_cert, 
+                                :crash_dump_sr => :crash_dump_SR, 
+                                :default_sr => :default_SR, 
+                                :master => :master, 
+                                :metadata_vdis => :metadata_VDIs, 
+                                :suspend_image_sr => :suspend_image_SR)
+  end
+
   it 'should have 6 aliases' do
     pool_class.aliases.must_equal(:name_label => :name,
                                   :name_description => :description,

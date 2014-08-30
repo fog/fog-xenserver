@@ -16,7 +16,7 @@ module Fog
           attribute :protocol
           attribute :uuid
 
-          has_one_identity :vm,          :servers,     :aliases => :VM
+          has_one_identity :vm,          :servers,     :aliases => :VM,   :as => :VM
         end
       end
     end

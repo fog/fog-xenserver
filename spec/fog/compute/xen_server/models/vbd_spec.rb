@@ -45,6 +45,32 @@ describe Fog::Compute::XenServer::Models::Vbd do
                                       :uuid ])
   end
 
+  it 'should has 23 masks' do
+    vbd_class.masks.must_equal(:reference => :reference,
+                               :allowed_operations => :allowed_operations, 
+                               :bootable => :bootable, 
+                               :currently_attached => :currently_attached, 
+                               :current_operations => :current_operations, 
+                               :device => :device, 
+                               :empty => :empty, 
+                               :mode => :mode, 
+                               :other_config => :other_config, 
+                               :qos_supported_algorithms => :qos_supported_algorithms, 
+                               :qos_algorithm_params => :qos_algorithm_params, 
+                               :qos_algorithm_type => :qos_algorithm_type, 
+                               :runtime_properties => :runtime_properties, 
+                               :status_code => :status_code, 
+                               :status_detail => :status_detail, 
+                               :storage_lock => :storage_lock, 
+                               :type => :type, 
+                               :unpluggable => :unpluggable, 
+                               :userdevice => :userdevice, 
+                               :uuid => :uuid, 
+                               :metrics => :metrics, 
+                               :vdi => :VDI, 
+                               :vm => :VM)
+  end
+
   it 'should have 2 aliases' do
     vbd_class.aliases.must_equal(:VDI => :vdi,
                                  :VM => :vm)

@@ -22,13 +22,24 @@ describe Fog::Compute::XenServer::Models::GpuGroup do
     gpu_group_class.read_identity.must_equal(:reference)
   end
 
-  it 'should have 8 attributes' do
+  it 'should have 6 attributes' do
     gpu_group_class.attributes.must_equal([ :reference,
                                             :description,
                                             :gpu_types,
                                             :name,
                                             :other_config,
                                             :uuid ])
+  end
+
+  it 'should has 8 masks' do
+    gpu_group_class.masks.must_equal(:reference => :reference,
+                                     :description => :description, 
+                                     :gpu_types => :GPU_types, 
+                                     :name => :name, 
+                                     :other_config => :other_config, 
+                                     :uuid => :uuid, 
+                                     :pgpus => :PGPUs, 
+                                     :vgpus => :VGPUs)
   end
 
   it 'should have 5 aliases' do

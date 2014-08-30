@@ -50,6 +50,40 @@ describe Fog::Compute::XenServer::Models::Vdi do
                                       :xenstore_data ])
   end
 
+  it 'should has 31 masks' do
+    vdi_class.masks.must_equal(:reference => :reference, 
+                               :allowed_operations => :allowed_operations, 
+                               :allow_caching => :allow_caching, 
+                               :current_operations => :current_operations, 
+                               :description => :description, 
+                               :is_a_snapshot => :is_a_snapshot, 
+                               :location => :location, 
+                               :managed => :managed, 
+                               :metadata_latest => :metadata_latest, 
+                               :metadata_of_pool => :metadata_of_pool, 
+                               :missing => :missing, 
+                               :name => :name, 
+                               :on_boot => :on_boot, 
+                               :other_config => :other_config, 
+                               :physical_utilisation => :physical_utilisation, 
+                               :read_only => :read_only, 
+                               :sharable => :sharable, 
+                               :sm_config => :sm_config, 
+                               :snapshot_time => :snapshot_time, 
+                               :storage_lock => :storage_lock, 
+                               :tags => :tags, 
+                               :type => :type, 
+                               :uuid => :uuid, 
+                               :virtual_size => :virtual_size, 
+                               :xenstore_data => :xenstore_data, 
+                               :crash_dumps => :crash_dumps, 
+                               :parent => :parent, 
+                               :snapshots => :snapshots, 
+                               :snapshot_of => :snapshot_of, 
+                               :sr => :SR, 
+                               :vbds => :VBDs)
+  end
+
   it 'should have 4 aliases' do
     vdi_class.aliases.must_equal(:name_label => :name,
                                  :name_description => :description,

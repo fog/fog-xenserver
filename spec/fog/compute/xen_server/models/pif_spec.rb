@@ -48,6 +48,41 @@ describe Fog::Compute::XenServer::Models::Pif do
                                       :uuid ])
   end
 
+  it 'should has 32 masks' do
+    pif_class.masks.must_equal(:reference => :reference, 
+                               :disallow_unplug => :disallow_unplug, 
+                               :currently_attached => :currently_attached, 
+                               :device => :device, 
+                               :device_name => :device_name, 
+                               :dns => :DNS, 
+                               :gateway => :gateway, 
+                               :ip => :IP, 
+                               :ip_configuration_mode => :ip_configuration_mode, 
+                               :ipv6 => :IPv6, 
+                               :ipv6_configuration_mode => :ipv6_configuration_mode, 
+                               :ipv6_gateway => :ipv6_gateway, 
+                               :mac => :MAC, 
+                               :management => :management, 
+                               :mtu => :MTU, 
+                               :netmask => :netmask, 
+                               :other_config => :other_config, 
+                               :physical => :physical, 
+                               :primary_address_type => :primary_address_type, 
+                               :status_code => :status_code, 
+                               :status_detail => :status_detail, 
+                               :vlan => :VLAN, 
+                               :uuid => :uuid, 
+                               :bond_master_of => :bond_master_of, 
+                               :bond_slave_of => :bond_slave_of, 
+                               :host => :host, 
+                               :metrics => :metrics, 
+                               :network => :network, 
+                               :tunnel_access_pif_of => :tunnel_access_PIF_of, 
+                               :tunnel_transport_pif_of => :tunnel_transport_PIF_of, 
+                               :vlan_master_of => :VLAN_master_of, 
+                               :vlan_slave_of => :VLAN_slave_of)
+  end
+
   it 'should have 6 aliases' do
     pif_class.aliases.must_equal(:MAC => :mac,
                                  :DNS => :dns,

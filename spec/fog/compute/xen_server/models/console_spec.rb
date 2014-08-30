@@ -30,6 +30,15 @@ describe Fog::Compute::XenServer::Models::Console do
                                           :uuid ])
   end
 
+  it 'should has 6 masks' do
+    console_class.masks.must_equal(:reference => :reference, 
+                                   :location => :location, 
+                                   :other_config => :other_config, 
+                                   :protocol => :protocol, 
+                                   :uuid => :uuid, 
+                                   :vm => :VM)
+  end
+
   it 'should have 1 alias' do
     console_class.aliases.must_equal(:VM => :vm)
   end

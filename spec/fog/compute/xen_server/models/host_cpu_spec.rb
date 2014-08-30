@@ -38,6 +38,23 @@ describe Fog::Compute::XenServer::Models::HostCpu do
                                            :vendor ])
   end
 
+  it 'should has 14 masks' do
+    host_cpu_class.masks.must_equal(:reference => :reference, 
+                                    :family => :family, 
+                                    :features => :features, 
+                                    :flags => :flags, 
+                                    :model => :model, 
+                                    :model_name => :modelname, 
+                                    :number => :number, 
+                                    :other_config => :other_config, 
+                                    :speed => :speed, 
+                                    :stepping => :stepping, 
+                                    :utilisation => :utilisation, 
+                                    :uuid => :uuid, 
+                                    :vendor => :vendor, 
+                                    :host => :host)
+  end
+
   it 'should have 1 alias' do
     host_cpu_class.aliases.must_equal(:modelname => :model_name)
   end

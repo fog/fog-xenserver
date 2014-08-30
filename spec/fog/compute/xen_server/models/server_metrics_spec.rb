@@ -38,12 +38,28 @@ describe Fog::Compute::XenServer::Models::ServerMetrics do
                                                  :vcpus_utilisation ])
   end
 
+  it 'should has 13 masks' do
+    server_metrics_class.masks.must_equal(:reference => :reference,
+                                          :install_time => :install_time,
+                                          :last_updated => :last_updated,
+                                          :memory_actual => :memory_actual,
+                                          :other_config => :other_config,
+                                          :start_time => :start_time,
+                                          :state => :state,
+                                          :uuid => :uuid,
+                                          :vcpus_cpu => :VCPUs_CPU,
+                                          :vcpus_flags => :VCPUs_flags,
+                                          :vcpus_number => :VCPUs_number,
+                                          :vcpus_params => :VCPUs_params,
+                                          :vcpus_utilisation => :VCPUs_utilisation)
+  end
+
   it 'should have 6 aliases' do
-    server_metrics_class.aliases.must_equal({ :VCPUs_CPU => :vcpus_cpu,
-                                              :VCPUs_flags => :vcpus_flags, 
-                                              :VCPUs_number => :vcpus_number, 
-                                              :VCPUs_params => :vcpus_params, 
-                                              :VCPUs_utilisation => :vcpus_utilisation })
+    server_metrics_class.aliases.must_equal(:VCPUs_CPU => :vcpus_cpu,
+                                            :VCPUs_flags => :vcpus_flags,
+                                            :VCPUs_number => :vcpus_number,
+                                            :VCPUs_params => :vcpus_params,
+                                            :VCPUs_utilisation => :vcpus_utilisation)
   end
 
   it "shouldn't have default values" do

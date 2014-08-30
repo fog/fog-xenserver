@@ -37,6 +37,21 @@ describe Fog::Compute::XenServer::Models::GuestMetrics do
                                                 :uuid ])
   end
 
+  it 'should has 12 masks' do
+    guest_metrics_class.masks.must_equal(:reference => :reference,
+                                         :disk => :disk, 
+                                         :last_updated => :last_updated, 
+                                         :live => :live, 
+                                         :memory => :memory, 
+                                         :networks => :networks, 
+                                         :os_version => :os_version, 
+                                         :other => :other, 
+                                         :other_config => :other_config, 
+                                         :pv_drivers_up_to_date => :PV_drivers_up_to_date, 
+                                         :pv_drivers_version => :PV_drivers_version, 
+                                         :uuid => :uuid)
+  end
+
   it 'should have 2 aliases' do
     guest_metrics_class.aliases.must_equal({ :PV_drivers_up_to_date => :pv_drivers_up_to_date,
                                              :PV_drivers_version => :pv_drivers_version })

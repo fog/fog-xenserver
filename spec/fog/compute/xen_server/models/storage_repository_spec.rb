@@ -43,6 +43,29 @@ describe Fog::Compute::XenServer::Models::StorageRepository do
                                                      :virtual_allocation ])
   end
 
+  it 'should has 20 masks' do
+    storage_repository_class.masks.must_equal(:reference => :reference, 
+                                              :allowed_operations => :allowed_operations, 
+                                              :blobs => :blobs, 
+                                              :content_type => :content_type, 
+                                              :current_operations => :current_operations, 
+                                              :description => :description, 
+                                              :introduced_by => :introduced_by, 
+                                              :local_cache_enabled => :local_cache_enabled, 
+                                              :name => :name, 
+                                              :other_config => :other_config, 
+                                              :physical_size => :physical_size, 
+                                              :physical_utilisation => :physical_utilisation, 
+                                              :shared => :shared, 
+                                              :sm_config => :sm_config, 
+                                              :tags => :tags, 
+                                              :type => :type, 
+                                              :uuid => :uuid, 
+                                              :virtual_allocation => :virtual_allocation, 
+                                              :pbds => :PBDs, 
+                                              :vdis => :VDIs)
+  end
+
   it 'should have 4 aliases' do
     storage_repository_class.aliases.must_equal(:name_label => :name,
                                                 :name_description => :description,

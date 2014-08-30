@@ -29,6 +29,14 @@ describe Fog::Compute::XenServer::Models::Role do
                                        :uuid ])
   end
 
+  it 'should has 5 masks' do
+    role_class.masks.must_equal(:reference => :reference, 
+                                :description => :description, 
+                                :name => :name, 
+                                :uuid => :uuid, 
+                                :subroles => :subroles)
+  end
+
   it 'should have 2 aliases' do
     role_class.aliases.must_equal({ :name_description => :description,
                                     :name_label => :name })

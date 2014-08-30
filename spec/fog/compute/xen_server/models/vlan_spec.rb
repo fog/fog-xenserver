@@ -29,6 +29,15 @@ describe Fog::Compute::XenServer::Models::Vlan do
                                        :uuid ])
   end
 
+  it 'should has 6 masks' do
+    vlan_class.masks.must_equal(:reference => :reference, 
+                                :other_config => :other_config, 
+                                :tag => :tag, 
+                                :uuid => :uuid, 
+                                :tagged_pif => :tagged_PIF, 
+                                :untagged_pif => :untagged_PIF)
+  end
+
   it 'should have 2 aliases' do
     vlan_class.aliases.must_equal(:tagged_PIF => :tagged_pif,
                                   :untagged_PIF => :untagged_pif)

@@ -31,6 +31,18 @@ describe Fog::Compute::XenServer::Models::Bond do
                                        :uuid ])
   end
 
+  it 'should has 6 masks' do
+    bond_class.masks.must_equal(:reference => :reference,
+                                :links_up => :links_up, 
+                                :mode => :mode, 
+                                :other_config => :other_config, 
+                                :properties => :properties, 
+                                :uuid => :uuid, 
+                                :master => :master, 
+                                :primary_slave => :primary_slave, 
+                                :slaves => :slaves)
+  end
+
   it "shouldn't have aliases" do
     bond_class.aliases.must_equal({})
   end

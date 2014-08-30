@@ -33,6 +33,15 @@ describe Fog::Compute::XenServer::Models::VbdMetrics do
                                               :uuid ])
   end
 
+  it 'should has 6 masks' do
+    vbd_metrics_class.masks.must_equal(:reference => :reference, 
+                                       :io_read_kbs => :io_read_kbs, 
+                                       :io_write_kbs => :io_write_kbs, 
+                                       :last_updated => :last_updated, 
+                                       :other_config => :other_config, 
+                                       :uuid => :uuid)
+  end
+
   it "should't have aliases" do
     vbd_metrics_class.aliases.must_equal({})
   end

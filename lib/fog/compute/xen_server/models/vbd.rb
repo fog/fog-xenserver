@@ -32,8 +32,8 @@ module Fog
           attribute :uuid
 
           has_one_identity   :metrics,   :vbds_metrics
-          has_one_identity   :vdi,       :vdis,             :aliases => :VDI
-          has_one_identity   :vm,        :servers,          :aliases => :VM
+          has_one_identity   :vdi,       :vdis,             :aliases => :VDI, :as => :VDI
+          has_one_identity   :vm,        :servers,          :aliases => :VM,  :as => :VM
 
           require_before_save :vdi, :server
 

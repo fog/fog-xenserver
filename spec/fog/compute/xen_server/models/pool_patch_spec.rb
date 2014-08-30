@@ -34,6 +34,19 @@ describe Fog::Compute::XenServer::Models::PoolPatch do
                                              :version ])
   end
 
+  it 'should has 10 masks' do
+    pool_patch_class.masks.must_equal(:reference => :reference, 
+                                      :after_apply_guidance => :after_apply_guidance, 
+                                      :description => :description, 
+                                      :name => :name, 
+                                      :other_config => :other_config, 
+                                      :pool_applied => :pool_applied, 
+                                      :size => :size, 
+                                      :uuid => :uuid, 
+                                      :version => :version, 
+                                      :host_patches => :host_patches)
+  end
+
   it 'should have 2 aliases' do
     pool_patch_class.aliases.must_equal(:name_description => :description,
                                         :name_label => :name)

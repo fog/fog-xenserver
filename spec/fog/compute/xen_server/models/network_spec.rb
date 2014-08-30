@@ -37,6 +37,23 @@ describe Fog::Compute::XenServer::Models::Network do
                                           :uuid ])
   end
 
+  it 'should has 14 masks' do
+    network_class.masks.must_equal(:reference => :reference, 
+                                   :allowed_operations => :allowed_operations, 
+                                   :blobs => :blobs, 
+                                   :bridge => :bridge, 
+                                   :current_operations => :current_operations, 
+                                   :default_locking_mode => :default_locking_mode, 
+                                   :description => :description, 
+                                   :mtu => :MTU, 
+                                   :name => :name, 
+                                   :other_config => :other_config, 
+                                   :tags => :tags, 
+                                   :uuid => :uuid, 
+                                   :pifs => :PIFs, 
+                                   :vifs => :VIFs)
+  end
+
   it 'should have 5 aliases' do
     network_class.aliases.must_equal(:MTU => :mtu,
                                      :name_description => :description,
