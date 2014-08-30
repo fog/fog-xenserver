@@ -34,6 +34,10 @@ describe Fog::Compute::XenServer::Models::HostMetrics do
                                                :uuid ])
   end
 
+  it "shouldn't have associations" do
+    host_metrics_class.associations.must_equal({})
+  end
+
   it 'should has 7 masks' do
     host_metrics_class.masks.must_equal(:reference => :reference, 
                                         :last_updated => :last_updated, 

@@ -31,6 +31,11 @@ describe Fog::Compute::XenServer::Models::Pci do
                                       :vendor_name ])
   end
 
+  it 'should have 2 associations' do
+    pci_class.associations.must_equal(:dependencies => :pcis,
+                                      :host => :hosts)
+  end
+
   it 'should has 8 masks' do
     pci_class.masks.must_equal(:reference => :reference, 
                                :device_name => :device_name, 

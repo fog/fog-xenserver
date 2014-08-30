@@ -50,6 +50,15 @@ describe Fog::Compute::XenServer::Models::Vdi do
                                       :xenstore_data ])
   end
 
+  it 'should have 6 associations' do
+    vdi_class.associations.must_equal(:crash_dumps => :crash_dumps, 
+                                      :parent => :vdis, 
+                                      :snapshots => :vdis, 
+                                      :snapshot_of => :vdis, 
+                                      :sr => :storage_repositories, 
+                                      :vbds => :vbds)
+  end
+
   it 'should has 31 masks' do
     vdi_class.masks.must_equal(:reference => :reference, 
                                :allowed_operations => :allowed_operations, 

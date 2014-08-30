@@ -39,6 +39,10 @@ describe Fog::Compute::XenServer::Models::PifMetrics do
                                               :vendor_name ])
   end
 
+  it "shouldn't have associations" do
+    pif_metrics_class.associations.must_equal({})
+  end
+
   it 'should has 14 masks' do
     pif_metrics_class.masks.must_equal(:reference => :reference, 
                                        :carrier => :carrier, 

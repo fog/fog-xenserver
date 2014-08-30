@@ -34,6 +34,11 @@ describe Fog::Compute::XenServer::Models::HostPatch do
                                              :version ])
   end
 
+  it 'should have 2 associations' do
+    host_patch_class.associations.must_equal(:host => :hosts,
+                                             :pool_patch => :pool_patchs)
+  end
+
   it 'should has 11 masks' do
     host_patch_class.masks.must_equal(:reference => :reference, 
                                       :applied => :applied, 

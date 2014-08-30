@@ -30,6 +30,11 @@ describe Fog::Compute::XenServer::Models::Pbd do
                                       :uuid ])
   end
 
+  it 'should have 2 associations' do
+    pbd_class.associations.must_equal(:host => :hosts,
+                                      :sr => :storage_repositories)
+  end
+
   it 'should has 7 masks' do
     pbd_class.masks.must_equal(:reference => :reference, 
                                :currently_attached => :currently_attached, 

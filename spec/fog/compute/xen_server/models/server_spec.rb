@@ -87,6 +87,28 @@ describe Fog::Compute::XenServer::Models::Server do
                                          :xenstore_data ])
   end
 
+  it 'should have 19 associations' do
+    server_class.associations.must_equal(:affinity => :hosts, 
+                                         :appliance => :server_appliances, 
+                                         :attached_pcis => :pcis, 
+                                         :children => :servers, 
+                                         :consoles => :consoles, 
+                                         :crash_dumps => :crash_dumps, 
+                                         :guest_metrics => :guests_metrics, 
+                                         :metrics => :servers_metrics, 
+                                         :parent => :servers, 
+                                         :protection_policy => :vmpps, 
+                                         :resident_on => :hosts, 
+                                         :snapshots => :servers, 
+                                         :snapshot_of => :servers, 
+                                         :suspend_sr => :storage_repositories, 
+                                         :suspend_vdi => :vdis, 
+                                         :vbds => :vbds, 
+                                         :vgpus => :vgpus, 
+                                         :vifs => :vifs, 
+                                         :vtpms => :vtpms)
+  end
+
   it 'should has 77 masks' do
     server_class.masks.must_equal(:reference => :reference, 
                                   :actions_after_crash => :actions_after_crash, 

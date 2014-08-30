@@ -43,6 +43,11 @@ describe Fog::Compute::XenServer::Models::StorageRepository do
                                                      :virtual_allocation ])
   end
 
+  it 'should have 2 associations' do
+    storage_repository_class.associations.must_equal(:pbds => :pbds,
+                                                     :vdis => :vdis)
+  end
+
   it 'should has 20 masks' do
     storage_repository_class.masks.must_equal(:reference => :reference, 
                                               :allowed_operations => :allowed_operations, 

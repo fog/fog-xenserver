@@ -48,6 +48,14 @@ describe Fog::Compute::XenServer::Models::Pool do
                                        :wlb_verify_cert ])
   end
 
+  it 'should have 5 associations' do
+    pool_class.associations.must_equal(:crash_dump_sr => :storage_repositories, 
+                                       :default_sr => :storage_repositories, 
+                                       :master => :hosts, 
+                                       :metadata_vdis => :vdis, 
+                                       :suspend_image_sr => :storage_repositories)
+  end
+
   it 'should has 28 masks' do
     pool_class.masks.must_equal(:reference => :reference, 
                                 :blobs => :blobs, 

@@ -31,6 +31,12 @@ describe Fog::Compute::XenServer::Models::Bond do
                                        :uuid ])
   end
 
+  it 'should have 3 associations' do
+    bond_class.associations.must_equal(:master => :pifs, 
+                                       :primary_slave => :pifs, 
+                                       :slaves => :pifs)
+  end
+
   it 'should has 6 masks' do
     bond_class.masks.must_equal(:reference => :reference,
                                 :links_up => :links_up, 

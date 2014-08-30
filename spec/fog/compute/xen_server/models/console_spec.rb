@@ -30,6 +30,10 @@ describe Fog::Compute::XenServer::Models::Console do
                                           :uuid ])
   end
 
+  it 'should have 1 association' do
+    console_class.associations.must_equal(:vm => :servers)
+  end
+
   it 'should has 6 masks' do
     console_class.masks.must_equal(:reference => :reference, 
                                    :location => :location, 

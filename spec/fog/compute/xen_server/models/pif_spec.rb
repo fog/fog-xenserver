@@ -48,6 +48,18 @@ describe Fog::Compute::XenServer::Models::Pif do
                                       :uuid ])
   end
 
+  it 'should have 9 associations' do
+    pif_class.associations.must_equal(:bond_master_of => :bonds, 
+                                      :bond_slave_of => :bonds, 
+                                      :host => :hosts, 
+                                      :metrics => :pif_metrics, 
+                                      :network => :networks, 
+                                      :tunnel_access_pif_of => :tunnels, 
+                                      :tunnel_transport_pif_of => :tunnels, 
+                                      :vlan_master_of => :vlans, 
+                                      :vlan_slave_of => :vlans)
+  end
+
   it 'should has 32 masks' do
     pif_class.masks.must_equal(:reference => :reference, 
                                :disallow_unplug => :disallow_unplug, 

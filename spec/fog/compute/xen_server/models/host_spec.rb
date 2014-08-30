@@ -64,6 +64,19 @@ describe Fog::Compute::XenServer::Models::Host do
                                        :uuid ])
   end
 
+  it 'should have 10 associations' do
+    host_class.associations.must_equal(:crashdumps => :crash_dumps, 
+                                       :crash_dump_sr => :storage_repositories, 
+                                       :host_cpus => :host_cpus, 
+                                       :local_cache_sr => :storage_repositories, 
+                                       :metrics => :hosts_metrics, 
+                                       :pbds => :pbds, 
+                                       :pcis => :pcis, 
+                                       :pgpus => :pgpus, 
+                                       :pifs => :pifs, 
+                                       :resident_vms => :servers)
+  end
+
   it 'should has 49 masks' do
     host_class.masks.must_equal(:reference => :reference,
                                 :address => :address,

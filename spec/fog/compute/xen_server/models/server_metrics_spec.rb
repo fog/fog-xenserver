@@ -38,6 +38,10 @@ describe Fog::Compute::XenServer::Models::ServerMetrics do
                                                  :vcpus_utilisation ])
   end
 
+  it "shouldn't have associations" do
+    server_metrics_class.associations.must_equal({})
+  end
+
   it 'should has 13 masks' do
     server_metrics_class.masks.must_equal(:reference => :reference,
                                           :install_time => :install_time,

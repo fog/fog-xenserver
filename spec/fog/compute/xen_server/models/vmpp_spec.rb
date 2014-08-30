@@ -45,6 +45,10 @@ describe Fog::Compute::XenServer::Models::Vmpp do
                                        :uuid ])
   end
 
+  it 'should have 1 association' do
+    vmpp_class.associations.must_equal(:vms => :servers)
+  end
+
   it 'should has 21 masks' do
     vmpp_class.masks.must_equal(:reference => :reference, 
                                 :alarm_config => :alarm_config, 

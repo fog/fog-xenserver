@@ -27,7 +27,12 @@ describe Fog::Compute::XenServer::Models::Vtpm do
                                        :uuid ])
   end
 
-  it 'should has 21 masks' do
+  it 'should have 2 associations' do
+    vtpm_class.associations.must_equal(:backend => :servers,
+                                       :vm => :servers)
+  end
+
+  it 'should has 4 masks' do
     vtpm_class.masks.must_equal(:reference => :reference,
                                 :uuid => :uuid,
                                 :backend => :backend,

@@ -44,6 +44,12 @@ describe Fog::Compute::XenServer::Models::Vif do
                                       :uuid ])
   end
 
+  it 'should have 3 associations' do
+    vif_class.associations.must_equal(:metrics => :vifs_metrics,
+                                      :network => :networks,
+                                      :vm => :servers)
+  end
+
   it 'should has 22 masks' do
     vif_class.masks.must_equal(:reference => :reference, 
                                :allowed_operations => :allowed_operations, 

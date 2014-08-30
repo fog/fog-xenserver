@@ -38,6 +38,10 @@ describe Fog::Compute::XenServer::Models::HostCpu do
                                            :vendor ])
   end
 
+  it 'should have 1 association' do
+    host_cpu_class.associations.must_equal(:host => :hosts)
+  end
+
   it 'should has 14 masks' do
     host_cpu_class.masks.must_equal(:reference => :reference, 
                                     :family => :family, 

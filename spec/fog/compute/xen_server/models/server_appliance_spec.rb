@@ -31,6 +31,10 @@ describe Fog::Compute::XenServer::Models::ServerAppliance do
                                                    :uuid ])
   end
 
+  it 'should have 1 association' do
+    server_appliance_class.associations.must_equal(:vms => :servers)
+  end
+
   it 'should has 7 masks' do
     server_appliance_class.masks.must_equal(:reference => :reference, 
                                             :allowed_operations => :allowed_operations, 

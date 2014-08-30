@@ -45,6 +45,12 @@ describe Fog::Compute::XenServer::Models::Vbd do
                                       :uuid ])
   end
 
+  it 'should have 3 associations' do
+    vbd_class.associations.must_equal(:metrics => :vbds_metrics,
+                                      :vdi => :vdis,
+                                      :vm => :servers)
+  end
+
   it 'should has 23 masks' do
     vbd_class.masks.must_equal(:reference => :reference,
                                :allowed_operations => :allowed_operations, 

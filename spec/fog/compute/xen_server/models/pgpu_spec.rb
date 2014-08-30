@@ -28,6 +28,12 @@ describe Fog::Compute::XenServer::Models::Pgpu do
                                        :uuid ])
   end
 
+  it 'should have 3 associations' do
+    pgpu_class.associations.must_equal(:gpu_group => :gpu_groups,
+                                       :host => :hosts,
+                                       :pci => :pcis)
+  end
+
   it 'should has 6 masks' do
     pgpu_class.masks.must_equal(:reference => :reference,
                                 :other_config => :other_config,

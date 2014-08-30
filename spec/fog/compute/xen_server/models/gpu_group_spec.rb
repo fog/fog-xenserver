@@ -31,6 +31,11 @@ describe Fog::Compute::XenServer::Models::GpuGroup do
                                             :uuid ])
   end
 
+  it 'should have 2 associations' do
+    gpu_group_class.associations.must_equal(:pgpus => :pgpus,
+                                            :vgpus => :vgpus)
+  end
+
   it 'should has 8 masks' do
     gpu_group_class.masks.must_equal(:reference => :reference,
                                      :description => :description, 

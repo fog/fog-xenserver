@@ -33,6 +33,10 @@ describe Fog::Compute::XenServer::Models::Blob do
                                        :uuid ])
   end
 
+  it "shouldn't have associations" do
+    blob_class.associations.must_equal({})
+  end
+
   it 'should has 8 masks' do
     blob_class.masks.must_equal(:reference => :reference,
                                 :description => :description, 
