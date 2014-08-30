@@ -9,12 +9,8 @@ module Fog
           raise ArgumentError.new('Missing type attribute') if config[:type].nil?
           raise ArgumentError.new('Missing sharable attribute') if config[:sharable].nil?
           raise ArgumentError.new('Missing other_config attribute') if config[:other_config].nil?
-          raise ArgumentError.new('Missing storage_repository attribute') if config[:storage_repository].nil?
-          config[:SR] = config[:storage_repository].reference
-          config[:name_label] = config[:name]
-          config[:name_description] = config[:description] if config[:description]
-          config.reject! { |k,v| (k == :__sr) or (k == :storage_repository) }
-          @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => 'VDI.create'}, config )
+          raise ArgumentError.new('Missing storage_repository attribute') if config[:SR].nil?
+          @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => 'VDI.create'}, config)
         end
       end
     end

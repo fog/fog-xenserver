@@ -3,8 +3,8 @@ module Fog
     class XenServer
       class Real
         def create_vif(config = {}, extra_params = {})
-          vm_ref = config.delete(:__vm)
-          network_ref = config.delete(:__network)
+          vm_ref = config.delete(:VM)
+          network_ref = config.delete(:network)
           device = config.fetch(:device, -1)
           raise ArgumentError.new('Invalid vm_ref') if vm_ref.nil?
           raise ArgumentError.new('Invalid network_ref') if network_ref.nil?

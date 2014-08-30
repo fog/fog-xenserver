@@ -35,7 +35,7 @@ module Fog
 
     def save(extra_params = {})
       require_creation_attributes
-      ref = service.send("create_#{provider_class.downcase}", attributes, extra_params)
+      ref = service.send("create_#{provider_class.downcase}", all_associations_and_attributes, extra_params)
       merge_attributes collection.get(ref).attributes
       true
     end

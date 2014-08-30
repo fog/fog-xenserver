@@ -3,66 +3,7 @@ module Fog
     class XenServer
       class Real
         def create_server_raw(config = {})
-          config[:name_label] = config[:name] if config[:name]
-          config.delete :name
-          config[:affinity] = config[:__affinity] if config[:__affinity]
-          config.delete :__affinity
-          raise ArgumentError.new("Invalid :name_label attribute") \
-            if !config[:name_label]
-          raise ArgumentError.new("Invalid :affinity attribute") \
-            if not config[:affinity]
-          config[:affinity] = config[:affinity].reference \
-            if config[:affinity].kind_of? Fog::Compute::XenServer::Host
-          config.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
-          %w{ VCPUs_at_startup
-              VCPUs_max
-              VCPUs_params
-              PV_bootloader_args
-              PV_bootloader
-              PV_kernel
-              PV_ramdisk
-              PV_legacy_args
-              HVM_boot_policy
-              HVM_boot_params
-          }.each do |k|
-            if config[k.downcase.to_sym]
-              config[k.to_sym] = config[k.downcase.to_sym]
-              config.delete k.downcase.to_sym
-            end
-          end
-          vm_record = {
-            :name_label =>              '',
-            :name_description =>        'description',
-            :user_version =>            '0',
-            :affinity =>                '',
-            :is_a_template =>           true,
-            :auto_power_on =>           false,
-            :memory_static_max =>       '536870912',
-            :memory_static_min =>       '536870912',
-            :memory_dynamic_max =>      '536870912',
-            :memory_dynamic_min =>      '536870912',
-            :VCPUs_params =>            {},
-            :VCPUs_max =>               '1',
-            :VCPUs_at_startup =>        '1',
-            :actions_after_shutdown =>  'Destroy',
-            :actions_after_reboot =>    'Restart',
-            :actions_after_crash =>     'Restart',
-            :platform =>                { :'nx' => 'true', :'acpi' => 'true', :'apic' => 'true', :'pae' => 'true', :'viridian' => 'true' },
-            :other_config =>            {},
-            :pool_name =>               '',
-            :PV_bootloader =>           'pygrub', #pvgrub, eliloader
-            :PV_kernel =>                '',
-            :PV_ramdisk =>              '',
-            :PV_args =>                 '-- quiet console=hvc0',
-            :PV_bootloader_args =>      '',
-            :PV_legacy_args =>          '',
-            :HVM_boot_policy =>         '',
-            :HVM_boot_params =>         {},
-            :PCI_bus =>                 '',
-            :recommendations =>         '',
-          }.merge config
-          ref = @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => 'VM.create' }, vm_record)
-          ref
+          @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => 'VM.create' }, config)
         end
 
         def create_server(config = {}, extra_params = {})
