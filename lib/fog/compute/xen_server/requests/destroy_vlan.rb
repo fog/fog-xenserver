@@ -6,14 +6,8 @@ module Fog
         #
         # @see http://docs.vmd.citrix.com/XenServer/6.0.0/1.0/en_gb/api/?c=VLAN
         #
-        def destroy_vlan( ref )
-          @connection.request(
-            {
-              :parser => Fog::Parsers::XenServer::Base.new,
-              :method => 'VLAN.destroy'
-            },
-            ref
-          )
+        def destroy_vlan(ref)
+          @connection.request({ :parser => Fog::Parsers::XenServer::Base.new, :method => 'VLAN.destroy' }, ref)
         end
       end
     end

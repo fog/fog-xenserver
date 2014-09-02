@@ -7,8 +7,8 @@ module Fog
         #
         # http://docs.vmd.citrix.com/XenServer/6.0.0/1.0/en_gb/api/?c=SR
         #
-        def destroy_sr(sr_ref)
-          @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => 'SR.destroy'}, sr_ref)
+        def destroy_sr(ref)
+          @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => 'SR.destroy'}, ref)
         end
       end
     end

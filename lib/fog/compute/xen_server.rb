@@ -101,7 +101,6 @@ module Fog
       request :insert_vbd
       request :destroy_vdi
       request :shutdown_server
-      request :start_vm
       request :start_server
       request :get_record
       request :get_records

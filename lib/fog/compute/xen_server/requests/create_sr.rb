@@ -34,10 +34,9 @@ module Fog
           content_type = config[:content_type]
           shared = config[:shared]
           sm_config = config[:sm_config]
-          @connection.request(
-            {:parser => Fog::Parsers::XenServer::Base.new, :method => 'SR.create'},
-            host_ref, device_config, physical_size, name_label, name_description, type, content_type, shared, sm_config
-          )
+          @connection.request({ :parser => Fog::Parsers::XenServer::Base.new, :method => 'SR.create' },
+                              host_ref, device_config, physical_size, name_label, name_description, type,
+                              content_type, shared, sm_config)
         end
       end
     end
