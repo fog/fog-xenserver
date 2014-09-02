@@ -34,7 +34,7 @@ describe Fog::Compute::XenServer::Models::Console do
     console_class.associations.must_equal(:vm => :servers)
   end
 
-  it 'should has 6 masks' do
+  it 'should have 6 masks' do
     console_class.masks.must_equal(:reference => :reference, 
                                    :location => :location, 
                                    :other_config => :other_config, 

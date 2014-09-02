@@ -36,7 +36,7 @@ describe Fog::Compute::XenServer::Models::GpuGroup do
                                             :vgpus => :vgpus)
   end
 
-  it 'should has 8 masks' do
+  it 'should have 8 masks' do
     gpu_group_class.masks.must_equal(:reference => :reference,
                                      :description => :description, 
                                      :gpu_types => :GPU_types, 

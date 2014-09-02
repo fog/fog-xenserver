@@ -48,7 +48,7 @@ describe Fog::Compute::XenServer::Models::StorageRepository do
                                                      :vdis => :vdis)
   end
 
-  it 'should has 20 masks' do
+  it 'should have 20 masks' do
     storage_repository_class.masks.must_equal(:reference => :reference, 
                                               :allowed_operations => :allowed_operations, 
                                               :blobs => :blobs, 

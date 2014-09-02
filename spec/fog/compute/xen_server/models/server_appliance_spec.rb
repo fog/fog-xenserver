@@ -35,7 +35,7 @@ describe Fog::Compute::XenServer::Models::ServerAppliance do
     server_appliance_class.associations.must_equal(:vms => :servers)
   end
 
-  it 'should has 7 masks' do
+  it 'should have 7 masks' do
     server_appliance_class.masks.must_equal(:reference => :reference, 
                                             :allowed_operations => :allowed_operations, 
                                             :current_operations => :current_operations, 

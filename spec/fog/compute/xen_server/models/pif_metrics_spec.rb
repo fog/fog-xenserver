@@ -43,7 +43,7 @@ describe Fog::Compute::XenServer::Models::PifMetrics do
     pif_metrics_class.associations.must_equal({})
   end
 
-  it 'should has 14 masks' do
+  it 'should have 14 masks' do
     pif_metrics_class.masks.must_equal(:reference => :reference, 
                                        :carrier => :carrier, 
                                        :device_id => :device_id, 

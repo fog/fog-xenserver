@@ -34,7 +34,7 @@ describe Fog::Compute::XenServer::Models::Tunnel do
                                          :transport_pif => :pifs)
   end
 
-  it 'should has 5 masks' do
+  it 'should have 5 masks' do
     tunnel_class.masks.must_equal(:reference => :reference, 
                                   :other_config => :other_config, 
                                   :status => :status, :uuid => :uuid, 

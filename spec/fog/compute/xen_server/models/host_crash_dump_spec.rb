@@ -34,7 +34,7 @@ describe Fog::Compute::XenServer::Models::HostCrashDump do
     host_crash_dump_class.associations.must_equal(:host => :hosts)
   end
 
-  it 'should has 6 masks' do
+  it 'should have 6 masks' do
     host_crash_dump_class.masks.must_equal(:reference => :reference, 
                                            :other_config => :other_config, 
                                            :size => :size, 

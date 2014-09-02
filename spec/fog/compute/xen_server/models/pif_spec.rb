@@ -60,7 +60,7 @@ describe Fog::Compute::XenServer::Models::Pif do
                                       :vlan_slave_of => :vlans)
   end
 
-  it 'should has 32 masks' do
+  it 'should have 32 masks' do
     pif_class.masks.must_equal(:reference => :reference, 
                                :disallow_unplug => :disallow_unplug, 
                                :currently_attached => :currently_attached, 

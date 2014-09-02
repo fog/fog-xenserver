@@ -33,7 +33,7 @@ describe Fog::Compute::XenServer::Models::CrashDump do
                                              :vm => :servers)
   end
 
-  it 'should has 5 masks' do
+  it 'should have 5 masks' do
     crash_dump_class.masks.must_equal(:reference => :reference,
                                       :other_config => :other_config, 
                                       :uuid => :uuid, 

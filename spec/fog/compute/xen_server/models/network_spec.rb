@@ -42,7 +42,7 @@ describe Fog::Compute::XenServer::Models::Network do
                                           :vifs => :vifs)
   end
 
-  it 'should has 14 masks' do
+  it 'should have 14 masks' do
     network_class.masks.must_equal(:reference => :reference, 
                                    :allowed_operations => :allowed_operations, 
                                    :blobs => :blobs, 

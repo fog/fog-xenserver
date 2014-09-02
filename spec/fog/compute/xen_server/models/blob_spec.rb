@@ -37,7 +37,7 @@ describe Fog::Compute::XenServer::Models::Blob do
     blob_class.associations.must_equal({})
   end
 
-  it 'should has 8 masks' do
+  it 'should have 8 masks' do
     blob_class.masks.must_equal(:reference => :reference,
                                 :description => :description, 
                                 :last_updated => :last_updated, 

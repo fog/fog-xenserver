@@ -41,7 +41,7 @@ describe Fog::Compute::XenServer::Models::GuestMetrics do
     guest_metrics_class.associations.must_equal({})
   end
 
-  it 'should has 12 masks' do
+  it 'should have 12 masks' do
     guest_metrics_class.masks.must_equal(:reference => :reference,
                                          :disk => :disk, 
                                          :last_updated => :last_updated, 

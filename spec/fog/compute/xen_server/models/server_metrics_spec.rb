@@ -42,7 +42,7 @@ describe Fog::Compute::XenServer::Models::ServerMetrics do
     server_metrics_class.associations.must_equal({})
   end
 
-  it 'should has 13 masks' do
+  it 'should have 13 masks' do
     server_metrics_class.masks.must_equal(:reference => :reference,
                                           :install_time => :install_time,
                                           :last_updated => :last_updated,

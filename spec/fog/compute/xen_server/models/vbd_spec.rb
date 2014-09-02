@@ -51,7 +51,7 @@ describe Fog::Compute::XenServer::Models::Vbd do
                                       :vm => :servers)
   end
 
-  it 'should has 23 masks' do
+  it 'should have 23 masks' do
     vbd_class.masks.must_equal(:reference => :reference,
                                :allowed_operations => :allowed_operations, 
                                :bootable => :bootable, 

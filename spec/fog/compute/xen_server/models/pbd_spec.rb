@@ -35,7 +35,7 @@ describe Fog::Compute::XenServer::Models::Pbd do
                                       :sr => :storage_repositories)
   end
 
-  it 'should has 7 masks' do
+  it 'should have 7 masks' do
     pbd_class.masks.must_equal(:reference => :reference, 
                                :currently_attached => :currently_attached, 
                                :device_config => :device_config, 

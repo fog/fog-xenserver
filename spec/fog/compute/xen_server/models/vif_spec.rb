@@ -50,7 +50,7 @@ describe Fog::Compute::XenServer::Models::Vif do
                                       :vm => :servers)
   end
 
-  it 'should has 22 masks' do
+  it 'should have 22 masks' do
     vif_class.masks.must_equal(:reference => :reference, 
                                :allowed_operations => :allowed_operations, 
                                :current_operations => :current_operations, 

@@ -39,7 +39,7 @@ describe Fog::Compute::XenServer::Models::HostPatch do
                                              :pool_patch => :pool_patchs)
   end
 
-  it 'should has 11 masks' do
+  it 'should have 11 masks' do
     host_patch_class.masks.must_equal(:reference => :reference, 
                                       :applied => :applied, 
                                       :description => :description, 

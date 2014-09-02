@@ -33,7 +33,7 @@ describe Fog::Compute::XenServer::Models::Role do
     role_class.associations.must_equal(:subroles => :roles)
   end
 
-  it 'should has 5 masks' do
+  it 'should have 5 masks' do
     role_class.masks.must_equal(:reference => :reference, 
                                 :description => :description, 
                                 :name => :name, 

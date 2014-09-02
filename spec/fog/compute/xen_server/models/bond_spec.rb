@@ -37,7 +37,7 @@ describe Fog::Compute::XenServer::Models::Bond do
                                        :slaves => :pifs)
   end
 
-  it 'should has 6 masks' do
+  it 'should have 6 masks' do
     bond_class.masks.must_equal(:reference => :reference,
                                 :links_up => :links_up, 
                                 :mode => :mode, 

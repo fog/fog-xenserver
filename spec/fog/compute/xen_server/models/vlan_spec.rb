@@ -34,7 +34,7 @@ describe Fog::Compute::XenServer::Models::Vlan do
                                        :untagged_pif => :pifs)
   end
 
-  it 'should has 6 masks' do
+  it 'should have 6 masks' do
     vlan_class.masks.must_equal(:reference => :reference, 
                                 :other_config => :other_config, 
                                 :tag => :tag, 

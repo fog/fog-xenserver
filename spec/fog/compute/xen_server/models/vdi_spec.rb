@@ -59,7 +59,7 @@ describe Fog::Compute::XenServer::Models::Vdi do
                                       :vbds => :vbds)
   end
 
-  it 'should has 31 masks' do
+  it 'should have 31 masks' do
     vdi_class.masks.must_equal(:reference => :reference, 
                                :allowed_operations => :allowed_operations, 
                                :allow_caching => :allow_caching, 

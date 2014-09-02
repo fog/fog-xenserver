@@ -36,7 +36,7 @@ describe Fog::Compute::XenServer::Models::Pci do
                                       :host => :hosts)
   end
 
-  it 'should has 8 masks' do
+  it 'should have 8 masks' do
     pci_class.masks.must_equal(:reference => :reference, 
                                :device_name => :device_name, 
                                :other_config => :other_config, 

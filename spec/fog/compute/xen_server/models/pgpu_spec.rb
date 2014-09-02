@@ -34,7 +34,7 @@ describe Fog::Compute::XenServer::Models::Pgpu do
                                        :pci => :pcis)
   end
 
-  it 'should has 6 masks' do
+  it 'should have 6 masks' do
     pgpu_class.masks.must_equal(:reference => :reference,
                                 :other_config => :other_config,
                                 :uuid => :uuid,

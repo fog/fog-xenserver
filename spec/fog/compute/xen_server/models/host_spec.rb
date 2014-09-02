@@ -77,7 +77,7 @@ describe Fog::Compute::XenServer::Models::Host do
                                        :resident_vms => :servers)
   end
 
-  it 'should has 49 masks' do
+  it 'should have 49 masks' do
     host_class.masks.must_equal(:reference => :reference,
                                 :address => :address,
                                 :allowed_operations => :allowed_operations,

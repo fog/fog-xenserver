@@ -37,7 +37,7 @@ describe Fog::Compute::XenServer::Models::VbdMetrics do
     vbd_metrics_class.associations.must_equal({})
   end
 
-  it 'should has 6 masks' do
+  it 'should have 6 masks' do
     vbd_metrics_class.masks.must_equal(:reference => :reference, 
                                        :io_read_kbs => :io_read_kbs, 
                                        :io_write_kbs => :io_write_kbs, 

@@ -49,7 +49,7 @@ describe Fog::Compute::XenServer::Models::Vmpp do
     vmpp_class.associations.must_equal(:vms => :servers)
   end
 
-  it 'should has 21 masks' do
+  it 'should have 21 masks' do
     vmpp_class.masks.must_equal(:reference => :reference, 
                                 :alarm_config => :alarm_config, 
                                 :archive_frequency => :archive_frequency, 

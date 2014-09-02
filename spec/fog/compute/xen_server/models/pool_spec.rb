@@ -56,7 +56,7 @@ describe Fog::Compute::XenServer::Models::Pool do
                                        :suspend_image_sr => :storage_repositories)
   end
 
-  it 'should has 28 masks' do
+  it 'should have 28 masks' do
     pool_class.masks.must_equal(:reference => :reference, 
                                 :blobs => :blobs, 
                                 :description => :description, 

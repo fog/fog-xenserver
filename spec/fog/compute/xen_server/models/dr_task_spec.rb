@@ -31,7 +31,7 @@ describe Fog::Compute::XenServer::Models::DrTask do
     dr_task_class.associations.must_equal(:introduced_srs => :storage_repositories)
   end
 
-  it 'should has 3 masks' do
+  it 'should have 3 masks' do
     dr_task_class.masks.must_equal(:reference => :reference,
                                    :uuid => :uuid,
                                    :introduced_srs => :introduced_SRs)

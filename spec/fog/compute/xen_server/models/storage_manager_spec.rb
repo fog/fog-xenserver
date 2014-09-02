@@ -43,7 +43,7 @@ describe Fog::Compute::XenServer::Models::StorageManager do
     storage_manager_class.associations.must_equal({})
   end
 
-  it 'should has 14 masks' do
+  it 'should have 14 masks' do
     storage_manager_class.masks.must_equal(:reference => :reference, 
                                            :capabilities => :capabilities, 
                                            :configuration => :configuration, 

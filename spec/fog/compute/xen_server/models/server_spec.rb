@@ -109,7 +109,7 @@ describe Fog::Compute::XenServer::Models::Server do
                                          :vtpms => :vtpms)
   end
 
-  it 'should has 77 masks' do
+  it 'should have 77 masks' do
     server_class.masks.must_equal(:reference => :reference, 
                                   :actions_after_crash => :actions_after_crash, 
                                   :actions_after_reboot => :actions_after_reboot, 
