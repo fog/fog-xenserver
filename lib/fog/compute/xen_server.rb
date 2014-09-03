@@ -87,41 +87,36 @@ module Fog
 
       request_path 'fog/compute/xen_server/requests'
       request :builtin_templates
+      request :clone_server
+      request :create_network
       request :create_server
+      request :create_sr
+      request :create_vlan
       request :create_vif
       request :create_vdi
       request :create_vbd
       request :custom_templates
-      request :destroy_vif
-      request :clone_server
-      request :destroy_server
-      request :templates
-      request :unplug_vbd
+      request :destroy_record
+      request :disable_host
       request :eject_vbd
-      request :insert_vbd
-      request :destroy_vdi
-      request :shutdown_server
-      request :start_server
+      request :enable_host
       request :get_record
       request :get_records
+      request :insert_vbd
+      request :provision_server
+      request :reboot_host
+      request :reboot_server
+      request :scan_sr
       request :set_affinity
       request :set_attribute
-      request :reboot_server
-      request :provision_server
-      request :scan_sr
-      request :unplug_pbd
-      request :destroy_sr
-      request :create_sr
-      request :reboot_host
-      request :disable_host
-      request :enable_host
       request :shutdown_host
-      request :create_network
-      request :destroy_network
-      request :create_vlan
-      request :destroy_vlan
+      request :shutdown_server
       request :snapshot_server
       request :snapshot_revert
+      request :start_server
+      request :templates
+      request :unplug_pbd
+      request :unplug_vbd
 
       def self.const_missing(name)
         Models.const_get(name)

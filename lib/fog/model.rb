@@ -42,7 +42,7 @@ module Fog
 
     def destroy
       requires :reference
-      service.send("destroy_#{provider_class.downcase}", reference)
+      service.send(:destroy_record, reference, provider_class.downcase)
       true
     end
 
