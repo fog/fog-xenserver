@@ -38,6 +38,26 @@ module Fog
           require_before_save :vdi, :server
 
           alias_method :server, :vm
+
+          def can_be_unplugged?
+            allowed_operations.include?('unplug')
+          end
+          
+          def unplug
+            return service.unplug_vbd(reference) if can_be_unplugged?
+            false
+          end
+          
+          def is_disk?
+            type == 'Disk'
+          end
+
+          def destroy
+            if is_disk?
+              unplug
+              vdi.destroy
+            end
+          end
         end
       end
     end

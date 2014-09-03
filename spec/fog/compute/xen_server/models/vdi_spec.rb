@@ -9,6 +9,8 @@ describe Fog::Compute::XenServer::Models::Vdi do
     end
     Fog::Compute::XenServer::Models::Vdi
   end
+  let(:vdi) { Fog::Compute::XenServer::Models::Vdi.new }
+  let(:service) { Object.new }
 
   it 'should associate to a provider class' do
     vdi_class.provider_class.must_equal('VDI')
@@ -110,5 +112,50 @@ describe Fog::Compute::XenServer::Models::Vdi do
 
   it 'should require 2 attributes before save' do
     vdi_class.require_before_save.must_equal([ :name, :storage_repository ])
+  end
+
+  describe '#can_be_destroyed?' do
+    describe "when allowed_operation contain 'destroy'" do
+      before :each do
+        vdi.allowed_operations = %w(destroy)
+      end
+
+      it 'should return true' do
+        vdi.can_be_destroyed?.must_equal(true)
+      end
+    end
+
+    describe "when allowed_operation does not contain 'destroy'" do
+      before :each do
+        vdi.allowed_operations = []
+      end
+
+      it 'should return false' do
+        vdi.can_be_destroyed?.must_equal(false)
+      end
+    end
+  end
+
+  describe '#destroy' do
+    describe "when it can be unplugged" do
+      before :each do
+        def vdi.can_be_destroyed?; true end
+        def service.destroy_vdi(reference); true end
+      end
+
+      it 'should return true' do
+        vdi.stub(:service, service) do
+          vdi.destroy.must_equal(true)
+        end
+      end
+    end
+
+    describe 'when can not be destroyed' do
+      it 'should return false' do
+        vdi.stub(:can_be_destroyed?, false) do
+          vdi.destroy.must_equal(false)
+        end
+      end
+    end
   end
 end

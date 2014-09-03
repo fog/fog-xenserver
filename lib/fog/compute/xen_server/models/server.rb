@@ -119,6 +119,12 @@ module Fog
             power_state == "Halted"
           end
 
+          def destroy
+            hard_shutdown
+            vbds.map(&:destroy)
+            service.destroy_vm(reference)
+          end
+
           def revert(snapshot_ref)
             Fog::Logger.deprecation 'This method is DEPRECATED. Use #snapshot_revert instead.'
             snapshot_revert(snapshot_ref)

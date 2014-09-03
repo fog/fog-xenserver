@@ -46,6 +46,15 @@ module Fog
           require_before_save :name, :storage_repository
 
           alias_method :storage_repository, :sr
+
+          def can_be_destroyed?
+            allowed_operations.include?('destroy')
+          end
+
+          def destroy
+            return service.destroy_vdi(reference) if can_be_destroyed?
+            false
+          end
         end
       end
     end
