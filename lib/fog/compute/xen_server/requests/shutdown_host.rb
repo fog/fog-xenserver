@@ -12,8 +12,7 @@ module Fog
         # @param [Boolean] auto_disable disable the host first
         #
         # @see http://docs.vmd.citrix.com/XenServer/6.0.0/1.0/en_gb/api/?c=host
-        def shutdown_host(ref, auto_disable = true)
-          disable_host(ref) if auto_disable
+        def shutdown_host(ref)
           @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => "host.shutdown"}, ref)
         end
       end

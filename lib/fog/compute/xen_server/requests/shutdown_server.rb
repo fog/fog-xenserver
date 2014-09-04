@@ -3,11 +3,7 @@ module Fog
     class XenServer
       class Real
         def shutdown_server(ref, stype = 'clean')
-          server = servers.get(ref)
-          return false unless server.running?
           @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => "VM.#{stype}_shutdown"}, ref)
-          server.wait_for { power_state == 'Halted' }
-          true
         end
 
         alias_method :shutdown_vm, :shutdown_server

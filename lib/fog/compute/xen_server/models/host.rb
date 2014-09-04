@@ -62,6 +62,16 @@ module Fog
           has_many_identities :resident_vms,  :servers,              :aliases => :resident_VMs, :as => :resident_VMs
 
           alias_method :resident_servers, :resident_vms
+
+          def shutdown(auto_disable = true)
+            service.disable_host(reference) if auto_disable
+            service.shutdown_host(reference)
+          end
+
+          def reboot(auto_disable = true)
+            service.disable_host(reference) if auto_disable
+            service.reboot_host(reference)
+          end
         end
       end
     end

@@ -9,6 +9,8 @@ describe Fog::Compute::XenServer::Models::Host do
     end
     Fog::Compute::XenServer::Models::Host
   end
+  let(:host) { Fog::Compute::XenServer::Models::Host.new }
+  let(:service) { Object.new }
 
   it 'should associate to a provider class' do
     host_class.provider_class.must_equal('host')
@@ -151,5 +153,79 @@ describe Fog::Compute::XenServer::Models::Host do
 
   it "shouldn't require attributes before save" do
     host_class.require_before_save.must_equal([])
+  end
+
+  describe '#shutdown' do
+    describe 'with auto_disable equal true' do
+      before :each do
+        def service.disable_host(reference); @disabled = true end
+        def service.shutdown_host(reference); @halted = true end
+        host.stub(:service, service) do
+          host.shutdown
+        end
+      end
+
+      it 'should disable the host' do
+        service.instance_variable_get(:@disabled).must_equal(true)
+      end
+
+      it 'should shutdown the host' do
+        service.instance_variable_get(:@halted).must_equal(true)
+      end
+    end
+
+    describe 'with auto_disable equal false' do
+      before :each do
+        def service.shutdown_host(reference); @halted = true end
+        host.stub(:service, service) do
+          host.shutdown(false)
+        end
+      end
+
+      it 'should not disable the host' do
+        service.instance_variable_get(:@disabled).must_equal(nil)
+      end
+
+      it 'should shutdown the host' do
+        service.instance_variable_get(:@halted).must_equal(true)
+      end
+    end
+  end
+
+  describe '#reboot' do
+    describe 'with auto_disable equal true' do
+      before :each do
+        def service.disable_host(reference); @disabled = true end
+        def service.reboot_host(reference); @rebooted = true end
+        host.stub(:service, service) do
+          host.reboot
+        end
+      end
+
+      it 'should disable the host' do
+        service.instance_variable_get(:@disabled).must_equal(true)
+      end
+
+      it 'should shutdown the host' do
+        service.instance_variable_get(:@rebooted).must_equal(true)
+      end
+    end
+
+    describe 'with auto_disable equal false' do
+      before :each do
+        def service.reboot_host(reference); @rebooted = true end
+        host.stub(:service, service) do
+          host.reboot(false)
+        end
+      end
+
+      it 'should not disable the host' do
+        service.instance_variable_get(:@disabled).must_equal(nil)
+      end
+
+      it 'should shutdown the host' do
+        service.instance_variable_get(:@rebooted).must_equal(true)
+      end
+    end
   end
 end

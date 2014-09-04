@@ -371,4 +371,115 @@ describe Fog::Compute::XenServer::Models::Server do
       service.instance_variable_get(:@destroyed).must_equal(true)
     end
   end
+
+  describe '#start' do
+    describe 'on a running server' do
+      before :each do
+        def server.running?; true end
+      end
+
+      it 'should return false' do
+        server.start.must_equal(false)
+      end
+    end
+
+    describe 'on a halted server' do
+      before :each do
+        def server.running?; false end
+        def service.start_vm(reference); @started = true end
+        def server.wait_for(&block); instance_eval(&block); @started = true end
+        server.stub(:service, service) do
+          server.start
+        end
+      end
+
+      it 'should start the server' do
+        service.instance_variable_get(:@started).must_equal(true)
+      end
+
+      it 'should wait the server start' do
+        server.instance_variable_get(:@started).must_equal(true)
+      end
+
+      it 'should return true' do
+        server.stub(:service, service) do
+          server.start.must_equal(true)
+        end
+      end
+    end
+  end
+
+  describe '#hard_shutdown' do
+    describe 'on a halted server' do
+      before :each do
+        def server.halted?; true end
+      end
+
+      it 'should return false' do
+        server.hard_shutdown.must_equal(false)
+      end
+    end
+
+    describe 'on a running server' do
+      before :each do
+        def server.halted?; false end
+        def service.hard_shutdown_vm(reference); @halted = true end
+        def server.wait_for(&block); instance_eval(&block); @halted = true end
+        server.stub(:service, service) do
+          server.hard_shutdown
+        end
+      end
+
+      it 'should shutdown the server' do
+        service.instance_variable_get(:@halted).must_equal(true)
+      end
+
+      it 'should wait the server shutdown' do
+        server.instance_variable_get(:@halted).must_equal(true)
+      end
+
+      it 'should return true' do
+        server.stub(:service, service) do
+          server.hard_shutdown.must_equal(true)
+        end
+      end
+    end
+  end
+
+  describe '#clean_shutdown' do
+    describe 'on a halted server' do
+      before :each do
+        def server.halted?; true end
+      end
+
+      it 'should return false' do
+        server.clean_shutdown.must_equal(false)
+      end
+    end
+
+    describe 'on a running server' do
+      before :each do
+        def server.halted?; false end
+        def service.clean_shutdown_vm(reference); @halted = true end
+        def server.wait_for(&block); instance_eval(&block); @halted = true end
+        server.stub(:service, service) do
+          server.clean_shutdown
+        end
+      end
+
+      it 'should shutdown the server' do
+        service.instance_variable_get(:@halted).must_equal(true)
+      end
+
+      it 'should wait the server shutdown' do
+        server.instance_variable_get(:@halted).must_equal(true)
+      end
+
+      it 'should return true' do
+        server.stub(:service, service) do
+          server.clean_shutdown.must_equal(true)
+        end
+      end
+    end
+  end
 end

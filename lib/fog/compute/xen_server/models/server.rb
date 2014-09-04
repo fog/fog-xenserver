@@ -111,18 +111,39 @@ module Fog
 
           def running?
             reload
-            power_state == "Running"
+            power_state == 'Running'
           end
 
           def halted?
             reload
-            power_state == "Halted"
+            power_state == 'Halted'
           end
 
           def destroy
             hard_shutdown
             vbds.map(&:destroy)
             service.destroy_vm(reference)
+          end
+
+          def start
+            return false if running?
+            service.start_vm(reference)
+            wait_for(&:running?)
+            true
+          end
+
+          def hard_shutdown
+            return false if halted?
+            service.hard_shutdown_vm(reference)
+            wait_for(&:halted?)
+            true
+          end
+
+          def clean_shutdown
+            return false if halted?
+            service.clean_shutdown_vm(reference)
+            wait_for(&:halted?)
+            true
           end
 
           def revert(snapshot_ref)

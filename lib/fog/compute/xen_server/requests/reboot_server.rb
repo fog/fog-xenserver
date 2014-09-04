@@ -4,7 +4,6 @@ module Fog
       class Real
         def reboot_server(ref, stype = 'clean')
           @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => "VM.#{stype}_reboot"}, ref)
-          true
         end
 
         alias_method :reboot_vm, :reboot_server
