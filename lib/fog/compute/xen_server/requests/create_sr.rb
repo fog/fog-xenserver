@@ -25,7 +25,6 @@ module Fog
         # @return [String] an OpaqueRef to the storage repository
         def create_sr(config = {}, extra_params = {})
           host_ref = extra_params.delete(:host_ref)
-          host_ref = host_ref.reference if host_ref.kind_of? Fog::Compute::XenServer::StorageRepository
           name_label = config[:name]
           type = config[:type]
           name_description = config[:description]
