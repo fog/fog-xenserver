@@ -37,6 +37,19 @@ module Fog
           require_before_save :server, :network
 
           alias_method :server, :vm
+
+          def save
+            set_device_number
+            require_creation_attributes
+            service.create_vif(all_associations_and_attributes)
+          end
+
+          def set_device_number
+            return device unless device == -1
+            devices = vm.vifs.map(&:device)
+            devices << device
+            self.device = (devices.max + 1).to_s
+          end
         end
       end
     end
