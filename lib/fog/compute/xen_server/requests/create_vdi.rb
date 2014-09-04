@@ -3,12 +3,7 @@ module Fog
     class XenServer
       class Real
         def create_vdi(config = {}, extra_params = {})
-          raise ArgumentError.new('Invalid config') if config.nil?
-          raise ArgumentError.new('Missing virtual_size attribute') if config[:virtual_size].nil?
-          raise ArgumentError.new('Missing read_only attribute') if config[:read_only].nil?
           raise ArgumentError.new('Missing type attribute') if config[:type].nil?
-          raise ArgumentError.new('Missing sharable attribute') if config[:sharable].nil?
-          raise ArgumentError.new('Missing other_config attribute') if config[:other_config].nil?
           raise ArgumentError.new('Missing storage_repository attribute') if config[:SR].nil?
           @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => 'VDI.create'}, config)
         end
