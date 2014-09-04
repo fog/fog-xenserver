@@ -43,7 +43,7 @@ module Fog
           has_one_identity      :sr,           :storage_repositories,      :aliases => :SR,   :as => :SR
           has_many_identities   :vbds,         :vbds,                      :aliases => :VBDs, :as => :VBDs
 
-          require_before_save :name, :storage_repository
+          require_before_save :name, :storage_repository, :type
 
           alias_method :storage_repository, :sr
 

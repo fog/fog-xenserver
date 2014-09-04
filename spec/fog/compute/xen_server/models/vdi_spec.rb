@@ -110,8 +110,8 @@ describe Fog::Compute::XenServer::Models::Vdi do
                                         :virtual_size => '8589934592')
   end
 
-  it 'should require 2 attributes before save' do
-    vdi_class.require_before_save.must_equal([ :name, :storage_repository ])
+  it 'should require 3 attributes before save' do
+    vdi_class.require_before_save.must_equal([ :name, :storage_repository, :type ])
   end
 
   describe '#can_be_destroyed?' do
