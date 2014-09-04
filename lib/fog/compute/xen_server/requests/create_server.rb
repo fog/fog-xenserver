@@ -22,7 +22,7 @@ module Fog
             template = servers.templates.find { |s| s.uuid == template_string }
             if template.nil?
               # Try with the template name just in case
-              template = servers.get get_vm_by_name(template_string)
+              template = servers.get get_by_name(template_string, 'VM')
             end
           end
 
