@@ -52,7 +52,7 @@ module Fog
           end
 
           def destroy
-            return service.destroy_vdi(reference) if can_be_destroyed?
+            return service.destroy_record(reference, provider_class) if can_be_destroyed?
             false
           end
         end

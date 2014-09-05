@@ -137,16 +137,17 @@ describe Fog::Compute::XenServer::Models::Vdi do
   end
 
   describe '#destroy' do
-    describe "when it can be unplugged" do
+    describe 'when it can be destroyed' do
       before :each do
         def vdi.can_be_destroyed?; true end
-        def service.destroy_vdi(reference); true end
-      end
-
-      it 'should return true' do
+        def service.destroy_record(reference, provider_class); @destroyed = true end
         vdi.stub(:service, service) do
           vdi.destroy.must_equal(true)
         end
+      end
+
+      it 'should destroy it' do
+        service.instance_variable_get(:@destroyed).must_equal(true)
       end
     end
 

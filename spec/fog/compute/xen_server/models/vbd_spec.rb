@@ -174,8 +174,11 @@ describe Fog::Compute::XenServer::Models::Vbd do
         vbd.type = 'Disk'
         def vbd.unplug; @plugged = false; end
         def vdi.destroy; @destroyed = true; end
+        def service.destroy_record(reference, provider_class); @destroyed = true end
         vbd.stub(:vdi, vdi) do
-          vbd.destroy
+          vbd.stub(:service, service) do
+            vbd.destroy
+          end
         end
       end
 
@@ -185,16 +188,6 @@ describe Fog::Compute::XenServer::Models::Vbd do
 
       it 'should destroy the vdi' do
         vdi.instance_variable_get(:@destroyed).must_equal(true)
-      end
-    end
-
-    describe 'on a cd' do
-      before :each do
-        vbd.type = 'CD'
-      end
-
-      it 'should return nil' do
-        vbd.destroy.must_equal(nil)
       end
     end
   end
