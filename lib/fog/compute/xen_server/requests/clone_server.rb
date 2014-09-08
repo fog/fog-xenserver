@@ -6,6 +6,8 @@ module Fog
           @connection.request({ :parser => Fog::Parsers::XenServer::Base.new, :method => 'VM.clone' },
                               template_ref, server_name)
         end
+
+        alias_method :clone_vm, :clone_server
       end
     end
   end

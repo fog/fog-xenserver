@@ -65,7 +65,6 @@ module Fog
           attribute :snapshot_time
           attribute :start_delay
           attribute :tags
-          attribute :template_name
           attribute :transportable_snapshot_id
           attribute :user_version,                                                    :default => '0'
           attribute :uuid
@@ -144,6 +143,16 @@ module Fog
             service.clean_shutdown_vm(reference)
             wait_for(&:halted?)
             true
+          end
+
+          def can_be_cloned?
+            allowed_operations.include?('clone')
+          end
+
+          def clone(name)
+            raise 'Clone Operation not Allowed' unless can_be_cloned?
+            reference = service.clone_vm(name, reference)
+            reload
           end
 
           def revert(snapshot_ref)

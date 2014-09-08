@@ -27,7 +27,7 @@ describe Fog::Compute::XenServer::Models::Server do
     server_class.read_identity.must_equal(:reference)
   end
 
-  it 'should have 58 attributes' do
+  it 'should have 57 attributes' do
     server_class.attributes.must_equal([ :reference,
                                          :actions_after_crash,
                                          :actions_after_reboot,
@@ -77,7 +77,6 @@ describe Fog::Compute::XenServer::Models::Server do
                                          :snapshot_time,
                                          :start_delay,
                                          :tags,
-                                         :template_name,
                                          :transportable_snapshot_id,
                                          :user_version,
                                          :uuid,
@@ -110,7 +109,7 @@ describe Fog::Compute::XenServer::Models::Server do
                                          :vtpms => :vtpms)
   end
 
-  it 'should have 77 masks' do
+  it 'should have 76 masks' do
     server_class.masks.must_equal(:reference => :reference,
                                   :actions_after_crash => :actions_after_crash,
                                   :actions_after_reboot => :actions_after_reboot,
@@ -160,7 +159,6 @@ describe Fog::Compute::XenServer::Models::Server do
                                   :snapshot_time => :snapshot_time,
                                   :start_delay => :start_delay,
                                   :tags => :tags,
-                                  :template_name => :template_name,
                                   :transportable_snapshot_id => :transportable_snapshot_id,
                                   :user_version => :user_version,
                                   :uuid => :uuid,
@@ -479,6 +477,59 @@ describe Fog::Compute::XenServer::Models::Server do
         server.stub(:service, service) do
           server.clean_shutdown.must_equal(true)
         end
+      end
+    end
+  end
+
+  describe '#can_be_cloned?' do
+    describe "when it can be cloned" do
+      before :each do
+        server.allowed_operations = %w(clone)
+      end
+
+      it 'should return true' do
+        server.can_be_cloned?.must_equal(true)
+      end
+    end
+
+    describe 'when can not be cloned' do
+      before :each do
+        server.allowed_operations = []
+      end
+
+      it 'should return false' do
+        server.can_be_cloned?.must_equal(false)
+      end
+    end
+  end
+
+  describe '#clone' do
+    describe "when it can be cloned" do
+      before :each do
+        def server.can_be_cloned?; true end
+        def service.clone_vm(name, reference); @cloned = true end
+        def server.reload; @reloaded = true end
+        server.stub(:service, service) do
+          server.clone('')
+        end
+      end
+
+      it 'should clone the vm' do
+        service.instance_variable_get(:@cloned).must_equal(true)
+      end
+
+      it 'should reload the vm' do
+        server.instance_variable_get(:@reloaded).must_equal(true)
+      end
+    end
+
+    describe 'when can not be cloned' do
+      before :each do
+        def server.can_be_cloned?; false end
+      end
+
+      it 'should raise an exception' do
+        lambda { server.clone('') }.must_raise RuntimeError, 'Clone Operation not Allowed'
       end
     end
   end
