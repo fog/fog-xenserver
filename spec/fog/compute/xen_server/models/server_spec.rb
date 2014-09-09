@@ -248,8 +248,8 @@ describe Fog::Compute::XenServer::Models::Server do
                                            :vcpus_params => {})
   end
 
-  it 'should require 1 attribute before save' do
-    server_class.require_before_save.must_equal([ :name ])
+  it 'should require 2 attributes before save' do
+    server_class.require_before_save.must_equal([ :name, :affinity ])
   end
 
   describe '#tools_installed?' do

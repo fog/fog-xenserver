@@ -94,7 +94,7 @@ module Fog
           has_many_identities   :vifs,              :vifs,                    :aliases => :VIFs,            :as => :VIFs
           has_many_identities   :vtpms,             :vtpms,                   :aliases => :VTPMs,           :as => :VTPMs
 
-          require_before_save :name
+          require_before_save :name, :affinity
 
           def tools_installed?
             !guest_metrics.nil?
