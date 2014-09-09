@@ -34,11 +34,12 @@ module Fog
           has_one_identity   :network,   :networks
           has_one_identity   :vm,        :servers,          :aliases => :VM,  :as => :VM
 
-          require_before_save :server, :network, :device
+          require_before_save :vm, :network, :device
 
           alias_method :server, :vm
 
           def set_device_number
+            raise ArgumentError, 'vm is required for this operation' if vm.nil?
             device_number = vm.vifs.empty? ? 0 : vm.vifs.map(&:device).max.to_i + 1
             self.device = device_number.to_s
           end

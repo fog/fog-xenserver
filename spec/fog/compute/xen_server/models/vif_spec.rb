@@ -95,37 +95,46 @@ describe Fog::Compute::XenServer::Models::Vif do
   end
 
   it 'should require 3 attributes before save' do
-    vif_class.require_before_save.must_equal([ :server, :network, :device ])
+    vif_class.require_before_save.must_equal([ :vm, :network, :device ])
   end
 
   describe '#set_device_number' do
-    describe 'and no vif exists' do
-      before :each do
-        vif.stub(:vm, vm) do
-          vm.stub(:vifs, []) do
-            vif.set_device_number
-          end
-        end
-      end
-
+    describe 'when vm is nil' do
       it 'should set the device as 0' do
-        vif.device.must_equal('0')
+        lambda { vif.set_device_number }.must_raise(ArgumentError, 'vm is required for this operation')
       end
     end
 
-    describe 'and exists vifs' do
-      before :each do
-        @vif2 = Fog::Compute::XenServer::Models::Vif.new(:device => 2)
-        @vif4 = Fog::Compute::XenServer::Models::Vif.new(:device => 4)
-        vif.stub(:vm, vm) do
-          vm.stub(:vifs, [@vif2, @vif4]) do
-            vif.set_device_number
+    describe 'when vm is not nil' do
+      describe 'and no vif exists' do
+        before :each do
+          vif.vm = vm
+          vif.stub(:vm, vm) do
+            vm.stub(:vifs, []) do
+              vif.set_device_number
+            end
           end
+        end
+
+        it 'should set the device as 0' do
+          vif.device.must_equal('0')
         end
       end
 
-      it 'should set the device value based on the existent vifs' do
-        vif.device.must_equal('5')
+      describe 'and exists vifs' do
+        before :each do
+          @vif2 = Fog::Compute::XenServer::Models::Vif.new(:device => 2)
+          @vif4 = Fog::Compute::XenServer::Models::Vif.new(:device => 4)
+          vif.stub(:vm, vm) do
+            vm.stub(:vifs, [@vif2, @vif4]) do
+              vif.set_device_number
+            end
+          end
+        end
+
+        it 'should set the device value based on the existent vifs' do
+          vif.device.must_equal('5')
+        end
       end
     end
   end
