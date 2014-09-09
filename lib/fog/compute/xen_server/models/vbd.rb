@@ -48,12 +48,12 @@ module Fog
             false
           end
           
-          def is_disk?
+          def disk?
             type == 'Disk'
           end
 
           def destroy
-            if is_disk?
+            if disk?
               unplug
               vdi.destroy
             end

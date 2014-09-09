@@ -146,14 +146,14 @@ describe Fog::Compute::XenServer::Models::Vbd do
     end
   end
 
-  describe '#is_disk?' do
+  describe '#disk?' do
     describe 'on a disk' do
       before :each do
         vbd.type = 'Disk'
       end
 
       it 'should return true' do
-        vbd.is_disk?.must_equal(true)
+        vbd.disk?.must_equal(true)
       end
     end
 
@@ -163,7 +163,7 @@ describe Fog::Compute::XenServer::Models::Vbd do
       end
 
       it 'should return false' do
-        vbd.is_disk?.must_equal(false)
+        vbd.disk?.must_equal(false)
       end
     end
   end
