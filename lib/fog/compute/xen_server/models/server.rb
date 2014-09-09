@@ -151,7 +151,7 @@ module Fog
 
           def clone(name)
             raise 'Clone Operation not Allowed' unless can_be_cloned?
-            reference = service.clone_vm(name, reference)
+            self.reference = service.clone_vm(name, self.reference)
             reload
           end
 
