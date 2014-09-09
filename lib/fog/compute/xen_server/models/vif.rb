@@ -40,8 +40,7 @@ module Fog
 
           def save
             set_device_number
-            require_creation_attributes
-            service.create_vif(all_associations_and_attributes)
+            super
           end
 
           def set_device_number
