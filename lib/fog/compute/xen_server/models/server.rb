@@ -156,8 +156,13 @@ module Fog
           end
 
           def revert(snapshot_ref)
-            Fog::Logger.deprecation 'This method is DEPRECATED. Use #snapshot_revert instead.'
-            snapshot_revert(snapshot_ref)
+            Fog::Logger.deprecation 'This method is DEPRECATED. Use #revert_to instead.'
+            revert_to(snapshot_ref)
+          end
+
+          def revert_to(snapshot)
+            snapshot = collection.get_by_reference_or_name_or_uuid(snapshot)
+            service.revert_to_vm(snapshot.reference)
           end
         end
       end

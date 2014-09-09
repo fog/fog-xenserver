@@ -106,13 +106,13 @@ module Fog
       request :provision_server
       request :reboot_host
       request :reboot_server
+      request :revert_to_server
       request :scan_sr
       request :set_affinity
       request :set_attribute
       request :shutdown_host
       request :shutdown_server
       request :snapshot_server
-      request :snapshot_revert
       request :start_server
       request :templates
       request :unplug_pbd

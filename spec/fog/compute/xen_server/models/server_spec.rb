@@ -12,6 +12,7 @@ describe Fog::Compute::XenServer::Models::Server do
 
   let(:server) { Fog::Compute::XenServer::Models::Server.new }
   let(:service) { Object.new }
+  let(:collection) { Object.new }
   let(:vif) { Fog::Compute::XenServer::Models::Vif.new }
   let(:vbd) { Fog::Compute::XenServer::Models::Vbd.new }
 
@@ -531,6 +532,23 @@ describe Fog::Compute::XenServer::Models::Server do
       it 'should raise an exception' do
         lambda { server.clone('') }.must_raise RuntimeError, 'Clone Operation not Allowed'
       end
+    end
+  end
+
+  describe '#revert_to' do
+    before :each do
+      collection.instance_variable_set(:@server, server)
+      def collection.get_by_reference_or_name_or_uuid(name); @server end
+      def service.revert_to_vm(reference); @reverted = true end
+      server.stub(:service, service) do
+        server.stub(:collection, collection) do
+          server.revert_to('snapshot')
+        end
+      end
+    end
+
+    it 'should revert the snapshot' do
+      service.instance_variable_get(:@reverted).must_equal(true)
     end
   end
 end
