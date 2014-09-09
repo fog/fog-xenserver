@@ -14,7 +14,7 @@ module Fog
           attribute :allowed_operations
           attribute :current_operations
           attribute :currently_attached
-          attribute :device,                                                :default => -1
+          attribute :device
           attribute :ipv4_allowed
           attribute :ipv6_allowed
           attribute :locking_mode
@@ -34,20 +34,13 @@ module Fog
           has_one_identity   :network,   :networks
           has_one_identity   :vm,        :servers,          :aliases => :VM,  :as => :VM
 
-          require_before_save :server, :network
+          require_before_save :server, :network, :device
 
           alias_method :server, :vm
 
-          def save
-            set_device_number
-            super
-          end
-
           def set_device_number
-            return device unless device == -1
-            devices = vm.vifs.map(&:device)
-            devices << device
-            self.device = (devices.max + 1).to_s
+            device_number = vm.vifs.empty? ? 0 : vm.vifs.map(&:device).max.to_i + 1
+            self.device = device_number.to_s
           end
         end
       end
