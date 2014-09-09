@@ -2,11 +2,6 @@ module Fog
   module Compute
     class XenServer
       class Real
-        #
-        # Create a VLAN
-        #
-        # @see http://docs.vmd.citrix.com/XenServer/6.0.0/1.0/en_gb/api/?c=VLAN
-        #
         def create_vlan(config = {}, extra_params = {})
           @connection.request({ :parser => Fog::Parsers::XenServer::Base.new, :method => 'VLAN.create' },
                               extra_params[:pif_ref], config[:tag].to_s, extra_params[:network_ref])
