@@ -113,6 +113,7 @@ module Fog
       request :shutdown_host
       request :shutdown_server
       request :snapshot_server
+      request :snapshots
       request :start_server
       request :templates
       request :unplug_pbd
