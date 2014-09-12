@@ -30,8 +30,8 @@ module Fog
           attribute :sm_config
           attribute :snapshot_time
           attribute :storage_lock
-          attribute :tags,                        :default => 'system'
-          attribute :type
+          attribute :tags
+          attribute :type,                        :default => 'system'
           attribute :uuid
           attribute :virtual_size,                :default => '8589934592'
           attribute :xenstore_data
