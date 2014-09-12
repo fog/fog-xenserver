@@ -23,7 +23,7 @@ module Fog
           attribute :current_operations
           attribute :domarch
           attribute :domid
-          attribute :description,                 :aliases => :name_description,      :default => ''
+          attribute :description,                 :aliases => :name_description,      :default => '',         :as => :name_description
           attribute :generation_id
           attribute :ha_always_run
           attribute :ha_restart_priority
@@ -42,7 +42,7 @@ module Fog
           attribute :memory_static_max,                                               :default => '536870912'
           attribute :memory_static_min,                                               :default => '536870912'
           attribute :memory_target
-          attribute :name,                        :aliases => :name_label,            :default => ''
+          attribute :name,                        :aliases => :name_label,            :default => '',         :as => :name_label
           attribute :order
           attribute :other_config,                                                    :default => {}
           attribute :pci_bus,                     :aliases => :PCI_bus,               :default => '',         :as => :PCI_bus
