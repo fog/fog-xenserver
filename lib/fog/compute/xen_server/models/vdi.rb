@@ -14,14 +14,14 @@ module Fog
           attribute :allowed_operations
           attribute :allow_caching
           attribute :current_operations
-          attribute :description,                 :aliases => :name_description
+          attribute :description,                 :aliases => :name_description,    :as => :name_description
           attribute :is_a_snapshot
           attribute :location
           attribute :managed
           attribute :metadata_latest
           attribute :metadata_of_pool
           attribute :missing
-          attribute :name,                        :aliases => :name_label
+          attribute :name,                        :aliases => :name_label,          :as => :name_label
           attribute :on_boot
           attribute :other_config,                :default => {}
           attribute :physical_utilisation
