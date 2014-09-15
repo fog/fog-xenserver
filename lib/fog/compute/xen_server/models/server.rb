@@ -62,7 +62,7 @@ module Fog
           attribute :shutdown_delay
           attribute :snapshot_info
           attribute :snapshot_metadata
-          attribute :snapshot_time
+          attribute :snapshot_time,   :type => :time
           attribute :start_delay
           attribute :tags
           attribute :transportable_snapshot_id
