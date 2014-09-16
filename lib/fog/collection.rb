@@ -10,7 +10,7 @@ module Fog
     def get(ref)
       data = service.get_record(ref, model.provider_class)
       new(data)
-    rescue Fog::XenServer::NotFound
+    rescue Fog::XenServer::NotFound, Fog::XenServer::RequestFailed
       nil
     end
 
@@ -18,7 +18,7 @@ module Fog
       ref = service.get_by_name(name, model.provider_class)
       return nil if ref.nil?
       get(ref)
-    rescue Fog::XenServer::NotFound
+    rescue Fog::XenServer::NotFound, Fog::XenServer::RequestFailed
       nil
     end
 
@@ -28,7 +28,7 @@ module Fog
       ref = service.get_by_uuid(uuid, model.provider_class)
       return nil if ref.nil?
       get(ref)
-    rescue Fog::XenServer::NotFound
+    rescue Fog::XenServer::NotFound, Fog::XenServer::RequestFailed
       nil
     end
 
