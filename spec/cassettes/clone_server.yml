@@ -1,0 +1,127 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://192.168.10.2/
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" ?><methodCall><methodName>VM.clone</methodName><params><param><value><string>OpaqueRef:b31552da-b1ea-e837-c36a-74fd8ff62526</string></value></param><param><value><string>OpaqueRef:d5916384-95bc-d6cc-29de-4460fc507258</string></value></param><param><value><string>Awesome Server</string></value></param></params></methodCall>
+    headers:
+      User-Agent:
+      - XMLRPC::Client (Ruby 2.1.2)
+      Content-Type:
+      - text/xml; charset=utf-8
+      Content-Length:
+      - '345'
+      Connection:
+      - keep-alive
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '251'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache, no-store
+      Content-Type:
+      - text/xml
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - X-Requested-With
+    body:
+      encoding: UTF-8
+      string: "<methodResponse><params><param><value><struct><member><name>Status</name><value>Success</value></member><member><name>Value</name><value>OpaqueRef:12acbf46-1cf7-642f-c958-f40e3d86f9fd</value></member></struct></value></param></params></methodResponse>"
+    http_version: 
+  recorded_at: Wed, 17 Sep 2014 16:02:28 GMT
+- request:
+    method: post
+    uri: http://192.168.10.2/
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" ?><methodCall><methodName>VM.get_record</methodName><params><param><value><string>OpaqueRef:b31552da-b1ea-e837-c36a-74fd8ff62526</string></value></param><param><value><string>OpaqueRef:12acbf46-1cf7-642f-c958-f40e3d86f9fd</string></value></param></params></methodCall>
+    headers:
+      User-Agent:
+      - XMLRPC::Client (Ruby 2.1.2)
+      Content-Type:
+      - text/xml; charset=utf-8
+      Content-Length:
+      - '289'
+      Connection:
+      - keep-alive
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '10364'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache, no-store
+      Content-Type:
+      - text/xml
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - X-Requested-With
+    body:
+      encoding: UTF-8
+      string: "<methodResponse><params><param><value><struct><member><name>Status</name><value>Success</value></member><member><name>Value</name><value><struct><member><name>uuid</name><value>b63f0419-564d-4556-cd64-fbc67518ba4d</value></member><member><name>allowed_operations</name><value><array><data><value>changing_dynamic_range</value><value>changing_shadow_memory</value><value>changing_static_range</value><value>make_into_template</value><value>destroy</value><value>export</value><value>start_on</value><value>start</value><value>clone</value><value>copy</value><value>snapshot</value></data></array></value></member><member><name>current_operations</name><value><struct/></value></member><member><name>power_state</name><value>Halted</value></member><member><name>name_label</name><value>Awesome
+        Server</value></member><member><name>name_description</name><value>Imported
+        from an OVF/OVA package.</value></member><member><name>user_version</name><value>1</value></member><member><name>is_a_template</name><value><boolean>0</boolean></value></member><member><name>suspend_VDI</name><value>OpaqueRef:NULL</value></member><member><name>resident_on</name><value>OpaqueRef:NULL</value></member><member><name>affinity</name><value>OpaqueRef:1500e92a-ff9c-119f-de60-541ed4ba565e</value></member><member><name>memory_overhead</name><value>12582912</value></member><member><name>memory_target</name><value>0</value></member><member><name>memory_static_max</name><value>1073741824</value></member><member><name>memory_dynamic_max</name><value>1073741824</value></member><member><name>memory_dynamic_min</name><value>1073741824</value></member><member><name>memory_static_min</name><value>16777216</value></member><member><name>VCPUs_params</name><value><struct/></value></member><member><name>VCPUs_max</name><value>2</value></member><member><name>VCPUs_at_startup</name><value>2</value></member><member><name>actions_after_shutdown</name><value>destroy</value></member><member><name>actions_after_reboot</name><value>restart</value></member><member><name>actions_after_crash</name><value>restart</value></member><member><name>consoles</name><value><array><data/></array></value></member><member><name>VIFs</name><value><array><data><value>OpaqueRef:d9fb40f2-262e-3b47-6a03-8694db971f16</value><value>OpaqueRef:a6836b41-229a-907a-3b8d-aa0fc31233ac</value></data></array></value></member><member><name>VBDs</name><value><array><data><value>OpaqueRef:b145c0c2-e20f-5c2c-5873-d5401b539e59</value><value>OpaqueRef:9233ff05-de3b-607e-b768-e9a2a738f6dd</value></data></array></value></member><member><name>crash_dumps</name><value><array><data/></array></value></member><member><name>VTPMs</name><value><array><data/></array></value></member><member><name>PV_bootloader</name><value/></member><member><name>PV_kernel</name><value/></member><member><name>PV_ramdisk</name><value/></member><member><name>PV_args</name><value/></member><member><name>PV_bootloader_args</name><value/></member><member><name>PV_legacy_args</name><value/></member><member><name>HVM_boot_policy</name><value>BIOS
+        order</value></member><member><name>HVM_boot_params</name><value><struct><member><name>order</name><value>cnd</value></member></struct></value></member><member><name>HVM_shadow_multiplier</name><value><double>1</double></value></member><member><name>platform</name><value><struct><member><name>timeoffset</name><value>0</value></member><member><name>viridian</name><value>true</value></member><member><name>nx</name><value>true</value></member><member><name>stdvga</name><value>0</value></member><member><name>acpi</name><value>true</value></member><member><name>pae</name><value>true</value></member><member><name>apic</name><value>true</value></member></struct></value></member><member><name>PCI_bus</name><value/></member><member><name>other_config</name><value><struct><member><name>vgpu_pci</name><value/></member><member><name>mac_seed</name><value>a44ff435-a4a8-a145-d7eb-382105caaffe</value></member></struct></value></member><member><name>domid</name><value>-1</value></member><member><name>domarch</name><value/></member><member><name>last_boot_CPU_flags</name><value><struct><member><name>vendor</name><value>GenuineIntel</value></member><member><name>features</name><value>77bae3ff-bfebfbff-00000001-28100800</value></member></struct></value></member><member><name>is_control_domain</name><value><boolean>0</boolean></value></member><member><name>metrics</name><value>OpaqueRef:6d0f04cc-5fb5-2c7b-b6d4-efc331a393f2</value></member><member><name>guest_metrics</name><value>OpaqueRef:19ad558b-906c-a1ed-70cf-5fc2a78d6ea8</value></member><member><name>last_booted_record</name><value>('struct'
+        ('uuid' 'af5e9f33-45d2-d07d-f975-d0e99814776d') ('allowed_operations' ('array'))
+        ('current_operations' ('struct' ('OpaqueRef:44be0de3-b61a-2980-4832-a884ff7d416c'
+        'start'))) ('power_state' 'Halted') ('name_label' 'Puppet Master') ('name_description'
+        'Imported from an OVF/OVA package.') ('user_version' '1') ('is_a_template'
+        ('boolean' '0')) ('suspend_VDI' 'OpaqueRef:NULL') ('resident_on' 'OpaqueRef:NULL')
+        ('affinity' 'OpaqueRef:1500e92a-ff9c-119f-de60-541ed4ba565e') ('memory_overhead'
+        '12582912') ('memory_target' '0') ('memory_static_max' '1073741824') ('memory_dynamic_max'
+        '1073741824') ('memory_dynamic_min' '1073741824') ('memory_static_min' '16777216')
+        ('VCPUs_params' ('struct')) ('VCPUs_max' '2') ('VCPUs_at_startup' '2') ('actions_after_shutdown'
+        'destroy') ('actions_after_reboot' 'restart') ('actions_after_crash' 'restart')
+        ('consoles' ('array')) ('VIFs' ('array' 'OpaqueRef:47846977-a655-6d34-105a-eee3b002423c'
+        'OpaqueRef:3b2877e3-f9c9-a297-6e05-a7e26cd6d988')) ('VBDs' ('array' 'OpaqueRef:23282298-1bfe-50b8-1b20-1e380cb8d1f8'
+        'OpaqueRef:08e46645-1a8f-382b-02fe-aa8b84282719')) ('crash_dumps' ('array'))
+        ('VTPMs' ('array')) ('PV_bootloader' '') ('PV_kernel' '') ('PV_ramdisk' '')
+        ('PV_args' '') ('PV_bootloader_args' '') ('PV_legacy_args' '') ('HVM_boot_policy'
+        'BIOS order') ('HVM_boot_params' ('struct' ('order' 'cnd'))) ('HVM_shadow_multiplier'
+        ('double' '1')) ('platform' ('struct' ('timeoffset' '0') ('viridian' 'true')
+        ('nx' 'true') ('stdvga' '0') ('acpi' 'true') ('pae' 'true') ('apic' 'true')))
+        ('PCI_bus' '') ('other_config' ('struct' ('vgpu_pci' '') ('mac_seed' 'e2d69cc5-6ce5-f5a1-988f-9e2bb1815d6a')))
+        ('domid' '-1') ('domarch' '') ('last_boot_CPU_flags' ('struct' ('vendor' 'GenuineIntel')
+        ('features' '77bae3ff-bfebfbff-00000001-28100800'))) ('is_control_domain'
+        ('boolean' '0')) ('metrics' 'OpaqueRef:ae126e86-52cb-c836-37d2-07f418065a43')
+        ('guest_metrics' 'OpaqueRef:5b8d45a4-e9e8-2ad7-be20-3de359d13a66') ('last_booted_record'
+        '') ('recommendations' '') ('xenstore_data' ('struct' ('vm-data' ''))) ('ha_always_run'
+        ('boolean' '0')) ('ha_restart_priority' '') ('is_a_snapshot' ('boolean' '0'))
+        ('snapshot_of' 'OpaqueRef:NULL') ('snapshots' ('array' 'OpaqueRef:416d07de-4a89-e453-e9de-0322a402f76e'
+        'OpaqueRef:6ede40cf-b07f-91c1-6a5f-8b26aa63f04f' 'OpaqueRef:84b3a858-fa56-dbe3-b543-4d376cf1c1e9'
+        'OpaqueRef:b79ce040-8679-182c-6217-14beb8d39013')) ('snapshot_time' ('dateTime.iso8601'
+        '19700101T00:00:00Z')) ('transportable_snapshot_id' '') ('blobs' ('struct'))
+        ('tags' ('array')) ('blocked_operations' ('struct')) ('snapshot_info' ('struct'))
+        ('snapshot_metadata' '') ('parent' 'OpaqueRef:b79ce040-8679-182c-6217-14beb8d39013')
+        ('children' ('array')) ('bios_strings' ('struct')) ('protection_policy' 'OpaqueRef:NULL')
+        ('is_snapshot_from_vmpp' ('boolean' '0')) ('appliance' 'OpaqueRef:38f3e1e9-5d38-7f07-e837-6e1d7a509656')
+        ('start_delay' '0') ('shutdown_delay' '0') ('order' '0') ('VGPUs' ('array'))
+        ('attached_PCIs' ('array')) ('suspend_SR' '') ('version' '0') ('generation_id'
+        ''))</value></member><member><name>recommendations</name><value/></member><member><name>xenstore_data</name><value><struct><member><name>vm-data</name><value/></member></struct></value></member><member><name>ha_always_run</name><value><boolean>0</boolean></value></member><member><name>ha_restart_priority</name><value/></member><member><name>is_a_snapshot</name><value><boolean>0</boolean></value></member><member><name>snapshot_of</name><value>OpaqueRef:NULL</value></member><member><name>snapshots</name><value><array><data/></array></value></member><member><name>snapshot_time</name><value><dateTime.iso8601>19700101T00:00:00Z</dateTime.iso8601></value></member><member><name>transportable_snapshot_id</name><value/></member><member><name>blobs</name><value><struct/></value></member><member><name>tags</name><value><array><data/></array></value></member><member><name>blocked_operations</name><value><struct/></value></member><member><name>snapshot_info</name><value><struct/></value></member><member><name>snapshot_metadata</name><value/></member><member><name>parent</name><value>OpaqueRef:NULL</value></member><member><name>children</name><value><array><data/></array></value></member><member><name>bios_strings</name><value><struct><member><name>bios-vendor</name><value>Xen</value></member><member><name>bios-version</name><value/></member><member><name>system-manufacturer</name><value>Xen</value></member><member><name>system-product-name</name><value>HVM
+        domU</value></member><member><name>system-version</name><value/></member><member><name>system-serial-number</name><value/></member><member><name>hp-rombios</name><value/></member><member><name>oem-1</name><value>Xen</value></member><member><name>oem-2</name><value>MS_VM_CERT/SHA1/bdbeb6e0a816d43fa6d3fe8aaef04c2bad9d3e3d</value></member></struct></value></member><member><name>protection_policy</name><value>OpaqueRef:NULL</value></member><member><name>is_snapshot_from_vmpp</name><value><boolean>0</boolean></value></member><member><name>appliance</name><value>OpaqueRef:NULL</value></member><member><name>start_delay</name><value>0</value></member><member><name>shutdown_delay</name><value>0</value></member><member><name>order</name><value>0</value></member><member><name>VGPUs</name><value><array><data/></array></value></member><member><name>attached_PCIs</name><value><array><data/></array></value></member><member><name>suspend_SR</name><value>OpaqueRef:NULL</value></member><member><name>version</name><value>0</value></member><member><name>generation_id</name><value>9038635831031144620:6317424036159940619</value></member></struct></value></member></struct></value></param></params></methodResponse>"
+    http_version: 
+  recorded_at: Wed, 17 Sep 2014 16:02:28 GMT
+recorded_with: VCR 2.9.3
