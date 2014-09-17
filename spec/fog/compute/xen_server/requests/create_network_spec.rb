@@ -17,8 +17,8 @@ describe "#create_network" do
     end
   end
 
-  it 'should create a new template' do
-      @network.persisted?.must_equal(true)
-      @network.name.must_equal('CrazyName')
+  it 'should create a new network' do
+    @network.persisted?.must_equal(true)
+    @network.name.must_equal('CrazyName')
   end
 end
