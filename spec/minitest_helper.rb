@@ -1,6 +1,7 @@
 require 'minitest/spec'
 require 'minitest/autorun'
 require 'turn'
+require 'vcr'
 
 Turn.config do |c|
   # use one of output formats:
@@ -15,6 +16,12 @@ Turn.config do |c|
   c.trace   = 20
   # use humanized test names (works only with :outline format)
   c.natural = true
+end
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/cassettes'
+  c.hook_into :webmock
+  c.debug_logger = $stderr
 end
 
 if ENV['COVERAGE']
