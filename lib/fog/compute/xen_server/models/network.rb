@@ -16,9 +16,9 @@ module Fog
           attribute :bridge
           attribute :current_operations
           attribute :default_locking_mode
-          attribute :description,         :aliases => :name_description,  :default => ''
-          attribute :mtu,                 :aliases => :MTU,   :as => :MTU
-          attribute :name,                :aliases => :name_label,        :default => ''
+          attribute :description,         :aliases => :name_description,  :default => '',  :as => :name_description
+          attribute :mtu,                 :aliases => :MTU,                                :as => :MTU
+          attribute :name,                :aliases => :name_label,        :default => '',  :as => :name_label
           attribute :other_config,                                        :default => {}
           attribute :tags
           attribute :uuid

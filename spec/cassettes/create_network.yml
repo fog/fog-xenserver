@@ -1,0 +1,87 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://192.168.10.2/
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" ?><methodCall><methodName>network.create</methodName><params><param><value><string>OpaqueRef:b31552da-b1ea-e837-c36a-74fd8ff62526</string></value></param><param><value><struct><member><name>name_description</name><value><string></string></value></member><member><name>name_label</name><value><string>CrazyName</string></value></member><member><name>other_config</name><value><struct/></value></member><member><name>PIFs</name><value><array><data/></array></value></member><member><name>VIFs</name><value><array><data/></array></value></member></struct></value></param></params></methodCall>
+    headers:
+      User-Agent:
+      - XMLRPC::Client (Ruby 2.1.2)
+      Content-Type:
+      - text/xml; charset=utf-8
+      Content-Length:
+      - '611'
+      Connection:
+      - keep-alive
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '251'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache, no-store
+      Content-Type:
+      - text/xml
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - X-Requested-With
+    body:
+      encoding: UTF-8
+      string: "<methodResponse><params><param><value><struct><member><name>Status</name><value>Success</value></member><member><name>Value</name><value>OpaqueRef:f5e60e5f-75f0-1f83-359e-647b764e4f0d</value></member></struct></value></param></params></methodResponse>"
+    http_version: 
+  recorded_at: Wed, 17 Sep 2014 16:10:21 GMT
+- request:
+    method: post
+    uri: http://192.168.10.2/
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" ?><methodCall><methodName>network.get_record</methodName><params><param><value><string>OpaqueRef:b31552da-b1ea-e837-c36a-74fd8ff62526</string></value></param><param><value><string>OpaqueRef:f5e60e5f-75f0-1f83-359e-647b764e4f0d</string></value></param></params></methodCall>
+    headers:
+      User-Agent:
+      - XMLRPC::Client (Ruby 2.1.2)
+      Content-Type:
+      - text/xml; charset=utf-8
+      Content-Length:
+      - '294'
+      Connection:
+      - keep-alive
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '1101'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache, no-store
+      Content-Type:
+      - text/xml
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - X-Requested-With
+    body:
+      encoding: UTF-8
+      string: "<methodResponse><params><param><value><struct><member><name>Status</name><value>Success</value></member><member><name>Value</name><value><struct><member><name>uuid</name><value>7a1d1f40-fc87-1226-0706-c23c6c1f52f4</value></member><member><name>name_label</name><value>CrazyName</value></member><member><name>name_description</name><value/></member><member><name>allowed_operations</name><value><array><data/></array></value></member><member><name>current_operations</name><value><struct/></value></member><member><name>VIFs</name><value><array><data/></array></value></member><member><name>PIFs</name><value><array><data/></array></value></member><member><name>MTU</name><value>1500</value></member><member><name>other_config</name><value><struct/></value></member><member><name>bridge</name><value>xapi2</value></member><member><name>blobs</name><value><struct/></value></member><member><name>tags</name><value><array><data/></array></value></member><member><name>default_locking_mode</name><value>unlocked</value></member></struct></value></member></struct></value></param></params></methodResponse>"
+    http_version: 
+  recorded_at: Wed, 17 Sep 2014 16:10:21 GMT
+recorded_with: VCR 2.9.3
