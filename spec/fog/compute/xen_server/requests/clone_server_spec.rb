@@ -9,23 +9,22 @@ describe "#clone_vm" do
                        :xenserver_password => '123456')
     end
   end
-  let(:servers) do
+  let(:server) do
     VCR.use_cassette('get_all_servers') do
-      connection.servers.all
+      connection.servers.all.last
     end
   end
 
   before :each do
-    @template = servers.first
-    @template_uuid = @template.uuid
+    @template_uuid = server.uuid
     VCR.use_cassette('clone_server') do
-      @template.clone('Awesome Server')
+      server.clone('Awesome Server')
     end
   end
 
   it 'should create a new template' do
-    @template.uuid.wont_equal(nil)
-    @template.uuid.wont_equal(@template_uuid)
-    @template.name.must_equal('Awesome Server')
+    server.persisted?.must_equal(true)
+    server.uuid.wont_equal(@template_uuid)
+    server.name.must_equal('Awesome Server')
   end
 end

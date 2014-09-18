@@ -35,7 +35,7 @@ module Fog
           has_one_identity   :vdi,       :vdis,             :aliases => :VDI, :as => :VDI
           has_one_identity   :vm,        :servers,          :aliases => :VM,  :as => :VM
 
-          require_before_save :vdi, :server
+          require_before_save :vdi, :vm
 
           alias_method :server, :vm
 

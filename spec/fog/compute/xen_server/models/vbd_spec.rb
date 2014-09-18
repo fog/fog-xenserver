@@ -98,7 +98,7 @@ describe Fog::Compute::XenServer::Models::Vbd do
   end
 
   it 'should require 2 attributes before save' do
-    vbd_class.require_before_save.must_equal([ :vdi, :server ])
+    vbd_class.require_before_save.must_equal([ :vdi, :vm ])
   end
 
   describe '#can_be_unplugged?' do
