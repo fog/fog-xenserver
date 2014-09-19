@@ -350,7 +350,7 @@ describe Fog::Compute::XenServer::Models::Server do
     before :each do
       def server.hard_shutdown; @shutdown = true; end
       def vbd.destroy; @destroyed = true; end
-      def service.destroy_vm(reference); @destroyed = true; end
+      def service.destroy_record(_reference, _provider_class); @destroyed = true; end
       server.stub(:service, service) do
         server.stub(:vbds, [vbd]) do
           server.destroy

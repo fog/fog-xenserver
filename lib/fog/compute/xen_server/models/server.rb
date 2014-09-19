@@ -121,7 +121,7 @@ module Fog
           def destroy
             hard_shutdown
             vbds.map(&:destroy)
-            service.destroy_vm(reference)
+            service.destroy_record(reference, provider_class)
           end
 
           def start
