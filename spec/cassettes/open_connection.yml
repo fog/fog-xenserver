@@ -39,7 +39,7 @@ http_interactions:
       - X-Requested-With
     body:
       encoding: UTF-8
-      string: "<methodResponse><params><param><value><struct><member><name>Status</name><value>Success</value></member><member><name>Value</name><value>OpaqueRef:0f382c23-07ee-dae9-8918-5bf278bd4a7e</value></member></struct></value></param></params></methodResponse>"
+      string: "<methodResponse><params><param><value><struct><member><name>Status</name><value>Success</value></member><member><name>Value</name><value>OpaqueRef:3364a807-6433-eb77-84fd-f3452db26947</value></member></struct></value></param></params></methodResponse>"
     http_version: 
-  recorded_at: Thu, 18 Sep 2014 19:40:06 GMT
+  recorded_at: Fri, 19 Sep 2014 15:47:57 GMT
 recorded_with: VCR 2.9.3

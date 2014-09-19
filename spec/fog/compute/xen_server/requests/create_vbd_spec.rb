@@ -1,6 +1,6 @@
 require 'minitest_helper'
 
-describe "#create_vm" do
+describe "#create_vbd" do
   let(:connection) do
     VCR.use_cassette('open_connection') do
       Fog::Compute.new(:provider => 'XenServer',

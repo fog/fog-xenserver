@@ -6,7 +6,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: |
-        <?xml version="1.0" ?><methodCall><methodName>network.create</methodName><params><param><value><string>OpaqueRef:0f382c23-07ee-dae9-8918-5bf278bd4a7e</string></value></param><param><value><struct><member><name>name_description</name><value><string></string></value></member><member><name>name_label</name><value><string>CrazyName</string></value></member><member><name>other_config</name><value><struct/></value></member><member><name>PIFs</name><value><array><data/></array></value></member><member><name>VIFs</name><value><array><data/></array></value></member></struct></value></param></params></methodCall>
+        <?xml version="1.0" ?><methodCall><methodName>network.create</methodName><params><param><value><string>OpaqueRef:3364a807-6433-eb77-84fd-f3452db26947</string></value></param><param><value><struct><member><name>name_description</name><value><string></string></value></member><member><name>name_label</name><value><string>CrazyName</string></value></member><member><name>other_config</name><value><struct/></value></member><member><name>PIFs</name><value><array><data/></array></value></member><member><name>VIFs</name><value><array><data/></array></value></member></struct></value></param></params></methodCall>
     headers:
       User-Agent:
       - XMLRPC::Client (Ruby 2.1.2)
@@ -39,16 +39,16 @@ http_interactions:
       - X-Requested-With
     body:
       encoding: UTF-8
-      string: "<methodResponse><params><param><value><struct><member><name>Status</name><value>Success</value></member><member><name>Value</name><value>OpaqueRef:eb560934-b3f7-244d-87f3-60f59065897e</value></member></struct></value></param></params></methodResponse>"
+      string: "<methodResponse><params><param><value><struct><member><name>Status</name><value>Success</value></member><member><name>Value</name><value>OpaqueRef:0d932de9-960b-8579-645b-92d68c699dd2</value></member></struct></value></param></params></methodResponse>"
     http_version: 
-  recorded_at: Thu, 18 Sep 2014 19:40:26 GMT
+  recorded_at: Fri, 19 Sep 2014 15:48:03 GMT
 - request:
     method: post
     uri: http://192.168.10.2/
     body:
       encoding: UTF-8
       string: |
-        <?xml version="1.0" ?><methodCall><methodName>network.get_record</methodName><params><param><value><string>OpaqueRef:0f382c23-07ee-dae9-8918-5bf278bd4a7e</string></value></param><param><value><string>OpaqueRef:eb560934-b3f7-244d-87f3-60f59065897e</string></value></param></params></methodCall>
+        <?xml version="1.0" ?><methodCall><methodName>network.get_record</methodName><params><param><value><string>OpaqueRef:3364a807-6433-eb77-84fd-f3452db26947</string></value></param><param><value><string>OpaqueRef:0d932de9-960b-8579-645b-92d68c699dd2</string></value></param></params></methodCall>
     headers:
       User-Agent:
       - XMLRPC::Client (Ruby 2.1.2)
@@ -81,7 +81,7 @@ http_interactions:
       - X-Requested-With
     body:
       encoding: UTF-8
-      string: "<methodResponse><params><param><value><struct><member><name>Status</name><value>Success</value></member><member><name>Value</name><value><struct><member><name>uuid</name><value>23c5ab45-99e3-42d6-5b97-784773226436</value></member><member><name>name_label</name><value>CrazyName</value></member><member><name>name_description</name><value/></member><member><name>allowed_operations</name><value><array><data/></array></value></member><member><name>current_operations</name><value><struct/></value></member><member><name>VIFs</name><value><array><data/></array></value></member><member><name>PIFs</name><value><array><data/></array></value></member><member><name>MTU</name><value>1500</value></member><member><name>other_config</name><value><struct/></value></member><member><name>bridge</name><value>xapi8</value></member><member><name>blobs</name><value><struct/></value></member><member><name>tags</name><value><array><data/></array></value></member><member><name>default_locking_mode</name><value>unlocked</value></member></struct></value></member></struct></value></param></params></methodResponse>"
+      string: "<methodResponse><params><param><value><struct><member><name>Status</name><value>Success</value></member><member><name>Value</name><value><struct><member><name>uuid</name><value>24b5b0af-2b2a-475b-f35f-6f8e7656f3cf</value></member><member><name>name_label</name><value>CrazyName</value></member><member><name>name_description</name><value/></member><member><name>allowed_operations</name><value><array><data/></array></value></member><member><name>current_operations</name><value><struct/></value></member><member><name>VIFs</name><value><array><data/></array></value></member><member><name>PIFs</name><value><array><data/></array></value></member><member><name>MTU</name><value>1500</value></member><member><name>other_config</name><value><struct/></value></member><member><name>bridge</name><value>xapi1</value></member><member><name>blobs</name><value><struct/></value></member><member><name>tags</name><value><array><data/></array></value></member><member><name>default_locking_mode</name><value>unlocked</value></member></struct></value></member></struct></value></param></params></methodResponse>"
     http_version: 
-  recorded_at: Thu, 18 Sep 2014 19:40:26 GMT
+  recorded_at: Fri, 19 Sep 2014 15:48:03 GMT
 recorded_with: VCR 2.9.3
