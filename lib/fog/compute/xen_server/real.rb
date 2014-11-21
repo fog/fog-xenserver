@@ -2,6 +2,8 @@ module Fog
   module Compute
     class XenServer
       class Real
+        attr_reader :host, :username
+
         def initialize(options={})
           @host        = options[:xenserver_url]
           @username    = options[:xenserver_username]
@@ -33,6 +35,10 @@ module Fog
 
         def credentials
           @connection.credentials
+        end
+
+        def connection_host
+          hosts.find { |x| x.address == host }
         end
       end
     end
