@@ -190,6 +190,7 @@ module Fog
       request :copy_bios_strings_server
       request :copy_server
       request :create_new_blob_server
+      request :create_server
       request :forget_data_source_archives_server
       request :get_allowed_vbd_devices_server
       request :get_allowed_vif_devices_server
