@@ -136,6 +136,45 @@ module Fog
       request :shutdown_host
       request :sync_data_host
       
+      # pool
+      request :apply_edition_pool
+      request :certificate_install_pool
+      request :certificate_list_pool
+      request :certificate_sync_pool
+      request :certificate_uninstall_pool
+      request :create_new_blob_pool
+      request :create_vlan_from_pif_pool
+      request :create_vlan_pool
+      request :crl_install_pool
+      request :crl_list_pool
+      request :crl_uninstall_pool
+      request :designate_new_master_pool
+      request :detect_nonhomogeneous_external_auth_pool
+      request :disable_external_auth_pool
+      request :disable_ha_pool
+      request :disable_local_storage_caching_pool
+      request :disable_redo_log_pool
+      request :eject_pool
+      request :emergency_reset_master_pool
+      request :emergency_transition_to_master_pool
+      request :enable_external_auth_pool
+      request :enable_ha_pool
+      request :enable_local_storage_caching_pool
+      request :enable_redo_log_pool
+      request :get_license_state_pool
+      request :ha_compute_hypothetical_max_host_failures_to_tolerate_pool
+      request :ha_compute_max_host_failures_to_tolerate_pool
+      request :ha_compute_vm_failover_plan_pool
+      request :ha_failover_plan_exists_pool
+      request :ha_prevent_restarts_for_pool
+      request :join_force_pool
+      request :join_pool
+      request :recover_slaves_pool
+      request :send_test_post_pool
+      request :set_ha_host_failures_to_tolerate_pool
+      request :set_vswitch_controller_pool
+      request :sync_database_pool
+      
       # VM
       request :add_to_vcpus_params_live_server
       request :assert_agile_server
