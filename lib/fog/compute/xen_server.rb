@@ -86,10 +86,75 @@ module Fog
       collection :vtpms
 
       request_path 'fog/compute/xen_server/requests'
-      request :builtin_templates
+      # VM
+      request :add_to_vcpus_params_live_server
+      request :assert_agile_server
+      request :assert_can_be_recovered_server
+      request :assert_can_boot_here_server
+      request :assert_can_migrate_server
+      request :assert_operation_valid_server
+      request :checkpoint_server
+      request :clean_reboot_server
+      request :clean_shutdown_server
       request :clone_server
+      request :compute_memory_overhead_server
+      request :copy_bios_strings_server
+      request :copy_server
+      request :create_new_blob_server
+      request :forget_data_source_archives_server
+      request :get_allowed_vbd_devices_server
+      request :get_allowed_vif_devices_server
+      request :get_boot_record_server
+      request :get_data_sources_server
+      request :get_possible_hosts_server
+      request :hard_reboot_server
+      request :hard_shutdown_server
+      request :import_convert_server
+      request :maximise_memory_server
+      request :migrate_send_server
+      request :pause_server
+      request :pool_migrate_server
+      request :power_state_reset_server
+      request :provision_server
+      request :query_data_source_server
+      request :query_services_server
+      request :record_data_source_server
+      request :recover_server
+      request :resume_on_server
+      request :resume_server
+      request :revert_server
+      request :send_sysrq_server
+      request :send_trigger_server
+      request :set_appliance_server
+      request :set_ha_restart_priority_server
+      request :set_hvm_shadow_multiplier_server
+      request :set_memory_dynamic_max_server
+      request :set_memory_dynamic_min_server
+      request :set_memory_dynamic_range_server
+      request :set_memory_limits_server
+      request :set_memory_static_max_server
+      request :set_memory_static_min_server
+      request :set_memory_static_range_server
+      request :set_order_server
+      request :set_protection_policy_server
+      request :set_shadow_multiplier_live_server
+      request :set_shutdown_delay_server
+      request :set_start_delay_server
+      request :set_suspend_vdi_server
+      request :set_vcpus_at_startup_server
+      request :set_vcpus_max_server
+      request :set_vcpus_number_live_server
+      request :shutdown_server
+      request :snapshot_server
+      request :snapshot_with_quiesce_server
+      request :start_on_server
+      request :start_server
+      request :suspend_server
+      request :unpause_server
+      
+      # Other
+      request :builtin_templates
       request :create_network
-      request :create_server
       request :create_sr
       request :create_vlan
       request :create_vif
@@ -103,18 +168,12 @@ module Fog
       request :get_record
       request :get_records
       request :insert_vbd
-      request :provision_server
       request :reboot_host
-      request :reboot_server
-      request :revert_to_server
       request :scan_sr
       request :set_affinity
       request :set_attribute
       request :shutdown_host
-      request :shutdown_server
-      request :snapshot_server
       request :snapshots
-      request :start_server
       request :templates
       request :unplug_pbd
       request :unplug_vbd
