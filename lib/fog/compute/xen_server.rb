@@ -86,6 +86,56 @@ module Fog
       collection :vtpms
 
       request_path 'fog/compute/xen_server/requests'
+      # host
+      request :apply_edition_host
+      request :assert_can_evacuate_host
+      request :backup_rrds_host
+      request :bugreport_upload_host
+      request :call_plugin_host
+      request :compute_free_memory_host
+      request :compute_memory_overhead_host
+      request :create_new_blob_host
+      request :declare_dead_host
+      request :destroy_host
+      request :disable_external_auth_host
+      request :disable_host
+      request :disable_local_storage_caching_host
+      request :dmesg_clear_host
+      request :dmesg_host
+      request :emergency_ha_disable_host
+      request :enable_external_auth_host
+      request :enable_host
+      request :enable_local_storage_caching_host
+      request :evacuate_host
+      request :forget_data_source_archives_host
+      request :get_data_sources_host
+      request :get_log_host
+      request :get_management_interface_host
+      request :get_server_certificate_host
+      request :get_server_localtime_host
+      request :get_servertime_host
+      request :get_system_status_capabilities_host
+      request :get_vms_which_prevent_evacuation_host
+      request :list_methods_host
+      request :local_management_reconfigure_host
+      request :management_disable_host
+      request :management_reconfigure_host
+      request :migrate_receive_host
+      request :power_on_host
+      request :query_data_source_host
+      request :reboot_host
+      request :record_data_source_host
+      request :refresh_pack_info_host
+      request :reset_cpu_features_host
+      request :restart_agent_host
+      request :send_debug_keys_host
+      request :set_cpu_features_host
+      request :set_hostname_live_host
+      request :set_power_on_mode_host
+      request :shutdown_agent_host
+      request :shutdown_host
+      request :sync_data_host
+      
       # VM
       request :add_to_vcpus_params_live_server
       request :assert_agile_server
