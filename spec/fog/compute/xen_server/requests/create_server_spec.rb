@@ -1,4 +1,3 @@
-require 'pry'
 require 'minitest_helper'
 
 describe "#create_vm" do
@@ -18,7 +17,6 @@ describe "#create_vm" do
 
   before :each do
     @server = connection.servers.new(:name => 'CrazyName')
-    # binding.pry
     @server.affinity = host
     VCR.use_cassette('create_server_create_vm') do
       @server.save
