@@ -3,7 +3,7 @@ module Fog
     class XenServer
       class Real
         def forget_pif(ref)
-          @connection.request({ :parser => Fog::Parsers::XenServer::Base.new, :method => 'pif.forget' }, ref)
+          @connection.request({ :parser => Fog::Parsers::XenServer::Base.new, :method => 'PIF.forget' }, ref)
         end
       end
     end
