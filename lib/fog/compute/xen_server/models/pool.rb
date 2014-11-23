@@ -41,7 +41,8 @@ module Fog
           has_one_identity    :suspend_image_sr, :storage_repositories,   :aliases => :suspend_image_SR,  :as => :suspend_image_SR
 
           alias_method :default_storage_repository, :default_sr
-          methods = %w{ certificate_install certificate_list certificate_sync certificate_uninstall create_vlan \
+          methods = %w{
+                        certificate_install certificate_list certificate_sync certificate_uninstall create_vlan \
                         create_vlan_from_pif crl_install crl_list crl_uninstall designate_new_master disable_ha \
                         disable_redo_log emergency_reset_master emergency_transition_to_master enable_ha \
                         enable_redo_log ha_compute_hypothetical_max_host_failures_to_tolerate \
