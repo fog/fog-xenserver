@@ -10,9 +10,15 @@ describe "#clone_vm" do
     end
   end
   let(:server) do
-    VCR.use_cassette('get_all_servers') do
-      connection.servers.all.last
+    host = VCR.use_cassette('create_server_get_all_hosts') do
+      connection.hosts.first
     end
+    @server = connection.servers.new(:name => 'CrazyName')
+    @server.affinity = host
+    VCR.use_cassette('create_server_create_vm') do
+      @server.save
+    end
+    @server
   end
 
   before :each do
