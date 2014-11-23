@@ -174,7 +174,18 @@ module Fog
       request :set_ha_host_failures_to_tolerate_pool
       request :set_vswitch_controller_pool
       request :sync_database_pool
-      
+
+      # PIF
+      request :db_forget_pif
+      request :db_introduce_pif
+      request :forget_pif
+      request :introduce_pif
+      request :plug_pif
+      request :reconfigure_ip_pif
+      request :reconfigure_ipv6_pif
+      request :scan_pif
+      request :set_primary_address_type_pif
+
       # VIF
       request :create_new_blob_network
       request :set_default_locking_mode_network
