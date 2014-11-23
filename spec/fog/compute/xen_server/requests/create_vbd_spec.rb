@@ -2,7 +2,7 @@ require 'minitest_helper'
 
 describe "#create_vbd" do
   let(:connection) do
-    VCR.use_cassette('open_connection') do
+    VCR.use_cassette('create_vbd_open_connection') do
       Fog::Compute.new(:provider => 'XenServer',
                        :xenserver_url => '192.168.10.2',
                        :xenserver_username => 'root',
@@ -10,22 +10,22 @@ describe "#create_vbd" do
     end
   end
   let(:sr) do
-    VCR.use_cassette('get_storage_repository') do
+    VCR.use_cassette('create_vbd_get_storage_repository') do
       connection.storage_repositories.get_by_name('Local storage')
     end
   end
   let(:vdi) do
-    VCR.use_cassette('create_vdi') do
+    VCR.use_cassette('create_vbd_create_vdi') do
       connection.vdis.create(:name => 'Craziest Vdi Ever', :storage_repository => sr)
     end
   end
   let(:host) do
-    VCR.use_cassette('get_all_hosts') do
+    VCR.use_cassette('create_vbd_get_all_hosts') do
       connection.hosts.first
     end
   end
   let(:vm) do
-    VCR.use_cassette('create_vm') do
+    VCR.use_cassette('create_vbd_create_vm') do
       connection.servers.create(:name => "CrazyName", :affinity => host)
     end
   end
@@ -34,7 +34,7 @@ describe "#create_vbd" do
     @vbd = connection.vbds.new
     @vbd.vdi = vdi
     @vbd.vm = vm
-    VCR.use_cassette('create_vbd') do
+    VCR.use_cassette('create_vbd_create_vbd') do
       @vbd.save
     end
   end
