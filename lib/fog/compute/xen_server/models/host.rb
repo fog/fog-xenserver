@@ -62,6 +62,19 @@ module Fog
           has_many_identities :resident_vms,  :servers,              :aliases => :resident_VMs, :as => :resident_VMs
 
           alias_method :resident_servers, :resident_vms
+          
+          methods = %w{
+                      emergency_ha_disable list_methods local_management_reconfigure management_disable
+                      management_reconfigure shutdown_agent
+                    }
+
+          # would be much simpler just call __callee__ on request without reference
+          # instead of __method__ and set an alias for each method defined on
+          # methods, just creating a method for each one, so we can keep compatability
+          # with ruby 1.8.7 that does not have __callee__
+          methods.each do |method|
+            define_method(method.to_sym) { |*args| service.send("#{__method__}_#{provider_class.downcase}", *args) }
+          end
 
           def shutdown(auto_disable = true)
             service.disable_host(reference) if auto_disable
