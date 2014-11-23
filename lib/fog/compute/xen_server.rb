@@ -194,7 +194,36 @@ module Fog
       request :set_ha_host_failures_to_tolerate_pool
       request :set_vswitch_controller_pool
       request :sync_database_pool
-      
+
+      # VDI
+      request :clone_vdi
+      request :copy_vdi
+      request :db_forget_vdi
+      request :db_introduce_vdi
+      request :forget_vdi
+      request :introduce_vdi
+      request :open_database_vdi
+      request :pool_migrate_vdi
+      request :read_database_pool_uuid_vdi
+      request :resize_online_vdi
+      request :resize_vdi
+      request :set_allow_caching_vdi
+      request :set_is_a_snapshot_vdi
+      request :set_managed_vdi
+      request :set_metadata_of_pool_vdi
+      request :set_missing_vdi
+      request :set_name_description_vdi
+      request :set_name_label_vdi
+      request :set_on_boot_vdi
+      request :set_physical_utilisation_vdi
+      request :set_read_only_vdi
+      request :set_sharable_vdi
+      request :set_snapshot_of_vdi
+      request :set_snapshot_time_vdi
+      request :set_virtual_size_vdi
+      request :snapshot_vdi
+      request :update_vdi
+
       # VIF
       request :add_ipv4_allowed_vif
       request :add_ipv6_allowed_vif
