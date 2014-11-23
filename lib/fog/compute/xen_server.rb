@@ -195,6 +195,14 @@ module Fog
       request :set_vswitch_controller_pool
       request :sync_database_pool
 
+      # VBD
+      request :assert_attachable_vbd
+      request :eject_vbd
+      request :insert_vbd
+      request :plug_vbd
+      request :unplug_force_vbd
+      request :unplug_vbd
+
       # VDI
       request :clone_vdi
       request :copy_vdi
@@ -333,16 +341,13 @@ module Fog
       request :custom_templates
       request :destroy_record
       request :disable_host
-      request :eject_vbd
       request :enable_host
       request :get_record
       request :get_records
-      request :insert_vbd
       request :set_affinity
       request :set_attribute
       request :snapshots
       request :templates
-      request :unplug_vbd
 
       def self.const_missing(name)
         Models.const_get(name)
