@@ -273,10 +273,30 @@ module Fog
       request :suspend_server
       request :unpause_server
       
+      # SR
+      request :assert_can_host_ha_statefile_sr
+      request :assert_supports_database_replication_sr
+      request :create_new_blob_sr
+      request :create_sr
+      request :destroy_sr
+      request :disable_database_replication_sr
+      request :enable_database_replication_sr
+      request :forget_sr
+      request :get_supported_types_sr
+      request :introduce_sr
+      request :probe_sr
+      request :scan_sr
+      request :set_name_description_sr
+      request :set_name_label_sr
+      request :set_physical_size_sr
+      request :set_physical_utilisation_sr
+      request :set_shared_sr
+      request :set_virtual_allocation_sr
+      request :update_sr
+
       # Other
       request :builtin_templates
       request :create_network
-      request :create_sr
       request :create_vlan
       request :create_vif
       request :create_vdi
@@ -289,14 +309,10 @@ module Fog
       request :get_record
       request :get_records
       request :insert_vbd
-      request :reboot_host
-      request :scan_sr
       request :set_affinity
       request :set_attribute
-      request :shutdown_host
       request :snapshots
       request :templates
-      request :unplug_pbd
       request :unplug_vbd
 
       def self.const_missing(name)
