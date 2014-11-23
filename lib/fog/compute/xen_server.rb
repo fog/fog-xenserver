@@ -175,6 +175,10 @@ module Fog
       request :set_vswitch_controller_pool
       request :sync_database_pool
       
+      # VIF
+      request :create_new_blob_network
+      request :set_default_locking_mode_network
+
       # VM
       request :add_to_vcpus_params_live_server
       request :assert_agile_server
