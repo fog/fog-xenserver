@@ -175,6 +175,17 @@ module Fog
       request :set_vswitch_controller_pool
       request :sync_database_pool
       
+      # PIF
+      request :db_forget_pif
+      request :db_introduce_pif
+      request :forget_pif
+      request :introduce_pif
+      request :plug_pif
+      request :reconfigure_ip_pif
+      request :reconfigure_ipv6_pif
+      request :scan_pif
+      request :set_primary_address_type_pif
+      
       # VM
       request :add_to_vcpus_params_live_server
       request :assert_agile_server
