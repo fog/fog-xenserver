@@ -135,6 +135,21 @@ module Fog
       request :shutdown_agent_host
       request :shutdown_host
       request :sync_data_host
+
+      # network
+      request :create_new_blob_network
+      request :set_default_locking_mode_network
+      
+      # PIF
+      request :db_forget_pif
+      request :db_introduce_pif
+      request :forget_pif
+      request :introduce_pif
+      request :plug_pif
+      request :reconfigure_ip_pif
+      request :reconfigure_ipv6_pif
+      request :scan_pif
+      request :set_primary_address_type_pif
       
       # pool
       request :apply_edition_pool
@@ -174,21 +189,17 @@ module Fog
       request :set_ha_host_failures_to_tolerate_pool
       request :set_vswitch_controller_pool
       request :sync_database_pool
-
-      # PIF
-      request :db_forget_pif
-      request :db_introduce_pif
-      request :forget_pif
-      request :introduce_pif
-      request :plug_pif
-      request :reconfigure_ip_pif
-      request :reconfigure_ipv6_pif
-      request :scan_pif
-      request :set_primary_address_type_pif
-
+      
       # VIF
-      request :create_new_blob_network
-      request :set_default_locking_mode_network
+      request :add_ipv4_allowed_vif
+      request :add_ipv6_allowed_vif
+      request :plug_vif
+      request :remove_ipv4_allowed_vif
+      request :remove_ipv6_allowed_vif
+      request :set_ipv4_allowed_vif
+      request :set_ipv6_allowed_vif
+      request :set_locking_mode_vif
+      request :unplug_vif
 
       # VM
       request :add_to_vcpus_params_live_server
