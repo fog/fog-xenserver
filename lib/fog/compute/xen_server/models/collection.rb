@@ -3,7 +3,7 @@ module Fog
     class XenServer
       module Models
         class Collection < Fog::Collection
-          def all(options = {})
+          def all(_options = {})
             data = service.get_records model.provider_class
             load(data)
           end
@@ -36,7 +36,7 @@ module Fog
           alias_method :find_by_uuid, :get_by_uuid
 
           def get_by_reference_or_name_or_uuid(query)
-            get(query) or get_by_name(query) or get_by_uuid(query)
+            get(query) || get_by_name(query) || get_by_uuid(query)
           end
         end
       end
