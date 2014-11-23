@@ -2,7 +2,7 @@ module Fog
   module Compute
     class XenServer
       module Models
-        class Pools < Fog::Collection
+        class Pools < Collection
           model Fog::Compute::XenServer::Models::Pool
         end
       end
