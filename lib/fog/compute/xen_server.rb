@@ -140,6 +140,11 @@ module Fog
       request :create_new_blob_network
       request :set_default_locking_mode_network
       
+      # PBD
+      request :plug_pbd
+      request :set_device_config_pbd
+      request :unplug_pbd
+
       # PIF
       request :db_forget_pif
       request :db_introduce_pif
