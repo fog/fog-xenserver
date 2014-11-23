@@ -2,7 +2,7 @@ module Fog
   module Compute
     class XenServer
       module Models
-        class PifsMetrics < Fog::Collection
+        class PifsMetrics < Collection
           model Fog::Compute::XenServer::Models::PifMetrics
         end
       end

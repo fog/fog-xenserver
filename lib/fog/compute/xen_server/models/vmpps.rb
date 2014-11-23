@@ -2,7 +2,7 @@ module Fog
   module Compute
     class XenServer
       module Models
-        class Vmpps < Fog::Collection
+        class Vmpps < Collection
           model Fog::Compute::XenServer::Models::Vmpp
         end
       end

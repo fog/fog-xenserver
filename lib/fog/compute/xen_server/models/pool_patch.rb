@@ -2,7 +2,7 @@ module Fog
   module Compute
     class XenServer
       module Models
-        class PoolPatch < Fog::Model
+        class PoolPatch < Model
           # API Reference here:
           # http://docs.vmd.citrix.com/XenServer/6.2.0/1.0/en_gb/api/?c=pool_patch
 

@@ -2,7 +2,7 @@ module Fog
   module Compute
     class XenServer
       module Models
-        class StorageManagers < Fog::Collection
+        class StorageManagers < Collection
           model Fog::Compute::XenServer::Models::StorageManager
         end
       end

@@ -2,7 +2,7 @@ module Fog
   module Compute
     class XenServer
       module Models
-        class ServerAppliances < Fog::Collection
+        class ServerAppliances < Collection
           model Fog::Compute::XenServer::Models::ServerAppliance
         end
       end

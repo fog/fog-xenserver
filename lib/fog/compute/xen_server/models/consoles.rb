@@ -2,7 +2,7 @@ module Fog
   module Compute
     class XenServer
       module Models
-        class Consoles < Fog::Collection
+        class Consoles < Collection
           model Fog::Compute::XenServer::Models::Console
         end
       end
