@@ -280,7 +280,7 @@ module Fog
       request :recover_server
       request :resume_on_server
       request :resume_server
-      request :revert_server
+      request :revert_to_server
       request :send_sysrq_server
       request :send_trigger_server
       request :set_appliance_server
