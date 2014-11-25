@@ -2,7 +2,7 @@ module Fog
   module Compute
     class XenServer
       module Models
-        class GuestsMetrics < Fog::Collection
+        class GuestsMetrics < Collection
           model Fog::Compute::XenServer::Models::GuestMetrics
         end
       end

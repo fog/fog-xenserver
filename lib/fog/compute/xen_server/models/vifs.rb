@@ -2,7 +2,7 @@ module Fog
   module Compute
     class XenServer
       module Models
-        class Vifs < Fog::Collection
+        class Vifs < Collection
           model Fog::Compute::XenServer::Models::Vif
         end
       end

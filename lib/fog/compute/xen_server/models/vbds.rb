@@ -2,7 +2,7 @@ module Fog
   module Compute
     class XenServer
       module Models
-        class Vbds < Fog::Collection
+        class Vbds < Collection
           model Fog::Compute::XenServer::Models::Vbd
         end
       end

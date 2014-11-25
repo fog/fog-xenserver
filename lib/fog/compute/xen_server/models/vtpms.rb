@@ -2,7 +2,7 @@ module Fog
   module Compute
     class XenServer
       module Models
-        class Vtpms < Fog::Collection
+        class Vtpms < Collection
           model Fog::Compute::XenServer::Models::Vtpm
         end
       end

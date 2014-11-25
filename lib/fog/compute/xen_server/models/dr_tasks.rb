@@ -2,7 +2,7 @@ module Fog
   module Compute
     class XenServer
       module Models
-        class DrTasks < Fog::Collection
+        class DrTasks < Collection
           model Fog::Compute::XenServer::Models::DrTask
         end
       end

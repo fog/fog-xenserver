@@ -4,7 +4,7 @@ module Fog
   module Compute
     class XenServer
       module Models
-        class Servers < Fog::Collection
+        class Servers < Collection
           model Fog::Compute::XenServer::Models::Server
 
           def templates
