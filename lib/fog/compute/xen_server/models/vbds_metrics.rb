@@ -2,7 +2,7 @@ module Fog
   module Compute
     class XenServer
       module Models
-        class VbdsMetrics < Fog::Collection
+        class VbdsMetrics < Collection
           model Fog::Compute::XenServer::Models::VbdMetrics
         end
       end

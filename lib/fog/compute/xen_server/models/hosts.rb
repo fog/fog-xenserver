@@ -2,7 +2,7 @@ module Fog
   module Compute
     class XenServer
       module Models
-        class Hosts < Fog::Collection
+        class Hosts < Collection
           model Fog::Compute::XenServer::Models::Host
         end
       end

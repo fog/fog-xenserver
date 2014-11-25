@@ -2,7 +2,7 @@ module Fog
   module Compute
     class XenServer
       module Models
-        class HostPatchs < Fog::Collection
+        class HostPatchs < Collection
           model Fog::Compute::XenServer::Models::HostPatch
         end
       end

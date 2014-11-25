@@ -2,7 +2,7 @@ module Fog
   module Compute
     class XenServer
       module Models
-        class HostCrashDumps < Fog::Collection
+        class HostCrashDumps < Collection
           model Fog::Compute::XenServer::Models::HostCrashDump
         end
       end

@@ -2,7 +2,7 @@ module Fog
   module Compute
     class XenServer
       module Models
-        class Vlans < Fog::Collection
+        class Vlans < Collection
           model Fog::Compute::XenServer::Models::Vlan
         end
       end

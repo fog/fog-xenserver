@@ -2,7 +2,7 @@ module Fog
   module Compute
     class XenServer
       module Models
-        class GpuGroups < Fog::Collection
+        class GpuGroups < Collection
           model Fog::Compute::XenServer::Models::GpuGroup
         end
       end
