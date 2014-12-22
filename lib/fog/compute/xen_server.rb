@@ -86,6 +86,7 @@ module Fog
       collection :vtpms
 
       request_path 'fog/compute/xen_server/requests'
+
       # host
       request :apply_edition_host
       request :assert_can_evacuate_host
@@ -96,7 +97,6 @@ module Fog
       request :compute_memory_overhead_host
       request :create_new_blob_host
       request :declare_dead_host
-      request :destroy_host
       request :disable_external_auth_host
       request :disable_host
       request :disable_local_storage_caching_host
@@ -137,6 +137,7 @@ module Fog
       request :sync_data_host
 
       # network
+      request :create_network
       request :create_new_blob_network
       request :set_default_locking_mode_network
       
@@ -197,6 +198,7 @@ module Fog
 
       # VBD
       request :assert_attachable_vbd
+      request :create_vbd
       request :eject_vbd
       request :insert_vbd
       request :plug_vbd
@@ -206,6 +208,7 @@ module Fog
       # VDI
       request :clone_vdi
       request :copy_vdi
+      request :create_vdi
       request :db_forget_vdi
       request :db_introduce_vdi
       request :forget_vdi
@@ -235,6 +238,7 @@ module Fog
       # VIF
       request :add_ipv4_allowed_vif
       request :add_ipv6_allowed_vif
+      request :create_vif
       request :plug_vif
       request :remove_ipv4_allowed_vif
       request :remove_ipv6_allowed_vif
@@ -283,6 +287,7 @@ module Fog
       request :revert_server
       request :send_sysrq_server
       request :send_trigger_server
+      request :set_affinity_server
       request :set_appliance_server
       request :set_ha_restart_priority_server
       request :set_hvm_shadow_multiplier_server
@@ -315,7 +320,6 @@ module Fog
       request :assert_supports_database_replication_sr
       request :create_new_blob_sr
       request :create_sr
-      request :destroy_sr
       request :disable_database_replication_sr
       request :enable_database_replication_sr
       request :forget_sr
@@ -333,18 +337,11 @@ module Fog
 
       # Other
       request :builtin_templates
-      request :create_network
       request :create_vlan
-      request :create_vif
-      request :create_vdi
-      request :create_vbd
       request :custom_templates
       request :destroy_record
-      request :disable_host
-      request :enable_host
       request :get_record
       request :get_records
-      request :set_affinity
       request :set_attribute
       request :snapshots
       request :templates
