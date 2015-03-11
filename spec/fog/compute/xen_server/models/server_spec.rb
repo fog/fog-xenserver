@@ -535,14 +535,14 @@ describe Fog::Compute::XenServer::Models::Server do
     end
   end
 
-  describe '#revert_to' do
+  describe '#revert' do
     before :each do
       collection.instance_variable_set(:@server, server)
       def collection.get_by_reference_or_name_or_uuid(name); @server end
-      def service.revert_to_vm(reference); @reverted = true end
+      def service.revert_vm(reference); @reverted = true end
       server.stub(:service, service) do
         server.stub(:collection, collection) do
-          server.revert_to('snapshot')
+          server.revert('snapshot')
         end
       end
     end
