@@ -17,18 +17,18 @@ module Fog
           attribute :current_operations
           attribute :device
           attribute :empty,                     :default => false
-          attribute :mode,                      :default => 'RW'
-          attribute :other_config,              :default => { 'owner' => '' }
+          attribute :mode,                      :default => "RW"
+          attribute :other_config,              :default => { "owner" => "" }
           attribute :qos_supported_algorithms,  :default => []
           attribute :qos_algorithm_params,      :default => {}
-          attribute :qos_algorithm_type,        :default => ''
+          attribute :qos_algorithm_type,        :default => ""
           attribute :runtime_properties
           attribute :status_code
           attribute :status_detail
           attribute :storage_lock
-          attribute :type,                      :default => 'Disk'
+          attribute :type,                      :default => "Disk"
           attribute :unpluggable
-          attribute :userdevice,                :default => '0'
+          attribute :userdevice,                :default => "0"
           attribute :uuid
 
           has_one_identity   :metrics,   :vbds_metrics
@@ -40,7 +40,7 @@ module Fog
           alias_method :server, :vm
 
           def can_be_unplugged?
-            allowed_operations.include?('unplug')
+            allowed_operations.include?("unplug")
           end
           
           def unplug
@@ -49,7 +49,7 @@ module Fog
           end
           
           def disk?
-            type == 'Disk'
+            type == "Disk"
           end
 
           def destroy

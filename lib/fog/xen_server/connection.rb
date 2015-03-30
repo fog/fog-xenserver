@@ -6,13 +6,13 @@ module Fog
       attr_reader :credentials
 
       def initialize(host, timeout)
-        @factory = XMLRPC::Client.new(host, '/')
+        @factory = XMLRPC::Client.new(host, "/")
         @factory.set_parser(NokogiriStreamParser.new)
         @factory.timeout = timeout
       end
 
       def authenticate( username, password )
-        response = @factory.call('session.login_with_password', username.to_s, password.to_s)
+        response = @factory.call("session.login_with_password", username.to_s, password.to_s)
         raise Fog::XenServer::InvalidLogin.new unless response["Status"] =~ /Success/
         @credentials = response["Value"]
       end

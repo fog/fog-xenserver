@@ -1,26 +1,23 @@
-MethodCalledOnDoEndBlock:
-  Enabled: true
-
-HashSyntax:
+Metrics/LineLength:
   Enabled: false
 
-LineLength:
+Style/EachWithObject:
   Enabled: false
 
-SingleSpaceBeforeFirstArg:
+Style/Encoding:
+  EnforcedStyle: when_needed
+
+Style/FormatString:
   Enabled: false
 
-SpaceInsideBrackets:
+Style/HashSyntax:
   Enabled: false
 
-StringLiterals:
-  Enabled: false
+Style/SignalException:
+  EnforcedStyle: only_raise
 
-SymbolArray:
-  Enabled: true
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
 
-TrailingBlankLines:
-  Enabled: false
-
-TrailingWhitespace:
+Metrics/LineLength
   Enabled: false

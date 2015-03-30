@@ -3,7 +3,7 @@ module Fog
     class XenServer
       class Real
         def local_management_reconfigure_host(interface)
-          @connection.request({ :parser => Fog::Parsers::XenServer::Base.new, :method => 'host.local_management_reconfigure' }, interface)
+          @connection.request({ :parser => Fog::Parsers::XenServer::Base.new, :method => "host.local_management_reconfigure" }, interface)
         end
       end
     end

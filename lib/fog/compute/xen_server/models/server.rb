@@ -1,4 +1,4 @@
-require 'fog/compute/models/server'
+require "fog/compute/models/server"
 
 module Fog
   module Compute
@@ -16,9 +16,9 @@ module Fog
 
           identity :reference
 
-          attribute :actions_after_crash,                                             :default => 'Restart'
-          attribute :actions_after_reboot,                                            :default => 'Restart'
-          attribute :actions_after_shutdown,                                          :default => 'Destroy'
+          attribute :actions_after_crash,                                             :default => "Restart"
+          attribute :actions_after_reboot,                                            :default => "Restart"
+          attribute :actions_after_shutdown,                                          :default => "Destroy"
           attribute :allowed_operations
           attribute :blobs
           attribute :blocked_operations
@@ -26,12 +26,12 @@ module Fog
           attribute :current_operations
           attribute :domarch
           attribute :domid
-          attribute :description,                 :aliases => :name_description,      :default => '',         :as => :name_description
+          attribute :description,                 :aliases => :name_description,      :default => "",         :as => :name_description
           attribute :generation_id
           attribute :ha_always_run
           attribute :ha_restart_priority
           attribute :hvm_boot_params,             :aliases => :HVM_boot_params,       :default => {},         :as => :HVM_boot_params
-          attribute :hvm_boot_policy,             :aliases => :HVM_boot_policy,       :default => '',         :as => :HVM_boot_policy
+          attribute :hvm_boot_policy,             :aliases => :HVM_boot_policy,       :default => "",         :as => :HVM_boot_policy
           attribute :hvm_shadow_multiplier,       :aliases => :HVM_shadow_multiplier,                         :as => :HVM_shadow_multiplier
           attribute :is_a_snapshot
           attribute :is_a_template,                                                   :default => true
@@ -39,29 +39,29 @@ module Fog
           attribute :is_snapshot_from_vmpp
           attribute :last_booted_record
           attribute :last_boot_cpu_flags,         :aliases => :last_boot_CPU_flags,                           :as => :last_boot_CPU_flags
-          attribute :memory_dynamic_max,                                              :default => '536870912'
-          attribute :memory_dynamic_min,                                              :default => '536870912'
+          attribute :memory_dynamic_max,                                              :default => "536870912"
+          attribute :memory_dynamic_min,                                              :default => "536870912"
           attribute :memory_overhead
-          attribute :memory_static_max,                                               :default => '536870912'
-          attribute :memory_static_min,                                               :default => '536870912'
+          attribute :memory_static_max,                                               :default => "536870912"
+          attribute :memory_static_min,                                               :default => "536870912"
           attribute :memory_target
-          attribute :name,                        :aliases => :name_label,            :default => '',         :as => :name_label
+          attribute :name,                        :aliases => :name_label,            :default => "",         :as => :name_label
           attribute :order
           attribute :other_config,                                                    :default => {}
-          attribute :pci_bus,                     :aliases => :PCI_bus,               :default => '',         :as => :PCI_bus
-          attribute :platform,                                                        :default => { 'nx' => 'true',
-                                                                                                    'acpi' => 'true',
-                                                                                                    'apic' => 'true',
-                                                                                                    'pae' => 'true',
-                                                                                                    'viridian' => 'true' }
+          attribute :pci_bus,                     :aliases => :PCI_bus,               :default => "",         :as => :PCI_bus
+          attribute :platform,                                                        :default => { "nx" => "true",
+                                                                                                    "acpi" => "true",
+                                                                                                    "apic" => "true",
+                                                                                                    "pae" => "true",
+                                                                                                    "viridian" => "true" }
           attribute :power_state
-          attribute :pv_args,                     :aliases => :PV_args,               :default => '-- quiet console=hvc0',  :as => :PV_args
-          attribute :pv_bootloader,               :aliases => :PV_bootloader,         :default => 'pygrub',                 :as => :PV_bootloader
-          attribute :pv_bootloader_args,          :aliases => :PV_bootloader_args,    :default => '',                       :as => :PV_bootloader_args
-          attribute :pv_kernel,                   :aliases => :PV_kernel,             :default => '',                       :as => :PV_kernel
-          attribute :pv_legacy_args,              :aliases => :PV_legacy_args,        :default => '',                       :as => :PV_legacy_args
-          attribute :pv_ramdisk,                  :aliases => :PV_ramdisk,            :default => '',                       :as => :PV_ramdisk
-          attribute :recommendations,                                                 :default => ''
+          attribute :pv_args,                     :aliases => :PV_args,               :default => "-- quiet console=hvc0",  :as => :PV_args
+          attribute :pv_bootloader,               :aliases => :PV_bootloader,         :default => "pygrub",                 :as => :PV_bootloader
+          attribute :pv_bootloader_args,          :aliases => :PV_bootloader_args,    :default => "",                       :as => :PV_bootloader_args
+          attribute :pv_kernel,                   :aliases => :PV_kernel,             :default => "",                       :as => :PV_kernel
+          attribute :pv_legacy_args,              :aliases => :PV_legacy_args,        :default => "",                       :as => :PV_legacy_args
+          attribute :pv_ramdisk,                  :aliases => :PV_ramdisk,            :default => "",                       :as => :PV_ramdisk
+          attribute :recommendations,                                                 :default => ""
           attribute :shutdown_delay
           attribute :snapshot_info
           attribute :snapshot_metadata
@@ -69,10 +69,10 @@ module Fog
           attribute :start_delay
           attribute :tags
           attribute :transportable_snapshot_id
-          attribute :user_version,                                                    :default => '0'
+          attribute :user_version,                                                    :default => "0"
           attribute :uuid
-          attribute :vcpus_at_startup,            :aliases => :VCPUs_at_startup,      :default => '1',    :as => :VCPUs_at_startup
-          attribute :vcpus_max,                   :aliases => :VCPUs_max,             :default => '1',    :as => :VCPUs_max
+          attribute :vcpus_at_startup,            :aliases => :VCPUs_at_startup,      :default => "1",    :as => :VCPUs_at_startup
+          attribute :vcpus_max,                   :aliases => :VCPUs_max,             :default => "1",    :as => :VCPUs_max
           attribute :vcpus_params,                :aliases => :VCPUs_params,          :default => {},     :as => :VCPUs_params
           attribute :version
           attribute :xenstore_data
@@ -113,12 +113,12 @@ module Fog
 
           def running?
             reload
-            power_state == 'Running'
+            power_state == "Running"
           end
 
           def halted?
             reload
-            power_state == 'Halted'
+            power_state == "Halted"
           end
 
           def destroy
@@ -149,11 +149,11 @@ module Fog
           end
 
           def can_be_cloned?
-            allowed_operations.include?('clone')
+            allowed_operations.include?("clone")
           end
 
           def clone(name)
-            raise 'Clone Operation not Allowed' unless can_be_cloned?
+            raise "Clone Operation not Allowed" unless can_be_cloned?
             self.reference = service.clone_vm(name, self.reference)
             reload
           end
