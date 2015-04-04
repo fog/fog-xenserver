@@ -2,80 +2,80 @@ module Fog
   module Compute
     class XenServer
       module Models
-        autoload :Blob, 'fog/compute/xen_server/models/blob'
-        autoload :Blobs, 'fog/compute/xen_server/models/blobs'
-        autoload :Bond, 'fog/compute/xen_server/models/bond'
-        autoload :Bonds, 'fog/compute/xen_server/models/bonds'
-        autoload :ClassMethods, 'fog/compute/xen_server/models/class_methods'
-        autoload :Collection, 'fog/compute/xen_server/models/collection'
-        autoload :Console, 'fog/compute/xen_server/models/console'
-        autoload :Consoles, 'fog/compute/xen_server/models/consoles'
-        autoload :CrashDump, 'fog/compute/xen_server/models/crash_dump'
-        autoload :CrashDumps, 'fog/compute/xen_server/models/crash_dumps'
-        autoload :DrTask, 'fog/compute/xen_server/models/dr_task'
-        autoload :DrTasks, 'fog/compute/xen_server/models/dr_tasks'
-        autoload :GpuGroup, 'fog/compute/xen_server/models/gpu_group'
-        autoload :GpuGroups, 'fog/compute/xen_server/models/gpu_groups'
-        autoload :GuestMetrics, 'fog/compute/xen_server/models/guest_metrics'
-        autoload :GuestsMetrics, 'fog/compute/xen_server/models/guests_metrics'
-        autoload :Host, 'fog/compute/xen_server/models/host'
-        autoload :HostCpu, 'fog/compute/xen_server/models/host_cpu'
-        autoload :HostCpus, 'fog/compute/xen_server/models/host_cpus'
-        autoload :HostCrashDump, 'fog/compute/xen_server/models/host_crash_dump'
-        autoload :HostCrashDumps, 'fog/compute/xen_server/models/host_crash_dumps'
-        autoload :HostMetrics, 'fog/compute/xen_server/models/host_metrics'
-        autoload :HostPatch, 'fog/compute/xen_server/models/host_patch'
-        autoload :HostPatchs, 'fog/compute/xen_server/models/host_patchs'
-        autoload :Hosts, 'fog/compute/xen_server/models/hosts'
-        autoload :HostsMetrics, 'fog/compute/xen_server/models/hosts_metrics'
-        autoload :InstanceMethods, 'fog/compute/xen_server/models/instance_methods'
-        autoload :Model, 'fog/compute/xen_server/models/model'
-        autoload :Network, 'fog/compute/xen_server/models/network'
-        autoload :Networks, 'fog/compute/xen_server/models/networks'
-        autoload :Pbd, 'fog/compute/xen_server/models/pbd'
-        autoload :Pbds, 'fog/compute/xen_server/models/pbds'
-        autoload :Pci, 'fog/compute/xen_server/models/pci'
-        autoload :Pcis, 'fog/compute/xen_server/models/pcis'
-        autoload :Pgpu, 'fog/compute/xen_server/models/pgpu'
-        autoload :Pgpus, 'fog/compute/xen_server/models/pgpus'
-        autoload :Pif, 'fog/compute/xen_server/models/pif'
-        autoload :PifMetrics, 'fog/compute/xen_server/models/pif_metrics'
-        autoload :Pifs, 'fog/compute/xen_server/models/pifs'
-        autoload :PifsMetrics, 'fog/compute/xen_server/models/pifs_metrics'
-        autoload :Pool, 'fog/compute/xen_server/models/pool'
-        autoload :PoolPatch, 'fog/compute/xen_server/models/pool_patch'
-        autoload :PoolPatchs, 'fog/compute/xen_server/models/pool_patchs'
-        autoload :Pools, 'fog/compute/xen_server/models/pools'
-        autoload :Role, 'fog/compute/xen_server/models/role'
-        autoload :Roles, 'fog/compute/xen_server/models/roles'
-        autoload :Server, 'fog/compute/xen_server/models/server'
-        autoload :ServerAppliance, 'fog/compute/xen_server/models/server_appliance'
-        autoload :ServerAppliances, 'fog/compute/xen_server/models/server_appliances'
-        autoload :ServerMetrics, 'fog/compute/xen_server/models/server_metrics'
-        autoload :ServersMetrics, 'fog/compute/xen_server/models/servers_metrics'
-        autoload :Servers, 'fog/compute/xen_server/models/servers'
-        autoload :StorageManager, 'fog/compute/xen_server/models/storage_manager'
-        autoload :StorageManagers, 'fog/compute/xen_server/models/storage_managers'
-        autoload :StorageRepositories, 'fog/compute/xen_server/models/storage_repositories'
-        autoload :StorageRepository, 'fog/compute/xen_server/models/storage_repository'
-        autoload :Tunnel, 'fog/compute/xen_server/models/tunnel'
-        autoload :Tunnels, 'fog/compute/xen_server/models/tunnels'
-        autoload :Vbd, 'fog/compute/xen_server/models/vbd'
-        autoload :VbdMetrics, 'fog/compute/xen_server/models/vbd_metrics'
-        autoload :Vbds, 'fog/compute/xen_server/models/vbds'
-        autoload :VbdsMetrics, 'fog/compute/xen_server/models/vbds_metrics'
-        autoload :Vdi, 'fog/compute/xen_server/models/vdi'
-        autoload :Vdis, 'fog/compute/xen_server/models/vdis'
-        autoload :Vif, 'fog/compute/xen_server/models/vif'
-        autoload :VifMetrics, 'fog/compute/xen_server/models/vif_metrics'
-        autoload :Vifs, 'fog/compute/xen_server/models/vifs'
-        autoload :VifsMetrics, 'fog/compute/xen_server/models/vifs_metrics'
-        autoload :Vlan, 'fog/compute/xen_server/models/vlan'
-        autoload :Vlans, 'fog/compute/xen_server/models/vlans'
-        autoload :Vmpp, 'fog/compute/xen_server/models/vmpp'
-        autoload :Vmpps, 'fog/compute/xen_server/models/vmpps'
-        autoload :Vtpm, 'fog/compute/xen_server/models/vtpm'
-        autoload :Vtpms, 'fog/compute/xen_server/models/vtpms'
+        autoload :Blob, File.expand_path("../models/blob", __FILE__)
+        autoload :Blobs, File.expand_path("../models/blobs", __FILE__)
+        autoload :Bond, File.expand_path("../models/bond", __FILE__)
+        autoload :Bonds, File.expand_path("../models/bonds", __FILE__)
+        autoload :ClassMethods, File.expand_path("../models/class_methods", __FILE__)
+        autoload :Collection, File.expand_path("../models/collection", __FILE__)
+        autoload :Console, File.expand_path("../models/console", __FILE__)
+        autoload :Consoles, File.expand_path("../models/consoles", __FILE__)
+        autoload :CrashDump, File.expand_path("../models/crash_dump", __FILE__)
+        autoload :CrashDumps, File.expand_path("../models/crash_dumps", __FILE__)
+        autoload :DrTask, File.expand_path("../models/dr_task", __FILE__)
+        autoload :DrTasks, File.expand_path("../models/dr_tasks", __FILE__)
+        autoload :GpuGroup, File.expand_path("../models/gpu_group", __FILE__)
+        autoload :GpuGroups, File.expand_path("../models/gpu_groups", __FILE__)
+        autoload :GuestMetrics, File.expand_path("../models/guest_metrics", __FILE__)
+        autoload :GuestsMetrics, File.expand_path("../models/guests_metrics", __FILE__)
+        autoload :Host, File.expand_path("../models/host", __FILE__)
+        autoload :HostCpu, File.expand_path("../models/host_cpu", __FILE__)
+        autoload :HostCpus, File.expand_path("../models/host_cpus", __FILE__)
+        autoload :HostCrashDump, File.expand_path("../models/host_crash_dump", __FILE__)
+        autoload :HostCrashDumps, File.expand_path("../models/host_crash_dumps", __FILE__)
+        autoload :HostMetrics, File.expand_path("../models/host_metrics", __FILE__)
+        autoload :HostPatch, File.expand_path("../models/host_patch", __FILE__)
+        autoload :HostPatchs, File.expand_path("../models/host_patchs", __FILE__)
+        autoload :Hosts, File.expand_path("../models/hosts", __FILE__)
+        autoload :HostsMetrics, File.expand_path("../models/hosts_metrics", __FILE__)
+        autoload :InstanceMethods, File.expand_path("../models/instance_methods", __FILE__)
+        autoload :Model, File.expand_path("../models/model", __FILE__)
+        autoload :Network, File.expand_path("../models/network", __FILE__)
+        autoload :Networks, File.expand_path("../models/networks", __FILE__)
+        autoload :Pbd, File.expand_path("../models/pbd", __FILE__)
+        autoload :Pbds, File.expand_path("../models/pbds", __FILE__)
+        autoload :Pci, File.expand_path("../models/pci", __FILE__)
+        autoload :Pcis, File.expand_path("../models/pcis", __FILE__)
+        autoload :Pgpu, File.expand_path("../models/pgpu", __FILE__)
+        autoload :Pgpus, File.expand_path("../models/pgpus", __FILE__)
+        autoload :Pif, File.expand_path("../models/pif", __FILE__)
+        autoload :PifMetrics, File.expand_path("../models/pif_metrics", __FILE__)
+        autoload :Pifs, File.expand_path("../models/pifs", __FILE__)
+        autoload :PifsMetrics, File.expand_path("../models/pifs_metrics", __FILE__)
+        autoload :Pool, File.expand_path("../models/pool", __FILE__)
+        autoload :PoolPatch, File.expand_path("../models/pool_patch", __FILE__)
+        autoload :PoolPatchs, File.expand_path("../models/pool_patchs", __FILE__)
+        autoload :Pools, File.expand_path("../models/pools", __FILE__)
+        autoload :Role, File.expand_path("../models/role", __FILE__)
+        autoload :Roles, File.expand_path("../models/roles", __FILE__)
+        autoload :Server, File.expand_path("../models/server", __FILE__)
+        autoload :ServerAppliance, File.expand_path("../models/server_appliance", __FILE__)
+        autoload :ServerAppliances, File.expand_path("../models/server_appliances", __FILE__)
+        autoload :ServerMetrics, File.expand_path("../models/server_metrics", __FILE__)
+        autoload :ServersMetrics, File.expand_path("../models/servers_metrics", __FILE__)
+        autoload :Servers, File.expand_path("../models/servers", __FILE__)
+        autoload :StorageManager, File.expand_path("../models/storage_manager", __FILE__)
+        autoload :StorageManagers, File.expand_path("../models/storage_managers", __FILE__)
+        autoload :StorageRepositories, File.expand_path("../models/storage_repositories", __FILE__)
+        autoload :StorageRepository, File.expand_path("../models/storage_repository", __FILE__)
+        autoload :Tunnel, File.expand_path("../models/tunnel", __FILE__)
+        autoload :Tunnels, File.expand_path("../models/tunnels", __FILE__)
+        autoload :Vbd, File.expand_path("../models/vbd", __FILE__)
+        autoload :VbdMetrics, File.expand_path("../models/vbd_metrics", __FILE__)
+        autoload :Vbds, File.expand_path("../models/vbds", __FILE__)
+        autoload :VbdsMetrics, File.expand_path("../models/vbds_metrics", __FILE__)
+        autoload :Vdi, File.expand_path("../models/vdi", __FILE__)
+        autoload :Vdis, File.expand_path("../models/vdis", __FILE__)
+        autoload :Vif, File.expand_path("../models/vif", __FILE__)
+        autoload :VifMetrics, File.expand_path("../models/vif_metrics", __FILE__)
+        autoload :Vifs, File.expand_path("../models/vifs", __FILE__)
+        autoload :VifsMetrics, File.expand_path("../models/vifs_metrics", __FILE__)
+        autoload :Vlan, File.expand_path("../models/vlan", __FILE__)
+        autoload :Vlans, File.expand_path("../models/vlans", __FILE__)
+        autoload :Vmpp, File.expand_path("../models/vmpp", __FILE__)
+        autoload :Vmpps, File.expand_path("../models/vmpps", __FILE__)
+        autoload :Vtpm, File.expand_path("../models/vtpm", __FILE__)
+        autoload :Vtpms, File.expand_path("../models/vtpms", __FILE__)
       end
     end
   end

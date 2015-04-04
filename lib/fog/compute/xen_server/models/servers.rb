@@ -1,4 +1,4 @@
-require 'fog/core/collection'
+require "fog/core/collection"
 
 module Fog
   module Compute
@@ -8,22 +8,22 @@ module Fog
           model Fog::Compute::XenServer::Models::Server
 
           def templates
-            Fog::Logger.deprecation 'This method is DEPRECATED. Call #templates directly on the connection instead.'
+            Fog::Logger.deprecation "This method is DEPRECATED. Call #templates directly on the connection instead."
             service.templates
           end
 
           def custom_templates
-            Fog::Logger.deprecation 'This method is DEPRECATED. Call #custom_templates directly on the connection instead.'
+            Fog::Logger.deprecation "This method is DEPRECATED. Call #custom_templates directly on the connection instead."
             service.custom_templates
           end
 
           def builtin_templates
-            Fog::Logger.deprecation 'This method is DEPRECATED. Call #builtin_templates directly on the connection instead.'
+            Fog::Logger.deprecation "This method is DEPRECATED. Call #builtin_templates directly on the connection instead."
             service.builtin_templates
           end
 
           def all(options = {})
-            data = service.get_records 'VM'
+            data = service.get_records "VM"
             # Exclude templates
             data.delete_if { |vm| vm[:is_control_domain] or vm[:is_a_template] }
             data.delete_if { |vm| vm[:is_a_snapshot] and !options[:include_snapshots] }

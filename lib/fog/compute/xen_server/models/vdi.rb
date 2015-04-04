@@ -31,9 +31,9 @@ module Fog
           attribute :snapshot_time
           attribute :storage_lock
           attribute :tags
-          attribute :type,                        :default => 'system'
+          attribute :type,                        :default => "system"
           attribute :uuid
-          attribute :virtual_size,                :default => '8589934592'
+          attribute :virtual_size,                :default => "8589934592"
           attribute :xenstore_data
 
           has_many_identities   :crash_dumps,  :crash_dumps
@@ -49,7 +49,7 @@ module Fog
           alias_method :storage_repository=, :sr=
 
           def can_be_destroyed?
-            allowed_operations.include?('destroy')
+            allowed_operations.include?("destroy")
           end
 
           def destroy

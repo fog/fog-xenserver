@@ -14,7 +14,7 @@ class XenServer < Fog::Bin
         hash[key] = case key
                       when :compute
                         Fog::Logger.warning("XenServer[:compute] is not recommended, use Compute[:xenserver] for portability")
-                        Fog::Compute.new(:provider => 'XenServer')
+                        Fog::Compute.new(:provider => "XenServer")
                       else
                         raise ArgumentError, "Unrecognized service: #{key.inspect}"
                     end

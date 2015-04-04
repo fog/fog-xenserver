@@ -3,7 +3,7 @@ module Fog
     class XenServer
       class Real
         def create_vbd(config = {}, extra_params = {})
-          @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => 'VBD.create'}, config)
+          @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => "VBD.create"}, config)
         end
       end
     end

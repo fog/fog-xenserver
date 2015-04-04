@@ -1,11 +1,11 @@
-require 'fog/core'
+require "fog/core"
 
 module Fog
   module Compute
     class XenServer < Fog::Service
-      autoload :Models, 'fog/compute/xen_server/models'
-      autoload :Real, 'fog/compute/xen_server/real'
-      autoload :Mock, 'fog/compute/xen_server/mock'
+      autoload :Models, File.expand_path("../xen_server/models", __FILE__)
+      autoload :Real, File.expand_path("../xen_server/real", __FILE__)
+      autoload :Mock, File.expand_path("../xen_server/mock", __FILE__)
 
       requires :xenserver_username
       requires :xenserver_password
@@ -13,7 +13,7 @@ module Fog
       recognizes :xenserver_defaults
       recognizes :xenserver_timeout
 
-      model_path 'fog/compute/xen_server/models'
+      model_path "fog/compute/xen_server/models"
       model :blob
       collection :blobs
       model :bond
@@ -85,7 +85,7 @@ module Fog
       model :vtpm
       collection :vtpms
 
-      request_path 'fog/compute/xen_server/requests'
+      request_path "fog/compute/xen_server/requests"
 
       # host
       request :apply_edition_host

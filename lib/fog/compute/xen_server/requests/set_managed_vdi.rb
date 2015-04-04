@@ -3,7 +3,7 @@ module Fog
     class XenServer
       class Real
         def set_managed_vdi(ref, value)
-          @connection.request({ :parser => Fog::Parsers::XenServer::Base.new, :method => 'VDI.set_managed' }, ref, value)
+          @connection.request({ :parser => Fog::Parsers::XenServer::Base.new, :method => "VDI.set_managed" }, ref, value)
         end
       end
     end

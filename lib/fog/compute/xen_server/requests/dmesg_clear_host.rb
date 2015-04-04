@@ -3,7 +3,7 @@ module Fog
     class XenServer
       class Real
         def dmesg_clear_host(ref)
-          @connection.request({ :parser => Fog::Parsers::XenServer::Base.new, :method => 'host.dmesg_clear' }, ref)
+          @connection.request({ :parser => Fog::Parsers::XenServer::Base.new, :method => "host.dmesg_clear" }, ref)
         end
       end
     end

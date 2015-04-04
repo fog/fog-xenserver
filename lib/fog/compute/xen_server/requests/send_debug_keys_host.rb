@@ -3,7 +3,7 @@ module Fog
     class XenServer
       class Real
         def send_debug_keys_host(ref, keys)
-          @connection.request({ :parser => Fog::Parsers::XenServer::Base.new, :method => 'host.send_debug_keys' }, ref, keys)
+          @connection.request({ :parser => Fog::Parsers::XenServer::Base.new, :method => "host.send_debug_keys" }, ref, keys)
         end
       end
     end

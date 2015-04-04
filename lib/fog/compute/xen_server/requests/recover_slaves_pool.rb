@@ -3,7 +3,7 @@ module Fog
     class XenServer
       class Real
         def recover_slaves_pool
-          @connection.request(:parser => Fog::Parsers::XenServer::Base.new, :method => 'pool.recover_slaves')
+          @connection.request(:parser => Fog::Parsers::XenServer::Base.new, :method => "pool.recover_slaves")
         end
       end
     end
