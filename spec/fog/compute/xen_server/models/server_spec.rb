@@ -508,7 +508,7 @@ describe Fog::Compute::XenServer::Models::Server do
     describe "when it can be cloned" do
       before :each do
         def server.can_be_cloned?; true end
-        def service.clone_vm(name, reference); @cloned = true end
+        def service.clone_vm(_reference, _name); @cloned = true end
         def server.reload; @reloaded = true end
         server.stub(:service, service) do
           server.clone('')
