@@ -1,3 +1,4 @@
+require "xmlrpc/client"
 require "nokogiri/xml/sax/document"
 require "nokogiri/xml/sax/parser"
 
