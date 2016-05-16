@@ -24,6 +24,8 @@ module Fog
       collection :crash_dumps
       model :dr_task
       collection :dr_tasks
+      model :event
+      collection :events
       model :gpu_group
       collection :gpu_groups
       model :guest_metrics
@@ -87,6 +89,14 @@ module Fog
 
       request_path "fog/compute/xen_server/requests"
 
+      # event
+      request :from_event
+      request :get_current_id_event
+      request :inject_event
+      request :next_event
+      request :register_event
+      request :unregister_event
+
       # host
       request :apply_edition_host
       request :assert_can_evacuate_host
@@ -142,6 +152,7 @@ module Fog
       request :set_default_locking_mode_network
       
       # PBD
+      request :create_pbd
       request :plug_pbd
       request :set_device_config_pbd
       request :unplug_pbd

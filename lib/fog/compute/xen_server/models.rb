@@ -14,6 +14,8 @@ module Fog
         autoload :CrashDumps, File.expand_path("../models/crash_dumps", __FILE__)
         autoload :DrTask, File.expand_path("../models/dr_task", __FILE__)
         autoload :DrTasks, File.expand_path("../models/dr_tasks", __FILE__)
+        autoload :Event, File.expand_path("../models/event", __FILE__)
+        autoload :Events, File.expand_path("../models/events", __FILE__)
         autoload :GpuGroup, File.expand_path("../models/gpu_group", __FILE__)
         autoload :GpuGroups, File.expand_path("../models/gpu_groups", __FILE__)
         autoload :GuestMetrics, File.expand_path("../models/guest_metrics", __FILE__)
