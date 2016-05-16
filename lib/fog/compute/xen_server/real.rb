@@ -40,6 +40,10 @@ module Fog
         def connection_host
           hosts.find { |x| x.address == host }
         end
+
+        def event
+          @event ||= Fog::Compute::XenServer::Models::Event.new(service: self)
+        end
       end
     end
   end
