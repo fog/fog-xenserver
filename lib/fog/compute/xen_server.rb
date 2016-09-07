@@ -259,6 +259,7 @@ module Fog
       request :unplug_vif
 
       # VM
+      request :add_tag
       request :add_to_vcpus_params_live_server
       request :assert_agile_server
       request :assert_can_be_recovered_server
@@ -293,6 +294,7 @@ module Fog
       request :query_services_server
       request :record_data_source_server
       request :recover_server
+      request :remove_tag
       request :resume_on_server
       request :resume_server
       request :revert_server
