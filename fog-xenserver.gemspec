@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'fog-xml'
   spec.add_dependency 'fog-core'
+  spec.add_dependency 'xmlrpc' if RUBY_VERSION =~ /^2\.[^0-3].*$/
 
   spec.add_development_dependency 'coveralls'
   spec.add_development_dependency 'json' if RUBY_VERSION =~ /^1\.8.*$/
