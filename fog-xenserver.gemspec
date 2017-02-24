@@ -24,11 +24,18 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'fog-xml'
   spec.add_dependency 'fog-core'
-  spec.add_development_dependency 'rake'
+
+  spec.add_development_dependency 'coveralls'
+  spec.add_development_dependency 'json' if RUBY_VERSION =~ /^1\.8.*$/
   spec.add_development_dependency 'minitest'
-  spec.add_development_dependency 'turn'
+  spec.add_development_dependency 'rake'
   spec.add_development_dependency 'pry'
-  spec.add_development_dependency 'vcr'
+  spec.add_development_dependency 'turn'
   spec.add_development_dependency 'webmock'
-  spec.add_development_dependency 'coveralls' if RUBY_VERSION.to_f >= 1.9
+
+  if RUBY_VERSION =~ /^1\.(8.*|9.[0-2])$/
+    spec.add_development_dependency 'vcr', '< 3.0.0'
+  else
+    spec.add_development_dependency 'vcr'
+  end
 end
