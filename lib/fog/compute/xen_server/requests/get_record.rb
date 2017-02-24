@@ -6,7 +6,7 @@ module Fog
           get_record_by_ref(ref, provider_class, options)
         end
 
-        def get_record_by_ref(ref, provider_class, options = {})
+        def get_record_by_ref(ref, provider_class, _options = {})
           @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => "#{provider_class}.get_record"}, ref).merge(:reference => ref)
         end
 

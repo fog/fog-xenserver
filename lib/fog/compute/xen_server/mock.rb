@@ -22,7 +22,7 @@ module Fog
           @connection.authenticate(@username, @password)
         end
 
-        def method_missing(method_name, *args)
+        def method_missing(*)
           Fog::Mock.not_implemented
         end
       end
