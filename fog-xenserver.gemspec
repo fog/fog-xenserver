@@ -27,14 +27,13 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'xmlrpc' if RUBY_VERSION =~ /^2\.[^0-3].*$/
 
   spec.add_development_dependency 'coveralls'
-  spec.add_development_dependency 'json' if RUBY_VERSION =~ /^1\.8.*$/
   spec.add_development_dependency 'minitest'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'turn'
   spec.add_development_dependency 'webmock'
 
-  if RUBY_VERSION =~ /^1\.(8.*|9.[0-2])$/
+  if RUBY_VERSION =~ /^1\.9\.[0-2]$/
     spec.add_development_dependency 'vcr', '< 3.0.0'
   else
     spec.add_development_dependency 'vcr'
