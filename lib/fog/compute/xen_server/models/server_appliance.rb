@@ -17,7 +17,7 @@ module Fog
           attribute :name,                    :aliases => :name_label
           attribute :uuid
 
-          has_many_identities  :vms,   :servers,         :aliases => :VMs,   :as => :VMs
+          has_many_identities :vms, :servers, :aliases => :VMs, :as => :VMs
         end
       end
     end

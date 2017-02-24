@@ -15,7 +15,7 @@ module Fog
           attribute :name,                :aliases => :name_label
           attribute :uuid
 
-          has_many_identities  :subroles,  :roles
+          has_many_identities :subroles, :roles
         end
       end
     end

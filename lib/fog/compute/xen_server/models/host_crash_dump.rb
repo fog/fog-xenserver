@@ -16,7 +16,7 @@ module Fog
           attribute :timestamp
           attribute :uuid
 
-          has_one_identity   :host,       :hosts
+          has_one_identity :host, :hosts
         end
       end
     end

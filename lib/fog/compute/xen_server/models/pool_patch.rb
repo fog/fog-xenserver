@@ -20,7 +20,7 @@ module Fog
           attribute :uuid
           attribute :version
 
-          has_many_identities  :host_patches,    :host_patchs
+          has_many_identities :host_patches, :host_patchs
         end
       end
     end

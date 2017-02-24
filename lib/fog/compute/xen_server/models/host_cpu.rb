@@ -24,7 +24,7 @@ module Fog
           attribute :uuid
           attribute :vendor
 
-          has_one_identity   :host,       :hosts
+          has_one_identity :host, :hosts
         end
       end
     end
