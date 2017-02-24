@@ -3,11 +3,7 @@ module Fog
     class XenServer
       class Real
         def snapshots
-          data = @connection.request(:parser => Fog::Parsers::XenServer::GetRecords.new, :method => "VM.get_all_records")
-          data.keep_if { |vm| vm[:is_a_snapshot] }
-          servers.load(data)
-        rescue Fog::XenServer::RequestFailed
-          []
+          load_data(:is_a_snapshot)
         end
       end
     end

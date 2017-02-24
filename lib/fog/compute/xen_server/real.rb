@@ -44,6 +44,30 @@ module Fog
         def event
           @event ||= Fog::Compute::XenServer::Models::Event.new(service: self)
         end
+
+        private
+
+        def load_data(keep_type = nil, delete_templates = false)
+          data = request_get_all_records
+
+          data.keep_if { |vm| vm[type] } if keep_type
+          if delete_templates
+            data.delete_if do |vm|
+              !vm[:is_a_template] || vm[:other_config]["default_template"].nil?
+            end
+          end
+
+          servers.load(data)
+        rescue Fog::XenServer::RequestFailed
+          []
+        end
+
+        def request_get_all_records
+          @connection.request(
+            :parser => Fog::Parsers::XenServer::GetRecords.new,
+            :method => "VM.get_all_records"
+          )
+        end
       end
     end
   end
