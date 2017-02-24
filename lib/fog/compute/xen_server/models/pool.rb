@@ -51,9 +51,6 @@ module Fog
             ha_failover_plan_exists ha_prevent_restarts_for join join_force recover_slaves
             send_test_post set_vswitch_controller sync_database
           ))
-
-          def hello
-          end
         end
       end
     end
