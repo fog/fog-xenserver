@@ -106,32 +106,8 @@ describe Fog::Compute::XenServer::Models::Pool do
 
   it 'should define methods' do
     methods = pool_class.instance_methods(false)
-    methods.include?(:certificate_install).must_equal(true)
-    methods.include?(:certificate_list).must_equal(true)
-    methods.include?(:certificate_sync).must_equal(true)
-    methods.include?(:certificate_uninstall).must_equal(true)
-    methods.include?(:create_vlan).must_equal(true)
-    methods.include?(:create_vlan_from_pif).must_equal(true)
-    methods.include?(:crl_install).must_equal(true)
-    methods.include?(:crl_list).must_equal(true)
-    methods.include?(:crl_uninstall).must_equal(true)
-    methods.include?(:designate_new_master).must_equal(true)
-    methods.include?(:disable_ha).must_equal(true)
-    methods.include?(:disable_redo_log).must_equal(true)
-    methods.include?(:emergency_reset_master).must_equal(true)
-    methods.include?(:emergency_transition_to_master).must_equal(true)
-    methods.include?(:enable_ha).must_equal(true)
-    methods.include?(:enable_redo_log).must_equal(true)
-    methods.include?(:ha_compute_hypothetical_max_host_failures_to_tolerate).must_equal(true)
-    methods.include?(:ha_compute_max_host_failures_to_tolerate).must_equal(true)
-    methods.include?(:ha_compute_vm_failover_plan).must_equal(true)
-    methods.include?(:ha_failover_plan_exists).must_equal(true)
-    methods.include?(:ha_prevent_restarts_for).must_equal(true)
-    methods.include?(:join).must_equal(true)
-    methods.include?(:join_force).must_equal(true)
-    methods.include?(:recover_slaves).must_equal(true)
-    methods.include?(:send_test_post).must_equal(true)
-    methods.include?(:set_vswitch_controller).must_equal(true)
-    methods.include?(:sync_database).must_equal(true)
+    pool_class::POOL_METHODS.each do |method|
+      methods.include?(method).must_equal(true)
+    end
   end
 end

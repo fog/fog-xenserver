@@ -34,9 +34,9 @@ module Fog
 
           require_before_save :name, :type
 
-          STORAGE_REPOSITORY_METHODS = %i(
-            get_supported_types introduce probe
-          ).freeze
+          STORAGE_REPOSITORY_METHODS = [
+            :get_supported_types, :introduce, :probe
+          ].freeze
           define_methods(STORAGE_REPOSITORY_METHODS)
         end
       end

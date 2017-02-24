@@ -63,10 +63,11 @@ module Fog
 
           alias_method :resident_servers, :resident_vms
 
-          define_methods(%i(
-            emergency_ha_disable list_methods local_management_reconfigure
-            management_disable management_reconfigure shutdown_agent
-          ))
+          HOST_METHODS = [
+            :emergency_ha_disable, :list_methods, :local_management_reconfigure,
+            :management_disable, :management_reconfigure, :shutdown_agent
+          ].freeze
+          define_methods(HOST_METHODS)
 
           def shutdown(auto_disable = true)
             service.disable_host(reference) if auto_disable

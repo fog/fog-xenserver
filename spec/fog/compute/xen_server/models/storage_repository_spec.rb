@@ -92,8 +92,8 @@ describe Fog::Compute::XenServer::Models::StorageRepository do
 
   it 'should define methods' do
     methods = storage_repository_class.instance_methods(false)
-    methods.include?(:get_supported_types).must_equal(true)
-    methods.include?(:introduce).must_equal(true)
-    methods.include?(:probe).must_equal(true)
+    storage_repository_class::STORAGE_REPOSITORY_METHODS.each do |method|
+      methods.include?(method).must_equal(true)
+    end
   end
 end

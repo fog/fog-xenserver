@@ -44,7 +44,8 @@ module Fog
           has_one_identity :vlan_master_of,            :vlans,       :aliases => :VLAN_master_of,           :as => :VLAN_master_of
           has_one_identity :vlan_slave_of,             :vlans,       :aliases => :VLAN_slave_of,            :as => :VLAN_slave_of
 
-          define_methods(%i(db_introduce introduce scan))
+          PIF_METHODS = [:db_introduce, :introduce, :scan].freeze
+          define_methods(PIF_METHODS)
         end
       end
     end

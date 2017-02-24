@@ -42,15 +42,17 @@ module Fog
 
           alias_method :default_storage_repository, :default_sr
 
-          define_methods(%i(
-            certificate_install certificate_list certificate_sync certificate_uninstall create_vlan
-            create_vlan_from_pif crl_install crl_list crl_uninstall designate_new_master disable_ha
-            disable_redo_log emergency_reset_master emergency_transition_to_master enable_ha
-            enable_redo_log ha_compute_hypothetical_max_host_failures_to_tolerate
-            ha_compute_max_host_failures_to_tolerate ha_compute_vm_failover_plan
-            ha_failover_plan_exists ha_prevent_restarts_for join join_force recover_slaves
-            send_test_post set_vswitch_controller sync_database
-          ))
+          POOL_METHODS = [
+            :certificate_install, :certificate_list, :certificate_sync, :certificate_uninstall,
+            :create_vlan, :create_vlan_from_pif, :crl_install, :crl_list, :crl_uninstall,
+            :designate_new_master, :disable_ha, :disable_redo_log, :emergency_reset_master,
+            :emergency_transition_to_master, :enable_ha, :enable_redo_log,
+            :ha_compute_hypothetical_max_host_failures_to_tolerate,
+            :ha_compute_max_host_failures_to_tolerate, :ha_compute_vm_failover_plan,
+            :ha_failover_plan_exists, :ha_prevent_restarts_for, :join, :join_force,
+            :recover_slaves, :send_test_post, :set_vswitch_controller, :sync_database
+          ].freeze
+          define_methods(POOL_METHODS)
         end
       end
     end

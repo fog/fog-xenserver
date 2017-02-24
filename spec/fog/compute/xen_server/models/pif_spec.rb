@@ -118,8 +118,8 @@ describe Fog::Compute::XenServer::Models::Pif do
 
   it 'should define methods' do
     methods = pif_class.instance_methods(false)
-    methods.include?(:db_introduce).must_equal(true)
-    methods.include?(:introduce).must_equal(true)
-    methods.include?(:scan).must_equal(true)
+    pif_class::PIF_METHODS.each do |method|
+      methods.include?(method).must_equal(true)
+    end
   end
 end

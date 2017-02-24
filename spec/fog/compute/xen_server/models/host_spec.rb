@@ -157,12 +157,9 @@ describe Fog::Compute::XenServer::Models::Host do
 
   it 'should define methods' do
     methods = host_class.instance_methods(false)
-    methods.include?(:emergency_ha_disable).must_equal(true)
-    methods.include?(:list_methods).must_equal(true)
-    methods.include?(:local_management_reconfigure).must_equal(true)
-    methods.include?(:management_disable).must_equal(true)
-    methods.include?(:management_reconfigure).must_equal(true)
-    methods.include?(:shutdown_agent).must_equal(true)
+    host_class::HOST_METHODS.each do |method|
+      methods.include?(method).must_equal(true)
+    end
   end
 
   describe '#shutdown' do
