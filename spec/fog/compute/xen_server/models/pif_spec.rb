@@ -49,49 +49,49 @@ describe Fog::Compute::XenServer::Models::Pif do
   end
 
   it 'should have 9 associations' do
-    pif_class.associations.must_equal(:bond_master_of => :bonds, 
-                                      :bond_slave_of => :bonds, 
-                                      :host => :hosts, 
-                                      :metrics => :pif_metrics, 
-                                      :network => :networks, 
-                                      :tunnel_access_pif_of => :tunnels, 
-                                      :tunnel_transport_pif_of => :tunnels, 
-                                      :vlan_master_of => :vlans, 
+    pif_class.associations.must_equal(:bond_master_of => :bonds,
+                                      :bond_slave_of => :bonds,
+                                      :host => :hosts,
+                                      :metrics => :pif_metrics,
+                                      :network => :networks,
+                                      :tunnel_access_pif_of => :tunnels,
+                                      :tunnel_transport_pif_of => :tunnels,
+                                      :vlan_master_of => :vlans,
                                       :vlan_slave_of => :vlans)
   end
 
   it 'should have 32 masks' do
-    pif_class.masks.must_equal(:reference => :reference, 
-                               :disallow_unplug => :disallow_unplug, 
-                               :currently_attached => :currently_attached, 
-                               :device => :device, 
-                               :device_name => :device_name, 
-                               :dns => :DNS, 
-                               :gateway => :gateway, 
-                               :ip => :IP, 
-                               :ip_configuration_mode => :ip_configuration_mode, 
-                               :ipv6 => :IPv6, 
-                               :ipv6_configuration_mode => :ipv6_configuration_mode, 
-                               :ipv6_gateway => :ipv6_gateway, 
-                               :mac => :MAC, 
-                               :management => :management, 
-                               :mtu => :MTU, 
-                               :netmask => :netmask, 
-                               :other_config => :other_config, 
-                               :physical => :physical, 
-                               :primary_address_type => :primary_address_type, 
-                               :status_code => :status_code, 
-                               :status_detail => :status_detail, 
-                               :vlan => :VLAN, 
-                               :uuid => :uuid, 
-                               :bond_master_of => :bond_master_of, 
-                               :bond_slave_of => :bond_slave_of, 
-                               :host => :host, 
-                               :metrics => :metrics, 
-                               :network => :network, 
-                               :tunnel_access_pif_of => :tunnel_access_PIF_of, 
-                               :tunnel_transport_pif_of => :tunnel_transport_PIF_of, 
-                               :vlan_master_of => :VLAN_master_of, 
+    pif_class.masks.must_equal(:reference => :reference,
+                               :disallow_unplug => :disallow_unplug,
+                               :currently_attached => :currently_attached,
+                               :device => :device,
+                               :device_name => :device_name,
+                               :dns => :DNS,
+                               :gateway => :gateway,
+                               :ip => :IP,
+                               :ip_configuration_mode => :ip_configuration_mode,
+                               :ipv6 => :IPv6,
+                               :ipv6_configuration_mode => :ipv6_configuration_mode,
+                               :ipv6_gateway => :ipv6_gateway,
+                               :mac => :MAC,
+                               :management => :management,
+                               :mtu => :MTU,
+                               :netmask => :netmask,
+                               :other_config => :other_config,
+                               :physical => :physical,
+                               :primary_address_type => :primary_address_type,
+                               :status_code => :status_code,
+                               :status_detail => :status_detail,
+                               :vlan => :VLAN,
+                               :uuid => :uuid,
+                               :bond_master_of => :bond_master_of,
+                               :bond_slave_of => :bond_slave_of,
+                               :host => :host,
+                               :metrics => :metrics,
+                               :network => :network,
+                               :tunnel_access_pif_of => :tunnel_access_PIF_of,
+                               :tunnel_transport_pif_of => :tunnel_transport_PIF_of,
+                               :vlan_master_of => :VLAN_master_of,
                                :vlan_slave_of => :VLAN_slave_of)
   end
 
@@ -114,5 +114,12 @@ describe Fog::Compute::XenServer::Models::Pif do
 
   it "shouldn't require attributes before save" do
     pif_class.require_before_save.must_equal([])
+  end
+
+  it 'should define methods' do
+    methods = pif_class.instance_methods(false)
+    methods.include?(:db_introduce).must_equal(true)
+    methods.include?(:introduce).must_equal(true)
+    methods.include?(:scan).must_equal(true)
   end
 end

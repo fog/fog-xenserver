@@ -34,15 +34,10 @@ module Fog
 
           require_before_save :name, :type
 
-          methods = %w{ get_supported_types introduce probe }
-
-          # would be much simpler just call __callee__ on request without reference
-          # instead of __method__ and set an alias for each method defined on
-          # methods, just creating a method for each one, so we can keep compatability
-          # with ruby 1.8.7 that does not have __callee__
-          methods.each do |method|
-            define_method(method.to_sym) { |*args| service.send("#{__method__}_#{provider_class.downcase}", *args) }
-          end
+          STORAGE_REPOSITORY_METHODS = %i(
+            get_supported_types introduce probe
+          ).freeze
+          define_methods(STORAGE_REPOSITORY_METHODS)
         end
       end
     end

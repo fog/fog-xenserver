@@ -49,41 +49,41 @@ describe Fog::Compute::XenServer::Models::Pool do
   end
 
   it 'should have 5 associations' do
-    pool_class.associations.must_equal(:crash_dump_sr => :storage_repositories, 
-                                       :default_sr => :storage_repositories, 
-                                       :master => :hosts, 
-                                       :metadata_vdis => :vdis, 
+    pool_class.associations.must_equal(:crash_dump_sr => :storage_repositories,
+                                       :default_sr => :storage_repositories,
+                                       :master => :hosts,
+                                       :metadata_vdis => :vdis,
                                        :suspend_image_sr => :storage_repositories)
   end
 
   it 'should have 28 masks' do
-    pool_class.masks.must_equal(:reference => :reference, 
-                                :blobs => :blobs, 
-                                :description => :description, 
-                                :gui_config => :gui_config, 
-                                :ha_allow_overcommit => :ha_allow_overcommit, 
-                                :ha_configuration => :ha_configuration, 
-                                :ha_enabled => :ha_enabled, 
-                                :ha_host_failures_to_tolerate => :ha_host_failures_to_tolerate, 
-                                :ha_overcommitted => :ha_overcommitted, 
-                                :ha_plan_exists_for => :ha_plan_exists_for, 
-                                :ha_statefiles => :ha_statefiles, 
-                                :name => :name, 
-                                :other_config => :other_config, 
-                                :redo_log_enabled => :redo_log_enabled, 
-                                :redo_log_vdi => :redo_log_vdi, 
-                                :restrictions => :restrictions, 
-                                :tags => :tags, 
-                                :uuid => :uuid, 
-                                :vswitch_controller => :vswitch_controller, 
-                                :wlb_enabled => :wlb_enabled, 
-                                :wlb_url => :wlb_url, 
-                                :wlb_username => :wlb_username, 
-                                :wlb_verify_cert => :wlb_verify_cert, 
-                                :crash_dump_sr => :crash_dump_SR, 
-                                :default_sr => :default_SR, 
-                                :master => :master, 
-                                :metadata_vdis => :metadata_VDIs, 
+    pool_class.masks.must_equal(:reference => :reference,
+                                :blobs => :blobs,
+                                :description => :description,
+                                :gui_config => :gui_config,
+                                :ha_allow_overcommit => :ha_allow_overcommit,
+                                :ha_configuration => :ha_configuration,
+                                :ha_enabled => :ha_enabled,
+                                :ha_host_failures_to_tolerate => :ha_host_failures_to_tolerate,
+                                :ha_overcommitted => :ha_overcommitted,
+                                :ha_plan_exists_for => :ha_plan_exists_for,
+                                :ha_statefiles => :ha_statefiles,
+                                :name => :name,
+                                :other_config => :other_config,
+                                :redo_log_enabled => :redo_log_enabled,
+                                :redo_log_vdi => :redo_log_vdi,
+                                :restrictions => :restrictions,
+                                :tags => :tags,
+                                :uuid => :uuid,
+                                :vswitch_controller => :vswitch_controller,
+                                :wlb_enabled => :wlb_enabled,
+                                :wlb_url => :wlb_url,
+                                :wlb_username => :wlb_username,
+                                :wlb_verify_cert => :wlb_verify_cert,
+                                :crash_dump_sr => :crash_dump_SR,
+                                :default_sr => :default_SR,
+                                :master => :master,
+                                :metadata_vdis => :metadata_VDIs,
                                 :suspend_image_sr => :suspend_image_SR)
   end
 
@@ -102,5 +102,36 @@ describe Fog::Compute::XenServer::Models::Pool do
 
   it "shouldn't require attributes before save" do
     pool_class.require_before_save.must_equal([])
+  end
+
+  it 'should define methods' do
+    methods = pool_class.instance_methods(false)
+    methods.include?(:certificate_install).must_equal(true)
+    methods.include?(:certificate_list).must_equal(true)
+    methods.include?(:certificate_sync).must_equal(true)
+    methods.include?(:certificate_uninstall).must_equal(true)
+    methods.include?(:create_vlan).must_equal(true)
+    methods.include?(:create_vlan_from_pif).must_equal(true)
+    methods.include?(:crl_install).must_equal(true)
+    methods.include?(:crl_list).must_equal(true)
+    methods.include?(:crl_uninstall).must_equal(true)
+    methods.include?(:designate_new_master).must_equal(true)
+    methods.include?(:disable_ha).must_equal(true)
+    methods.include?(:disable_redo_log).must_equal(true)
+    methods.include?(:emergency_reset_master).must_equal(true)
+    methods.include?(:emergency_transition_to_master).must_equal(true)
+    methods.include?(:enable_ha).must_equal(true)
+    methods.include?(:enable_redo_log).must_equal(true)
+    methods.include?(:ha_compute_hypothetical_max_host_failures_to_tolerate).must_equal(true)
+    methods.include?(:ha_compute_max_host_failures_to_tolerate).must_equal(true)
+    methods.include?(:ha_compute_vm_failover_plan).must_equal(true)
+    methods.include?(:ha_failover_plan_exists).must_equal(true)
+    methods.include?(:ha_prevent_restarts_for).must_equal(true)
+    methods.include?(:join).must_equal(true)
+    methods.include?(:join_force).must_equal(true)
+    methods.include?(:recover_slaves).must_equal(true)
+    methods.include?(:send_test_post).must_equal(true)
+    methods.include?(:set_vswitch_controller).must_equal(true)
+    methods.include?(:sync_database).must_equal(true)
   end
 end
