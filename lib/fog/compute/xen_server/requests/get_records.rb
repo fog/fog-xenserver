@@ -4,7 +4,7 @@ module Fog
       class Real
         def get_records(klass, _options = {})
           @connection.request(:parser => Fog::Parsers::XenServer::GetRecords.new, :method => "#{klass}.get_all_records")
-        rescue Fog::XenServer::RequestFailed => e
+        rescue Fog::XenServer::RequestFailed
           []
         end
       end
