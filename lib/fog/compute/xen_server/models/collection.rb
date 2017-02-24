@@ -15,28 +15,27 @@ module Fog
             nil
           end
 
-          def get_by_name(name)
-            ref = service.get_by_name(name, model.provider_class)
-            return nil if ref.nil?
-            get(ref)
-          rescue Fog::XenServer::NotFound, Fog::XenServer::RequestFailed
-            nil
+          def method_missing(method, *args)
+            if method =~ /^(find|get)_by_(name|uuid)$/
+              return get_by(method, args[0])
+            end
+
+            super
           end
-
-          alias_method :find_by_name, :get_by_name
-
-          def get_by_uuid(uuid)
-            ref = service.get_by_uuid(uuid, model.provider_class)
-            return nil if ref.nil?
-            get(ref)
-          rescue Fog::XenServer::NotFound, Fog::XenServer::RequestFailed
-            nil
-          end
-
-          alias_method :find_by_uuid, :get_by_uuid
 
           def get_by_reference_or_name_or_uuid(query)
             get(query) || get_by_name(query) || get_by_uuid(query)
+          end
+
+          private
+
+          def get_by(method, value)
+            method = method.to_s.sub('find_by_', 'get_by_')
+            ref = service.send(method, value, model.provider_class)
+            return nil if ref.nil?
+            get(ref)
+          rescue Fog::XenServer::NotFound, Fog::XenServer::RequestFailed
+            nil
           end
         end
       end
