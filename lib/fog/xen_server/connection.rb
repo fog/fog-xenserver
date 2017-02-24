@@ -1,4 +1,4 @@
-require 'xmlrpc/client'
+require "xmlrpc/client"
 
 module Fog
   module XenServer
