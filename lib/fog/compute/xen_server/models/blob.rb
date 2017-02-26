@@ -11,10 +11,10 @@ module Fog
 
           identity :reference
 
-          attribute :description,         :aliases => :name_description
+          attribute :description,         aliases: :name_description
           attribute :last_updated
           attribute :mime_type
-          attribute :name,                :aliases => :name_label
+          attribute :name,                aliases: :name_label
           attribute :public
           attribute :size
           attribute :uuid

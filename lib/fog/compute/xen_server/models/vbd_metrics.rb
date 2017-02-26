@@ -13,7 +13,7 @@ module Fog
 
           attribute :io_read_kbs
           attribute :io_write_kbs
-          attribute :last_updated,   :type => :time
+          attribute :last_updated,   type: :time
           attribute :other_config
           attribute :uuid
         end

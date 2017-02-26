@@ -3,7 +3,7 @@ module Fog
     class XenServer
       class Real
         def forget_sr(ref)
-          @connection.request({ :parser => Fog::Parsers::XenServer::Base.new, :method => "SR.forget" }, ref)
+          @connection.request({ parser: Fog::Parsers::XenServer::Base.new, method: "SR.forget" }, ref)
         end
       end
     end

@@ -12,28 +12,28 @@ module Fog
           identity :reference
 
           attribute :allowed_operations
-          attribute :bootable,                  :default => true
+          attribute :bootable,                  default: true
           attribute :currently_attached
           attribute :current_operations
           attribute :device
-          attribute :empty,                     :default => false
-          attribute :mode,                      :default => "RW"
-          attribute :other_config,              :default => { "owner" => "" }
-          attribute :qos_supported_algorithms,  :default => []
-          attribute :qos_algorithm_params,      :default => {}
-          attribute :qos_algorithm_type,        :default => ""
+          attribute :empty,                     default: false
+          attribute :mode,                      default: "RW"
+          attribute :other_config,              default: { "owner" => "" }
+          attribute :qos_supported_algorithms,  default: []
+          attribute :qos_algorithm_params,      default: {}
+          attribute :qos_algorithm_type,        default: ""
           attribute :runtime_properties
           attribute :status_code
           attribute :status_detail
           attribute :storage_lock
-          attribute :type,                      :default => "Disk"
+          attribute :type,                      default: "Disk"
           attribute :unpluggable
-          attribute :userdevice,                :default => "0"
+          attribute :userdevice,                default: "0"
           attribute :uuid
 
           has_one_identity   :metrics,   :vbds_metrics
-          has_one_identity   :vdi,       :vdis,             :aliases => :VDI, :as => :VDI
-          has_one_identity   :vm,        :servers,          :aliases => :VM,  :as => :VM
+          has_one_identity   :vdi,       :vdis,             aliases: :VDI, as: :VDI
+          has_one_identity   :vm,        :servers,          aliases: :VM,  as: :VM
 
           require_before_save :vdi, :vm
 

@@ -11,7 +11,7 @@ module Fog
 
           identity :reference
 
-          attribute :klass, :aliases => :class, :as => :class
+          attribute :klass, aliases: :class, as: :class
           attribute :id
           attribute :obj_uuid
           attribute :operation

@@ -11,7 +11,7 @@ module Fog
 
           identity :reference
 
-          attribute :last_updated,  :type => :time
+          attribute :last_updated,  type: :time
           attribute :live
           attribute :memory_free
           attribute :memory_total

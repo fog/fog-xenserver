@@ -11,14 +11,14 @@ module Fog
 
           identity :reference
 
-          attribute :description,         :aliases => :name_description
-          attribute :gpu_types,           :aliases => :GPU_types,       :as => :GPU_types
-          attribute :name,                :aliases => :name_label
+          attribute :description,         aliases: :name_description
+          attribute :gpu_types,           aliases: :GPU_types,       as: :GPU_types
+          attribute :name,                aliases: :name_label
           attribute :other_config
           attribute :uuid
 
-          has_many_identities :pgpus,    :pgpus,     :aliases => :PGPUs,  :as => :PGPUs
-          has_many_identities :vgpus,    :vgpus,     :aliases => :VGPUs,  :as => :VGPUs
+          has_many_identities :pgpus,    :pgpus,     aliases: :PGPUs,  as: :PGPUs
+          has_many_identities :vgpus,    :vgpus,     aliases: :VGPUs,  as: :VGPUs
         end
       end
     end

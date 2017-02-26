@@ -64,8 +64,8 @@ module Fog
 
         def request_get_all_records
           @connection.request(
-            :parser => Fog::Parsers::XenServer::GetRecords.new,
-            :method => "VM.get_all_records"
+            parser: Fog::Parsers::XenServer::GetRecords.new,
+            method: "VM.get_all_records"
           )
         end
       end

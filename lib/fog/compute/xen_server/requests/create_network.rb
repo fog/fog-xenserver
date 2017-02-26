@@ -3,7 +3,7 @@ module Fog
     class XenServer
       class Real
         def create_network(config = {}, _extra_params = {})
-          @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => "network.create" }, config)
+          @connection.request({parser: Fog::Parsers::XenServer::Base.new, method: "network.create" }, config)
         end
       end
     end

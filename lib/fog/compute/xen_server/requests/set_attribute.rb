@@ -4,8 +4,8 @@ module Fog
       class Real
         def set_attribute(klass, ref, attr_name, *value)
           @connection.request(
-            { :parser => Fog::Parsers::XenServer::Base.new,
-              :method => "#{klass}.set_#{attr_name.tr("-","_")}" },
+            { parser: Fog::Parsers::XenServer::Base.new,
+              method: "#{klass}.set_#{attr_name.tr("-","_")}" },
             ref,
             *value
           )

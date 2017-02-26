@@ -3,7 +3,7 @@ module Fog
     class XenServer
       class Real
         def create_vdi(config = {}, _extra_params = {})
-          @connection.request({:parser => Fog::Parsers::XenServer::Base.new, :method => "VDI.create"}, config)
+          @connection.request({parser: Fog::Parsers::XenServer::Base.new, method: "VDI.create"}, config)
         end
       end
     end
