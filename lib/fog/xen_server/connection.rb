@@ -5,8 +5,8 @@ module Fog
     class Connection
       attr_reader :credentials
 
-      def initialize(host, timeout)
-        @factory = XMLRPC::Client.new(host, "/")
+      def initialize(host, port, use_ssl, timeout)
+        @factory = XMLRPC::Client.new(host, port = port, use_ssl = use_ssl, "/")
         @factory.set_parser(NokogiriStreamParser.new)
         @factory.timeout = timeout
       end
