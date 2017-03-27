@@ -10,7 +10,9 @@ module Fog
           @password    = options[:xenserver_password]
           @defaults    = options[:xenserver_defaults] || {}
           @timeout     = options[:xenserver_timeout] || 30
-          @connection  = Fog::XenServer::Connection.new(@host, @timeout)
+          @use_ssl     = options[:xenserver_use_ssl] || false
+          @port        = options[:xenserver_port] || true
+          @connection  = Fog::XenServer::Connection.new(@host, @port, @use_ssl, @timeout)
           @connection.authenticate(@username, @password)
         end
 

@@ -12,6 +12,8 @@ module Fog
       requires :xenserver_url
       recognizes :xenserver_defaults
       recognizes :xenserver_timeout
+      recognizes :xenserver_use_ssl
+      recognizes :xenserver_port
 
       model_path "fog/compute/xen_server/models"
       model :blob
