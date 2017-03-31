@@ -8,7 +8,7 @@ module Fog
       def initialize(host, port, use_ssl, timeout)
         @factory = XMLRPC::Client.new3(host: host, port: port, use_ssl: (use_ssl != false), path: "/")
         if use_ssl == -1
-          @factory.instance_variable_get(:@http).instance_variable_set(:@verify_mode, OpenSSL::SSL::VERIFY_NONE)
+          @factory.http.verify_mode = OpenSSL::SSL::VERIFY_NONE
         end
         @factory.set_parser(NokogiriStreamParser.new)
         @factory.timeout = timeout
