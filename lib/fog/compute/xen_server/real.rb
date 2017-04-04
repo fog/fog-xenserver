@@ -12,7 +12,8 @@ module Fog
           @timeout     = options[:xenserver_timeout] || 30
           @use_ssl     = options[:xenserver_use_ssl] || false
           @port        = options[:xenserver_port] || 80
-          @connection  = Fog::XenServer::Connection.new(@host, @port, @use_ssl, @timeout)
+          @verify_mode = options[:xenserver_verify_mode] || OpenSSL::SSL::VERIFY_PEER
+          @connection  = Fog::XenServer::Connection.new(@host, @port, @use_ssl, @verify_mode, @timeout)
           @connection.authenticate(@username, @password)
         end
 

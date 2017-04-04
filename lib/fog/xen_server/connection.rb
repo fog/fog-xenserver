@@ -5,11 +5,9 @@ module Fog
     class Connection
       attr_reader :credentials
 
-      def initialize(host, port, use_ssl, timeout)
-        @factory = XMLRPC::Client.new3(host: host, port: port, use_ssl: (use_ssl != false), path: "/")
-        if use_ssl == -1
-          @factory.http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-        end
+      def initialize(host, port, use_ssl, verify_mode, timeout)
+        @factory = XMLRPC::Client.new3(host: host, port: port, use_ssl: use_ssl, path: "/")
+        @factory.http.verify_mode = verify_mode
         @factory.set_parser(NokogiriStreamParser.new)
         @factory.timeout = timeout
       end
