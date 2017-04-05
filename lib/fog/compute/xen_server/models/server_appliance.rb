@@ -13,11 +13,11 @@ module Fog
 
           attribute :allowed_operations
           attribute :current_operations
-          attribute :description,             :aliases => :name_description
-          attribute :name,                    :aliases => :name_label
+          attribute :description,             aliases: :name_description
+          attribute :name,                    aliases: :name_label
           attribute :uuid
 
-          has_many_identities  :vms,   :servers,         :aliases => :VMs,   :as => :VMs
+          has_many_identities :vms, :servers, aliases: :VMs, as: :VMs
         end
       end
     end

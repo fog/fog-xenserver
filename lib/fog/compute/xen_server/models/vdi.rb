@@ -14,34 +14,34 @@ module Fog
           attribute :allowed_operations
           attribute :allow_caching
           attribute :current_operations
-          attribute :description,                 :aliases => :name_description,    :as => :name_description
+          attribute :description,                 aliases: :name_description,    as: :name_description
           attribute :is_a_snapshot
           attribute :location
           attribute :managed
           attribute :metadata_latest
           attribute :metadata_of_pool
           attribute :missing
-          attribute :name,                        :aliases => :name_label,          :as => :name_label
+          attribute :name,                        aliases: :name_label,          as: :name_label
           attribute :on_boot
-          attribute :other_config,                :default => {}
+          attribute :other_config,                default: {}
           attribute :physical_utilisation
-          attribute :read_only,                   :default => false
-          attribute :sharable,                    :default => false
+          attribute :read_only,                   default: false
+          attribute :sharable,                    default: false
           attribute :sm_config
           attribute :snapshot_time
           attribute :storage_lock
           attribute :tags
-          attribute :type,                        :default => "system"
+          attribute :type,                        default: "system"
           attribute :uuid
-          attribute :virtual_size,                :default => "8589934592"
+          attribute :virtual_size,                default: "8589934592"
           attribute :xenstore_data
 
           has_many_identities   :crash_dumps,  :crash_dumps
           has_one_identity      :parent,       :vdis
           has_many_identities   :snapshots,    :vdis
           has_one_identity      :snapshot_of,  :vdis
-          has_one_identity      :sr,           :storage_repositories,      :aliases => :SR,   :as => :SR
-          has_many_identities   :vbds,         :vbds,                      :aliases => :VBDs, :as => :VBDs
+          has_one_identity      :sr,           :storage_repositories,      aliases: :SR,   as: :SR
+          has_many_identities   :vbds,         :vbds,                      aliases: :VBDs, as: :VBDs
 
           require_before_save :name, :storage_repository, :type
 

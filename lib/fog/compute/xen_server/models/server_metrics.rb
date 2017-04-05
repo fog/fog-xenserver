@@ -18,11 +18,11 @@ module Fog
           attribute :start_time
           attribute :state
           attribute :uuid
-          attribute :vcpus_cpu,           :aliases => :VCPUs_CPU,         :as => :VCPUs_CPU
-          attribute :vcpus_flags,         :aliases => :VCPUs_flags,       :as => :VCPUs_flags
-          attribute :vcpus_number,        :aliases => :VCPUs_number,      :as => :VCPUs_number
-          attribute :vcpus_params,        :aliases => :VCPUs_params,      :as => :VCPUs_params
-          attribute :vcpus_utilisation,   :aliases => :VCPUs_utilisation, :as => :VCPUs_utilisation
+          attribute :vcpus_cpu,           aliases: :VCPUs_CPU,         as: :VCPUs_CPU
+          attribute :vcpus_flags,         aliases: :VCPUs_flags,       as: :VCPUs_flags
+          attribute :vcpus_number,        aliases: :VCPUs_number,      as: :VCPUs_number
+          attribute :vcpus_params,        aliases: :VCPUs_params,      as: :VCPUs_params
+          attribute :vcpus_utilisation,   aliases: :VCPUs_utilisation, as: :VCPUs_utilisation
         end
       end
     end

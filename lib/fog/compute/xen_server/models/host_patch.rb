@@ -12,8 +12,8 @@ module Fog
           identity :reference
 
           attribute :applied
-          attribute :description,         :aliases => :name_description
-          attribute :name,                :aliases => :name_label
+          attribute :description,         aliases: :name_description
+          attribute :name,                aliases: :name_label
           attribute :other_config
           attribute :size
           attribute :timestamp_applied

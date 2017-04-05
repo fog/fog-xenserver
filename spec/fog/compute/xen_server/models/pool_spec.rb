@@ -49,41 +49,41 @@ describe Fog::Compute::XenServer::Models::Pool do
   end
 
   it 'should have 5 associations' do
-    pool_class.associations.must_equal(:crash_dump_sr => :storage_repositories, 
-                                       :default_sr => :storage_repositories, 
-                                       :master => :hosts, 
-                                       :metadata_vdis => :vdis, 
+    pool_class.associations.must_equal(:crash_dump_sr => :storage_repositories,
+                                       :default_sr => :storage_repositories,
+                                       :master => :hosts,
+                                       :metadata_vdis => :vdis,
                                        :suspend_image_sr => :storage_repositories)
   end
 
   it 'should have 28 masks' do
-    pool_class.masks.must_equal(:reference => :reference, 
-                                :blobs => :blobs, 
-                                :description => :description, 
-                                :gui_config => :gui_config, 
-                                :ha_allow_overcommit => :ha_allow_overcommit, 
-                                :ha_configuration => :ha_configuration, 
-                                :ha_enabled => :ha_enabled, 
-                                :ha_host_failures_to_tolerate => :ha_host_failures_to_tolerate, 
-                                :ha_overcommitted => :ha_overcommitted, 
-                                :ha_plan_exists_for => :ha_plan_exists_for, 
-                                :ha_statefiles => :ha_statefiles, 
-                                :name => :name, 
-                                :other_config => :other_config, 
-                                :redo_log_enabled => :redo_log_enabled, 
-                                :redo_log_vdi => :redo_log_vdi, 
-                                :restrictions => :restrictions, 
-                                :tags => :tags, 
-                                :uuid => :uuid, 
-                                :vswitch_controller => :vswitch_controller, 
-                                :wlb_enabled => :wlb_enabled, 
-                                :wlb_url => :wlb_url, 
-                                :wlb_username => :wlb_username, 
-                                :wlb_verify_cert => :wlb_verify_cert, 
-                                :crash_dump_sr => :crash_dump_SR, 
-                                :default_sr => :default_SR, 
-                                :master => :master, 
-                                :metadata_vdis => :metadata_VDIs, 
+    pool_class.masks.must_equal(:reference => :reference,
+                                :blobs => :blobs,
+                                :description => :description,
+                                :gui_config => :gui_config,
+                                :ha_allow_overcommit => :ha_allow_overcommit,
+                                :ha_configuration => :ha_configuration,
+                                :ha_enabled => :ha_enabled,
+                                :ha_host_failures_to_tolerate => :ha_host_failures_to_tolerate,
+                                :ha_overcommitted => :ha_overcommitted,
+                                :ha_plan_exists_for => :ha_plan_exists_for,
+                                :ha_statefiles => :ha_statefiles,
+                                :name => :name,
+                                :other_config => :other_config,
+                                :redo_log_enabled => :redo_log_enabled,
+                                :redo_log_vdi => :redo_log_vdi,
+                                :restrictions => :restrictions,
+                                :tags => :tags,
+                                :uuid => :uuid,
+                                :vswitch_controller => :vswitch_controller,
+                                :wlb_enabled => :wlb_enabled,
+                                :wlb_url => :wlb_url,
+                                :wlb_username => :wlb_username,
+                                :wlb_verify_cert => :wlb_verify_cert,
+                                :crash_dump_sr => :crash_dump_SR,
+                                :default_sr => :default_SR,
+                                :master => :master,
+                                :metadata_vdis => :metadata_VDIs,
                                 :suspend_image_sr => :suspend_image_SR)
   end
 
@@ -102,5 +102,12 @@ describe Fog::Compute::XenServer::Models::Pool do
 
   it "shouldn't require attributes before save" do
     pool_class.require_before_save.must_equal([])
+  end
+
+  it 'should define methods' do
+    methods = pool_class.instance_methods(false)
+    pool_class::POOL_METHODS.each do |method|
+      methods.include?(method).must_equal(true)
+    end
   end
 end

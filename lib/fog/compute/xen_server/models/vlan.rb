@@ -12,11 +12,11 @@ module Fog
           identity :reference
 
           attribute :other_config
-          attribute :tag,                :type => :integer
+          attribute :tag,                type: :integer
           attribute :uuid
 
-          has_one_identity   :tagged_pif,   :pifs,   :aliases => :tagged_PIF,   :as => :tagged_PIF
-          has_one_identity   :untagged_pif, :pifs,   :aliases => :untagged_PIF, :as => :untagged_PIF
+          has_one_identity   :tagged_pif,   :pifs,   aliases: :tagged_PIF,   as: :tagged_PIF
+          has_one_identity   :untagged_pif, :pifs,   aliases: :untagged_PIF, as: :untagged_PIF
 
           require_before_save :tag
         end

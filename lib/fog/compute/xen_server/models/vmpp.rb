@@ -22,16 +22,16 @@ module Fog
           attribute :backup_retention_value
           attribute :backup_schedule
           attribute :backup_type
-          attribute :description,         :aliases => :name_description
+          attribute :description,         aliases: :name_description
           attribute :is_alarm_enabled
           attribute :is_archive_running
           attribute :is_backup_running
           attribute :is_policy_enabled
-          attribute :name,                :aliases => :name_label
+          attribute :name,                aliases: :name_label
           attribute :recent_alerts
           attribute :uuid
 
-          has_many_identities  :vms,  :servers,      :aliases => :VMs,  :as => :VMs
+          has_many_identities :vms, :servers, aliases: :VMs, as: :VMs
         end
       end
     end

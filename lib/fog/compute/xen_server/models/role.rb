@@ -11,11 +11,11 @@ module Fog
 
           identity :reference
 
-          attribute :description,         :aliases => :name_description
-          attribute :name,                :aliases => :name_label
+          attribute :description,         aliases: :name_description
+          attribute :name,                aliases: :name_label
           attribute :uuid
 
-          has_many_identities  :subroles,  :roles
+          has_many_identities :subroles, :roles
         end
       end
     end

@@ -49,25 +49,25 @@ describe Fog::Compute::XenServer::Models::StorageRepository do
   end
 
   it 'should have 20 masks' do
-    storage_repository_class.masks.must_equal(:reference => :reference, 
-                                              :allowed_operations => :allowed_operations, 
-                                              :blobs => :blobs, 
-                                              :content_type => :content_type, 
-                                              :current_operations => :current_operations, 
-                                              :description => :description, 
-                                              :introduced_by => :introduced_by, 
-                                              :local_cache_enabled => :local_cache_enabled, 
-                                              :name => :name, 
-                                              :other_config => :other_config, 
-                                              :physical_size => :physical_size, 
-                                              :physical_utilisation => :physical_utilisation, 
-                                              :shared => :shared, 
-                                              :sm_config => :sm_config, 
-                                              :tags => :tags, 
-                                              :type => :type, 
-                                              :uuid => :uuid, 
-                                              :virtual_allocation => :virtual_allocation, 
-                                              :pbds => :PBDs, 
+    storage_repository_class.masks.must_equal(:reference => :reference,
+                                              :allowed_operations => :allowed_operations,
+                                              :blobs => :blobs,
+                                              :content_type => :content_type,
+                                              :current_operations => :current_operations,
+                                              :description => :description,
+                                              :introduced_by => :introduced_by,
+                                              :local_cache_enabled => :local_cache_enabled,
+                                              :name => :name,
+                                              :other_config => :other_config,
+                                              :physical_size => :physical_size,
+                                              :physical_utilisation => :physical_utilisation,
+                                              :shared => :shared,
+                                              :sm_config => :sm_config,
+                                              :tags => :tags,
+                                              :type => :type,
+                                              :uuid => :uuid,
+                                              :virtual_allocation => :virtual_allocation,
+                                              :pbds => :PBDs,
                                               :vdis => :VDIs)
   end
 
@@ -88,5 +88,12 @@ describe Fog::Compute::XenServer::Models::StorageRepository do
 
   it 'should require 2 attributes before save' do
     storage_repository_class.require_before_save.must_equal([ :name, :type ])
+  end
+
+  it 'should define methods' do
+    methods = storage_repository_class.instance_methods(false)
+    storage_repository_class::STORAGE_REPOSITORY_METHODS.each do |method|
+      methods.include?(method).must_equal(true)
+    end
   end
 end

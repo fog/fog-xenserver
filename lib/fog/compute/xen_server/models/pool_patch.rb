@@ -12,15 +12,15 @@ module Fog
           identity :reference
 
           attribute :after_apply_guidance
-          attribute :description,             :aliases => :name_description
-          attribute :name,                    :aliases => :name_label
+          attribute :description,             aliases: :name_description
+          attribute :name,                    aliases: :name_label
           attribute :other_config
           attribute :pool_applied
           attribute :size
           attribute :uuid
           attribute :version
 
-          has_many_identities  :host_patches,    :host_patchs
+          has_many_identities :host_patches, :host_patchs
         end
       end
     end

@@ -67,15 +67,15 @@ describe Fog::Compute::XenServer::Models::Host do
   end
 
   it 'should have 10 associations' do
-    host_class.associations.must_equal(:crashdumps => :crash_dumps, 
-                                       :crash_dump_sr => :storage_repositories, 
-                                       :host_cpus => :host_cpus, 
-                                       :local_cache_sr => :storage_repositories, 
-                                       :metrics => :hosts_metrics, 
-                                       :pbds => :pbds, 
-                                       :pcis => :pcis, 
-                                       :pgpus => :pgpus, 
-                                       :pifs => :pifs, 
+    host_class.associations.must_equal(:crashdumps => :crash_dumps,
+                                       :crash_dump_sr => :storage_repositories,
+                                       :host_cpus => :host_cpus,
+                                       :local_cache_sr => :storage_repositories,
+                                       :metrics => :hosts_metrics,
+                                       :pbds => :pbds,
+                                       :pcis => :pcis,
+                                       :pgpus => :pgpus,
+                                       :pifs => :pifs,
                                        :resident_vms => :servers)
   end
 
@@ -153,6 +153,13 @@ describe Fog::Compute::XenServer::Models::Host do
 
   it "shouldn't require attributes before save" do
     host_class.require_before_save.must_equal([])
+  end
+
+  it 'should define methods' do
+    methods = host_class.instance_methods(false)
+    host_class::HOST_METHODS.each do |method|
+      methods.include?(method).must_equal(true)
+    end
   end
 
   describe '#shutdown' do

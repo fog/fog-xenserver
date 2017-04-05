@@ -15,7 +15,7 @@ module Fog
         def parse( data )
           if data.kind_of? Hash
             @response = data.symbolize_keys!
-            @response.each do |k,v|
+            @response.each do |k,_|
               if @response[k] == "OpaqueRef:NULL"
                 @response[k] = nil
               end

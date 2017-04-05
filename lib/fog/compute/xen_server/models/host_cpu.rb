@@ -15,7 +15,7 @@ module Fog
           attribute :features
           attribute :flags
           attribute :model
-          attribute :model_name,      :aliases => :modelname,   :as => :modelname
+          attribute :model_name,      aliases: :modelname,   as: :modelname
           attribute :number
           attribute :other_config
           attribute :speed
@@ -24,7 +24,7 @@ module Fog
           attribute :uuid
           attribute :vendor
 
-          has_one_identity   :host,       :hosts
+          has_one_identity :host, :hosts
         end
       end
     end

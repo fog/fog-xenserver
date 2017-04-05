@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ClassLength
 require "fog/core"
 
 module Fog
@@ -153,7 +154,7 @@ module Fog
       request :create_network
       request :create_new_blob_network
       request :set_default_locking_mode_network
-      
+
       # PBD
       request :create_pbd
       request :plug_pbd
@@ -170,7 +171,7 @@ module Fog
       request :reconfigure_ipv6_pif
       request :scan_pif
       request :set_primary_address_type_pif
-      
+
       # pool
       request :apply_edition_pool
       request :certificate_install_pool
@@ -328,7 +329,7 @@ module Fog
       request :start_server
       request :suspend_server
       request :unpause_server
-      
+
       # SR
       request :assert_can_host_ha_statefile_sr
       request :assert_supports_database_replication_sr
