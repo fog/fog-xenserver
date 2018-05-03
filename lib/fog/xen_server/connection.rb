@@ -4,12 +4,31 @@ module Fog
   module XenServer
     class Connection
       attr_reader :credentials
+      private :master_slave_request
 
       def initialize(host, port, use_ssl, verify_mode, timeout)
         @factory = XMLRPC::Client.new3(host: host, port: port, use_ssl: use_ssl, path: "/")
         @factory.http.verify_mode = verify_mode
         @factory.set_parser(NokogiriStreamParser.new)
         @factory.timeout = timeout
+      end
+
+      def master_slave_request
+        if @ms_response.nil?
+          @ms_response = @factory.call("host.get_all_records", @credentials)
+        end
+      end
+
+      def slave?
+        master_slave_request
+        @ms_response["Status"] == "Failure"
+      end
+
+      def master
+        master_slave_request
+        return if @ms_response["ErrorDescription"].nil?
+        return unless @ms_response["ErrorDescription"][0] == "HOST_IS_SLAVE"
+        @ms_response["ErrorDescription"][1]
       end
 
       def authenticate( username, password )
