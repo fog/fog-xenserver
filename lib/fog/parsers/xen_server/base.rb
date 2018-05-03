@@ -14,7 +14,10 @@ module Fog
 
         def parse( data )
           if data.kind_of? Hash
-            @response = data.symbolize_keys!
+            data.keys.each do |key|
+              data[key.to_sym] = data.delete(key) if key.respond_to?(:to_sym)
+            end
+            @response = data
             @response.each do |k,v|
               if @response[k] == "OpaqueRef:NULL"
                 @response[k] = nil

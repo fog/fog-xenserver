@@ -1,6 +1,5 @@
 require "fog/core"
 require "fog/xml"
-require File.expand_path("../utilities", __FILE__)
 
 module Fog
   module XenServer
