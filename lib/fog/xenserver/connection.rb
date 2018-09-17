@@ -10,7 +10,6 @@ module Fog
         if @factory.respond_to?(:http)
           @factory.http.verify_mode = verify_mode
         else
-          binding.pry
           @factory.instance_variable_get(:@http).verify_mode = verify_mode
         end
         @factory.set_parser(NokogiriStreamParser.new)
