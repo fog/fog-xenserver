@@ -22,21 +22,17 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = %w(lib)
 
+  spec.required_ruby_version = '>= 2.0'
+
   spec.add_dependency 'fog-xml'
   spec.add_dependency 'fog-core'
   spec.add_dependency 'xmlrpc' if RUBY_VERSION =~ /^2\.[^0-3].*$/
 
   spec.add_development_dependency 'coveralls'
-  spec.add_development_dependency 'json' if RUBY_VERSION =~ /^1\.8.*$/
   spec.add_development_dependency 'minitest'
   spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'pry'
+  spec.add_development_dependency 'jazz_fingers'
   spec.add_development_dependency 'turn'
   spec.add_development_dependency 'webmock'
-
-  if RUBY_VERSION =~ /^1\.(8.*|9.[0-2])$/
-    spec.add_development_dependency 'vcr', '< 3.0.0'
-  else
-    spec.add_development_dependency 'vcr'
-  end
+  spec.add_development_dependency 'vcr'
 end

@@ -1,5 +1,8 @@
+$VERBOSE = nil
+
 require 'minitest/spec'
 require 'minitest/autorun'
+require 'jazz_fingers'
 require 'turn'
 require 'vcr'
 
