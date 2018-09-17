@@ -2,8 +2,7 @@ module Fog
   module XenServer
     class Compute
       class Real
-        def shutdown_server(ref, stype = false)
-          Fog::Logger.deprecation "Use shutdown_clean and shutdown_hard for specific shutdown." unless stype == false
+        def shutdown_server(ref)
           @connection.request({ :parser => Fog::XenServer::Parsers::Base.new, :method => "VM.shutdown" }, ref)
         end
 
