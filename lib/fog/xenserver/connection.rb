@@ -7,7 +7,12 @@ module Fog
 
       def initialize(host, port, use_ssl, verify_mode, timeout)
         @factory = XMLRPC::Client.new3(host: host, port: port, use_ssl: use_ssl, path: "/")
-        @factory.http.verify_mode = verify_mode
+        if @factory.respond_to?(:http)
+          @factory.http.verify_mode = verify_mode
+        else
+          binding.pry
+          @factory.instance_variable_get(:@http).verify_mode = verify_mode
+        end
         @factory.set_parser(NokogiriStreamParser.new)
         @factory.timeout = timeout
       end
