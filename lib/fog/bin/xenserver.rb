@@ -3,7 +3,7 @@ class XenServer < Fog::Bin
     def class_for(key)
       case key
         when :compute
-          Fog::Compute::XenServer
+          Fog::XenServer::Compute
         else
           raise ArgumentError, "Unrecognized service: #{key}"
       end
