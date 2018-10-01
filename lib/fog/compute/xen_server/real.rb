@@ -5,25 +5,30 @@ module Fog
         attr_reader :host, :username
 
         def initialize(options={})
-          @host        = options[:xenserver_url]
-          @username    = options[:xenserver_username]
-          @password    = options[:xenserver_password]
-          @defaults    = options[:xenserver_defaults] || {}
-          @timeout     = options[:xenserver_timeout] || 30
-          @use_ssl     = options[:xenserver_use_ssl] || false
-          @port        = options[:xenserver_port] || 80
-          @verify_mode = options[:xenserver_verify_mode] || OpenSSL::SSL::VERIFY_PEER
+          @host               = options[:xenserver_url]
+          @username           = options[:xenserver_username]
+          @password           = options[:xenserver_password]
+          @defaults           = options[:xenserver_defaults] || {}
+          @timeout            = options[:xenserver_timeout] || 30
+          @use_ssl            = options[:xenserver_use_ssl] || false
+          @port               = options[:xenserver_port] || 80
+          @verify_mode        = options[:xenserver_verify_mode] || OpenSSL::SSL::VERIFY_PEER
+          @redirect_to_master = options[:xenserver_redirect_to_master] || false
           @connection  = Fog::XenServer::Connection.new(
             @host, @port, @use_ssl, @verify_mode, @timeout
           )
 
-          @connection.authenticate(@username, @password)
-
-          if @connection.slave?
-            @connection = Fog::XenServer::Connection.new(
-              @connection.master, @port, @use_ssl, @verify_mode, @timeout
-            )
+          begin
             @connection.authenticate(@username, @password)
+          rescue Fog::XenServer::HostIsSlave => e
+            if @redirect_to_master
+              @connection = Fog::XenServer::Connection.new(
+                e.master, @port, @use_ssl, @verify_mode, @timeout
+              )
+              @connection.authenticate(@username, @password)
+            else
+              raise e
+            end
           end
         end
 

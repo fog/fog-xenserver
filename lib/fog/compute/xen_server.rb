@@ -15,6 +15,7 @@ module Fog
       recognizes :xenserver_use_ssl
       recognizes :xenserver_verify_mode
       recognizes :xenserver_port
+      recognizes :xenserver_redirect_to_master
 
       model_path "fog/compute/xen_server/models"
       model :blob

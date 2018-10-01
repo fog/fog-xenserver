@@ -8,6 +8,7 @@ module Fog
     autoload :NokogiriStreamParser, File.expand_path("../xen_server/nokogiri_stream_parser", __FILE__)
     autoload :NotFound, File.expand_path("../xen_server/not_found", __FILE__)
     autoload :RequestFailed, File.expand_path("../xen_server/request_failed", __FILE__)
+    autoload :HostIsSlave, File.expand_path("../xen_server/host_is_slave", __FILE__)
 
     extend Fog::Provider
 
