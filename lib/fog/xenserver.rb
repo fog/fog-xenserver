@@ -10,6 +10,7 @@ module Fog
     autoload :NotFound, File.expand_path("../xenserver/not_found", __FILE__)
     autoload :Parsers, File.expand_path("../xenserver/parsers", __FILE__)
     autoload :RequestFailed, File.expand_path("../xenserver/request_failed", __FILE__)
+    autoload :HostIsSlave, File.expand_path("../xenserver/host_is_slave", __FILE__)
 
     extend Fog::Provider
 

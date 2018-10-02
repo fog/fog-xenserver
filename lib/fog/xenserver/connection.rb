@@ -16,21 +16,17 @@ module Fog
         @factory.timeout = timeout
       end
 
-      def slave?
-        master_slave_request
-        @ms_response["Status"] == "Failure"
-      end
-
-      def master
-        master_slave_request
-        return if @ms_response["ErrorDescription"].nil?
-        return unless @ms_response["ErrorDescription"][0] == "HOST_IS_SLAVE"
-        @ms_response["ErrorDescription"][1]
-      end
-
       def authenticate( username, password )
         response = @factory.call("session.login_with_password", username.to_s, password.to_s)
-        raise Fog::XenServer::InvalidLogin.new unless response["Status"] =~ /Success/
+        unless response["Status"] =~ /Success/
+          if response.key?("ErrorDescription") &&
+             response["ErrorDescription"].is_a?(Array) &&
+             response["ErrorDescription"].length >= 2 &&
+             response["ErrorDescription"][0] == "HOST_IS_SLAVE"
+            raise Fog::XenServer::HostIsSlave.new response["ErrorDescription"][1]
+          end
+          raise Fog::XenServer::InvalidLogin.new
+        end
         @credentials = response["Value"]
       end
 
