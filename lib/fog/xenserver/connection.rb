@@ -57,12 +57,6 @@ module Fog
           response
         end
       end
-
-      private
-
-      def master_slave_request
-        @ms_response ||= @factory.call("host.get_all_records", @credentials)
-      end
     end
   end
 end
