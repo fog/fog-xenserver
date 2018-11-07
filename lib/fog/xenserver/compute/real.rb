@@ -16,14 +16,7 @@ module Fog
           @connection  = Fog::XenServer::Connection.new(
             @host, @port, @use_ssl, @verify_mode, @timeout)
 
-          begin
-            @connection.authenticate(@username, @password)
-          rescue Fog::XenServer::HostIsSlave => e
-              @connection = Fog::XenServer::Connection.new(
-                e.master, @port, @use_ssl, @verify_mode, @timeout
-              )
-              @connection.authenticate(@username, @password)
-          end
+          @connection.authenticate(@username, @password)
         end
 
         def reload
