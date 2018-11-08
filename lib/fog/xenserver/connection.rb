@@ -6,31 +6,43 @@ module Fog
       attr_reader :credentials
 
       def initialize(host, port, use_ssl, verify_mode, timeout)
-        @factory = XMLRPC::Client.new3(host: host, port: port, use_ssl: use_ssl, path: "/")
+        @host = host
+        @port = port
+        @use_ssl = use_ssl
+        @verify_mode = verify_mode
+        @timeout = timeout
+        connect
+      end
+
+      def connect
+        @factory = XMLRPC::Client.new3(host: @host, port: @port, use_ssl: @use_ssl, path: "/")
         if @factory.respond_to?(:http)
-          @factory.http.verify_mode = verify_mode
+          @factory.http.verify_mode = @verify_mode
         else
-          @factory.instance_variable_get(:@http).verify_mode = verify_mode
+          @factory.instance_variable_get(:@http).verify_mode = @verify_mode
         end
         @factory.set_parser(NokogiriStreamParser.new)
-        @factory.timeout = timeout
-      end
-
-      def slave?
-        master_slave_request
-        @ms_response["Status"] == "Failure"
-      end
-
-      def master
-        master_slave_request
-        return if @ms_response["ErrorDescription"].nil?
-        return unless @ms_response["ErrorDescription"][0] == "HOST_IS_SLAVE"
-        @ms_response["ErrorDescription"][1]
+        @factory.timeout = @timeout
       end
 
       def authenticate( username, password )
         response = @factory.call("session.login_with_password", username.to_s, password.to_s)
-        raise Fog::XenServer::InvalidLogin.new unless response["Status"] =~ /Success/
+        unless response["Status"] =~ /Success/
+          if response.key?("ErrorDescription") &&
+             response["ErrorDescription"].is_a?(Array) &&
+             response["ErrorDescription"].length >= 2 &&
+             response["ErrorDescription"][0] == "HOST_IS_SLAVE"
+            @host = response["ErrorDescription"][1]
+            connect
+            response = @factory.call("session.login_with_password", username.to_s, password.to_s)
+            unless response["Status"] =~ /Success/
+              raise Fog::XenServer::InvalidLogin.new
+            end
+            @credentials = response["Value"]
+            return
+          end
+          raise Fog::XenServer::InvalidLogin.new
+        end
         @credentials = response["Value"]
       end
 
@@ -60,12 +72,6 @@ module Fog
 
           response
         end
-      end
-
-      private
-
-      def master_slave_request
-        @ms_response ||= @factory.call("host.get_all_records", @credentials)
       end
     end
   end

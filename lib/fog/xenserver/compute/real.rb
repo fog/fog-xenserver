@@ -5,23 +5,18 @@ module Fog
         attr_reader :host, :username
 
         def initialize(options={})
-          @host        = options[:xenserver_url]
-          @username    = options[:xenserver_username]
-          @password    = options[:xenserver_password]
-          @defaults    = options[:xenserver_defaults] || {}
-          @timeout     = options[:xenserver_timeout] || 30
-          @use_ssl     = options[:xenserver_use_ssl] || false
-          @port        = options[:xenserver_port] || 80
-          @verify_mode = options[:xenserver_verify_mode] || OpenSSL::SSL::VERIFY_PEER
+          @host               = options[:xenserver_url]
+          @username           = options[:xenserver_username]
+          @password           = options[:xenserver_password]
+          @defaults           = options[:xenserver_defaults] || {}
+          @timeout            = options[:xenserver_timeout] || 30
+          @use_ssl            = options[:xenserver_use_ssl] || false
+          @port               = options[:xenserver_port] || 80
+          @verify_mode        = options[:xenserver_verify_mode] || OpenSSL::SSL::VERIFY_PEER
           @connection  = Fog::XenServer::Connection.new(
             @host, @port, @use_ssl, @verify_mode, @timeout)
 
           @connection.authenticate(@username, @password)
-
-          if @connection.slave?
-            @connection = Fog::XenServer::Connection.new(@connection.master, @port, @use_ssl, @verify_mode, @timeout)
-            @connection.authenticate(@username, @password)
-          end
         end
 
         def reload
